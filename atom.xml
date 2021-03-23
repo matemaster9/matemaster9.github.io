@@ -1,0 +1,464 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>MateMaster</title>
+  
+  <subtitle>MasterStudio</subtitle>
+  <link href="http://matemaster.cn/atom.xml" rel="self"/>
+  
+  <link href="http://matemaster.cn/"/>
+  <updated>2021-03-22T01:58:51.377Z</updated>
+  <id>http://matemaster.cn/</id>
+  
+  <author>
+    <name>MateMaster</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>网络</title>
+    <link href="http://matemaster.cn/2021/03/22/net-1/"/>
+    <id>http://matemaster.cn/2021/03/22/net-1/</id>
+    <published>2021-03-22T01:55:56.000Z</published>
+    <updated>2021-03-22T01:58:51.377Z</updated>
+    
+    
+    
+    
+    <category term="计算机网络" scheme="http://matemaster.cn/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/"/>
+    
+    
+    <category term="原创" scheme="http://matemaster.cn/tags/%E5%8E%9F%E5%88%9B/"/>
+    
+    <category term="计网" scheme="http://matemaster.cn/tags/%E8%AE%A1%E7%BD%91/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>计算机组成原理</title>
+    <link href="http://matemaster.cn/2021/03/22/pco-1/"/>
+    <id>http://matemaster.cn/2021/03/22/pco-1/</id>
+    <published>2021-03-22T01:46:45.000Z</published>
+    <updated>2021-03-22T01:48:24.541Z</updated>
+    
+    
+    
+    
+    <category term="计算机组成原理" scheme="http://matemaster.cn/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/"/>
+    
+    
+    <category term="原创" scheme="http://matemaster.cn/tags/%E5%8E%9F%E5%88%9B/"/>
+    
+    <category term="计组" scheme="http://matemaster.cn/tags/%E8%AE%A1%E7%BB%84/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>排序算法</title>
+    <link href="http://matemaster.cn/2021/03/22/algs-1/"/>
+    <id>http://matemaster.cn/2021/03/22/algs-1/</id>
+    <published>2021-03-22T01:23:59.000Z</published>
+    <updated>2021-03-22T01:43:48.694Z</updated>
+    
+    
+    
+    
+    <category term="算法" scheme="http://matemaster.cn/categories/%E7%AE%97%E6%B3%95/"/>
+    
+    
+    <category term="原创" scheme="http://matemaster.cn/tags/%E5%8E%9F%E5%88%9B/"/>
+    
+    <category term="algorithm" scheme="http://matemaster.cn/tags/algorithm/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>线性表</title>
+    <link href="http://matemaster.cn/2021/03/22/ds-1/"/>
+    <id>http://matemaster.cn/2021/03/22/ds-1/</id>
+    <published>2021-03-22T01:23:50.000Z</published>
+    <updated>2021-03-22T01:35:16.464Z</updated>
+    
+    
+    
+    
+    <category term="数据结构" scheme="http://matemaster.cn/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+    
+    
+    <category term="原创" scheme="http://matemaster.cn/tags/%E5%8E%9F%E5%88%9B/"/>
+    
+    <category term="线性表" scheme="http://matemaster.cn/tags/%E7%BA%BF%E6%80%A7%E8%A1%A8/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Query for MySQL</title>
+    <link href="http://matemaster.cn/2021/03/21/db-3/"/>
+    <id>http://matemaster.cn/2021/03/21/db-3/</id>
+    <published>2021-03-21T11:36:25.000Z</published>
+    <updated>2021-03-23T02:40:23.987Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;&lt;b style=&quot;color: red;&quot;&gt;本片博文的sql文件&lt;/b&gt;👉&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="数据库" scheme="http://matemaster.cn/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    
+    
+    <category term="原创" scheme="http://matemaster.cn/tags/%E5%8E%9F%E5%88%9B/"/>
+    
+    <category term="MySQL" scheme="http://matemaster.cn/tags/MySQL/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Ubuntu-20.10</title>
+    <link href="http://matemaster.cn/2021/03/20/os-2/"/>
+    <id>http://matemaster.cn/2021/03/20/os-2/</id>
+    <published>2021-03-20T08:06:24.000Z</published>
+    <updated>2021-03-20T08:46:15.650Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;如何用Linux&quot;&gt;&lt;a href=&quot;#如何用Linux&quot; class=&quot;headerlink&quot; title=&quot;如何用Linux&quot;&gt;&lt;/a&gt;如何用Linux&lt;/h1&gt;&lt;h2 id=&quot;下载Ubuntu镜像&quot;&gt;&lt;a href=&quot;#下载Ubuntu镜像&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="操作系统" scheme="http://matemaster.cn/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"/>
+    
+    
+    <category term="原创" scheme="http://matemaster.cn/tags/%E5%8E%9F%E5%88%9B/"/>
+    
+    <category term="Linux" scheme="http://matemaster.cn/tags/Linux/"/>
+    
+    <category term="Ubuntu" scheme="http://matemaster.cn/tags/Ubuntu/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>LinkedList&lt;E&gt;底层原理</title>
+    <link href="http://matemaster.cn/2021/03/19/CoreJava-6/"/>
+    <id>http://matemaster.cn/2021/03/19/CoreJava-6/</id>
+    <published>2021-03-19T07:14:31.000Z</published>
+    <updated>2021-03-20T15:53:06.080Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;继承体系&quot;&gt;&lt;a href=&quot;#继承体系&quot; class=&quot;headerlink&quot; title=&quot;继承体系&quot;&gt;&lt;/a&gt;继承体系&lt;/h1&gt;&lt;img</summary>
+        
+      
+    
+    
+    
+    <category term="CoreJava" scheme="http://matemaster.cn/categories/CoreJava/"/>
+    
+    
+    <category term="Java" scheme="http://matemaster.cn/tags/Java/"/>
+    
+    <category term="原创" scheme="http://matemaster.cn/tags/%E5%8E%9F%E5%88%9B/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>关系代数</title>
+    <link href="http://matemaster.cn/2021/03/19/db-2/"/>
+    <id>http://matemaster.cn/2021/03/19/db-2/</id>
+    <published>2021-03-19T06:25:01.000Z</published>
+    <updated>2021-03-21T08:07:30.434Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;示例表&quot;&gt;&lt;a href=&quot;#示例表&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="数据库" scheme="http://matemaster.cn/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    
+    
+    <category term="原创" scheme="http://matemaster.cn/tags/%E5%8E%9F%E5%88%9B/"/>
+    
+    <category term="关系模型" scheme="http://matemaster.cn/tags/%E5%85%B3%E7%B3%BB%E6%A8%A1%E5%9E%8B/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>现代操作系统</title>
+    <link href="http://matemaster.cn/2021/03/19/os-1/"/>
+    <id>http://matemaster.cn/2021/03/19/os-1/</id>
+    <published>2021-03-19T04:40:26.000Z</published>
+    <updated>2021-03-19T06:41:21.628Z</updated>
+    
+    
+    
+    
+    <category term="操作系统" scheme="http://matemaster.cn/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"/>
+    
+    
+    <category term="原创" scheme="http://matemaster.cn/tags/%E5%8E%9F%E5%88%9B/"/>
+    
+    <category term="OS" scheme="http://matemaster.cn/tags/OS/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>DDL DML for MySQL</title>
+    <link href="http://matemaster.cn/2021/03/19/db-1/"/>
+    <id>http://matemaster.cn/2021/03/19/db-1/</id>
+    <published>2021-03-19T02:19:44.000Z</published>
+    <updated>2021-03-21T12:08:13.806Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;SCT数据库&quot;&gt;&lt;a href=&quot;#SCT数据库&quot; class=&quot;headerlink&quot; title=&quot;SCT数据库&quot;&gt;&lt;/a&gt;SCT数据库&lt;/h1&gt;&lt;p&gt;这里以学生选课数据库&lt;code&gt;SCT-DB&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;student{</summary>
+        
+      
+    
+    
+    
+    <category term="数据库" scheme="http://matemaster.cn/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    
+    
+    <category term="原创" scheme="http://matemaster.cn/tags/%E5%8E%9F%E5%88%9B/"/>
+    
+    <category term="MySQL" scheme="http://matemaster.cn/tags/MySQL/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Matery主题中文参考文档</title>
+    <link href="http://matemaster.cn/2021/03/18/theme-use/"/>
+    <id>http://matemaster.cn/2021/03/18/theme-use/</id>
+    <published>2021-03-18T00:58:52.000Z</published>
+    <updated>2021-03-19T01:58:38.676Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;Matery主题&quot;&gt;&lt;a href=&quot;#Matery主题&quot; class=&quot;headerlink&quot; title=&quot;Matery主题&quot;&gt;&lt;/a&gt;Matery主题&lt;/h1&gt;&lt;p&gt;&lt;a href=&quot;README.md&quot;&gt;🇺🇸English Document&lt;/a&gt;</summary>
+        
+      
+    
+    
+    
+    <category term="MasterStudio" scheme="http://matemaster.cn/categories/MasterStudio/"/>
+    
+    
+    <category term="Matery" scheme="http://matemaster.cn/tags/Matery/"/>
+    
+    <category term="主题" scheme="http://matemaster.cn/tags/%E4%B8%BB%E9%A2%98/"/>
+    
+    <category term="转载" scheme="http://matemaster.cn/tags/%E8%BD%AC%E8%BD%BD/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Java lambda</title>
+    <link href="http://matemaster.cn/2021/03/18/CoreJava-5/"/>
+    <id>http://matemaster.cn/2021/03/18/CoreJava-5/</id>
+    <published>2021-03-18T00:32:23.000Z</published>
+    <updated>2021-03-19T06:55:41.486Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;lambda演示&quot;&gt;&lt;a href=&quot;#lambda演示&quot; class=&quot;headerlink&quot; title=&quot;lambda演示&quot;&gt;&lt;/a&gt;lambda演示&lt;/h1&gt;&lt;pre class=&quot;line-numbers language-java&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="CoreJava" scheme="http://matemaster.cn/categories/CoreJava/"/>
+    
+    
+    <category term="Java" scheme="http://matemaster.cn/tags/Java/"/>
+    
+    <category term="原创" scheme="http://matemaster.cn/tags/%E5%8E%9F%E5%88%9B/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Java接口技术</title>
+    <link href="http://matemaster.cn/2021/03/17/CoreJava-4/"/>
+    <id>http://matemaster.cn/2021/03/17/CoreJava-4/</id>
+    <published>2021-03-17T04:10:56.000Z</published>
+    <updated>2021-03-19T01:54:41.766Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;什么是接口&quot;&gt;&lt;a href=&quot;#什么是接口&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="CoreJava" scheme="http://matemaster.cn/categories/CoreJava/"/>
+    
+    
+    <category term="Java" scheme="http://matemaster.cn/tags/Java/"/>
+    
+    <category term="原创" scheme="http://matemaster.cn/tags/%E5%8E%9F%E5%88%9B/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>留言板信封动画</title>
+    <link href="http://matemaster.cn/2021/03/17/mst-msg/"/>
+    <id>http://matemaster.cn/2021/03/17/mst-msg/</id>
+    <published>2021-03-17T00:28:53.000Z</published>
+    <updated>2021-03-19T01:56:05.938Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;电脑端信封骨架结构&quot;&gt;&lt;a href=&quot;#电脑端信封骨架结构&quot; class=&quot;headerlink&quot; title=&quot;电脑端信封骨架结构&quot;&gt;&lt;/a&gt;电脑端信封骨架结构&lt;/h1&gt;&lt;pre class=&quot;line-numbers language-html&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="MasterStudio" scheme="http://matemaster.cn/categories/MasterStudio/"/>
+    
+    
+    <category term="原创" scheme="http://matemaster.cn/tags/%E5%8E%9F%E5%88%9B/"/>
+    
+    <category term="MasterStudio" scheme="http://matemaster.cn/tags/MasterStudio/"/>
+    
+    <category term="动画" scheme="http://matemaster.cn/tags/%E5%8A%A8%E7%94%BB/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Java Collection&lt;E&gt;</title>
+    <link href="http://matemaster.cn/2021/03/16/CoreJava-3/"/>
+    <id>http://matemaster.cn/2021/03/16/CoreJava-3/</id>
+    <published>2021-03-16T14:42:01.000Z</published>
+    <updated>2021-03-19T02:36:57.077Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;集合框架图&quot;&gt;&lt;a href=&quot;#集合框架图&quot; class=&quot;headerlink&quot; title=&quot;集合框架图&quot;&gt;&lt;/a&gt;集合框架图&lt;/h1&gt;&lt;p&gt;&lt;img</summary>
+        
+      
+    
+    
+    
+    <category term="CoreJava" scheme="http://matemaster.cn/categories/CoreJava/"/>
+    
+    
+    <category term="Java" scheme="http://matemaster.cn/tags/Java/"/>
+    
+    <category term="原创" scheme="http://matemaster.cn/tags/%E5%8E%9F%E5%88%9B/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>ArrayList&lt;E&gt;底层原理</title>
+    <link href="http://matemaster.cn/2021/03/16/CoreJava-2/"/>
+    <id>http://matemaster.cn/2021/03/16/CoreJava-2/</id>
+    <published>2021-03-16T03:25:19.000Z</published>
+    <updated>2021-03-19T07:17:42.849Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;原理分析图&quot;&gt;&lt;a href=&quot;#原理分析图&quot; class=&quot;headerlink&quot; title=&quot;原理分析图&quot;&gt;&lt;/a&gt;原理分析图&lt;/h1&gt;&lt;p&gt;&lt;img</summary>
+        
+      
+    
+    
+    
+    <category term="CoreJava" scheme="http://matemaster.cn/categories/CoreJava/"/>
+    
+    
+    <category term="Java" scheme="http://matemaster.cn/tags/Java/"/>
+    
+    <category term="原创" scheme="http://matemaster.cn/tags/%E5%8E%9F%E5%88%9B/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>CoreJava知识总结</title>
+    <link href="http://matemaster.cn/2021/03/15/CoreJava-1/"/>
+    <id>http://matemaster.cn/2021/03/15/CoreJava-1/</id>
+    <published>2021-03-15T14:56:18.000Z</published>
+    <updated>2021-03-19T01:52:37.860Z</updated>
+    
+    
+    
+    
+    <category term="CoreJava" scheme="http://matemaster.cn/categories/CoreJava/"/>
+    
+    
+    <category term="Java" scheme="http://matemaster.cn/tags/Java/"/>
+    
+    <category term="原创" scheme="http://matemaster.cn/tags/%E5%8E%9F%E5%88%9B/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hello MasterStudio!</title>
+    <link href="http://matemaster.cn/2021/03/14/mst/"/>
+    <id>http://matemaster.cn/2021/03/14/mst/</id>
+    <published>2021-03-13T16:57:22.000Z</published>
+    <updated>2021-03-20T08:40:40.407Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;MateMasterStudio的创建初衷&quot;&gt;&lt;a href=&quot;#MateMasterStudio的创建初衷&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="MasterStudio" scheme="http://matemaster.cn/categories/MasterStudio/"/>
+    
+    
+    <category term="原创" scheme="http://matemaster.cn/tags/%E5%8E%9F%E5%88%9B/"/>
+    
+    <category term="MasterStudio" scheme="http://matemaster.cn/tags/MasterStudio/"/>
+    
+  </entry>
+  
+</feed>

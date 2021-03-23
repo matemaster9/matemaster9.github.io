@@ -1,0 +1,10 @@
+/* Here is your custom css styles. */
+@font-face{
+    font-family: 'IBMPlexMono-Italic';
+    src: url('../font/IBMPlexMono-Italic.ttf');    
+}
+
+body{
+    font-family: 'IBMPlexMono-Italic','微软雅黑';
+    font-size: medium;
+}
