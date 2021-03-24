@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>华为太空人表盘</title>
+      <link href="2021/03/24/mst-spaceman/"/>
+      <url>2021/03/24/mst-spaceman/</url>
+      
+        <content type="html"><![CDATA[<h1 id="动画效果图"><a href="#动画效果图" class="headerlink" title="动画效果图"></a>动画效果图</h1><p><img src="https://cdn.jsdelivr.net/gh/matemaster9/image-one/images/20210324175449.gif"></p><h1 id="源码"><a href="#源码" class="headerlink" title="源码"></a>源码</h1><p>这个项目是源自于抖音上特别火的华为太空人表盘，利用前端三大件: HTML5+CSS3+JavaScript实现<span class="github-emoji"><span>😎</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/1f60e.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span></p><p>呜呼！起飞！🛫✈️✈️✈️👉<a href="https://gitee.com/matemaster/master-depository/tree/master/2021-03-24/HW_watch">我要当太空人</a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> MasterStudio </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> MasterStudio </tag>
+            
+            <tag> 动画 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>网络</title>
       <link href="2021/03/22/net-1/"/>
       <url>2021/03/22/net-1/</url>
