@@ -6,7 +6,7 @@
   <link href="http://matemaster.cn/atom.xml" rel="self"/>
   
   <link href="http://matemaster.cn/"/>
-  <updated>2021-03-24T10:15:13.871Z</updated>
+  <updated>2021-03-24T11:03:36.796Z</updated>
   <id>http://matemaster.cn/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="http://matemaster.cn/2021/03/24/mst-spaceman/"/>
     <id>http://matemaster.cn/2021/03/24/mst-spaceman/</id>
     <published>2021-03-24T10:03:27.000Z</published>
-    <updated>2021-03-24T10:15:13.871Z</updated>
+    <updated>2021-03-24T11:03:36.796Z</updated>
     
     
       
@@ -40,6 +40,8 @@
     <category term="MasterStudio" scheme="http://matemaster.cn/tags/MasterStudio/"/>
     
     <category term="动画" scheme="http://matemaster.cn/tags/%E5%8A%A8%E7%94%BB/"/>
+    
+    <category term="转载" scheme="http://matemaster.cn/tags/%E8%BD%AC%E8%BD%BD/"/>
     
   </entry>
   
