@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="基于Matery主题魔改——留言板信封动画">
+    <meta name="keywords" content="MySQL存储过程和函数, MateMaster">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>留言板信封动画 | MateMaster</title>
+    <title>MySQL存储过程和函数 | MateMaster</title>
     <link rel="icon" type="image/png" href="/bg.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -269,12 +269,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('https://cdn.jsdelivr.net/gh/matemaster9/image-one/images/20210317082814.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('https://cdn.jsdelivr.net/gh/matemaster9/image-one/images/20210319124742.png')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">留言板信封动画</h1>
+                    <h1 class="description center-align post-title">MySQL存储过程和函数</h1>
                 </div>
             </div>
         </div>
@@ -390,16 +390,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/%E5%8E%9F%E5%88%9B/">
-                                <span class="chip bg-color">原创</span>
-                            </a>
-                        
-                            <a href="/tags/MasterStudio/">
-                                <span class="chip bg-color">MasterStudio</span>
-                            </a>
-                        
-                            <a href="/tags/%E5%8A%A8%E7%94%BB/">
-                                <span class="chip bg-color">动画</span>
+                            <a href="/tags/MySQL/">
+                                <span class="chip bg-color">MySQL</span>
                             </a>
                         
                     </div>
@@ -410,8 +402,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/MasterStudio/" class="post-category">
-                                MasterStudio
+                            <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" class="post-category">
+                                数据库
                             </a>
                         
                     </div>
@@ -425,21 +417,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-03-17
+                    2021-03-25
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2021-03-19
+                    2021-03-25
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    542
+                    518
                 </div>
                 
 
@@ -475,71 +467,124 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="电脑端信封骨架结构"><a href="#电脑端信封骨架结构" class="headerlink" title="电脑端信封骨架结构"></a>电脑端信封骨架结构</h1><pre class="line-numbers language-html" data-language="html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>computer<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>maincontent<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>br</span><span class="token punctuation">&gt;</span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>form-wrap<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
-        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>img</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token punctuation">"</span></span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>beforeimg<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
-      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>envelope<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
-        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>form</span><span class="token punctuation">&gt;</span></span>
-          <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>formmain<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
-              <span class="token comment">&lt;!--这里存放的是自己想展示的信封内容，注意图片大小，会影响演示效果--&gt;</span>
-            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>img</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>headerimg<span class="token punctuation">"</span></span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token punctuation">"</span></span> <span class="token punctuation">/&gt;</span></span>
-            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token style-attr"><span class="token attr-name">style</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token style language-css"><span class="token property">padding</span><span class="token punctuation">:</span> 5px 20px<span class="token punctuation">;</span></span><span class="token punctuation">"</span></span></span><span class="token punctuation">&gt;</span></span>
-                <span class="token comment">&lt;!--以下是自己想要写入的内容--&gt;</span>
-              <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>center</span><span class="token punctuation">&gt;</span></span>
-                <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h3</span> <span class="token attr-name">calss</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>title3<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>来自MateMaster的留言:<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h3</span><span class="token punctuation">&gt;</span></span>
-              <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>center</span><span class="token punctuation">&gt;</span></span>
-              <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>center</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>comments<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
-                有什么想问的？<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>br</span><span class="token punctuation">&gt;</span></span>
-                有什么想说的？<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>br</span><span class="token punctuation">&gt;</span></span>
-                有什么想吐槽的？<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>br</span><span class="token punctuation">&gt;</span></span>
-                有什么新奇的想法，也都可以告诉我哦~<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>br</span><span class="token punctuation">&gt;</span></span>
-              <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>center</span><span class="token punctuation">&gt;</span></span>
-              <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>bottomcontent<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
-                <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>img</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>bottomimg<span class="token punctuation">"</span></span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token punctuation">"</span></span> <span class="token punctuation">/&gt;</span></span>
-              <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
-              <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>bottomhr<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>自动书记人偶竭诚为您服务！<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
-            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
-          <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
-        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>form</span><span class="token punctuation">&gt;</span></span>
-      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>img</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>afterimg<span class="token punctuation">"</span></span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+                <h1 id="存储过程基本知识"><a href="#存储过程基本知识" class="headerlink" title="存储过程基本知识"></a>存储过程基本知识</h1><p>操作采用的数据库关系表图</p>
+<p><img src="https://cdn.jsdelivr.net/gh/matemaster9/image-one/images/20210322215407.png"></p>
+<h2 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h2><p><b style="color: chocolate;">建一个不带参数的存储过程</b></p>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token comment"># 创建一个productpricing存储过程</span>
+<span class="token keyword">CREATE</span> <span class="token keyword">PROCEDURE</span> productpricing<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token keyword">BEGIN</span>
+	<span class="token keyword">SELECT</span> <span class="token function">Avg</span><span class="token punctuation">(</span>prod_price<span class="token punctuation">)</span> <span class="token keyword">AS</span> priceaverage
+	<span class="token keyword">FROM</span> products<span class="token punctuation">;</span>
+<span class="token keyword">END</span><span class="token punctuation">;</span>
 
+<span class="token comment"># 删除此存储过程</span>
+<span class="token keyword">DROP</span> <span class="token keyword">PROCEDURE</span>  <span class="token keyword">IF</span> <span class="token keyword">EXISTS</span> productpricing<span class="token punctuation">;</span>
 
+<span class="token comment"># 使用此存储过程（此时会输出结果@priceaverage）</span>
+<span class="token keyword">CALL</span> productpricing<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token operator">+</span><span class="token comment">--------------+</span>
+<span class="token operator">|</span><span class="token variable">@priceaverage</span> <span class="token operator">|</span>
+<span class="token operator">+</span><span class="token comment">--------------+</span>
+<span class="token operator">|</span>    <span class="token number">16.133571</span> <span class="token operator">|</span>
+<span class="token operator">+</span><span class="token comment">--------------+</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h1 id="移动端信封骨架结构"><a href="#移动端信封骨架结构" class="headerlink" title="移动端信封骨架结构"></a>移动端信封骨架结构</h1><pre class="line-numbers language-html" data-language="html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>mobile<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>form</span><span class="token punctuation">&gt;</span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>formmain<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
-        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>img</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>headerimg<span class="token punctuation">"</span></span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token punctuation">"</span></span> <span class="token punctuation">/&gt;</span></span>
-      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token style-attr"><span class="token attr-name">style</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token style language-css"><span class="token property">padding</span><span class="token punctuation">:</span> 5px 20px<span class="token punctuation">;</span></span><span class="token punctuation">"</span></span></span><span class="token punctuation">&gt;</span></span>
-        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>center</span><span class="token punctuation">&gt;</span></span>
-          <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h3</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>title3<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>来自MateMaster的留言:<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h3</span><span class="token punctuation">&gt;</span></span>
-        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>center</span><span class="token punctuation">&gt;</span></span>
-        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>center</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>comments<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
-          有什么想问的？<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>br</span><span class="token punctuation">&gt;</span></span>
-          有什么想说的？<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>br</span><span class="token punctuation">&gt;</span></span>
-          有什么想吐槽的？<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>br</span><span class="token punctuation">&gt;</span></span>
-          有什么新奇的想法，也都可以告诉我哦~<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>br</span><span class="token punctuation">&gt;</span></span>
-        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>center</span><span class="token punctuation">&gt;</span></span>
-        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>bottomcontent<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
-          <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>img</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token punctuation">"</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>bottomhr<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
-        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
-        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>bottomhr<span class="token punctuation">"</span></span><span class="token attr-name">"</span><span class="token punctuation">&gt;</span></span>自动书记人偶竭诚为您服务！<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
-      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span> 
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>form</span><span class="token punctuation">&gt;</span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><b style="color: hotpink;">建一个带参数（输出）的存储过程</b></p>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token comment"># 创建一个带参productpricing存储过程</span>
+<span class="token keyword">CREATE</span> <span class="token keyword">PROCEDURE</span> productpricing<span class="token punctuation">(</span>
+    <span class="token keyword">OUT</span> pMin <span class="token keyword">DECIMAL</span><span class="token punctuation">(</span><span class="token number">8</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    <span class="token keyword">OUT</span> pMax <span class="token keyword">DECIMAL</span><span class="token punctuation">(</span><span class="token number">8</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    <span class="token keyword">OUT</span> pAvg <span class="token keyword">DECIMAL</span><span class="token punctuation">(</span><span class="token number">8</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">)</span>
+<span class="token punctuation">)</span>
+<span class="token keyword">BEGIN</span>
+	<span class="token keyword">SELECT</span> <span class="token function">Min</span><span class="token punctuation">(</span>prod_price<span class="token punctuation">)</span>
+	<span class="token keyword">FROM</span> products
+	<span class="token keyword">INTO</span> pMin<span class="token punctuation">;</span>
+	
+	<span class="token keyword">SELECT</span> <span class="token function">Max</span><span class="token punctuation">(</span>prod_price<span class="token punctuation">)</span>
+	<span class="token keyword">FROM</span> products
+	<span class="token keyword">INTO</span> pMax<span class="token punctuation">;</span>
+	
+	<span class="token keyword">SELECT</span> <span class="token function">Avg</span><span class="token punctuation">(</span>prod_price<span class="token punctuation">)</span>
+	<span class="token keyword">FROM</span> products
+	<span class="token keyword">INTO</span> pAvg<span class="token punctuation">;</span>
+<span class="token keyword">END</span><span class="token punctuation">;</span>
 
+<span class="token comment"># 使用此存储过程（此时不在直接输出结果，而是将结果保存在输出参数中）</span>
+<span class="token keyword">CALL</span> productpricing<span class="token punctuation">(</span><span class="token variable">@pMin</span><span class="token punctuation">,</span><span class="token variable">@pMax</span><span class="token punctuation">,</span><span class="token variable">@pAvg</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">SELECT</span> <span class="token variable">@pMin</span><span class="token punctuation">,</span><span class="token variable">@pMax</span><span class="token punctuation">,</span><span class="token variable">@pAvg</span><span class="token punctuation">;</span>
+<span class="token operator">+</span><span class="token comment">-------+-------+-------+</span>
+<span class="token operator">|</span> <span class="token variable">@pMin</span> <span class="token operator">|</span> <span class="token variable">@pMax</span> <span class="token operator">|</span> <span class="token variable">@pAvg</span> <span class="token operator">|</span>
+<span class="token operator">+</span><span class="token comment">-------+-------+-------+</span>
+<span class="token operator">|</span>  <span class="token number">2.50</span> <span class="token operator">|</span> <span class="token number">55.00</span> <span class="token operator">|</span> <span class="token number">16.13</span> <span class="token operator">|</span>
+<span class="token operator">+</span><span class="token comment">-------+-------+-------+</span>
 
+<span class="token comment"># 删除此存储过程</span>
+<span class="token keyword">DROP</span> <span class="token keyword">PROCEDURE</span>  <span class="token keyword">IF</span> <span class="token keyword">EXISTS</span> productpricing<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h1 id="css渲染动画"><a href="#css渲染动画" class="headerlink" title="css渲染动画"></a>css渲染动画</h1><pre class="line-numbers language-html" data-language="html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>link</span> <span class="token attr-name">rel</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>stylesheet<span class="token punctuation">"</span></span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>/css/envelope.css<span class="token punctuation">"</span></span><span class="token punctuation">/&gt;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>这里解释一下：为什么不讲上面三个select子句合并？也就是下面的编写方式。</p>
+<p>因为：在存储过程中，记录集不属于任何数据类型，为了和上面的输出参数类型保持一致，所以就必须将每一项的类型保持一一对应！</p>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">BEGIN</span>
+	<span class="token keyword">SELECT</span> <span class="token function">Min</span><span class="token punctuation">(</span>prod_price<span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token function">Max</span><span class="token punctuation">(</span>prod_price<span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token function">Avg</span><span class="token punctuation">(</span>prod_price<span class="token punctuation">)</span>
+	<span class="token keyword">FROM</span> products
+	<span class="token keyword">INTO</span> pMin<span class="token punctuation">,</span>pMax<span class="token punctuation">,</span>pAcg<span class="token punctuation">;</span>
+<span class="token keyword">END</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<p>将css文件放在 <strong>hexo-theme-matery</strong> 主题文件夹的 <strong>source/css</strong> 目录下，<strong>然后直接按照此方式引用即可！ 源码中我写的link为了演示效果，与这里引用的href不一致，注意修改</strong></p>
-<h1 id="完整源码资源"><a href="#完整源码资源" class="headerlink" title="完整源码资源"></a>完整源码资源</h1><p>这里骨架结构，为了代码演示美观，我就直接把图片的<strong>src</strong>省略了，具体的可以直接在我的<strong>gitee</strong>仓库中下载源码</p>
-<p><strong>首页就有gitee仓库的直通车O(∩_∩)O</strong></p>
-<p>👉 <a target="_blank" rel="noopener" href="https://gitee.com/matemaster/master-depository/tree/master/2021-03-17"><b>信封动画的源代码</b></a></p>
+<p><b style="color: yellowgreen;">建一个智能的存储过程</b></p>
+<p>场景描述：现在需要对订单进行统计，但是需要对某些地方的增加税收。</p>
+<p>那么需要完成以下几步：</p>
+<p>（1）正常统计订单</p>
+<p>（2）对需要增加营业税的订单，进行税收处理</p>
+<p>（3）返回统计的结果</p>
+<p>存储过程：ordertotal</p>
+<p>参数：</p>
+<ul>
+<li>onumber：订单号</li>
+<li>taxable ：是否税收</li>
+<li>ototal：统计结果        </li>
+</ul>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">CREATE</span> <span class="token keyword">PROCEDURE</span> ordertotal<span class="token punctuation">(</span>
+    <span class="token operator">IN</span> onumber <span class="token keyword">INT</span><span class="token punctuation">,</span>
+    <span class="token operator">IN</span> taxable <span class="token keyword">BOOLEAN</span><span class="token punctuation">,</span>
+    <span class="token keyword">OUT</span> ototal <span class="token keyword">DECIMAL</span><span class="token punctuation">(</span><span class="token number">8</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">)</span>
+<span class="token punctuation">)</span>
+<span class="token keyword">BEGIN</span>
+	<span class="token comment"># 定义局部变量：total、taxrate</span>
+	<span class="token keyword">DECLARE</span> total <span class="token keyword">DECIMAL</span><span class="token punctuation">(</span><span class="token number">8</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token keyword">DECLARE</span> taxrate <span class="token keyword">INT</span> <span class="token keyword">DEFAULT</span> <span class="token number">6</span><span class="token punctuation">;</span>
+	
+	<span class="token comment"># 订单合计</span>
+	<span class="token keyword">SELECT</span> <span class="token function">Sum</span><span class="token punctuation">(</span>item_price<span class="token operator">*</span>quantity<span class="token punctuation">)</span>
+	<span class="token keyword">FROM</span> orderitems
+	<span class="token keyword">INTO</span> total<span class="token punctuation">;</span>
+	
+	<span class="token comment"># 是否交税</span>
+	<span class="token keyword">IF</span> taxable <span class="token keyword">THEN</span>
+		<span class="token keyword">SELECT</span> total<span class="token operator">+</span><span class="token punctuation">(</span>total<span class="token operator">/</span><span class="token number">100</span><span class="token operator">*</span>taxrate<span class="token punctuation">)</span> <span class="token keyword">INTO</span> total<span class="token punctuation">;</span>
+	<span class="token keyword">END</span> <span class="token keyword">IF</span><span class="token punctuation">;</span>
+    
+    <span class="token comment"># 返回结果</span>
+    <span class="token keyword">SELECT</span> total <span class="token keyword">INTO</span> ototal<span class="token punctuation">;</span>
+<span class="token keyword">END</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>使用上述的存储过程</p>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token comment"># 不加税</span>
+<span class="token keyword">CALL</span> ordertotal<span class="token punctuation">(</span><span class="token number">20005</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token variable">@total</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">SELECT</span> <span class="token variable">@total</span><span class="token punctuation">;</span>
+<span class="token operator">+</span><span class="token comment">---------+</span>
+<span class="token operator">|</span> <span class="token variable">@total</span>  <span class="token operator">|</span>
+<span class="token operator">+</span><span class="token comment">---------+</span>
+<span class="token operator">|</span> <span class="token number">1368.34</span> <span class="token operator">|</span>
+<span class="token operator">+</span><span class="token comment">---------+</span>
+
+<span class="token comment"># 加税</span>
+<span class="token keyword">CALL</span> ordertotal<span class="token punctuation">(</span><span class="token number">20005</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token variable">@total</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">SELECT</span> <span class="token variable">@total</span><span class="token punctuation">;</span>
+<span class="token operator">+</span><span class="token comment">---------+</span>
+<span class="token operator">|</span> <span class="token variable">@total</span>  <span class="token operator">|</span>
+<span class="token operator">+</span><span class="token comment">---------+</span>
+<span class="token operator">|</span> <span class="token number">1450.44</span> <span class="token operator">|</span>
+<span class="token operator">+</span><span class="token comment">---------+</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 
                 
             </div>
@@ -566,7 +611,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://matemaster.cn/2021/03/17/mst-msg/">http://matemaster.cn/2021/03/17/mst-msg/</a>
+                    <a href="http://matemaster.cn/2021/03/25/db-4/">http://matemaster.cn/2021/03/25/db-4/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -604,16 +649,8 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/%E5%8E%9F%E5%88%9B/">
-                                    <span class="chip bg-color">原创</span>
-                                </a>
-                            
-                                <a href="/tags/MasterStudio/">
-                                    <span class="chip bg-color">MasterStudio</span>
-                                </a>
-                            
-                                <a href="/tags/%E5%8A%A8%E7%94%BB/">
-                                    <span class="chip bg-color">动画</span>
+                                <a href="/tags/MySQL/">
+                                    <span class="chip bg-color">MySQL</span>
                                 </a>
                             
                         </div>
@@ -1051,49 +1088,47 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2021/03/17/CoreJava-4/">
+                <a href="/2021/03/25/db-4/">
                     <div class="card-image">
                         
-                        <img src="https://cdn.jsdelivr.net/gh/matemaster9/image-one/images/20210316233325.png" class="responsive-img" alt="Java接口技术">
+                        <img src="https://cdn.jsdelivr.net/gh/matemaster9/image-one/images/20210319124742.png" class="responsive-img" alt="MySQL存储过程和函数">
                         
-                        <span class="card-title">Java接口技术</span>
+                        <span class="card-title">MySQL存储过程和函数</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            Java程序语言中的接口技术
+                            理解基本的MySQL存储过程
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-03-17
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-03-25
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/CoreJava/" class="post-category">
-                                    CoreJava
+                            <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" class="post-category">
+                                    数据库
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Java/">
-                        <span class="chip bg-color">Java</span>
-                    </a>
-                    
-                    <a href="/tags/%E5%8E%9F%E5%88%9B/">
-                        <span class="chip bg-color">原创</span>
+                    <a href="/tags/MySQL/">
+                        <span class="chip bg-color">MySQL</span>
                     </a>
                     
                 </div>
@@ -1107,30 +1142,30 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2021/03/16/CoreJava-3/">
+                <a href="/2021/03/24/mst-spaceman/">
                     <div class="card-image">
                         
-                        <img src="https://cdn.jsdelivr.net/gh/matemaster9/image-blog/Java集合框架图.jpg" class="responsive-img" alt="Java Collection&lt;E&gt;">
+                        <img src="https://cdn.jsdelivr.net/gh/matemaster9/image-one/images/20210324180511.jpg" class="responsive-img" alt="华为太空人表盘">
                         
-                        <span class="card-title">Java Collection&lt;E&gt;</span>
+                        <span class="card-title">华为太空人表盘</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            简析Java集合框架
+                            JS实现6元华为太空人表盘动画
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-03-16
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-03-24
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/CoreJava/" class="post-category">
-                                    CoreJava
+                            <a href="/categories/MasterStudio/" class="post-category">
+                                    MasterStudio
                                 </a>
                             
                             
@@ -1140,12 +1175,16 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Java/">
-                        <span class="chip bg-color">Java</span>
+                    <a href="/tags/MasterStudio/">
+                        <span class="chip bg-color">MasterStudio</span>
                     </a>
                     
-                    <a href="/tags/%E5%8E%9F%E5%88%9B/">
-                        <span class="chip bg-color">原创</span>
+                    <a href="/tags/%E5%8A%A8%E7%94%BB/">
+                        <span class="chip bg-color">动画</span>
+                    </a>
+                    
+                    <a href="/tags/%E8%BD%AC%E8%BD%BD/">
+                        <span class="chip bg-color">转载</span>
                     </a>
                     
                 </div>

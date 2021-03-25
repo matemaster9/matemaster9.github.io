@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="线性表的基本结构">
+    <meta name="keywords" content="线性表——逻辑结构|存储结构|基本操作, MateMaster">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>线性表 | MateMaster</title>
+    <title>线性表——逻辑结构|存储结构|基本操作 | MateMaster</title>
     <link rel="icon" type="image/png" href="/bg.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -256,7 +256,7 @@
 <script src="https://cdn.jsdelivr.net/gh/matemaster9/source@2.0/matery-libs/js/crypto-js.min.js"></script>
 <script>
     (function() {
-        let pwd = '';
+        let pwd = 'f9c7af7ebcbf098b9f5f37361d1b168bb2e5b98d930ceef0f055377a8c94db61';
         if (pwd && pwd.length > 0) {
             if (pwd !== CryptoJS.SHA256(prompt('请输入访问本文章的密码')).toString(CryptoJS.enc.Hex)) {
                 alert('密码错误，将返回主页！');
@@ -274,7 +274,7 @@
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">线性表</h1>
+                    <h1 class="description center-align post-title">线性表——逻辑结构|存储结构|基本操作</h1>
                 </div>
             </div>
         </div>
@@ -428,21 +428,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2021-03-24
+                    2021-03-25
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    0
+                    1.4k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    1 分
+                    6 分
                 </div>
                 
 
@@ -471,7 +471,439 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                
+                <h1 id="逻辑结构"><a href="#逻辑结构" class="headerlink" title="逻辑结构"></a>逻辑结构</h1><p>在说线性表的逻辑结构之前，我们必须知晓线性表的基本概念！</p>
+<p>线性表（linear-table）：是一组具有共性的有限序列。（共性：有着相同的数据类型）</p>
+<p>举个栗子：<span class="github-emoji"><span>✌</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/270c.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span></p>
+<p>简单类型——单一数据</p>
+<p>十二生肖（子鼠、丑牛、寅虎、卯兔、辰龙、巳蛇、午马、未羊、申猴、酉鸡、戌狗、亥猪）</p>
+<p>复杂类型——复合数据</p>
+<p>学生登记表（（start）,,…,（i-1）,（i）,（i+1）,…（end））</p>
+<p>i = （name,stu_id,dept_id）</p>
+<p><b style="color: darkgreen;">注：起始结点（start）只存在直接后继结点，终端结点（end）只存在直接前驱结点！其中任意中间结点，都存在直接前驱结点（prev）和直接后继结点（succ）！</b></p>
+<p><b style="color: darkred;">线性表存在两种逻辑结构：线性表、链表</b></p>
+<h2 id="案例"><a href="#案例" class="headerlink" title="案例"></a>案例</h2><h3 id="一元多项式"><a href="#一元多项式" class="headerlink" title="一元多项式"></a>一元多项式</h3><p>一元多项式（polynomial in one var）求和！<br>$$<br>P_n(x) = P_0+P_1x^1 +…P_{i-1}x^{i-1}+P_ix^i+P_{i+1}x^{i+1}+… + P_nx^n<br>$$</p>
+<p>$$<br>Q_m(x) = Q_0+Q_1x^1 +…Q_{i-1}x^{i-1}+Q_ix^i+Q_{i+1}x^{i+1}+… + Q_mx^m<br>$$</p>
+<p>$$<br>ADD = P_n(x) + Q_m(x)<br>$$</p>
+<p>下面就是针对这一ADD操作的实现算法，以及数据的逻辑存储方式！</p>
+<p>线性表逻辑结构：P<del>n</del>(x) Q<del>m</del>(x) ADD  <code>（这里假设M &gt;= n）</code><br>$$<br>P_n(X) = (P_1,P_2,…,P_{i-1},P_i,P_{i+1},…,P_n)<br>$$</p>
+<p>$$<br>Q_m(x) = (Q_1,Q_2,…,Q_{i-1},Q_i,Q_{i+1},…,Q_m)<br>$$</p>
+<p>$$<br>ADD = (P_1+Q_1,…,P_i+Q_i,…,P_n+Q_n,…,Q_m)<br>$$</p>
+<ul>
+<li>逻辑结构的思路（线性表）</li>
+</ul>
+<p>我们直接采取数组存储多项式的系数，利用数组的下标表示x的幂（下标和指数一一对应）。</p>
+<table>
+<thead>
+<tr>
+<th>P<del>n</del>(x)</th>
+<th>0</th>
+<th>1</th>
+<th>2</th>
+<th>…</th>
+<th>i</th>
+<th>…</th>
+<th>n</th>
+</tr>
+</thead>
+<tbody><tr>
+<td></td>
+<td>P<del>0</del></td>
+<td>P<del>1</del></td>
+<td>P<del>2</del></td>
+<td></td>
+<td>P<del>i</del></td>
+<td></td>
+<td>P<del>n</del></td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th>Q<del>m</del>(x)</th>
+<th>0</th>
+<th>1</th>
+<th>2</th>
+<th>…</th>
+<th>i</th>
+<th>…</th>
+<th>m</th>
+</tr>
+</thead>
+<tbody><tr>
+<td></td>
+<td>Q<del>0</del></td>
+<td>Q<del>1</del></td>
+<td>Q<del>2</del></td>
+<td></td>
+<td>Q<del>i</del></td>
+<td></td>
+<td>Q<del>m</del></td>
+</tr>
+</tbody></table>
+<p>我们这里的数组下标将富含指数的含义，那么举个栗子<span class="github-emoji"><span>✌</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/270c.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span></p>
+<table>
+<thead>
+<tr>
+<th>P<del>2</del>(x) = 2+3x+x^2^</th>
+<th>0</th>
+<th>1</th>
+<th>2</th>
+</tr>
+</thead>
+<tbody><tr>
+<td></td>
+<td>2</td>
+<td>3</td>
+<td>1</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th>Q<del>3</del>(x) = 1+2x+3x^2^+4x^3^</th>
+<th>0</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+</tr>
+</thead>
+<tbody><tr>
+<td></td>
+<td>1</td>
+<td>2</td>
+<td>3</td>
+<td>4</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th>ADD = 3+5x+4x^2^+4x^3^</th>
+<th>0</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+</tr>
+</thead>
+<tbody><tr>
+<td></td>
+<td>3</td>
+<td>5</td>
+<td>4</td>
+<td>4</td>
+</tr>
+</tbody></table>
+<ul>
+<li>逻辑结构思路</li>
+</ul>
+<p>如果采取链表的方式，我们就不需要考虑下标的含义而是直接存储（系数，指数），只要将结果全部归并到相对长的链表中即可。<br>$$<br>Q_3(x) = 1 + 2x + 3x^2+4x^3<br>$$</p>
+<table>
+    <tbody><tr>
+        <td>
+            <table>
+                <tbody><tr>
+                    <td>1</td>
+                    <td>0</td>
+                    <td>→</td>
+                </tr>
+            </tbody></table>
+        </td>
+        <td>
+            <table>
+                <tbody><tr>
+                    <td>2</td>
+                    <td>1</td>
+                    <td>→</td>
+                </tr>
+            </tbody></table>
+        </td>
+        <td>
+            <table>
+                <tbody><tr>
+                    <td>3</td>
+                    <td>2</td>
+                    <td>→</td>
+                </tr>
+            </tbody></table>
+        </td>
+        <td>
+            <table>
+                <tbody><tr>
+                    <td>4</td>
+                    <td>3</td>
+                    <td>null</td>
+                </tr>
+            </tbody></table>
+        </td>   
+    </tr>
+</tbody></table>    
+
+
+<h3 id="稀疏多项式案例"><a href="#稀疏多项式案例" class="headerlink" title="稀疏多项式案例"></a>稀疏多项式案例</h3><p>稀疏多项式主要针对那些指数不是连续的多项式，此时我们虽然逻辑结构依然采取数组和链表的方式，但是数组的存储内容发生了变化<br>$$<br>Q_{300}(x) = 1 + 2x + 3x^{200}+4x^{300}<br>$$</p>
+<p>数组存储</p>
+<table>
+<thead>
+<tr>
+<th>数组下标</th>
+<th>0</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>系数</td>
+<td>1</td>
+<td>2</td>
+<td>3</td>
+<td>4</td>
+</tr>
+<tr>
+<td>指数</td>
+<td>0</td>
+<td>1</td>
+<td>200</td>
+<td>300</td>
+</tr>
+</tbody></table>
+<p>链表的存储依旧不变</p>
+<table>
+    <tbody><tr>
+        <td>
+            <table>
+                <tbody><tr>
+                    <td>1</td>
+                    <td>0</td>
+                    <td>→</td>
+                </tr>
+            </tbody></table>
+        </td>
+        <td>
+            <table>
+                <tbody><tr>
+                    <td>2</td>
+                    <td>1</td>
+                    <td>→</td>
+                </tr>
+            </tbody></table>
+        </td>
+        <td>
+            <table>
+                <tbody><tr>
+                    <td>3</td>
+                    <td>200</td>
+                    <td>→</td>
+                </tr>
+            </tbody></table>
+        </td>
+        <td>
+            <table>
+                <tbody><tr>
+                    <td>4</td>
+                    <td>300</td>
+                    <td>null</td>
+                </tr>
+            </tbody></table>
+        </td>   
+    </tr>
+</tbody></table>
+
+
+
+<p>❗稀疏多项式运算算法：</p>
+<p><b style="color: chocolate;">数组存储</b></p>
+<p>因为数组存储的数据类型改变，下标与指数不在存在一一对应关系，所以需要引入新的结果数组result存储新的结果多项式！</p>
+<p>（1）分布对多项式P(x)与Q(x)每一项进行遍历，进行比较</p>
+<ul>
+<li>指数相同，做ADD，当系数不为0时加入result</li>
+<li>指数不相同，将指数小的copy到result</li>
+</ul>
+<p>（2）当一个多项式遍历结束，将另一个多项式未遍历的数据copy到result</p>
+<p style="color: blue;">注：这里关于result长度的思考？<br>最好的情况下P(x)与Q(x)每一项一一对应，此时result_length = max(m,n)。<br>最坏的情况下P(x)与Q(x)每一项都不对应result_length = m+n</p>
+
+<p><b style="color: chocolate;">链表存储</b></p>
+<p>算法一致，好处就是链表不需要再单独创建一个链表，只要遵循上面的算法进行结果集的链接！看下图</p>
+<img src="https://cdn.jsdelivr.net/gh/matemaster9/image-one/images/20210324232448.jpg" style="zoom:50%;">
+
+<h3 id="图书管理系统案例"><a href="#图书管理系统案例" class="headerlink" title="图书管理系统案例"></a>图书管理系统案例</h3><p>一般涉及到一个图书管理关系表 <strong>Book (IBSN,name,price)</strong></p>
+<p>此时数组和链表存储的数据对象将是抽象数据类型（ADT） Book</p>
+<p><b style="color: navy;">数组存储</b></p>
+<table>
+    <tbody><tr>
+        <td>
+            <table>
+                <tbody><tr>
+                    <td>1343442114</td>
+                    <td>算法4</td>
+                    <td>100.00</td>
+                </tr>
+            </tbody></table>
+        </td>
+        <td>
+            <table>
+                <tbody><tr>
+                    <td>23542536</td>
+                    <td>Java编程思想</td>
+                    <td>200.00</td>
+                </tr>
+            </tbody></table>
+        </td> 
+    </tr>
+</tbody></table>
+
+<p><b style="color: navy;">链表存储</b></p>
+<table>
+    <tbody><tr>
+        <td>
+            <table>
+                <tbody><tr>
+                    <td>1343442114</td>
+                    <td>算法4</td>
+                    <td>100.00</td>
+                    <td>→</td>
+                </tr>
+            </tbody></table>
+        </td>
+        <td>
+            <table>
+                <tbody><tr>
+                    <td>23542536</td>
+                    <td>Java编程思想</td>
+                    <td>200.00</td>
+                    <td></td>
+                </tr>
+            </tbody></table>
+        </td> 
+    </tr>
+</tbody></table>
+
+
+
+<h2 id="逻辑结构上的类型定义"><a href="#逻辑结构上的类型定义" class="headerlink" title="逻辑结构上的类型定义"></a>逻辑结构上的类型定义</h2><p>这里主要介绍线性表是如何定义的，具体的共性操作！（不涉及实现问题）</p>
+<pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token function">initList</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>L<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">destroyList</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>L<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">clearList</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>L<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token function">listEmpty</span><span class="token punctuation">(</span>L<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">listLength</span><span class="token punctuation">(</span>L<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token function">getElem</span><span class="token punctuation">(</span>L<span class="token punctuation">,</span>i<span class="token punctuation">,</span><span class="token operator">&amp;</span>e<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">locateElem</span><span class="token punctuation">(</span>L<span class="token punctuation">,</span>e<span class="token punctuation">,</span><span class="token function">compare</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token function">priorElem</span><span class="token punctuation">(</span>L<span class="token punctuation">,</span>cur_e<span class="token punctuation">,</span><span class="token operator">&amp;</span>prev_e<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">nextElem</span><span class="token punctuation">(</span>L<span class="token punctuation">,</span>cur_e<span class="token punctuation">,</span><span class="token operator">&amp;</span>prev_e<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token function">listInsert</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>L<span class="token punctuation">,</span>i<span class="token punctuation">,</span>e<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">listDelete</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>L<span class="token punctuation">,</span>i<span class="token punctuation">,</span>e<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token function">listTraverse</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>L<span class="token punctuation">,</span><span class="token function">visited</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>线性表的数组实现模板</p>
+<pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token keyword">typedef</span> <span class="token keyword">struct</span> <span class="token punctuation">{</span>
+    Type data<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span>  <span class="token comment">//数组静态分配</span>
+    <span class="token keyword">int</span> len<span class="token punctuation">;</span>
+<span class="token punctuation">}</span> SqList<span class="token punctuation">;</span>
+
+<span class="token keyword">typedef</span> <span class="token keyword">struct</span> <span class="token punctuation">{</span>
+    Type <span class="token operator">*</span>data<span class="token punctuation">;</span>  <span class="token comment">//数组动态分配</span>
+    <span class="token keyword">int</span> len<span class="token punctuation">;</span>
+<span class="token punctuation">}</span> SqList<span class="token punctuation">;</span>
+
+<span class="token comment">// C语言数组空间分配函数</span>
+SqList l<span class="token punctuation">;</span>
+l<span class="token punctuation">.</span>data <span class="token operator">=</span> <span class="token punctuation">(</span>Type<span class="token operator">*</span><span class="token punctuation">)</span> <span class="token function">malloc</span><span class="token punctuation">(</span><span class="token keyword">sizeof</span><span class="token punctuation">(</span>Type<span class="token punctuation">)</span><span class="token operator">*</span>MaxSize<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// malloc(m)：分配m字节内存空间</span>
+<span class="token comment">// sizeof(t)：获取t类型的字节长度</span>
+<span class="token comment">// free(p)：释放p指针的空间</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<h1 id="存储结构"><a href="#存储结构" class="headerlink" title="存储结构"></a>存储结构</h1><p>线性表基于数组的实现，为了避免重复造轮子这里就直接基于Java内置的动态列表结构<code>ArrayList</code>实现！<span class="github-emoji"><span>😉</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/1f609.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span></p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">SqList</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">T</span><span class="token punctuation">&gt;</span></span> <span class="token punctuation">{</span>
+    <span class="token keyword">private</span> <span class="token class-name">ArrayList</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">T</span><span class="token punctuation">&gt;</span></span> sqList<span class="token punctuation">;</span>
+
+    <span class="token keyword">public</span>  <span class="token keyword">void</span> <span class="token function">init</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        sqList <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">destroy</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span>sqList <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span>
+            <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">NullPointerException</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        sqList<span class="token punctuation">.</span><span class="token function">clear</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        sqList <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">clear</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span>sqList <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span>
+            <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">NullPointerException</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        sqList<span class="token punctuation">.</span><span class="token function">clear</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">boolean</span> <span class="token function">isEmpty</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span>sqList <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span>
+            <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">NullPointerException</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> sqList<span class="token punctuation">.</span><span class="token function">isEmpty</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">len</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span>sqList <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span>
+            <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">NullPointerException</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> sqList<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> <span class="token class-name">T</span> <span class="token function">getElem</span><span class="token punctuation">(</span><span class="token keyword">int</span> index<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span>sqList <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span>
+            <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">NullPointerException</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> sqList<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>index<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> <span class="token class-name">T</span> <span class="token function">priorElem</span><span class="token punctuation">(</span><span class="token class-name">T</span> t<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span>sqList <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span>
+            <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">NullPointerException</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">int</span> position <span class="token operator">=</span> sqList<span class="token punctuation">.</span><span class="token function">indexOf</span><span class="token punctuation">(</span>t<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token keyword">if</span><span class="token punctuation">(</span>position <span class="token operator">&lt;=</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> sqList<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>position <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> <span class="token class-name">T</span> <span class="token function">nextElem</span><span class="token punctuation">(</span><span class="token class-name">T</span> t<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span>sqList <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span>
+            <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">NullPointerException</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">int</span> position <span class="token operator">=</span> sqList<span class="token punctuation">.</span><span class="token function">indexOf</span><span class="token punctuation">(</span>t<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token keyword">if</span><span class="token punctuation">(</span>position <span class="token operator">==</span> sqList<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> sqList<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>position <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">insElem</span><span class="token punctuation">(</span><span class="token class-name">T</span> t<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span>sqList <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span>
+            <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">NullPointerException</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        sqList<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>t<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> <span class="token class-name">T</span> <span class="token function">delElem</span><span class="token punctuation">(</span><span class="token keyword">int</span> index<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span>sqList <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span>
+            <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">NullPointerException</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> sqList<span class="token punctuation">.</span><span class="token function">remove</span><span class="token punctuation">(</span>index<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">print</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span>sqList <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span>
+            <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"线性表已经销毁！"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">else</span>
+            <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token class-name">Arrays</span><span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span> sqList<span class="token punctuation">.</span><span class="token function">toArray</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
                 
             </div>
             <hr/>
@@ -993,7 +1425,7 @@
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            冒泡
+                            冒泡（待更新……）
                         
                     </div>
                     <div class="publish-info">
@@ -1241,6 +1673,13 @@
 </main>
 
 
+<script src="https://cdn.bootcss.com/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script>
+    MathJax.Hub.Config({
+        tex2jax: {inlineMath: [['$', '$'], ['\(', '\)']]}
+    });
+</script>
+
 
 
     <footer class="page-footer bg-color">
@@ -1258,7 +1697,7 @@
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">23.1k</span>&nbsp;字
+                class="white-color">24.9k</span>&nbsp;字
             
             
             
