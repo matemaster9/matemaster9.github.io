@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>MateMaster</title>
+  <title>MasterStudio</title>
   
-  <subtitle>MasterStudio</subtitle>
+  <subtitle>MateMaster</subtitle>
   <link href="https://www.matemaster.cn/atom.xml" rel="self"/>
   
   <link href="https://www.matemaster.cn/"/>
-  <updated>2021-03-25T07:37:46.900Z</updated>
+  <updated>2021-03-26T01:39:22.029Z</updated>
   <id>https://www.matemaster.cn/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://www.matemaster.cn/posts/55362.html"/>
     <id>https://www.matemaster.cn/posts/55362.html</id>
     <published>2021-03-25T06:38:49.000Z</published>
-    <updated>2021-03-25T07:37:46.900Z</updated>
+    <updated>2021-03-26T01:39:22.029Z</updated>
     
     
       
@@ -47,7 +47,7 @@
     <link href="https://www.matemaster.cn/posts/57338.html"/>
     <id>https://www.matemaster.cn/posts/57338.html</id>
     <published>2021-03-24T10:03:27.000Z</published>
-    <updated>2021-03-24T11:47:44.697Z</updated>
+    <updated>2021-03-26T01:39:22.119Z</updated>
     
     
       
@@ -76,7 +76,7 @@
     <link href="https://www.matemaster.cn/posts/40597.html"/>
     <id>https://www.matemaster.cn/posts/40597.html</id>
     <published>2021-03-22T01:55:56.000Z</published>
-    <updated>2021-03-25T14:25:09.926Z</updated>
+    <updated>2021-03-26T01:39:22.158Z</updated>
     
     
     
@@ -95,7 +95,7 @@
     <link href="https://www.matemaster.cn/posts/51917.html"/>
     <id>https://www.matemaster.cn/posts/51917.html</id>
     <published>2021-03-22T01:46:45.000Z</published>
-    <updated>2021-03-25T14:25:22.001Z</updated>
+    <updated>2021-03-26T01:39:22.139Z</updated>
     
     
     
@@ -114,7 +114,7 @@
     <link href="https://www.matemaster.cn/posts/61237.html"/>
     <id>https://www.matemaster.cn/posts/61237.html</id>
     <published>2021-03-22T01:23:59.000Z</published>
-    <updated>2021-03-25T14:25:55.346Z</updated>
+    <updated>2021-03-26T01:39:21.988Z</updated>
     
     
     
@@ -133,7 +133,7 @@
     <link href="https://www.matemaster.cn/posts/55225.html"/>
     <id>https://www.matemaster.cn/posts/55225.html</id>
     <published>2021-03-22T01:23:50.000Z</published>
-    <updated>2021-03-25T14:24:54.759Z</updated>
+    <updated>2021-03-26T01:39:22.073Z</updated>
     
     
       
@@ -160,7 +160,7 @@
     <link href="https://www.matemaster.cn/posts/10300.html"/>
     <id>https://www.matemaster.cn/posts/10300.html</id>
     <published>2021-03-21T11:36:25.000Z</published>
-    <updated>2021-03-25T04:32:12.517Z</updated>
+    <updated>2021-03-26T01:39:22.292Z</updated>
     
     
       
@@ -187,7 +187,7 @@
     <link href="https://www.matemaster.cn/posts/2216.html"/>
     <id>https://www.matemaster.cn/posts/2216.html</id>
     <published>2021-03-20T08:06:24.000Z</published>
-    <updated>2021-03-20T08:46:15.650Z</updated>
+    <updated>2021-03-26T01:39:22.190Z</updated>
     
     
       
@@ -216,7 +216,7 @@
     <link href="https://www.matemaster.cn/posts/53096.html"/>
     <id>https://www.matemaster.cn/posts/53096.html</id>
     <published>2021-03-19T07:14:31.000Z</published>
-    <updated>2021-03-24T00:38:10.850Z</updated>
+    <updated>2021-03-26T01:39:22.233Z</updated>
     
     
       
@@ -243,7 +243,7 @@
     <link href="https://www.matemaster.cn/posts/53808.html"/>
     <id>https://www.matemaster.cn/posts/53808.html</id>
     <published>2021-03-19T06:25:01.000Z</published>
-    <updated>2021-03-21T08:07:30.434Z</updated>
+    <updated>2021-03-26T01:39:22.013Z</updated>
     
     
       
@@ -270,7 +270,7 @@
     <link href="https://www.matemaster.cn/posts/10779.html"/>
     <id>https://www.matemaster.cn/posts/10779.html</id>
     <published>2021-03-19T04:40:26.000Z</published>
-    <updated>2021-03-19T06:41:21.628Z</updated>
+    <updated>2021-03-26T01:39:22.179Z</updated>
     
     
     
@@ -289,7 +289,7 @@
     <link href="https://www.matemaster.cn/posts/11059.html"/>
     <id>https://www.matemaster.cn/posts/11059.html</id>
     <published>2021-03-19T02:19:44.000Z</published>
-    <updated>2021-03-21T12:08:13.806Z</updated>
+    <updated>2021-03-26T01:39:22.002Z</updated>
     
     
       
@@ -317,7 +317,7 @@
     <link href="https://www.matemaster.cn/posts/43043.html"/>
     <id>https://www.matemaster.cn/posts/43043.html</id>
     <published>2021-03-18T00:58:52.000Z</published>
-    <updated>2021-03-24T00:39:45.161Z</updated>
+    <updated>2021-03-26T01:39:22.266Z</updated>
     
     
       
@@ -346,7 +346,7 @@
     <link href="https://www.matemaster.cn/posts/55404.html"/>
     <id>https://www.matemaster.cn/posts/55404.html</id>
     <published>2021-03-18T00:32:23.000Z</published>
-    <updated>2021-03-24T00:37:58.090Z</updated>
+    <updated>2021-03-26T01:39:21.972Z</updated>
     
     
       
@@ -373,7 +373,7 @@
     <link href="https://www.matemaster.cn/posts/35488.html"/>
     <id>https://www.matemaster.cn/posts/35488.html</id>
     <published>2021-03-17T04:10:56.000Z</published>
-    <updated>2021-03-24T00:37:36.022Z</updated>
+    <updated>2021-03-26T01:39:21.954Z</updated>
     
     
       
@@ -400,7 +400,7 @@
     <link href="https://www.matemaster.cn/posts/64199.html"/>
     <id>https://www.matemaster.cn/posts/64199.html</id>
     <published>2021-03-17T00:28:53.000Z</published>
-    <updated>2021-03-19T01:56:05.938Z</updated>
+    <updated>2021-03-26T01:39:22.048Z</updated>
     
     
       
@@ -429,7 +429,7 @@
     <link href="https://www.matemaster.cn/posts/46419.html"/>
     <id>https://www.matemaster.cn/posts/46419.html</id>
     <published>2021-03-16T14:42:01.000Z</published>
-    <updated>2021-03-19T02:36:57.077Z</updated>
+    <updated>2021-03-26T01:39:21.936Z</updated>
     
     
       
@@ -456,7 +456,7 @@
     <link href="https://www.matemaster.cn/posts/49605.html"/>
     <id>https://www.matemaster.cn/posts/49605.html</id>
     <published>2021-03-16T03:25:19.000Z</published>
-    <updated>2021-03-24T00:37:18.861Z</updated>
+    <updated>2021-03-26T01:39:22.212Z</updated>
     
     
       
@@ -483,7 +483,7 @@
     <link href="https://www.matemaster.cn/posts/63231.html"/>
     <id>https://www.matemaster.cn/posts/63231.html</id>
     <published>2021-03-15T14:56:18.000Z</published>
-    <updated>2021-03-24T00:37:00.556Z</updated>
+    <updated>2021-03-26T01:39:21.920Z</updated>
     
     
     
@@ -502,7 +502,7 @@
     <link href="https://www.matemaster.cn/posts/9622.html"/>
     <id>https://www.matemaster.cn/posts/9622.html</id>
     <published>2021-03-13T16:57:22.000Z</published>
-    <updated>2021-03-24T00:39:27.133Z</updated>
+    <updated>2021-03-26T01:39:22.097Z</updated>
     
     
       
