@@ -18,8 +18,8 @@
   
   <entry>
     <title>MySQL存储过程和函数</title>
-    <link href="https://www.matemaster.cn/2021/03/25/db-4/"/>
-    <id>https://www.matemaster.cn/2021/03/25/db-4/</id>
+    <link href="https://www.matemaster.cn/posts/55362.html"/>
+    <id>https://www.matemaster.cn/posts/55362.html</id>
     <published>2021-03-25T06:38:49.000Z</published>
     <updated>2021-03-25T07:37:46.900Z</updated>
     
@@ -44,8 +44,8 @@
   
   <entry>
     <title>华为太空人表盘</title>
-    <link href="https://www.matemaster.cn/2021/03/24/mst-spaceman/"/>
-    <id>https://www.matemaster.cn/2021/03/24/mst-spaceman/</id>
+    <link href="https://www.matemaster.cn/posts/57338.html"/>
+    <id>https://www.matemaster.cn/posts/57338.html</id>
     <published>2021-03-24T10:03:27.000Z</published>
     <updated>2021-03-24T11:47:44.697Z</updated>
     
@@ -65,16 +65,16 @@
     
     <category term="MasterStudio" scheme="https://www.matemaster.cn/tags/MasterStudio/"/>
     
-    <category term="转载" scheme="https://www.matemaster.cn/tags/%E8%BD%AC%E8%BD%BD/"/>
-    
     <category term="动画" scheme="https://www.matemaster.cn/tags/%E5%8A%A8%E7%94%BB/"/>
+    
+    <category term="转载" scheme="https://www.matemaster.cn/tags/%E8%BD%AC%E8%BD%BD/"/>
     
   </entry>
   
   <entry>
     <title>网络</title>
-    <link href="https://www.matemaster.cn/2021/03/22/net-1/"/>
-    <id>https://www.matemaster.cn/2021/03/22/net-1/</id>
+    <link href="https://www.matemaster.cn/posts/40597.html"/>
+    <id>https://www.matemaster.cn/posts/40597.html</id>
     <published>2021-03-22T01:55:56.000Z</published>
     <updated>2021-03-25T14:25:09.926Z</updated>
     
@@ -92,8 +92,8 @@
   
   <entry>
     <title>计算机组成原理</title>
-    <link href="https://www.matemaster.cn/2021/03/22/pco-1/"/>
-    <id>https://www.matemaster.cn/2021/03/22/pco-1/</id>
+    <link href="https://www.matemaster.cn/posts/51917.html"/>
+    <id>https://www.matemaster.cn/posts/51917.html</id>
     <published>2021-03-22T01:46:45.000Z</published>
     <updated>2021-03-25T14:25:22.001Z</updated>
     
@@ -111,8 +111,8 @@
   
   <entry>
     <title>排序算法</title>
-    <link href="https://www.matemaster.cn/2021/03/22/algs-1/"/>
-    <id>https://www.matemaster.cn/2021/03/22/algs-1/</id>
+    <link href="https://www.matemaster.cn/posts/61237.html"/>
+    <id>https://www.matemaster.cn/posts/61237.html</id>
     <published>2021-03-22T01:23:59.000Z</published>
     <updated>2021-03-25T14:25:55.346Z</updated>
     
@@ -130,8 +130,8 @@
   
   <entry>
     <title>线性表——逻辑结构|存储结构|基本操作</title>
-    <link href="https://www.matemaster.cn/2021/03/22/ds-1/"/>
-    <id>https://www.matemaster.cn/2021/03/22/ds-1/</id>
+    <link href="https://www.matemaster.cn/posts/55225.html"/>
+    <id>https://www.matemaster.cn/posts/55225.html</id>
     <published>2021-03-22T01:23:50.000Z</published>
     <updated>2021-03-25T14:24:54.759Z</updated>
     
@@ -157,8 +157,8 @@
   
   <entry>
     <title>Query for MySQL</title>
-    <link href="https://www.matemaster.cn/2021/03/21/db-3/"/>
-    <id>https://www.matemaster.cn/2021/03/21/db-3/</id>
+    <link href="https://www.matemaster.cn/posts/10300.html"/>
+    <id>https://www.matemaster.cn/posts/10300.html</id>
     <published>2021-03-21T11:36:25.000Z</published>
     <updated>2021-03-25T04:32:12.517Z</updated>
     
@@ -184,8 +184,8 @@
   
   <entry>
     <title>Ubuntu-20.10</title>
-    <link href="https://www.matemaster.cn/2021/03/20/os-2/"/>
-    <id>https://www.matemaster.cn/2021/03/20/os-2/</id>
+    <link href="https://www.matemaster.cn/posts/2216.html"/>
+    <id>https://www.matemaster.cn/posts/2216.html</id>
     <published>2021-03-20T08:06:24.000Z</published>
     <updated>2021-03-20T08:46:15.650Z</updated>
     
@@ -213,8 +213,8 @@
   
   <entry>
     <title>LinkedList&lt;E&gt;底层原理</title>
-    <link href="https://www.matemaster.cn/2021/03/19/CoreJava-6/"/>
-    <id>https://www.matemaster.cn/2021/03/19/CoreJava-6/</id>
+    <link href="https://www.matemaster.cn/posts/53096.html"/>
+    <id>https://www.matemaster.cn/posts/53096.html</id>
     <published>2021-03-19T07:14:31.000Z</published>
     <updated>2021-03-24T00:38:10.850Z</updated>
     
@@ -240,8 +240,8 @@
   
   <entry>
     <title>关系代数</title>
-    <link href="https://www.matemaster.cn/2021/03/19/db-2/"/>
-    <id>https://www.matemaster.cn/2021/03/19/db-2/</id>
+    <link href="https://www.matemaster.cn/posts/53808.html"/>
+    <id>https://www.matemaster.cn/posts/53808.html</id>
     <published>2021-03-19T06:25:01.000Z</published>
     <updated>2021-03-21T08:07:30.434Z</updated>
     
@@ -267,8 +267,8 @@
   
   <entry>
     <title>现代操作系统</title>
-    <link href="https://www.matemaster.cn/2021/03/19/os-1/"/>
-    <id>https://www.matemaster.cn/2021/03/19/os-1/</id>
+    <link href="https://www.matemaster.cn/posts/10779.html"/>
+    <id>https://www.matemaster.cn/posts/10779.html</id>
     <published>2021-03-19T04:40:26.000Z</published>
     <updated>2021-03-19T06:41:21.628Z</updated>
     
@@ -286,8 +286,8 @@
   
   <entry>
     <title>DDL DML for MySQL</title>
-    <link href="https://www.matemaster.cn/2021/03/19/db-1/"/>
-    <id>https://www.matemaster.cn/2021/03/19/db-1/</id>
+    <link href="https://www.matemaster.cn/posts/11059.html"/>
+    <id>https://www.matemaster.cn/posts/11059.html</id>
     <published>2021-03-19T02:19:44.000Z</published>
     <updated>2021-03-21T12:08:13.806Z</updated>
     
@@ -314,8 +314,8 @@
   
   <entry>
     <title>Matery主题中文参考文档</title>
-    <link href="https://www.matemaster.cn/2021/03/18/theme-use/"/>
-    <id>https://www.matemaster.cn/2021/03/18/theme-use/</id>
+    <link href="https://www.matemaster.cn/posts/43043.html"/>
+    <id>https://www.matemaster.cn/posts/43043.html</id>
     <published>2021-03-18T00:58:52.000Z</published>
     <updated>2021-03-24T00:39:45.161Z</updated>
     
@@ -343,8 +343,8 @@
   
   <entry>
     <title>Java lambda</title>
-    <link href="https://www.matemaster.cn/2021/03/18/CoreJava-5/"/>
-    <id>https://www.matemaster.cn/2021/03/18/CoreJava-5/</id>
+    <link href="https://www.matemaster.cn/posts/55404.html"/>
+    <id>https://www.matemaster.cn/posts/55404.html</id>
     <published>2021-03-18T00:32:23.000Z</published>
     <updated>2021-03-24T00:37:58.090Z</updated>
     
@@ -370,8 +370,8 @@
   
   <entry>
     <title>Java接口技术</title>
-    <link href="https://www.matemaster.cn/2021/03/17/CoreJava-4/"/>
-    <id>https://www.matemaster.cn/2021/03/17/CoreJava-4/</id>
+    <link href="https://www.matemaster.cn/posts/35488.html"/>
+    <id>https://www.matemaster.cn/posts/35488.html</id>
     <published>2021-03-17T04:10:56.000Z</published>
     <updated>2021-03-24T00:37:36.022Z</updated>
     
@@ -397,8 +397,8 @@
   
   <entry>
     <title>留言板信封动画</title>
-    <link href="https://www.matemaster.cn/2021/03/17/mst-msg/"/>
-    <id>https://www.matemaster.cn/2021/03/17/mst-msg/</id>
+    <link href="https://www.matemaster.cn/posts/64199.html"/>
+    <id>https://www.matemaster.cn/posts/64199.html</id>
     <published>2021-03-17T00:28:53.000Z</published>
     <updated>2021-03-19T01:56:05.938Z</updated>
     
@@ -426,8 +426,8 @@
   
   <entry>
     <title>Java Collection&lt;E&gt;</title>
-    <link href="https://www.matemaster.cn/2021/03/16/CoreJava-3/"/>
-    <id>https://www.matemaster.cn/2021/03/16/CoreJava-3/</id>
+    <link href="https://www.matemaster.cn/posts/46419.html"/>
+    <id>https://www.matemaster.cn/posts/46419.html</id>
     <published>2021-03-16T14:42:01.000Z</published>
     <updated>2021-03-19T02:36:57.077Z</updated>
     
@@ -453,8 +453,8 @@
   
   <entry>
     <title>ArrayList&lt;E&gt;底层原理</title>
-    <link href="https://www.matemaster.cn/2021/03/16/CoreJava-2/"/>
-    <id>https://www.matemaster.cn/2021/03/16/CoreJava-2/</id>
+    <link href="https://www.matemaster.cn/posts/49605.html"/>
+    <id>https://www.matemaster.cn/posts/49605.html</id>
     <published>2021-03-16T03:25:19.000Z</published>
     <updated>2021-03-24T00:37:18.861Z</updated>
     
@@ -480,8 +480,8 @@
   
   <entry>
     <title>CoreJava知识总结</title>
-    <link href="https://www.matemaster.cn/2021/03/15/CoreJava-1/"/>
-    <id>https://www.matemaster.cn/2021/03/15/CoreJava-1/</id>
+    <link href="https://www.matemaster.cn/posts/63231.html"/>
+    <id>https://www.matemaster.cn/posts/63231.html</id>
     <published>2021-03-15T14:56:18.000Z</published>
     <updated>2021-03-24T00:37:00.556Z</updated>
     
@@ -499,8 +499,8 @@
   
   <entry>
     <title>Hello MasterStudio!</title>
-    <link href="https://www.matemaster.cn/2021/03/14/mst/"/>
-    <id>https://www.matemaster.cn/2021/03/14/mst/</id>
+    <link href="https://www.matemaster.cn/posts/9622.html"/>
+    <id>https://www.matemaster.cn/posts/9622.html</id>
     <published>2021-03-13T16:57:22.000Z</published>
     <updated>2021-03-24T00:39:27.133Z</updated>
     
