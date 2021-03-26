@@ -299,7 +299,7 @@ header .brand-logo .logo-img {
 }
 
 header .brand-logo .logo-span {
-    font-size: 1.6rem;
+    font-size: 1rem;
     color: black;
 }
 
@@ -1644,7 +1644,7 @@ thead {
     margin: 0 0.5rem;
     padding: 0;
     color: #fff;
-    border: black;
+    border: 1px solid black;
     background: black;
     font-size: 0.9rem;
     border-radius: 50%;
