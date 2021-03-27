@@ -29,9 +29,9 @@
 
     <script src="https://cdn.jsdelivr.net/gh/matemaster9/source@2.0/matery-libs/js/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="MasterStudio" type="application/atom+xml">
-
+<meta name="generator" content="Hexo 5.4.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+<link rel="alternate" href="/atom.xml" title="MasterStudio" type="application/atom+xml">
 </head>
 
 
@@ -431,14 +431,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.3k
+                    2.7k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    6 分
+                    12 分
                 </div>
                 
 
@@ -467,7 +467,172 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="前端库CDN加速"><a href="#前端库CDN加速" class="headerlink" title="前端库CDN加速"></a>前端库CDN加速</h1><p>在<code>Matery</code>主题配置文件中，作者对于<code>libs</code>下的文件做出这样的解释：使用到的前端库，可按需替换成对应的CDN地址，如果下面未指定具体的版本号，使用最新的版本即可。👉<a target="_blank" rel="noopener" href="https://github.com/matemaster9/source@2.0/matery-libs">Github前端库</a></p>
+                <h1 id="Hexo部署华为云"><a href="#Hexo部署华为云" class="headerlink" title="Hexo部署华为云"></a>Hexo部署华为云</h1><p>准确来说，这部分是介绍，如何将hexo部署到云服务器。也就说这部分是面向那些想把自己的博客网站放到自己的云服务器上运行的朋友们！</p>
+<h2 id="云服务器"><a href="#云服务器" class="headerlink" title="云服务器"></a>云服务器</h2><p><b style="color: yellowgreen;">云服务器配置</b></p>
+<table>
+<thead>
+<tr>
+<th>云服务器</th>
+<th>参数</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Linux系统</strong></td>
+<td><strong>Ubuntu 18.04 server 64bit with ARM</strong></td>
+</tr>
+<tr>
+<td><strong>云硬盘</strong></td>
+<td><strong>1G+40GB（高IO）</strong></td>
+</tr>
+<tr>
+<td><strong>域名</strong></td>
+<td><strong><a href="http://www.matemaster.cn/">www.matemaster.cn</a></strong></td>
+</tr>
+</tbody></table>
+<img src="https://cdn.jsdelivr.net/gh/matemaster9/imgs-masterstudio/imgs/20210327105816.jpg" style="width:80%">
+
+<h2 id="连接云服务器"><a href="#连接云服务器" class="headerlink" title="连接云服务器"></a>连接云服务器</h2><h3 id="创建git用户"><a href="#创建git用户" class="headerlink" title="创建git用户"></a>创建git用户</h3><p>（1）登录云服务器，切换root用户（华为云默认root用户）</p>
+<p>（2）安装git（可以git–version测试是否成功）</p>
+<p>（3）创建管理git的用户</p>
+<p>（4）添加git用户的权限</p>
+<p>（5）vim操作编辑git的权限</p>
+<p>（6）切换至git用户，创建SSH密钥</p>
+<p>（7）修改SSH文件权限，测试是否成功（ssh -v git@服务器ip）</p>
+<pre class="line-numbers language-cloundshell" data-language="cloundshell"><code class="language-cloundshell">// 切换root用户（华为云默认root用户）
+sudo su root
+
+// 安装git
+apt install git
+
+// 创建管理git的用户（若之前弄过git用户就可以deluser git）
+adduser git
+
+// 添加git用户的权限
+chmod 740 /etc/sudoers
+vim /etc/sudoers
+
+// 上面这个vim操作将会进入编辑模式 输入 i 进行编辑
+// 找到这个内容：root    ALL=(ALL)     ALL
+// 加入下面代码：
+git    ALL=(ALL)     ALL
+
+// 按下ESC推出i，并且输入:wq保存推出
+
+// 改回权限
+chmod 400 /etc/sudoers
+
+// 如果你在创建git用户时，已经输入密码，那么就跳过这一步
+sudo passwd git
+
+// 切换至git用户（很重要） 进行下面操作
+su git
+mkdir ~/.ssh
+vim ~/.ssh/authorized_keys
+
+// vim操作进入了authorized_keys编辑操作，按序i进入编辑，将本地的SSH密钥输入进去，然后ESC，在:wq保存推出
+
+// 修改上面这两个文件的权限
+chmod 600 /home/git/.ssh/authorized_keys
+chmod 700 /home/git/.ssh
+
+//测试一下本地终端能不能连接到云服务器的git（下面这行代码是在本地电脑完成，不是云服务器的命令）
+ssh -v git@云服务器的ip
+
+至此git用户操作完成<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="创建git仓库"><a href="#创建git仓库" class="headerlink" title="创建git仓库"></a>创建git仓库</h3><p>（1）创建git文件夹，授予git主权</p>
+<p>（2）新建git仓库</p>
+<p>（3）创建git钩子</p>
+<p>（4）给git钩子权限</p>
+<pre class="line-numbers language-cloundshell" data-language="cloundshell"><code class="language-cloundshell">// 延续上面的操作，此时需要切回root用户（以下命令均在root）
+mkdir /var/repo
+
+//将上面这个文件授权给git
+chown -R git:git /var/repo
+chmod -R 755 /var/repo
+
+// 建立网站根目录，并给权限
+mkdir /var/hexo
+chown -R git:git /var/hexo
+chmod -R 755 /var/hexo
+
+// 新建git仓库（这里hexo.git，可以改成：自己想要的名字.git）
+cd /var/repo
+git init --bare hexo.git
+
+// 创建git钩子，服务自动部署
+vim /var/repo/hexo.git/hooks/post-receive
+
+// 进行vim编辑 ，粘贴保存退出
+#!/bin/bash
+git --work-tree=/var/hexo --git-dir=/var/repo/hexo.git checkout -f
+
+//修改钩子权限
+chown -R git:git /var/repo/hexo.git/hooks/post-receive
+chmod +x /var/repo/hexo.git/hooks/post-receive<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="配置云服务器软件Nginx（宝塔）"><a href="#配置云服务器软件Nginx（宝塔）" class="headerlink" title="配置云服务器软件Nginx（宝塔）"></a>配置云服务器软件Nginx（宝塔）</h3><p>（1）在云服务器下载宝塔</p>
+<p>（2）下载Nginx</p>
+<p>（3）添加站点</p>
+<p>（4）配置文件</p>
+<p>（5）网站目录</p>
+<p>（6）重启宝塔，使配置生效</p>
+<pre class="line-numbers language-cloundshell" data-language="cloundshell"><code class="language-cloundshell">// 下载宝塔（下面有教程）
+wget -O install.sh http://download.bt.cn/install/install-ubuntu_6.0.sh &amp;&amp; sudo bash install.sh
+
+// 下载好之后（会出现网站公网域名、登录用户、登录密码）
+// 记住在登录宝塔的时候，一定要记着放开port: 8888 端口不然就拦截了
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>下载nginx</p>
+<img src="https://cdn.jsdelivr.net/gh/matemaster9/imgs-masterstudio/imgs/20210327113052.jpg" style="width:90%">
+
+<p>添加站点</p>
+<img src="https://cdn.jsdelivr.net/gh/matemaster9/imgs-masterstudio/imgs/20210327113213.jpg" style="width:90%">
+
+<p>设置配置文件</p>
+<img src="https://cdn.jsdelivr.net/gh/matemaster9/imgs-masterstudio/imgs/20210327113305.jpg" style="width:90%">
+
+<p>设置网站目录</p>
+<img src="https://cdn.jsdelivr.net/gh/matemaster9/imgs-masterstudio/imgs/20210327113329.jpg" style="width:90%">
+
+<p>重启宝塔服务（在云服务器中进行）</p>
+<pre class="line-numbers language-cloundshell" data-language="cloundshell"><code class="language-cloundshell">bt restart   //这样才会使上面在宝塔linux面板的配置生效<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h3 id="本地hexo配置"><a href="#本地hexo配置" class="headerlink" title="本地hexo配置"></a>本地hexo配置</h3><pre class="line-numbers language-yml" data-language="yml"><code class="language-yml">deploy:
+  type: git
+  repo: git@域名:/var/repo/hexo.git
+  branch: master<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-cmd" data-language="cmd"><code class="language-cmd">hexo cl&amp;&amp;hexo g&amp;&amp;hexo d  //完成部署<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>我在部署的时候出现了权限错误的问题 ，后来发现是自己在创建git下的文件夹时，忘记授权了。</p>
+<pre class="line-numbers language-cloundshell" data-language="cloundshell"><code class="language-cloundshell">chown -R git:git /var/repo/
+chown -R git:git /var/hexo/<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<h3 id="部署成功预览"><a href="#部署成功预览" class="headerlink" title="部署成功预览"></a>部署成功预览</h3><img src="https://cdn.jsdelivr.net/gh/matemaster9/imgs-masterstudio@1.1/imgs/20210326173021.jpg" style="width:80%">
+
+
+
+<h1 id="SSL证书"><a href="#SSL证书" class="headerlink" title="SSL证书"></a>SSL证书</h1><img src="https://cdn.jsdelivr.net/gh/matemaster9/imgs-masterstudio/imgs/20210327131003.jpg" style="width:90%">
+
+<p>将证书的*.key以及*.pem内容保存到对应位置即可！</p>
+<p>安装宝塔Linux面板方法<a target="_blank" rel="noopener" href="https://www.bt.cn/bbs/thread-19376-1-1.html">查看详细教程 &gt;&gt;</a></p>
+<blockquote>
+<p>使用 SSH 连接工具，如<a target="_blank" rel="noopener" href="https://download.bt.cn/ssh/BT-Term.exe">堡塔SSH终端</a>连接到您的 Linux 服务器后，<a target="_blank" rel="noopener" href="https://www.bt.cn/bbs/thread-5166-1-1.html">挂载磁盘</a>，根据系统执行相应命令开始安装（大约2分钟完成面板安装）：</p>
+<p>Centos安装脚本</p>
+<pre class="line-numbers language-none"><code class="language-none">yum install -y wget &amp;&amp; wget -O install.sh http://download.bt.cn/install/install_6.0.sh &amp;&amp; sh install.sh<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>Ubuntu/Deepin安装脚本</p>
+<pre class="line-numbers language-none"><code class="language-none">wget -O install.sh http://download.bt.cn/install/install-ubuntu_6.0.sh &amp;&amp; sudo bash install.sh<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>Debian安装脚本</p>
+<pre class="line-numbers language-none"><code class="language-none">wget -O install.sh http://download.bt.cn/install/install-ubuntu_6.0.sh &amp;&amp; bash install.sh<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>Fedora安装脚本</p>
+<pre class="line-numbers language-none"><code class="language-none">wget -O install.sh http://download.bt.cn/install/install_6.0.sh &amp;&amp; bash install.sh<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+</blockquote>
+<h1 id="前端库CDN加速"><a href="#前端库CDN加速" class="headerlink" title="前端库CDN加速"></a>前端库CDN加速</h1><p>在<code>Matery</code>主题配置文件中，作者对于<code>libs</code>下的文件做出这样的解释：使用到的前端库，可按需替换成对应的CDN地址，如果下面未指定具体的版本号，使用最新的版本即可。👉<a target="_blank" rel="noopener" href="https://github.com/matemaster9/source@2.0/matery-libs">Github前端库</a></p>
 <pre class="line-numbers language-yml" data-language="yml"><code class="language-yml">libs:
   css:
     matery: https://cdn.jsdelivr.net/gh/matemaster9/source@2.0/matery-libs/css/matery.css 
@@ -525,7 +690,7 @@ site:www.matemaster.cn<span aria-hidden="true" class="line-numbers-rows"><span><
 
 
 
-<p><b style="color: orange;">华为云域名为例，添加域名记录集（阿里云、腾讯云、七牛云……）都一样的操作，实在不会的可以直接百度，或者就这官方云服务网站找教程！</b></p>
+<p><b style="color: orange;">华为云域名为例，添加域名记录集（阿里云、腾讯云、七牛云……）都一样的操作，实在不会的可以直接百度，或者就在官方云服务网站找教程！</b></p>
 <img src="https://cdn.jsdelivr.net/gh/matemaster9/imgs-masterstudio/imgs/20210326234541.jpg" style="zoom: 67%;">
 
 <p><b style="color: hotpink;">以上操作，只是单纯的将网站域名提交的百度收录了！，但是为了以后自己写的每一篇博客文章都可以被百度收录，那么我们还是主动推送为好！</b></p>
@@ -542,8 +707,9 @@ site:www.matemaster.cn<span aria-hidden="true" class="line-numbers-rows"><span><
 <img src="https://cdn.jsdelivr.net/gh/matemaster9/imgs-masterstudio/imgs/20210326235758.jpg" style="width:90%">
 
 <p>这里要添加新的<code>deploy</code>类型</p>
-<pre class="line-numbers language-yml" data-language="yml"><code class="language-yml">deploy:
-- type: baidu_url_submitter<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-yml" data-language="yml"><code class="language-yml"># hexo根目录下
+deploy:
+- type: baidu_url_submitter<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 
 <h3 id="查看推送反馈"><a href="#查看推送反馈" class="headerlink" title="查看推送反馈"></a>查看推送反馈</h3><ul>
 <li><p>推送成功</p>
@@ -603,7 +769,23 @@ abbrlink:
 // 修改根目录文章permalink
 permalink: posts/:abbrlink.html<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<p><strong>最终效果：<a target="_blank" rel="noopener" href="https://matemaster.cn/posts/52745.html">https://matemaster.cn/posts/52745.html</a></strong></p>
+<p>最终效果：<b style="color: aqua;">matemaster.cn/posts/52745.html</b></p>
+<h2 id="cnpm加速"><a href="#cnpm加速" class="headerlink" title="cnpm加速"></a>cnpm加速</h2><p>在使用<code>npm</code>下载插件的时候，往往速度很慢，并且可能存在卡死的情况，没有办法不想科学上网！</p>
+<p>后来发现国内淘宝团队做了一个npm的镜像<code>cnpm</code>，下面介绍如何使用<code>cnpm下载</code></p>
+<pre class="line-numbers language-cmd" data-language="cmd"><code class="language-cmd">// 获取npm的默认下载地址
+npm config get registry   //默认地址：https://registry.npmjs.org/
+
+// 下载cnpm
+npm install -g cnpm --registry=https://registry.npm.taobao.org
+
+// 测试cnpm是否下载成功（出现版本号即可）
+cnpm-v<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>当然了，有时候也会出现下载<code>cnpm</code>会出现错误，比如我自己就出现了，因为我在电脑上面本地建立了多个博客，所以就出现下载<code>cnpm错误</code>。当然还有一种：“修改npm默认仓库地址的方式，实现使用淘宝镜像”！</p>
+<pre class="line-numbers language-cmd" data-language="cmd"><code class="language-cmd">// 修改cnpm的默认仓库地址
+npm config set registry https://registry.npm.taobao.org<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<p><b style="color: red;">这样以后就可以用cnpm代替npm指令</b></p>
 
                 
             </div>
@@ -1381,7 +1563,7 @@ permalink: posts/:abbrlink.html<span aria-hidden="true" class="line-numbers-rows
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">25.8k</span>&nbsp;字
+                class="white-color">27.2k</span>&nbsp;字
             
             
             
