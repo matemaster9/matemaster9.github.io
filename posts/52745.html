@@ -29,9 +29,9 @@
 
     <script src="https://cdn.jsdelivr.net/gh/matemaster9/source@2.0/matery-libs/js/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 5.4.0">
+<meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="MasterStudio" type="application/atom+xml">
+
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-<link rel="alternate" href="/atom.xml" title="MasterStudio" type="application/atom+xml">
 </head>
 
 
@@ -431,14 +431,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    2.7k
+                    3k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    12 分
+                    13 分
                 </div>
                 
 
@@ -584,6 +584,21 @@ wget -O install.sh http://download.bt.cn/install/install-ubuntu_6.0.sh &amp;&amp
 // 记住在登录宝塔的时候，一定要记着放开port: 8888 端口不然就拦截了
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
+<p>安装宝塔Linux面板方法<a target="_blank" rel="noopener" href="https://www.bt.cn/bbs/thread-19376-1-1.html">查看详细教程 &gt;&gt;</a></p>
+<blockquote>
+<p>使用 SSH 连接工具，如<a target="_blank" rel="noopener" href="https://download.bt.cn/ssh/BT-Term.exe">堡塔SSH终端</a>连接到您的 Linux 服务器后，<a target="_blank" rel="noopener" href="https://www.bt.cn/bbs/thread-5166-1-1.html">挂载磁盘</a>，根据系统执行相应命令开始安装（大约2分钟完成面板安装）：</p>
+<p>Centos安装脚本</p>
+<pre class="line-numbers language-none"><code class="language-none">yum install -y wget &amp;&amp; wget -O install.sh http://download.bt.cn/install/install_6.0.sh &amp;&amp; sh install.sh<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>Ubuntu/Deepin安装脚本</p>
+<pre class="line-numbers language-none"><code class="language-none">wget -O install.sh http://download.bt.cn/install/install-ubuntu_6.0.sh &amp;&amp; sudo bash install.sh<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>Debian安装脚本</p>
+<pre class="line-numbers language-none"><code class="language-none">wget -O install.sh http://download.bt.cn/install/install-ubuntu_6.0.sh &amp;&amp; bash install.sh<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>Fedora安装脚本</p>
+<pre class="line-numbers language-none"><code class="language-none">wget -O install.sh http://download.bt.cn/install/install_6.0.sh &amp;&amp; bash install.sh<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+</blockquote>
 <p>下载nginx</p>
 <img src="https://cdn.jsdelivr.net/gh/matemaster9/imgs-masterstudio/imgs/20210327113052.jpg" style="width:90%">
 
@@ -614,24 +629,12 @@ chown -R git:git /var/hexo/<span aria-hidden="true" class="line-numbers-rows"><s
 
 
 
-<h1 id="SSL证书"><a href="#SSL证书" class="headerlink" title="SSL证书"></a>SSL证书</h1><img src="https://cdn.jsdelivr.net/gh/matemaster9/imgs-masterstudio/imgs/20210327131003.jpg" style="width:90%">
+
+
+<h1 id="SSL证书"><a href="#SSL证书" class="headerlink" title="SSL证书"></a>SSL证书</h1><h2 id="获取SSL证书"><a href="#获取SSL证书" class="headerlink" title="获取SSL证书"></a>获取SSL证书</h2><p>这个SSL可以买，也可以直接白嫖。当然为了省钱的话，还是教大家怎么白嫖！<a target="_blank" rel="noopener" href="https://support.huaweicloud.com/scm_faq/scm_01_0192.html">华为云官方教程</a></p>
+<img src="https://cdn.jsdelivr.net/gh/matemaster9/imgs-masterstudio/imgs/20210327131003.jpg" style="width:90%">
 
 <p>将证书的*.key以及*.pem内容保存到对应位置即可！</p>
-<p>安装宝塔Linux面板方法<a target="_blank" rel="noopener" href="https://www.bt.cn/bbs/thread-19376-1-1.html">查看详细教程 &gt;&gt;</a></p>
-<blockquote>
-<p>使用 SSH 连接工具，如<a target="_blank" rel="noopener" href="https://download.bt.cn/ssh/BT-Term.exe">堡塔SSH终端</a>连接到您的 Linux 服务器后，<a target="_blank" rel="noopener" href="https://www.bt.cn/bbs/thread-5166-1-1.html">挂载磁盘</a>，根据系统执行相应命令开始安装（大约2分钟完成面板安装）：</p>
-<p>Centos安装脚本</p>
-<pre class="line-numbers language-none"><code class="language-none">yum install -y wget &amp;&amp; wget -O install.sh http://download.bt.cn/install/install_6.0.sh &amp;&amp; sh install.sh<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<p>Ubuntu/Deepin安装脚本</p>
-<pre class="line-numbers language-none"><code class="language-none">wget -O install.sh http://download.bt.cn/install/install-ubuntu_6.0.sh &amp;&amp; sudo bash install.sh<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<p>Debian安装脚本</p>
-<pre class="line-numbers language-none"><code class="language-none">wget -O install.sh http://download.bt.cn/install/install-ubuntu_6.0.sh &amp;&amp; bash install.sh<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<p>Fedora安装脚本</p>
-<pre class="line-numbers language-none"><code class="language-none">wget -O install.sh http://download.bt.cn/install/install_6.0.sh &amp;&amp; bash install.sh<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-</blockquote>
 <h1 id="前端库CDN加速"><a href="#前端库CDN加速" class="headerlink" title="前端库CDN加速"></a>前端库CDN加速</h1><p>在<code>Matery</code>主题配置文件中，作者对于<code>libs</code>下的文件做出这样的解释：使用到的前端库，可按需替换成对应的CDN地址，如果下面未指定具体的版本号，使用最新的版本即可。👉<a target="_blank" rel="noopener" href="https://github.com/matemaster9/source@2.0/matery-libs">Github前端库</a></p>
 <pre class="line-numbers language-yml" data-language="yml"><code class="language-yml">libs:
   css:
@@ -673,6 +676,20 @@ chown -R git:git /var/hexo/<span aria-hidden="true" class="line-numbers-rows"><s
     ribbonRefresh: https://cdn.jsdelivr.net/gh/matemaster9/source@2.0/matery-libs/js/ribbon-refresh.min.js 
     ribbon_dynamic: https://cdn.jsdelivr.net/gh/matemaster9/source@2.0/matery-libs/js/ribbon-dynamic.js 
     instantpage: https://cdn.jsdelivr.net/gh/matemaster9/source@2.0/matery-libs/js/instantpage.js<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<h2 id="cdn-jsdelivr-github"><a href="#cdn-jsdelivr-github" class="headerlink" title="cdn+jsdelivr+github"></a>cdn+jsdelivr+github</h2><p>这个是目前比较好用的静态资源的CDN加速方式。当然还有花钱的方式，那个也不错</p>
+<p><code>腾讯</code>：<a target="_blank" rel="noopener" href="https://blog.sky03.cn/medias/test.jpg">COS + CDN</a></p>
+<p><code>GitHub</code>：<a target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/skyls03/skyls03.github.io/medias/test.jpg">cdn + jsDelivr + GitHub</a></p>
+<p><code>阿里</code>：<a target="_blank" rel="noopener" href="https://sky03-blog-images.oss-cn-beijing.aliyuncs.com/blog-img/test.jpg">OSS</a></p>
+<p>为了避开<code>jsdelivr</code>每次加速资源不超过20m或者github仓库容量不能超过50m的弊端，我们可以采取发布版本的方式来解决！</p>
+<p>（1）新建一个<code>GitHub</code>仓库<strong>source</strong></p>
+<p>（2）<code>git clone</code>当本地，将需要加速的静态资源（.css .js）等文件放入本地仓库</p>
+<p>（3）<code>git push</code>到远端仓库，然后发布版本即可</p>
+<p>引用资源的方式</p>
+<pre class="line-numbers language-url" data-language="url"><code class="language-url">// 具体使用连接，可以参考上面的前端库
+https://cdn.jsdelivr.net/gh/用户名/仓库名@发布的版本号/文件路径<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
 
 
@@ -1563,7 +1580,7 @@ npm config set registry https://registry.npm.taobao.org<span aria-hidden="true" 
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">27.2k</span>&nbsp;字
+                class="white-color">28.5k</span>&nbsp;字
             
             
             

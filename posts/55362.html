@@ -29,9 +29,9 @@
 
     <script src="https://cdn.jsdelivr.net/gh/matemaster9/source@2.0/matery-libs/js/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 5.4.0">
+<meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="MasterStudio" type="application/atom+xml">
+
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-<link rel="alternate" href="/atom.xml" title="MasterStudio" type="application/atom+xml">
 </head>
 
 
@@ -424,21 +424,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2021-03-26
+                    2021-03-27
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    518
+                    1.6k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    2 分
+                    7 分
                 </div>
                 
 
@@ -546,7 +546,7 @@
     <span class="token operator">IN</span> onumber <span class="token keyword">INT</span><span class="token punctuation">,</span>
     <span class="token operator">IN</span> taxable <span class="token keyword">BOOLEAN</span><span class="token punctuation">,</span>
     <span class="token keyword">OUT</span> ototal <span class="token keyword">DECIMAL</span><span class="token punctuation">(</span><span class="token number">8</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">)</span>
-<span class="token punctuation">)</span>
+<span class="token punctuation">)</span><span class="token keyword">COMMENT</span> <span class="token string">'Obtain ordertotal,optional taxable'</span>
 <span class="token keyword">BEGIN</span>
 	<span class="token comment"># 定义局部变量：total、taxrate</span>
 	<span class="token keyword">DECLARE</span> total <span class="token keyword">DECIMAL</span><span class="token punctuation">(</span><span class="token number">8</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -584,6 +584,246 @@
 <span class="token operator">+</span><span class="token comment">---------+</span>
 <span class="token operator">|</span> <span class="token number">1450.44</span> <span class="token operator">|</span>
 <span class="token operator">+</span><span class="token comment">---------+</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<h2 id="结构详解"><a href="#结构详解" class="headerlink" title="结构详解"></a>结构详解</h2><pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">CREATE</span> <span class="token keyword">PROCEDURE</span> 存储过程名<span class="token punctuation">(</span>参数列表<span class="token punctuation">)</span> <span class="token punctuation">[</span>修饰词<span class="token punctuation">]</span> 过程主体
+
+<span class="token comment"># 参数列表</span>
+<span class="token punctuation">[</span><span class="token operator">IN</span><span class="token operator">|</span><span class="token keyword">OUT</span><span class="token operator">|</span><span class="token keyword">INOUT</span><span class="token punctuation">]</span> parameter <span class="token keyword">type</span>
+
+<span class="token comment"># 修饰词</span>
+	<span class="token keyword">LANGUAGE</span> <span class="token keyword">SQL</span> <span class="token comment">#表明当前系统语言为SQL</span>
+	<span class="token punctuation">[</span><span class="token operator">NOT</span><span class="token punctuation">]</span> <span class="token keyword">DETERMINISTIC</span> <span class="token comment">#无NOT表明：同样输入得到相同结果。NOT 表明：同样输入结果可能不一致</span>
+
+	{<span class="token keyword">CONTAINS</span> <span class="token keyword">SQL</span><span class="token operator">|</span><span class="token keyword">NO</span> <span class="token keyword">SQL</span><span class="token operator">|</span><span class="token keyword">READS</span> <span class="token keyword">SQL</span> <span class="token keyword">DATA</span><span class="token operator">|</span><span class="token keyword">MODIFIES</span> <span class="token keyword">SQL</span> <span class="token keyword">DATA</span>} <span class="token comment">#子程序使用SQL的限制</span>
+	<span class="token comment"># CONTAINS SQL:子程序包含SQL，但是不包含读写的</span>
+	<span class="token comment"># NO SQL:子程序不包含SQL语句</span>
+	<span class="token comment"># READS SQL DATA:包含读数据SQK</span>
+	<span class="token comment"># MODIFIES SQL DATA:包含写数据SQL</span>
+
+	<span class="token keyword">SQL</span> SECURITY{<span class="token keyword">DEFINER</span><span class="token operator">|</span><span class="token keyword">INVOKER</span>} <span class="token comment">#执行SQL的权限</span>
+	<span class="token comment"># DEFINER：定义者执行</span>
+	<span class="token comment"># INVOKER：有权限的调用者执行</span>
+
+	<span class="token keyword">COMMENT</span> <span class="token string">'String'</span> <span class="token comment"># 注释信息，可以描述存储过程</span>
+
+<span class="token comment"># 过程主体</span>
+<span class="token keyword">BEGIN</span>
+	<span class="token comment"># 主体SQL语句</span>
+<span class="token keyword">END</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<h1 id="存储函数"><a href="#存储函数" class="headerlink" title="存储函数"></a>存储函数</h1><h2 id="语法-1"><a href="#语法-1" class="headerlink" title="语法"></a>语法</h2><pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">CREATE</span> <span class="token keyword">FUNCTION</span> 函数名<span class="token punctuation">(</span>参数列表<span class="token punctuation">)</span> <span class="token keyword">RETURNS</span> <span class="token keyword">type</span> <span class="token punctuation">[</span>修饰词<span class="token punctuation">]</span> 函数主体
+
+<span class="token comment"># 参数列表和修饰词与存储过程保持一致，不做赘述</span>
+
+<span class="token comment"># 函数主体</span>
+<span class="token keyword">RETURN</span> <span class="token keyword">value</span> <span class="token comment"># value 可以是一个查询记录</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>这里定义一个<code>SupplierName</code>函数</p>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">CREATE</span> <span class="token keyword">FUNCTION</span> SupplierName<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token keyword">RETURNS</span> <span class="token keyword">CHAR</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span>
+<span class="token keyword">RETURN</span> <span class="token punctuation">(</span>
+    <span class="token keyword">SELECT</span> s_name
+    <span class="token keyword">FROM</span> suppliers
+    <span class="token keyword">WHERE</span> <span class="token punctuation">(</span>s_call <span class="token operator">=</span> <span class="token string">'48075'</span><span class="token punctuation">)</span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment"># 调用函数</span>
+<span class="token keyword">SELECT</span> SupplierName<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<h1 id="存储程序进阶"><a href="#存储程序进阶" class="headerlink" title="存储程序进阶"></a>存储程序进阶</h1><h2 id="变量使用"><a href="#变量使用" class="headerlink" title="变量使用"></a>变量使用</h2><p>之前在<code>ordertotal</code>存储过程中，使用到了局部变量的定义</p>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">DECLARE</span> total <span class="token keyword">DECIMAL</span><span class="token punctuation">(</span><span class="token number">8</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">DECLARE</span> taxrate <span class="token keyword">INT</span> <span class="token keyword">DEFAULT</span> <span class="token number">6</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<p>从上面代码看出，MySQL变量定义的方式</p>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token comment"># 无默认值</span>
+<span class="token keyword">DECLARE</span> var_name var_type<span class="token punctuation">;</span>
+<span class="token comment"># 有默认值</span>
+<span class="token keyword">DECLARE</span> var_name var_type <span class="token keyword">DEFAULT</span> default_value<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>那么在定义了变量之后，我们怎么实现对变量的赋值呢？</p>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token comment"># set操作</span>
+<span class="token keyword">SET</span> var_name <span class="token operator">=</span> <span class="token keyword">value</span><span class="token punctuation">;</span>
+
+<span class="token comment"># select...into...</span>
+<span class="token keyword">SELECT</span> <span class="token keyword">value</span> <span class="token keyword">INTO</span> var_name<span class="token punctuation">;</span>
+
+<span class="token comment">## 这里的value可以是特定值或者查询结果！</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<h2 id="定义条件和处理程序"><a href="#定义条件和处理程序" class="headerlink" title="定义条件和处理程序"></a>定义条件和处理程序</h2><p>定义条件和处理程序的好处在于：当存储程序发生错误或者问题时，可以使用定义的条件判断错误的类型，并且选择合适的处理程序进行问题处理，提高了存储程序能力，避免程序异常！</p>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">DECLARE</span> condition_name CONDITION <span class="token keyword">FOR</span> condition_type<span class="token punctuation">;</span>
+
+<span class="token comment"># condition_name:错误的类型名，可以自定义</span>
+<span class="token comment"># condition_type:错误类型，分为：字符型（字符长度为5）、数值型错误代码</span>
+SQLSTATE <span class="token punctuation">[</span><span class="token keyword">VALUE</span><span class="token punctuation">]</span> : sqlstate_value<span class="token operator">|</span>mysql_error_code<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>这里就直接举个栗子<span class="github-emoji"><span>✌</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/270c.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span> ：定义一个错误代码 <code>ERROR 1970(43990)</code>，名称为<code>command_not allowed</code>的条件</p>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token comment"># （1）sqlstate_value</span>
+<span class="token keyword">DECLARE</span> command_not_allowed CONDITION <span class="token keyword">FOR</span> <span class="token number">1970</span><span class="token punctuation">;</span>
+<span class="token comment"># （2）mysql_error_code</span>
+<span class="token keyword">DECLARE</span> command_not_allowed CONDOTION <span class="token keyword">FOR</span> <span class="token string">'43990'</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<h2 id="游标的使用"><a href="#游标的使用" class="headerlink" title="游标的使用"></a>游标的使用</h2><p>简单介绍一下游标<code>cursor</code>的声明、打开、使用、关闭</p>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token comment"># 声明游标</span>
+<span class="token keyword">DECLARE</span> cursor_name <span class="token keyword">CURSOR</span> <span class="token keyword">FOR</span> select_statement<span class="token punctuation">;</span>
+
+<span class="token comment"># 打开游标</span>
+<span class="token keyword">OPEN</span> cursor_name<span class="token punctuation">;</span>
+
+<span class="token comment"># 使用游标</span>
+<span class="token keyword">FETCH</span> cursor_name <span class="token keyword">INTO</span> var_name<span class="token punctuation">;</span>
+
+<span class="token comment"># 关闭游标</span>
+<span class="token keyword">CLOSE</span> cursor_name<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>简单地举个栗子<span class="github-emoji"><span>✌</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/270c.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span></p>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token comment"># 声明名称为cursor_fruit的光标</span>
+<span class="token keyword">CREATE</span> cursor_fruit <span class="token keyword">CURSOR</span> <span class="token keyword">FOR</span> <span class="token punctuation">(</span>
+    <span class="token keyword">SELECT</span> f_name<span class="token punctuation">,</span> f_price 
+    <span class="token keyword">FROM</span> fruits <span class="token punctuation">;</span> 
+<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment"># 打开游标</span>
+<span class="token keyword">OPEN</span> cursor_fruit<span class="token punctuation">;</span>
+
+<span class="token comment"># 使用游标（变量必须在游标声明之前就已经定义了）</span>
+<span class="token keyword">FETCH</span>  cursor_fruit <span class="token keyword">INTO</span> fruit_name<span class="token punctuation">,</span> fruit_price <span class="token punctuation">;</span>
+
+<span class="token comment"># 关闭</span>
+<span class="token keyword">CLOSE</span> cursor_fruit<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<h2 id="流程控制"><a href="#流程控制" class="headerlink" title="流程控制"></a>流程控制</h2><ul>
+<li>理解<code>if</code>语句和<code>if()</code>函数的区别</li>
+</ul>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">IF</span> condition1 <span class="token keyword">THEN</span> expression1
+	<span class="token punctuation">[</span><span class="token keyword">ELSE</span> <span class="token keyword">IF</span> condition2 <span class="token keyword">THEN</span> expression2<span class="token punctuation">]</span>
+	<span class="token punctuation">[</span><span class="token keyword">ELSE</span> else_statement<span class="token punctuation">]</span>
+<span class="token keyword">END</span> <span class="token keyword">IF</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><strong>举个栗子</strong><span class="github-emoji"><span>✌</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/270c.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span></p>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">IF</span> var <span class="token operator">IS</span> <span class="token boolean">NULL</span> <span class="token keyword">THEN</span> <span class="token punctuation">(</span><span class="token keyword">SELECT</span> <span class="token string">'var is null'</span><span class="token punctuation">)</span>
+	<span class="token keyword">ELSE</span> <span class="token punctuation">(</span><span class="token keyword">SELECT</span> <span class="token string">'var is not null'</span><span class="token punctuation">)</span>
+<span class="token keyword">END</span> <span class="token keyword">IF</span><span class="token punctuation">;</span>	<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+
+
+<ul>
+<li><code>case</code>语句的两种形式</li>
+</ul>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token comment"># 1.case存在变量</span>
+<span class="token keyword">CASE</span> vars
+	<span class="token keyword">WHEN</span> var1 <span class="token keyword">THEN</span> expr1
+	<span class="token punctuation">[</span><span class="token keyword">WHEN</span> var2 <span class="token keyword">THEN</span> expr2<span class="token punctuation">]</span>
+	<span class="token punctuation">[</span><span class="token keyword">ELSE</span> else_statement<span class="token punctuation">]</span>
+<span class="token keyword">END</span> <span class="token keyword">CASE</span><span class="token punctuation">;</span>	
+
+<span class="token comment"># 2.case不存在变量</span>
+<span class="token keyword">CASE</span>
+	<span class="token keyword">WHEN</span> condition1 <span class="token keyword">THEN</span> expr1
+	<span class="token punctuation">[</span><span class="token keyword">WHEN</span> condition2 <span class="token keyword">THEN</span> expr2<span class="token punctuation">]</span>
+	<span class="token punctuation">[</span><span class="token keyword">ELSE</span> else_statement<span class="token punctuation">]</span>
+<span class="token keyword">END</span> <span class="token keyword">CASE</span><span class="token punctuation">;</span>	<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><strong>举个栗子</strong><span class="github-emoji"><span>✌</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/270c.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span></p>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token comment"># (1)</span>
+<span class="token keyword">CASE</span> var
+  <span class="token keyword">WHEN</span> <span class="token number">1</span> <span class="token keyword">THEN</span> <span class="token keyword">SELECT</span> <span class="token string">'val is 1'</span><span class="token punctuation">;</span>
+  <span class="token keyword">WHEN</span> <span class="token number">2</span> <span class="token keyword">THEN</span> <span class="token keyword">SELECT</span> <span class="token string">'val is 2'</span><span class="token punctuation">;</span>
+  <span class="token keyword">ELSE</span> <span class="token keyword">SELECT</span> <span class="token string">'val is not 1 or 2'</span><span class="token punctuation">;</span>
+<span class="token keyword">END</span> <span class="token keyword">CASE</span><span class="token punctuation">;</span>
+
+<span class="token comment"># (2)</span>
+<span class="token keyword">CASE</span>
+  <span class="token keyword">WHEN</span> val <span class="token operator">IS</span> <span class="token boolean">NULL</span> <span class="token keyword">THEN</span> <span class="token keyword">SELECT</span> <span class="token string">'val is NULL'</span><span class="token punctuation">;</span>
+  <span class="token keyword">WHEN</span> val <span class="token operator">&lt;</span> <span class="token number">0</span> <span class="token keyword">THEN</span> <span class="token keyword">SELECT</span> <span class="token string">'val is less than 0'</span><span class="token punctuation">;</span>
+  <span class="token keyword">WHEN</span> val <span class="token operator">&gt;</span> <span class="token number">0</span> <span class="token keyword">THEN</span> <span class="token keyword">SELECT</span> <span class="token string">'val is greater than 0'</span><span class="token punctuation">;</span>
+  <span class="token keyword">ELSE</span> <span class="token keyword">SELECT</span> <span class="token string">'val is 0'</span><span class="token punctuation">;</span>
+<span class="token keyword">END</span> <span class="token keyword">CASE</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<ul>
+<li><code>Loop</code>循环</li>
+</ul>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token punctuation">[</span>loop_label<span class="token punctuation">]</span>: <span class="token keyword">LOOP</span>
+	loop_statement
+<span class="token keyword">END</span> <span class="token keyword">LOOP</span> <span class="token punctuation">[</span>loop_label<span class="token punctuation">]</span>	<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p><strong>举个栗子</strong><span class="github-emoji"><span>✌</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/270c.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span></p>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token comment"># 求1~100之和</span>
+<span class="token keyword">DECLARE</span> s <span class="token keyword">INT</span> <span class="token keyword">DEFAULT</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token keyword">DECLARE</span> id <span class="token keyword">INT</span> <span class="token keyword">DEFAULT</span> <span class="token number">0</span><span class="token punctuation">;</span>
+SUM : <span class="token keyword">loop</span>
+	<span class="token keyword">SET</span> id <span class="token operator">=</span> id <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">,</span> s <span class="token operator">=</span> s <span class="token operator">+</span> id<span class="token punctuation">;</span>
+	<span class="token keyword">IF</span> id <span class="token operator">&gt;=</span> <span class="token number">100</span> <span class="token keyword">THEN</span> <span class="token keyword">LEAVE</span> SUM<span class="token punctuation">;</span>
+	<span class="token keyword">END</span> <span class="token keyword">IF</span><span class="token punctuation">;</span>
+<span class="token keyword">END</span> <span class="token keyword">LOOP</span> SUM<span class="token punctuation">;</span>	<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>这里还涉及到一个<code>LEAVE</code>语句，用于跳出循环和<code>BEGIN……END</code>。当然还有一个用于直接跳转到循环头<code>ITERATE</code>。</p>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">CREATE</span> <span class="token keyword">PROCEDURE</span> doiterate<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token keyword">BEGIN</span>
+<span class="token keyword">DECLARE</span> p1 <span class="token keyword">INT</span> <span class="token keyword">DEFAULT</span> <span class="token number">0</span><span class="token punctuation">;</span>
+my_loop: <span class="token keyword">LOOP</span>
+  <span class="token keyword">SET</span> p1<span class="token operator">=</span> p1 <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">;</span>
+  <span class="token keyword">IF</span> p1 <span class="token operator">&lt;</span> <span class="token number">10</span> <span class="token keyword">THEN</span> <span class="token keyword">ITERATE</span> my_loop<span class="token punctuation">;</span>
+  <span class="token keyword">ELSEIF</span> p1 <span class="token operator">&gt;</span> <span class="token number">20</span> <span class="token keyword">THEN</span> <span class="token keyword">LEAVE</span> my_loop<span class="token punctuation">;</span>
+  <span class="token keyword">END</span> <span class="token keyword">IF</span><span class="token punctuation">;</span>
+  <span class="token keyword">SELECT</span> <span class="token string">'p1 is between 10 and 20'</span><span class="token punctuation">;</span>
+<span class="token keyword">END</span> <span class="token keyword">LOOP</span> my_loop<span class="token punctuation">;</span>
+<span class="token keyword">END</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<ul>
+<li><code>REPEAT</code>语句</li>
+</ul>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token punctuation">[</span>repeat_label<span class="token punctuation">]</span> : <span class="token keyword">REPEAT</span>
+	statement_list
+UNTIL expr
+<span class="token keyword">END</span> <span class="token keyword">REPEAT</span> <span class="token punctuation">[</span>repeat_label<span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><strong>举个栗子</strong><span class="github-emoji"><span>✌</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/270c.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span></p>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">DECLARE</span> id <span class="token keyword">INT</span> <span class="token keyword">DEFAULT</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token keyword">REPEAT</span>
+<span class="token keyword">SET</span> id <span class="token operator">=</span> id <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">;</span>
+UNTIL  id <span class="token operator">&gt;=</span> <span class="token number">10</span>
+<span class="token keyword">END</span> <span class="token keyword">REPEAT</span><span class="token punctuation">;</span> <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<ul>
+<li><code>WHILE</code>语句</li>
+</ul>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token punctuation">[</span>while_label<span class="token punctuation">]</span> : <span class="token keyword">WHILE</span> expr_condition
+	<span class="token keyword">DO</span> statement
+<span class="token keyword">END</span> <span class="token keyword">WHILE</span> <span class="token punctuation">[</span>while_label<span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p><strong>举个栗子</strong><span class="github-emoji"><span>✌</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/270c.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span></p>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">DECLARE</span> i <span class="token keyword">INT</span> <span class="token keyword">DEFAULT</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token keyword">WHILE</span> i <span class="token operator">&lt;</span> <span class="token number">10</span> 
+	<span class="token keyword">DO</span> <span class="token keyword">SET</span> i <span class="token operator">=</span> i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">;</span>
+<span class="token keyword">END</span> <span class="token keyword">WHILE</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="存储程序的CRUD"><a href="#存储程序的CRUD" class="headerlink" title="存储程序的CRUD"></a>存储程序的CRUD</h2><pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token comment"># 更改存储程序</span>
+<span class="token keyword">ALTER</span> {<span class="token keyword">PROCEDURE</span><span class="token operator">|</span><span class="token keyword">FUNCTION</span>} sp_name <span class="token keyword">MODIFIES</span> <span class="token punctuation">[</span>alter_statement<span class="token punctuation">]</span>
+
+<span class="token comment"># 查看存储函数状态</span>
+<span class="token keyword">SHOW</span> {<span class="token keyword">PROCEDURE</span><span class="token operator">|</span><span class="token keyword">FUNCTION</span>} <span class="token keyword">STATUS</span> <span class="token punctuation">[</span><span class="token operator">LIKE</span> <span class="token string">'pattern'</span><span class="token punctuation">]</span>
+<span class="token keyword">SHOW</span> <span class="token keyword">CREATE</span> {<span class="token keyword">PROCEDURE</span><span class="token operator">|</span><span class="token keyword">FUNCTION</span>} sp_name
+
+<span class="token comment"># 删除存储程序</span>
+<span class="token keyword">DROP</span> <span class="token keyword">PROCEDURE</span><span class="token operator">|</span><span class="token keyword">FUNCTION</span> sp_name<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 
                 
@@ -1368,7 +1608,7 @@
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">27.2k</span>&nbsp;字
+                class="white-color">28.5k</span>&nbsp;字
             
             
             
