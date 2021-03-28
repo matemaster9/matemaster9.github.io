@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="基于Matery主题的网站优化, MasterStudio">
+    <meta name="keywords" content="HTTP协议解析, MasterStudio">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>基于Matery主题的网站优化 | MasterStudio</title>
+    <title>HTTP协议解析 | MasterStudio</title>
     <link rel="icon" type="image/png" href="/bg.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -269,12 +269,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('https://cdn.jsdelivr.net/gh/matemaster9/image-one/images/20210326165806.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('https://cdn.jsdelivr.net/gh/matemaster9/imgs-masterstudio/imgs/20210327215628.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">基于Matery主题的网站优化</h1>
+                    <h1 class="description center-align post-title">HTTP协议解析</h1>
                 </div>
             </div>
         </div>
@@ -390,8 +390,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/Matery/">
-                                <span class="chip bg-color">Matery</span>
+                            <a href="/tags/Http/">
+                                <span class="chip bg-color">Http</span>
                             </a>
                         
                     </div>
@@ -402,8 +402,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/MasterStudio/" class="post-category">
-                                MasterStudio
+                            <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" class="post-category">
+                                计算机网络
                             </a>
                         
                     </div>
@@ -417,28 +417,28 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-03-26
+                    2021-03-27
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2021-03-27
+                    2021-03-28
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    3k
+                    1.2k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    13 分
+                    5 分
                 </div>
                 
 
@@ -467,342 +467,126 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="Hexo部署华为云"><a href="#Hexo部署华为云" class="headerlink" title="Hexo部署华为云"></a>Hexo部署华为云</h1><p>准确来说，这部分是介绍，如何将hexo部署到云服务器。也就说这部分是面向那些想把自己的博客网站放到自己的云服务器上运行的朋友们！</p>
-<h2 id="云服务器"><a href="#云服务器" class="headerlink" title="云服务器"></a>云服务器</h2><p><b style="color: yellowgreen;">云服务器配置</b></p>
-<table>
-<thead>
-<tr>
-<th>云服务器</th>
-<th>参数</th>
-</tr>
-</thead>
-<tbody><tr>
-<td><strong>Linux系统</strong></td>
-<td><strong>Ubuntu 18.04 server 64bit with ARM</strong></td>
-</tr>
-<tr>
-<td><strong>云硬盘</strong></td>
-<td><strong>1G+40GB（高IO）</strong></td>
-</tr>
-<tr>
-<td><strong>域名</strong></td>
-<td><strong><a href="http://www.matemaster.cn/">www.matemaster.cn</a></strong></td>
-</tr>
-</tbody></table>
-<img src="https://cdn.jsdelivr.net/gh/matemaster9/imgs-masterstudio/imgs/20210327105816.jpg" style="width:80%">
+                <h1 id="DNS"><a href="#DNS" class="headerlink" title="DNS"></a>DNS</h1><h2 id="DNS基本服务"><a href="#DNS基本服务" class="headerlink" title="DNS基本服务"></a>DNS基本服务</h2><p><code>DNS</code>提供了域名-&gt;ip的解析服务。主要由：DNS分布式数据库以及使得主机可以查询数据库的应用层协议构成。</p>
+<p><code>DNS</code>建立在<code>UDP</code>协议之上进行网络传输，互联网端口<code>port:53</code></p>
+<p>举个栗子<span class="github-emoji"><span>✌</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/270c.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span></p>
+<p>从应用层解释：本地主机<code>(@localhost)</code>向服务器请求<code>www.matemaster.cn/index.html</code>资源时，<code>DNS</code>的操作过程</p>
+<p>1）<code>web browser:华为浏览器</code>向本地电脑的<code>DNS客户端</code>程序发送获取<code>www.matemaster.cn的ip地址</code>请求</p>
+<p>2）本地电脑的<code>DNS客户端</code>向远端<code>DNS server</code>发送上述请求报文</p>
+<p>3）<code>DNS server</code>从后端分布式数据库或者DNS缓存中获取ip，并封装成响应报文，返回给<code>DNS客户端</code></p>
+<p>4)<code>web browser:华为浏览器</code>根据<code>DNS客户端</code>返回的<code>ip</code>与远端服务器<code>www.matemaster.cn</code>建立<code>tcp</code>连接</p>
+<h2 id="DNS额外服务"><a href="#DNS额外服务" class="headerlink" title="DNS额外服务"></a>DNS额外服务</h2><p>除了<code>域名-&gt;ip的解析服务</code>，DNS支持：主机别名、邮件服务器别名、负载分配。</p>
+<p><code>主机别名</code>：对于含有复杂hostname的主机，可以支持多别名的操作。而其中存在一个<code>规范主机名</code>和多个<code>主机别名</code>而DNS便是提供，将多个主机别名，转为对应的规范主机名。</p>
+<p><code>邮件服务器别名</code>：为了让邮件用户可以自己定义好记的邮件名，我们就需要利用类似主机别名的方式，为邮件服务器提供别名操作，而在DNS记录中存在的MX记录，允许邮件服务器名和web服务器名相同。</p>
+<p><code>负载分配</code>：简单理解：就是一个IP地址集合与同一个规范主机名相联系！（可以参考下面在Ubuntu系统下的nslookup alibaba.com）。从那里看出，一个<strong>alibaba.com</strong>对应了4个IP地址</p>
+<h2 id="DNS分布式数据库"><a href="#DNS分布式数据库" class="headerlink" title="DNS分布式数据库"></a>DNS分布式数据库</h2><p>DNS采取的是：<code>分布式、层次数据库</code>。层次：root、TLD、权威</p>
+<p>看看例图<span class="github-emoji"><span>✌</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/270c.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span></p>
+<img src="https://cdn.jsdelivr.net/gh/matemaster9/imgs-masterstudio/imgs/20210328145741.jpg" style="width:80%">
 
-<h2 id="连接云服务器"><a href="#连接云服务器" class="headerlink" title="连接云服务器"></a>连接云服务器</h2><h3 id="创建git用户"><a href="#创建git用户" class="headerlink" title="创建git用户"></a>创建git用户</h3><p>（1）登录云服务器，切换root用户（华为云默认root用户）</p>
-<p>（2）安装git（可以git–version测试是否成功）</p>
-<p>（3）创建管理git的用户</p>
-<p>（4）添加git用户的权限</p>
-<p>（5）vim操作编辑git的权限</p>
-<p>（6）切换至git用户，创建SSH密钥</p>
-<p>（7）修改SSH文件权限，测试是否成功（ssh -v git@服务器ip）</p>
-<pre class="line-numbers language-cloundshell" data-language="cloundshell"><code class="language-cloundshell">// 切换root用户（华为云默认root用户）
-sudo su root
+<p><code>root server</code>：提供了对应顶级域服务器的<code>ip</code></p>
+<p><code>TLD</code>：顶级域服务器提供了存储了<code>主机ip</code>的权威服务器的<code>ip</code></p>
+<p><code>权威服务器</code>：存储了<code>对应主机名的ip地址</code></p>
+<p><code>本地DNS server</code>：虽然不属于分布式层次结构中的数据库，但是在DNS中起重要作用。与DNS缓存有关！</p>
+<h3 id="分布式数据库的工作过程"><a href="#分布式数据库的工作过程" class="headerlink" title="分布式数据库的工作过程"></a>分布式数据库的工作过程</h3><img src="https://cdn.jsdelivr.net/gh/matemaster9/imgs-masterstudio/imgs/20210328151824.jpg" style="width:80%">
 
-// 安装git
-apt install git
+<p>在这里<code>alibaba.com</code>服务器的<code>ip</code>采取了负载分配的方式，我这里的对应ali的DNS服务器，以及ip如下<span class="github-emoji"><span>👇</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/1f447.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span></p>
+<pre class="line-numbers language-ubuntu" data-language="ubuntu"><code class="language-ubuntu">matemaster@matemaster:~$ nslookup alibaba.com
+Server:        127.0.0.53
+Address:    127.0.0.53#53
 
-// 创建管理git的用户（若之前弄过git用户就可以deluser git）
-adduser git
+Non-authoritative answer:
+Name:    alibaba.com
+Address: 106.11.223.101
+		 106.11.208.151
+		 203.119.129.109
+		 203.119.215.82
 
-// 添加git用户的权限
-chmod 740 /etc/sudoers
-vim /etc/sudoers
+matemaster@matemaster:~$ nslookup -type=NS alibaba.com
+Server:        127.0.0.53
+Address:    127.0.0.53#53
 
-// 上面这个vim操作将会进入编辑模式 输入 i 进行编辑
-// 找到这个内容：root    ALL=(ALL)     ALL
-// 加入下面代码：
-git    ALL=(ALL)     ALL
-
-// 按下ESC推出i，并且输入:wq保存推出
-
-// 改回权限
-chmod 400 /etc/sudoers
-
-// 如果你在创建git用户时，已经输入密码，那么就跳过这一步
-sudo passwd git
-
-// 切换至git用户（很重要） 进行下面操作
-su git
-mkdir ~/.ssh
-vim ~/.ssh/authorized_keys
-
-// vim操作进入了authorized_keys编辑操作，按序i进入编辑，将本地的SSH密钥输入进去，然后ESC，在:wq保存推出
-
-// 修改上面这两个文件的权限
-chmod 600 /home/git/.ssh/authorized_keys
-chmod 700 /home/git/.ssh
-
-//测试一下本地终端能不能连接到云服务器的git（下面这行代码是在本地电脑完成，不是云服务器的命令）
-ssh -v git@云服务器的ip
-
-至此git用户操作完成<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h3 id="创建git仓库"><a href="#创建git仓库" class="headerlink" title="创建git仓库"></a>创建git仓库</h3><p>（1）创建git文件夹，授予git主权</p>
-<p>（2）新建git仓库</p>
-<p>（3）创建git钩子</p>
-<p>（4）给git钩子权限</p>
-<pre class="line-numbers language-cloundshell" data-language="cloundshell"><code class="language-cloundshell">// 延续上面的操作，此时需要切回root用户（以下命令均在root）
-mkdir /var/repo
-
-//将上面这个文件授权给git
-chown -R git:git /var/repo
-chmod -R 755 /var/repo
-
-// 建立网站根目录，并给权限
-mkdir /var/hexo
-chown -R git:git /var/hexo
-chmod -R 755 /var/hexo
-
-// 新建git仓库（这里hexo.git，可以改成：自己想要的名字.git）
-cd /var/repo
-git init --bare hexo.git
-
-// 创建git钩子，服务自动部署
-vim /var/repo/hexo.git/hooks/post-receive
-
-// 进行vim编辑 ，粘贴保存退出
-#!/bin/bash
-git --work-tree=/var/hexo --git-dir=/var/repo/hexo.git checkout -f
-
-//修改钩子权限
-chown -R git:git /var/repo/hexo.git/hooks/post-receive
-chmod +x /var/repo/hexo.git/hooks/post-receive<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h3 id="配置云服务器软件Nginx（宝塔）"><a href="#配置云服务器软件Nginx（宝塔）" class="headerlink" title="配置云服务器软件Nginx（宝塔）"></a>配置云服务器软件Nginx（宝塔）</h3><p>（1）在云服务器下载宝塔</p>
-<p>（2）下载Nginx</p>
-<p>（3）添加站点</p>
-<p>（4）配置文件</p>
-<p>（5）网站目录</p>
-<p>（6）重启宝塔，使配置生效</p>
-<pre class="line-numbers language-cloundshell" data-language="cloundshell"><code class="language-cloundshell">// 下载宝塔（下面有教程）
-wget -O install.sh http://download.bt.cn/install/install-ubuntu_6.0.sh &amp;&amp; sudo bash install.sh
-
-// 下载好之后（会出现网站公网域名、登录用户、登录密码）
-// 记住在登录宝塔的时候，一定要记着放开port: 8888 端口不然就拦截了
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<p>安装宝塔Linux面板方法<a target="_blank" rel="noopener" href="https://www.bt.cn/bbs/thread-19376-1-1.html">查看详细教程 &gt;&gt;</a></p>
-<blockquote>
-<p>使用 SSH 连接工具，如<a target="_blank" rel="noopener" href="https://download.bt.cn/ssh/BT-Term.exe">堡塔SSH终端</a>连接到您的 Linux 服务器后，<a target="_blank" rel="noopener" href="https://www.bt.cn/bbs/thread-5166-1-1.html">挂载磁盘</a>，根据系统执行相应命令开始安装（大约2分钟完成面板安装）：</p>
-<p>Centos安装脚本</p>
-<pre class="line-numbers language-none"><code class="language-none">yum install -y wget &amp;&amp; wget -O install.sh http://download.bt.cn/install/install_6.0.sh &amp;&amp; sh install.sh<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<p>Ubuntu/Deepin安装脚本</p>
-<pre class="line-numbers language-none"><code class="language-none">wget -O install.sh http://download.bt.cn/install/install-ubuntu_6.0.sh &amp;&amp; sudo bash install.sh<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<p>Debian安装脚本</p>
-<pre class="line-numbers language-none"><code class="language-none">wget -O install.sh http://download.bt.cn/install/install-ubuntu_6.0.sh &amp;&amp; bash install.sh<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<p>Fedora安装脚本</p>
-<pre class="line-numbers language-none"><code class="language-none">wget -O install.sh http://download.bt.cn/install/install_6.0.sh &amp;&amp; bash install.sh<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-</blockquote>
-<p>下载nginx</p>
-<img src="https://cdn.jsdelivr.net/gh/matemaster9/imgs-masterstudio/imgs/20210327113052.jpg" style="width:90%">
-
-<p>添加站点</p>
-<img src="https://cdn.jsdelivr.net/gh/matemaster9/imgs-masterstudio/imgs/20210327113213.jpg" style="width:90%">
-
-<p>设置配置文件</p>
-<img src="https://cdn.jsdelivr.net/gh/matemaster9/imgs-masterstudio/imgs/20210327113305.jpg" style="width:90%">
-
-<p>设置网站目录</p>
-<img src="https://cdn.jsdelivr.net/gh/matemaster9/imgs-masterstudio/imgs/20210327113329.jpg" style="width:90%">
-
-<p>重启宝塔服务（在云服务器中进行）</p>
-<pre class="line-numbers language-cloundshell" data-language="cloundshell"><code class="language-cloundshell">bt restart   //这样才会使上面在宝塔linux面板的配置生效<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<h3 id="本地hexo配置"><a href="#本地hexo配置" class="headerlink" title="本地hexo配置"></a>本地hexo配置</h3><pre class="line-numbers language-yml" data-language="yml"><code class="language-yml">deploy:
-  type: git
-  repo: git@域名:/var/repo/hexo.git
-  branch: master<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-
-<pre class="line-numbers language-cmd" data-language="cmd"><code class="language-cmd">hexo cl&amp;&amp;hexo g&amp;&amp;hexo d  //完成部署<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<p>我在部署的时候出现了权限错误的问题 ，后来发现是自己在创建git下的文件夹时，忘记授权了。</p>
-<pre class="line-numbers language-cloundshell" data-language="cloundshell"><code class="language-cloundshell">chown -R git:git /var/repo/
-chown -R git:git /var/hexo/<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-
-<h3 id="部署成功预览"><a href="#部署成功预览" class="headerlink" title="部署成功预览"></a>部署成功预览</h3><img src="https://cdn.jsdelivr.net/gh/matemaster9/imgs-masterstudio@1.1/imgs/20210326173021.jpg" style="width:80%">
+Non-authoritative answer:
+alibaba.com    nameserver = ns2.alibabadns.com.
+alibaba.com    nameserver = ns1.alibabadns.com.<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 
 
+<h2 id="DNS记录"><a href="#DNS记录" class="headerlink" title="DNS记录"></a>DNS记录</h2><p>DNS记录包含4元组：<code>[name,value,type,TTL]</code></p>
+<p><b style="color: red;">type的值，决定了name-value之间的关系</b></p>
+<p><code>type = A</code>：name是主机名，value是主机名对应的IP地址</p>
+<p><code>type = NS</code>：name是域，value也是主机名——该域主机IP对应的权威服务器</p>
+<p><code>type = CNAME</code>：name是主机别名，value是对应的规范主机名</p>
+<p><code>type = MX</code>：name邮件服务器别名，value是对应的规范主机名</p>
+<p>（1）当某个DNS服务器<code>server_it</code>不是<code>alibaba.com</code>的权威服务器，那么<code>server_it</code>必将包含两条记录：A和NS</p>
+<p><code>NS(alibaba.com,ns1.alibabadns.com,NS,100)</code></p>
+<p><code>A(ns1.alibabadns.com,198.11.138.254,A,100)</code></p>
+<p>（2）当某个服务器<code>server_ali</code>是<code>alibaba.com</code>的权威服务器，那么<code>server_ali</code>一定含有A记录</p>
+<p><code>A(alibaba.com,203.119.215.82,A,100)</code></p>
+<h2 id="DNS报文"><a href="#DNS报文" class="headerlink" title="DNS报文"></a>DNS报文</h2><img src="https://cdn.jsdelivr.net/gh/matemaster9/imgs-masterstudio/imgs/20210328155528.jfif" style="width:80%">
 
+<p>下面是我利用<strong>Wireshark</strong>抓取本地主机访问<code>matemaster.cn</code>主机的<code>DNS请求报文</code></p>
+<img src="https://cdn.jsdelivr.net/gh/matemaster9/imgs-masterstudio/imgs/20210328195018.jpg" style="width:80%">
 
-<h1 id="SSL证书"><a href="#SSL证书" class="headerlink" title="SSL证书"></a>SSL证书</h1><h2 id="获取SSL证书"><a href="#获取SSL证书" class="headerlink" title="获取SSL证书"></a>获取SSL证书</h2><p>这个SSL可以买，也可以直接白嫖。当然为了省钱的话，还是教大家怎么白嫖！<a target="_blank" rel="noopener" href="https://support.huaweicloud.com/scm_faq/scm_01_0192.html">华为云官方教程</a></p>
-<img src="https://cdn.jsdelivr.net/gh/matemaster9/imgs-masterstudio/imgs/20210327131003.jpg" style="width:90%">
+<pre class="line-numbers language-wireshark" data-language="wireshark"><code class="language-wireshark">Domain Name System (query)
+    Transaction ID: 0x49f1
+    Flags: 0x0100 Standard query
+        0... .... .... .... = Response: Message is a query
+        .000 0... .... .... = Opcode: Standard query (0)
+        .... ..0. .... .... = Truncated: Message is not truncated
+        .... ...1 .... .... = Recursion desired: Do query recursively
+        .... .... .0.. .... = Z: reserved (0)
+        .... .... ...0 .... = Non-authenticated data: Unacceptable
+    Questions: 1
+    Answer RRs: 0
+    Authority RRs: 0
+    Additional RRs: 0
+    Queries
+        matemaster.cn: type A, class IN
+            Name: matemaster.cn
+            [Name Length: 13]
+            [Label Count: 2]
+            Type: A (Host Address) (1)
+            Class: IN (0x0001)
+    [Response In: 498]<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<p>将证书的*.key以及*.pem内容保存到对应位置即可！</p>
-<h1 id="前端库CDN加速"><a href="#前端库CDN加速" class="headerlink" title="前端库CDN加速"></a>前端库CDN加速</h1><p>在<code>Matery</code>主题配置文件中，作者对于<code>libs</code>下的文件做出这样的解释：使用到的前端库，可按需替换成对应的CDN地址，如果下面未指定具体的版本号，使用最新的版本即可。👉<a target="_blank" rel="noopener" href="https://github.com/matemaster9/source@2.0/matery-libs">Github前端库</a></p>
-<pre class="line-numbers language-yml" data-language="yml"><code class="language-yml">libs:
-  css:
-    matery: https://cdn.jsdelivr.net/gh/matemaster9/source@2.0/matery-libs/css/matery.css 
-    mycss:  /css/my.css 
-    fontAwesome: /libs/awesome/css/all.css 
-    materialize: https://cdn.jsdelivr.net/gh/matemaster9/source@2.0/matery-libs/css/materialize.min.css
-    aos: https://cdn.jsdelivr.net/gh/matemaster9/source@2.0/matery-libs/css/aos.css 
-    animate: https://cdn.jsdelivr.net/gh/matemaster9/source@2.0/matery-libs/css/animate.min.css 
-    lightgallery: https://cdn.jsdelivr.net/gh/matemaster9/source@2.0/matery-libs/css/lightgallery.min.css 
-    aplayer: https://cdn.jsdelivr.net/gh/matemaster9/source@2.0/matery-libs/css/APlayer.min.css 
-    dplayer: https://cdn.jsdelivr.net/gh/matemaster9/source@2.0/matery-libs/css/DPlayer.min.css
-    gitalk: https://cdn.jsdelivr.net/gh/matemaster9/source@2.0/matery-libs/css/gitalk.css 
-    jqcloud: https://cdn.jsdelivr.net/gh/matemaster9/source@2.0/matery-libs/css/jqcloud.css 
-    tocbot: https://cdn.jsdelivr.net/gh/matemaster9/source@2.0/matery-libs/css/tocbot.css 
-    prism: https://cdn.jsdelivr.net/gh/matemaster9/source@2.0/matery-libs/css/prism.css  
-  js:
-    matery: https://cdn.jsdelivr.net/gh/matemaster9/source@2.0/matery-libs/js/matery.js 
-    jquery: https://cdn.jsdelivr.net/gh/matemaster9/source@2.0/matery-libs/js/jquery.min.js 
-    materialize: https://cdn.jsdelivr.net/gh/matemaster9/source@2.0/matery-libs/js/materialize.min.js 
-    masonry: https://cdn.jsdelivr.net/gh/matemaster9/source@2.0/matery-libs/js/masonry.pkgd.min.js 
-    aos: https://cdn.jsdelivr.net/gh/matemaster9/source@2.0/matery-libs/js/aos.js 
-    scrollProgress: https://cdn.jsdelivr.net/gh/matemaster9/source@2.0/matery-libs/js/scrollProgress.min.js 
-    lightgallery: https://cdn.jsdelivr.net/gh/matemaster9/source@2.0/matery-libs/js/lightgallery-all.min.js 
-    clicklove: https://cdn.jsdelivr.net/gh/matemaster9/source@2.0/matery-libs/js/clicklove.js
-    busuanzi: https://cdn.jsdelivr.net/gh/matemaster9/source@2.0/matery-libs/js/busuanzi.pure.mini.js 
-    aplayer: https://cdn.jsdelivr.net/gh/matemaster9/source@2.0/matery-libs/js/APlayer.min.js
-    dplayer: https://cdn.jsdelivr.net/gh/matemaster9/source@2.0/matery-libs/js/DPlayer.min.js 
-    crypto: https://cdn.jsdelivr.net/gh/matemaster9/source@2.0/matery-libs/js/crypto-js.min.js 
-    echarts: https://cdn.jsdelivr.net/gh/matemaster9/source@2.0/matery-libs/js/echarts.min.js 
-    gitalk: https://cdn.jsdelivr.net/gh/matemaster9/source@2.0/matery-libs/js/gitalk.min.js #/libs/gitalk/gitalk.min.js
-    valine: https://unpkg.com/valine/dist/Valine.min.js 
-    minivaline: https://cdn.jsdelivr.net/gh/matemaster9/source@2.0/matery-libs/js/MiniValine.js 
-    twikoo: https://cdn.jsdelivr.net/npm/twikoo/dist/twikoo.all.min.js 
-    jqcloud: https://cdn.jsdelivr.net/gh/matemaster9/source@2.0/matery-libs/js/jqcloud-1.0.4.min.js
-    tocbot: https://cdn.jsdelivr.net/gh/matemaster9/source@2.0/matery-libs/js/tocbot.min.js 
-    canvas_nest: https://cdn.jsdelivr.net/gh/matemaster9/source@2.0/matery-libs/js/canvas-nest.js 
-    ribbon: https://cdn.jsdelivr.net/gh/matemaster9/source@2.0/matery-libs/js/ribbon.min.js 
-    ribbonRefresh: https://cdn.jsdelivr.net/gh/matemaster9/source@2.0/matery-libs/js/ribbon-refresh.min.js 
-    ribbon_dynamic: https://cdn.jsdelivr.net/gh/matemaster9/source@2.0/matery-libs/js/ribbon-dynamic.js 
-    instantpage: https://cdn.jsdelivr.net/gh/matemaster9/source@2.0/matery-libs/js/instantpage.js<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>相对于的来自<code>DNS server</code>的响应报文</p>
+<img src="https://cdn.jsdelivr.net/gh/matemaster9/imgs-masterstudio/imgs/20210328195022.jpg" style="width:80%">
 
+<pre class="line-numbers language-wireshark" data-language="wireshark"><code class="language-wireshark">Domain Name System (response)
+    Transaction ID: 0x49f1
+    Flags: 0x8180 Standard query response, No error
+        1... .... .... .... = Response: Message is a response
+        .000 0... .... .... = Opcode: Standard query (0)
+        .... .0.. .... .... = Authoritative: Server is not an authority for domain
+        .... ..0. .... .... = Truncated: Message is not truncated
+        .... ...1 .... .... = Recursion desired: Do query recursively
+        .... .... 1... .... = Recursion available: Server can do recursive queries
+        .... .... .0.. .... = Z: reserved (0)
+        .... .... ..0. .... = Answer authenticated: Answer/authority portion was not authenticated by the server
+        .... .... ...0 .... = Non-authenticated data: Unacceptable
+        .... .... .... 0000 = Reply code: No error (0)
+    Questions: 1
+    Answer RRs: 1
+    Authority RRs: 0
+    Additional RRs: 0
+    Queries
+        matemaster.cn: type A, class IN
+            Name: matemaster.cn
+            [Name Length: 13]
+            [Label Count: 2]
+            Type: A (Host Address) (1)
+            Class: IN (0x0001)
+    Answers
+        matemaster.cn: type A, class IN, addr 124.70.110.117
+            Name: matemaster.cn
+            Type: A (Host Address) (1)
+            Class: IN (0x0001)
+            Time to live: 283 (4 minutes, 43 seconds)
+            Data length: 4
+            Address: 124.70.110.117
+    [Request In: 495]
+    [Time: 0.005763000 seconds]<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-
-<h2 id="cdn-jsdelivr-github"><a href="#cdn-jsdelivr-github" class="headerlink" title="cdn+jsdelivr+github"></a>cdn+jsdelivr+github</h2><p>这个是目前比较好用的静态资源的CDN加速方式。当然还有花钱的方式，那个也不错</p>
-<p><code>腾讯</code>：<a target="_blank" rel="noopener" href="https://blog.sky03.cn/medias/test.jpg">COS + CDN</a></p>
-<p><code>GitHub</code>：<a target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/skyls03/skyls03.github.io/medias/test.jpg">cdn + jsDelivr + GitHub</a></p>
-<p><code>阿里</code>：<a target="_blank" rel="noopener" href="https://sky03-blog-images.oss-cn-beijing.aliyuncs.com/blog-img/test.jpg">OSS</a></p>
-<p>为了避开<code>jsdelivr</code>每次加速资源不超过20m或者github仓库容量不能超过50m的弊端，我们可以采取发布版本的方式来解决！</p>
-<p>（1）新建一个<code>GitHub</code>仓库<strong>source</strong></p>
-<p>（2）<code>git clone</code>当本地，将需要加速的静态资源（.css .js）等文件放入本地仓库</p>
-<p>（3）<code>git push</code>到远端仓库，然后发布版本即可</p>
-<p>引用资源的方式</p>
-<pre class="line-numbers language-url" data-language="url"><code class="language-url">// 具体使用连接，可以参考上面的前端库
-https://cdn.jsdelivr.net/gh/用户名/仓库名@发布的版本号/文件路径<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-
-
-
-<h1 id="SEO"><a href="#SEO" class="headerlink" title="SEO"></a>SEO</h1><h2 id="百度收录"><a href="#百度收录" class="headerlink" title="百度收录"></a>百度收录</h2><h3 id="将域名站点提交到百度"><a href="#将域名站点提交到百度" class="headerlink" title="将域名站点提交到百度"></a>将域名站点提交到百度</h3><p>测试网站是否被搜索引擎收录：在百度输入下面代码，会出现收录结果</p>
-<pre class="line-numbers language-none"><code class="language-none">// site:(域名)
-site:www.matemaster.cn<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-
-<p><b style="color: hotpink;">没有收录？那么看下面操作</b></p>
-<p>（1）登录<a target="_blank" rel="noopener" href="https://ziyuan.baidu.com/">百度搜索资源平台</a></p>
-<p>（2）登录成功后，在用户中心-&gt;站点管理-&gt;添加网站操作 <span class="github-emoji"><span>👇</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/1f447.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span>看下图</p>
-<img src="https://cdn.jsdelivr.net/gh/matemaster9/imgs-masterstudio/imgs/20210326232547.jpg" style="width: 90%">
-
-<p>（3）这里讲一下第三步：验证网站！最好选择CNAME解析（换而言之，就用这个最好，帮你选好方式省的纠结）</p>
-<img src="https://cdn.jsdelivr.net/gh/matemaster9/imgs-masterstudio/imgs/20210326233923.jpg" style="width: 90%">
-
-
-
-<p><b style="color: orange;">华为云域名为例，添加域名记录集（阿里云、腾讯云、七牛云……）都一样的操作，实在不会的可以直接百度，或者就在官方云服务网站找教程！</b></p>
-<img src="https://cdn.jsdelivr.net/gh/matemaster9/imgs-masterstudio/imgs/20210326234541.jpg" style="zoom: 67%;">
-
-<p><b style="color: hotpink;">以上操作，只是单纯的将网站域名提交的百度收录了！，但是为了以后自己写的每一篇博客文章都可以被百度收录，那么我们还是主动推送为好！</b></p>
-<h3 id="主动推送"><a href="#主动推送" class="headerlink" title="主动推送"></a>主动推送</h3><p>首先说一句，推送的方式有三种：主动推送、自动推送、sitemap推送。这里<code>matery</code>已经内部集成了自动推送，<code>hexo-theme-matery</code>内部文档中有解释，这里就介绍最好的方式：<strong>主动推送</strong></p>
-<p>（1）一个插件<code>hexo-baidu-url-submit</code></p>
-<p>（2）一个配置项<code>baidu_url_submit</code></p>
-<pre class="line-numbers language-yml" data-language="yml"><code class="language-yml">baidu_url_submit:
-  count: 80 # 提交最新的一个链接
-  host: https://www.matemaster.cn # 在百度资源搜索平台中注册的域名
-  token: xxxxxxxxxxxx # 请注意这是推送秘钥， 所以请不要把博客源代码发布在公众仓库里!
-  path: baidu_urls.txt # 文本文档的地址， 新链接会保存在此文本文档里 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<p>❓：密钥从哪里获取<span class="github-emoji"><span>😄</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/1f604.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span> <strong>token = 密钥</strong></p>
-<img src="https://cdn.jsdelivr.net/gh/matemaster9/imgs-masterstudio/imgs/20210326235758.jpg" style="width:90%">
-
-<p>这里要添加新的<code>deploy</code>类型</p>
-<pre class="line-numbers language-yml" data-language="yml"><code class="language-yml"># hexo根目录下
-deploy:
-- type: baidu_url_submitter<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-
-<h3 id="查看推送反馈"><a href="#查看推送反馈" class="headerlink" title="查看推送反馈"></a>查看推送反馈</h3><ul>
-<li><p>推送成功</p>
-</li>
-<li><p>状态码为200，可能返回以下字段：</p>
-<table>
-<thead>
-<tr>
-<th align="left">字段</th>
-<th align="left">是否必选</th>
-<th align="left">参数类型</th>
-<th align="right">说明</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">success</td>
-<td align="left">是</td>
-<td align="left">int</td>
-<td align="right"><strong>成功推送的url条数</strong></td>
-</tr>
-<tr>
-<td align="left">remain</td>
-<td align="left">是</td>
-<td align="left">int</td>
-<td align="right">当天剩余的可推送url条数</td>
-</tr>
-<tr>
-<td align="left">not_same_site</td>
-<td align="left">否</td>
-<td align="left">array</td>
-<td align="right">由于不是本站url而未处理的url列表</td>
-</tr>
-<tr>
-<td align="left">not_valid</td>
-<td align="left">否</td>
-<td align="left">array</td>
-<td align="right">不合法的url列表</td>
-</tr>
-</tbody></table>
-</li>
-</ul>
-<h2 id="url优化"><a href="#url优化" class="headerlink" title="url优化"></a>url优化</h2><p>因为在<code>hexo</code>根目录下的配置文件，默认的文章页对应的url是四级，也就是下面这种形式</p>
-<pre class="line-numbers language-yml" data-language="yml"><code class="language-yml">url: https://www.matemaster.cn
-permalink: :year/:month/:day/:title.html<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-
-<p>那么我们如何缩短url链接</p>
-<p>（1）插件：<code>hexo-abbrlink</code></p>
-<p>（2）<code>hexo</code>根配置项</p>
-<pre class="line-numbers language-none"><code class="language-none">// 下载插件
-npm install hexo-abbrlink --save
-
-// 根目录配置项
-abbrlink:
-  alg: crc16  #算法选项：crc16、crc32，区别见之前的文章，这里默认为crc16丨crc32比crc16复杂一点，长一点
-  rep: dec    #输出进制：十进制和十六进制，默认为10进制。丨dec为十进制，hex为十六进制
-
-// 修改根目录文章permalink
-permalink: posts/:abbrlink.html<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<p>最终效果：<b style="color: aqua;">matemaster.cn/posts/52745.html</b></p>
-<h2 id="cnpm加速"><a href="#cnpm加速" class="headerlink" title="cnpm加速"></a>cnpm加速</h2><p>在使用<code>npm</code>下载插件的时候，往往速度很慢，并且可能存在卡死的情况，没有办法不想科学上网！</p>
-<p>后来发现国内淘宝团队做了一个npm的镜像<code>cnpm</code>，下面介绍如何使用<code>cnpm下载</code></p>
-<pre class="line-numbers language-cmd" data-language="cmd"><code class="language-cmd">// 获取npm的默认下载地址
-npm config get registry   //默认地址：https://registry.npmjs.org/
-
-// 下载cnpm
-npm install -g cnpm --registry=https://registry.npm.taobao.org
-
-// 测试cnpm是否下载成功（出现版本号即可）
-cnpm-v<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<p>当然了，有时候也会出现下载<code>cnpm</code>会出现错误，比如我自己就出现了，因为我在电脑上面本地建立了多个博客，所以就出现下载<code>cnpm错误</code>。当然还有一种：“修改npm默认仓库地址的方式，实现使用淘宝镜像”！</p>
-<pre class="line-numbers language-cmd" data-language="cmd"><code class="language-cmd">// 修改cnpm的默认仓库地址
-npm config set registry https://registry.npm.taobao.org<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-
-<p><b style="color: red;">这样以后就可以用cnpm代替npm指令</b></p>
 
                 
             </div>
@@ -829,7 +613,7 @@ npm config set registry https://registry.npm.taobao.org<span aria-hidden="true" 
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://www.matemaster.cn/posts/52745.html">https://www.matemaster.cn/posts/52745.html</a>
+                    <a href="https://www.matemaster.cn/posts/64831.html">https://www.matemaster.cn/posts/64831.html</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -867,8 +651,8 @@ npm config set registry https://registry.npm.taobao.org<span aria-hidden="true" 
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/Matery/">
-                                    <span class="chip bg-color">Matery</span>
+                                <a href="/tags/Http/">
+                                    <span class="chip bg-color">Http</span>
                                 </a>
                             
                         </div>
@@ -1306,9 +1090,10 @@ npm config set registry https://registry.npm.taobao.org<span aria-hidden="true" 
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/posts/64831.html">
                     <div class="card-image">
@@ -1325,9 +1110,9 @@ npm config set registry https://registry.npm.taobao.org<span aria-hidden="true" 
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-03-27
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-03-27
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -1340,6 +1125,7 @@ npm config set registry https://registry.npm.taobao.org<span aria-hidden="true" 
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -1358,30 +1144,30 @@ npm config set registry https://registry.npm.taobao.org<span aria-hidden="true" 
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/posts/55362.html">
+                <a href="/posts/52745.html">
                     <div class="card-image">
                         
-                        <img src="https://cdn.jsdelivr.net/gh/matemaster9/image-one/images/20210319124742.png" class="responsive-img" alt="MySQL存储过程和函数">
+                        <img src="https://cdn.jsdelivr.net/gh/matemaster9/image-one/images/20210326165806.jpg" class="responsive-img" alt="基于Matery主题的网站优化">
                         
-                        <span class="card-title">MySQL存储过程和函数</span>
+                        <span class="card-title">基于Matery主题的网站优化</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            理解基本的MySQL存储过程
+                            关于hexo博客框架以及matery主题的优化
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-03-25
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-03-26
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" class="post-category">
-                                    数据库
+                            <a href="/categories/MasterStudio/" class="post-category">
+                                    MasterStudio
                                 </a>
                             
                             
@@ -1391,8 +1177,8 @@ npm config set registry https://registry.npm.taobao.org<span aria-hidden="true" 
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/MySQL/">
-                        <span class="chip bg-color">MySQL</span>
+                    <a href="/tags/Matery/">
+                        <span class="chip bg-color">Matery</span>
                     </a>
                     
                 </div>

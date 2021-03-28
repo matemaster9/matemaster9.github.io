@@ -29,9 +29,9 @@
 
     <script src="https://cdn.jsdelivr.net/gh/matemaster9/source@2.0/matery-libs/js/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="MasterStudio" type="application/atom+xml">
-
+<meta name="generator" content="Hexo 5.4.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+<link rel="alternate" href="/atom.xml" title="MasterStudio" type="application/atom+xml">
 </head>
 
 
@@ -428,21 +428,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2021-03-26
+                    2021-03-28
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.4k
+                    2k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    6 分
+                    9 分
                 </div>
                 
 
@@ -800,18 +800,18 @@
 
 <p>线性表的数组实现模板</p>
 <pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token keyword">typedef</span> <span class="token keyword">struct</span> <span class="token punctuation">{</span>
-    Type data<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span>  <span class="token comment">//数组静态分配</span>
-    <span class="token keyword">int</span> len<span class="token punctuation">;</span>
+    ElemType elem<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span>  <span class="token comment">//数组静态分配</span>
+    <span class="token keyword">int</span> length<span class="token punctuation">;</span>
 <span class="token punctuation">}</span> SqList<span class="token punctuation">;</span>
 
 <span class="token keyword">typedef</span> <span class="token keyword">struct</span> <span class="token punctuation">{</span>
-    Type <span class="token operator">*</span>data<span class="token punctuation">;</span>  <span class="token comment">//数组动态分配</span>
-    <span class="token keyword">int</span> len<span class="token punctuation">;</span>
+    ElemType <span class="token operator">*</span>elem<span class="token punctuation">;</span>  <span class="token comment">//数组动态分配</span>
+    <span class="token keyword">int</span> length<span class="token punctuation">;</span>
 <span class="token punctuation">}</span> SqList<span class="token punctuation">;</span>
 
 <span class="token comment">// C语言数组空间分配函数</span>
-SqList l<span class="token punctuation">;</span>
-l<span class="token punctuation">.</span>data <span class="token operator">=</span> <span class="token punctuation">(</span>Type<span class="token operator">*</span><span class="token punctuation">)</span> <span class="token function">malloc</span><span class="token punctuation">(</span><span class="token keyword">sizeof</span><span class="token punctuation">(</span>Type<span class="token punctuation">)</span><span class="token operator">*</span>MaxSize<span class="token punctuation">)</span><span class="token punctuation">;</span>
+SqList L<span class="token punctuation">;</span>
+L<span class="token punctuation">.</span>elem <span class="token operator">=</span> <span class="token punctuation">(</span>ElemType<span class="token operator">*</span><span class="token punctuation">)</span> <span class="token function">malloc</span><span class="token punctuation">(</span><span class="token keyword">sizeof</span><span class="token punctuation">(</span>ElemType<span class="token punctuation">)</span><span class="token operator">*</span>MaxSize<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
 <span class="token comment">// malloc(m)：分配m字节内存空间</span>
 <span class="token comment">// sizeof(t)：获取t类型的字节长度</span>
@@ -819,7 +819,7 @@ l<span class="token punctuation">.</span>data <span class="token operator">=</sp
 
 
 
-<h1 id="存储结构"><a href="#存储结构" class="headerlink" title="存储结构"></a>存储结构</h1><p>线性表基于数组的实现，为了避免重复造轮子这里就直接基于Java内置的动态列表结构<code>ArrayList</code>实现！<span class="github-emoji"><span>😉</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/1f609.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span></p>
+<h1 id="存储结构"><a href="#存储结构" class="headerlink" title="存储结构"></a>存储结构</h1><h2 id="Java简单实现"><a href="#Java简单实现" class="headerlink" title="Java简单实现"></a>Java简单实现</h2><p>线性表基于数组的实现，为了避免重复造轮子这里就直接基于Java内置的动态列表结构<code>ArrayList</code>实现！<span class="github-emoji"><span>😉</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/1f609.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span></p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">SqList</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">T</span><span class="token punctuation">&gt;</span></span> <span class="token punctuation">{</span>
     <span class="token keyword">private</span> <span class="token class-name">ArrayList</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">T</span><span class="token punctuation">&gt;</span></span> sqList<span class="token punctuation">;</span>
 
@@ -902,6 +902,118 @@ l<span class="token punctuation">.</span>data <span class="token operator">=</sp
             <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token class-name">Arrays</span><span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span> sqList<span class="token punctuation">.</span><span class="token function">toArray</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<h2 id="顺序实现"><a href="#顺序实现" class="headerlink" title="顺序实现"></a>顺序实现</h2><p>当然了，上面的实现也太面向对象了！我们用点C++✍的，看起来更数据结构</p>
+<p>先介绍一下，关于C++函数的一些定义</p>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++"># define TRUE 1;
+# define FALSE 0;
+# define OK 1;
+# define ERROR 0;
+# define INFEASIBLE -1;
+# define OVERFLOW -2;
+
+typedef int Status;
+typedef char ElemType;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>接下来开始实现关于线性表的顺序表示方式的基本操作（简单实现）</p>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">Status InitList_Sq(Sqlist &amp;L) {
+    L.elem = new ElemType[MAXSIZE];
+    if(!L.elem) exit(overflow);
+    L.length = 0;
+    return OK;
+}
+
+void DestroyLis(SqList &amp;L) {
+    if(L.elem) delete elem;
+}
+
+void ClearList(SqList &amp;L) {
+    L.length = 0;
+}
+
+int GetLength(SqList L) {
+    return (L.length);
+}
+
+int IsEmpty(SqList L) {
+    if(L.length == 0) return 1;
+    else return 0;
+}
+
+int GetElem(SqList L, int i, ElemType &amp;e) {
+    if(i&lt;1||i&gt;=L.length) return ERROR;
+    
+    e = L.elem[i-1];
+    return OK
+}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>接下来介绍一些关键点的操作（稍微复杂点）</p>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">// 顺序查找元素，从数组头部开始依次比对(int = 1,2,3,4....,MAXSIZE)
+int LocateElem(SqList &amp;L, ElemType e) {
+    for(i=0; i&lt;length; i++) {
+        if(e == L.elem[i]) return i+1;
+    }
+    return 0;
+}
+
+// 这里除了for语句实现，还可以依赖while循环实现
+int LocateElem(SqList L, ElemType e) {
+    i = 0;
+    while(i&lt;L.length&amp;&amp;e!=L.elem[i])
+        i++;
+    if(i&lt;L.length) return i+1;
+    return 0;
+}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>顺序表的插入和删除</p>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">// 插入在最后、最前、中间
+[1,2,3,4,5,6,7,insert]
+[1,2,3,4,5,insert,6,7]
+[insert,1,2,3,4,5,6,7]<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>可以看出对于含有n个元素的数组，插入位置的范围：0~n，并且此时元素的数量&lt;=MAXSIZE</p>
+<p>算法思想：</p>
+<p>1）插入位置的范围是否合法</p>
+<p>2）数组是否已经满、否则返回ERROR</p>
+<p>3）将第n后移第i位元素后移一位</p>
+<p>4）表长加一 OK</p>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">// 在第i号位置插入e
+Status InsertList_Sq(SqList &amp;L,int i,ElemType e) {
+    if(i&lt;1||i&gt;=L.length) return ERROR;
+    if(L.length == MAXSIZE) return ERROR;
+    for(j = L.length-1;j&gt;=i-1;j--) {
+        L.elem[j+1] = L.elem[j];
+    }
+    L.elem[i-1] = e;
+    L.length++;
+    return OK;
+}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">// 删除最后、最前、中间
+[1,2,3,4,5,6,7,8,9,0]
+[1,2,3,4,5,6,7,8,9,null]
+[1,2,3,4,null,6,7,8,9,0]
+[null,2,3,4,5,6,7,8,9,0]<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>算法思想：</p>
+<p>1）删除元素的位置是否合法，以及当前表是否为空</p>
+<p>2）将删除元素保留到e</p>
+<p>3）将第i+1到n号元素前移一位</p>
+<p>4）表长减一 OK</p>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">Status DeleteList_Sq(SqList &amp;L,int i,ElemType e) {
+    if(i&lt;1||i&gt;L.length) return ERROR;
+    if(L.length == 0) return ERROR;
+    e = L.elem[i-1];
+    for(j = i;j&lt;=L.length-1;j++) {
+        L.elem[j-1] = L.elem[j];
+    }
+    L.length--;
+    return OK;
+}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 
                 
@@ -1697,7 +1809,7 @@ l<span class="token punctuation">.</span>data <span class="token operator">=</sp
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">28.5k</span>&nbsp;字
+                class="white-color">30.3k</span>&nbsp;字
             
             
             
