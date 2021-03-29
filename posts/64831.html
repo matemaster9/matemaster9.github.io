@@ -431,14 +431,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    2.5k
+                    2.7k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    10 分
+                    11 分
                 </div>
                 
 
@@ -496,7 +496,37 @@ http://user:pass@www.server.com:80/dir/index.htm?uid=1#ch1
 <p>5）华为浏览器分析<code>52745.html</code>的引用，并根据引用请求资源，重复上面四步，直至资源请求完毕！</p>
 <p>也就是说：此次获取页面资源，大概需要<code>60个tcp连接</code></p>
 <p>持续性连接：则是在上面的第四步发生不同，</p>
-<h2 id="状态码"><a href="#状态码" class="headerlink" title="状态码"></a>状态码</h2><h2 id="cookie"><a href="#cookie" class="headerlink" title="cookie"></a>cookie</h2><h2 id="代理服务器"><a href="#代理服务器" class="headerlink" title="代理服务器"></a>代理服务器</h2><h2 id="HTTP报文"><a href="#HTTP报文" class="headerlink" title="HTTP报文"></a>HTTP报文</h2><p><code>start https://matemaster.cn</code></p>
+<h2 id="状态码"><a href="#状态码" class="headerlink" title="状态码"></a>状态码</h2><p><code>2xx</code>：正常</p>
+<ul>
+<li><strong>200 OK</strong>：浏览器请求被服务器正常返回</li>
+<li><strong>204 No Content</strong>：请求正常响应，但是没有资源返回</li>
+<li><strong>206 Partial Content</strong>：请求正常响应，返回需要的一部分资源</li>
+</ul>
+<p><code>3xx</code>：重定向</p>
+<ul>
+<li><strong>301 Moved Permaently</strong>：永久重定向</li>
+<li><strong>302 Found</strong>：临时重定向</li>
+<li><strong>303 See Other</strong></li>
+<li><strong>304 Not Modified</strong>：资源找到，但请求不满足条件</li>
+<li><strong>307 Temporary Redirect</strong></li>
+</ul>
+<p><code>4xx</code>：客户端错误</p>
+<ul>
+<li><strong>400 Bad Request</strong>：客户端请求存在语法错误</li>
+<li><strong>401 Unauthorized</strong>：服务器需要验证客户端身份</li>
+<li><strong>403 Forbidden</strong>：不允许请求该资源</li>
+<li><strong>404 Not Found</strong>：服务器不存在请求的资源</li>
+</ul>
+<p><code>5xx</code>：服务器错误</p>
+<ul>
+<li><strong>500 Internal Server Error</strong>：服务器执行请求错误</li>
+<li><strong>503 Service Unavailable</strong>：服务器繁忙</li>
+</ul>
+<h2 id="cookie"><a href="#cookie" class="headerlink" title="cookie"></a>cookie</h2><img src="https://cdn.jsdelivr.net/gh/matemaster9/imgs-masterstudio/imgs/20210329191736.jpg" style="width:80%;border:solid">
+
+<h2 id="代理服务器"><a href="#代理服务器" class="headerlink" title="代理服务器"></a>代理服务器</h2><img src="https://cdn.jsdelivr.net/gh/matemaster9/imgs-masterstudio/imgs/20210329184233.jpg" style="width:80% ;border:solid;">
+
+<h2 id="HTTP报文"><a href="#HTTP报文" class="headerlink" title="HTTP报文"></a>HTTP报文</h2><p><code>start https://matemaster.cn</code></p>
 <img src="https://cdn.jsdelivr.net/gh/matemaster9/imgs-masterstudio/imgs/20210329165927.jpg" style="width:80%;border:solid">
 
 <h1 id="SMTP"><a href="#SMTP" class="headerlink" title="SMTP"></a>SMTP</h1><p>国内常见的邮件服务商</p>
@@ -544,7 +574,7 @@ This is main content of mail message!
 
 <img src="https://cdn.jsdelivr.net/gh/matemaster9/imgs-masterstudio/imgs/20210329142131.jpg" style="width:80%; border:solid ">
 
-<h2 id="基于python的邮件发送"><a href="#基于python的邮件发送" class="headerlink" title="基于python的邮件发送"></a>基于python的邮件发送</h2><p>这里暂时不支持附近传送，因为没有导入包</p>
+<h2 id="基于python的邮件发送"><a href="#基于python的邮件发送" class="headerlink" title="基于python的邮件发送"></a>基于python的邮件发送</h2><p>这里暂时不支持附件传送，因为没有导入包</p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> smtplib
 <span class="token keyword">from</span> email<span class="token punctuation">.</span>mime<span class="token punctuation">.</span>text <span class="token keyword">import</span> MIMEText
 <span class="token keyword">from</span> email<span class="token punctuation">.</span>header <span class="token keyword">import</span> header
@@ -1548,7 +1578,7 @@ alibaba.com    nameserver = ns1.alibabadns.com.<span aria-hidden="true" class="l
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">31.8k</span>&nbsp;字
+                class="white-color">32k</span>&nbsp;字
             
             
             
