@@ -29,9 +29,9 @@
 
     <script src="https://cdn.jsdelivr.net/gh/matemaster9/source@2.0/matery-libs/js/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 5.4.0">
+<meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="MasterStudio" type="application/atom+xml">
+
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-<link rel="alternate" href="/atom.xml" title="MasterStudio" type="application/atom+xml">
 </head>
 
 
@@ -431,14 +431,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    2.7k
+                    3.4k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    11 分
+                    15 分
                 </div>
                 
 
@@ -528,6 +528,113 @@ http://user:pass@www.server.com:80/dir/index.htm?uid=1#ch1
 
 <h2 id="HTTP报文"><a href="#HTTP报文" class="headerlink" title="HTTP报文"></a>HTTP报文</h2><p><code>start https://matemaster.cn</code></p>
 <img src="https://cdn.jsdelivr.net/gh/matemaster9/imgs-masterstudio/imgs/20210329165927.jpg" style="width:80%;border:solid">
+
+
+
+<p>简单的<code>Wireshark抓包</code></p>
+<p><code>GET /wireshark-labs/HTTP-wireshark-file1.html HTTP/1.1</code>请求报文：单行的简单报文</p>
+<pre class="line-numbers language-wireshark" data-language="wireshark"><code class="language-wireshark">Hypertext Transfer Protocol
+    GET /wireshark-labs/HTTP-wireshark-file1.html HTTP/1.1
+        [Expert Info (Chat/Sequence): GET /wireshark-labs/HTTP-wireshark-file1.html HTTP/1.1]
+            [GET /wireshark-labs/HTTP-wireshark-file1.html HTTP/1.1]
+            [Severity level: Chat]
+            [Group: Sequence]
+        Request Method: GET
+        Request URI: /wireshark-labs/HTTP-wireshark-file1.html
+        Request Version: HTTP/1.1
+    Host: gaia.cs.umass.edu
+    Connection: keep-alive
+    Upgrade-Insecure-Requests: 1
+    User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.121 Safari/537.36 HBPC/11.0.3.301
+    Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+    Accept-Encoding: gzip, deflate
+    Accept-Language: zh-CN,zh;q=0.9
+    [Full request URI: http://gaia.cs.umass.edu/wireshark-labs/HTTP-wireshark-file1.html]
+    [HTTP request 1/2]
+    [Response in frame: 1037]
+    [Next request in frame: 1039]<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><code>HTTP/1.1 200 OK (text/html)</code>响应报文</p>
+<pre class="line-numbers language-wireshark" data-language="wireshark"><code class="language-wireshark">Hypertext Transfer Protocol
+    HTTP/1.1 200 OK
+        [Expert Info (Chat/Sequence): HTTP/1.1 200 OK]
+            [HTTP/1.1 200 OK]
+            [Severity level: Chat]
+            [Group: Sequence]
+        Response Version: HTTP/1.1
+        Status Code: 200
+        [Status Code Description: OK]
+        Response Phrase: OK
+    Date: Mon, 29 Mar 2021 11:28:02 GMT
+    Server: Apache/2.4.6 (CentOS) OpenSSL/1.0.2k-fips PHP/7.4.14 mod_perl/2.0.11 Perl/v5.16.3
+    Last-Modified: Mon, 29 Mar 2021 05:59:01 GMT
+    ETag: "80-5bea6940d9e00"
+    Accept-Ranges: bytes
+    Content-Length: 128
+        [Content length: 128]
+    Keep-Alive: timeout=5, max=100
+    Connection: Keep-Alive
+    Content-Type: text/html; charset=UTF-8
+    [HTTP response 1/2]
+    [Time since request: 0.270377000 seconds]
+    [Request in frame: 1033]
+    [Next request in frame: 1039]
+    [Next response in frame: 1040]
+    [Request URI: http://gaia.cs.umass.edu/wireshark-labs/HTTP-wireshark-file1.html]
+    File Data: 128 bytes<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>删除缓存后的第二次访问，获取file2.html</p>
+<p><code>GET /wireshark-labs/HTTP-wireshark-file2.html HTTP/1.1</code>：多行文本</p>
+<pre class="line-numbers language-wireshark" data-language="wireshark"><code class="language-wireshark">Hypertext Transfer Protocol
+    GET /wireshark-labs/HTTP-wireshark-file2.html HTTP/1.1
+        [Expert Info (Chat/Sequence): GET /wireshark-labs/HTTP-wireshark-file2.html HTTP/1.1]
+            [GET /wireshark-labs/HTTP-wireshark-file2.html HTTP/1.1]
+            [Severity level: Chat]
+            [Group: Sequence]
+        Request Method: GET
+        Request URI: /wireshark-labs/HTTP-wireshark-file2.html
+        Request Version: HTTP/1.1
+    Host: gaia.cs.umass.edu
+    Connection: keep-alive
+    Upgrade-Insecure-Requests: 1
+    User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.121 Safari/537.36 HBPC/11.0.3.301
+    Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+    Accept-Encoding: gzip, deflate
+    Accept-Language: zh-CN,zh;q=0.9
+    [Full request URI: http://gaia.cs.umass.edu/wireshark-labs/HTTP-wireshark-file2.html]
+    [HTTP request 1/1]
+    [Response in frame: 142]<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><code>HTTP/1.1 200 OK (text/html)</code>响应报文</p>
+<pre class="line-numbers language-wireshark" data-language="wireshark"><code class="language-wireshark">Hypertext Transfer Protocol
+    HTTP/1.1 200 OK
+        [Expert Info (Chat/Sequence): HTTP/1.1 200 OK]
+            [HTTP/1.1 200 OK]
+            [Severity level: Chat]
+            [Group: Sequence]
+        Response Version: HTTP/1.1
+        Status Code: 200
+        [Status Code Description: OK]
+        Response Phrase: OK
+    Date: Mon, 29 Mar 2021 11:48:18 GMT
+    Server: Apache/2.4.6 (CentOS) OpenSSL/1.0.2k-fips PHP/7.4.14 mod_perl/2.0.11 Perl/v5.16.3
+    Last-Modified: Mon, 29 Mar 2021 05:59:01 GMT
+    ETag: "173-5bea6940d9630"
+    Accept-Ranges: bytes
+    Content-Length: 371
+        [Content length: 371]
+    Keep-Alive: timeout=5, max=100
+    Connection: Keep-Alive
+    Content-Type: text/html; charset=UTF-8
+    [HTTP response 1/1]
+    [Time since request: 0.275678000 seconds]
+    [Request in frame: 140]
+    [Request URI: http://gaia.cs.umass.edu/wireshark-labs/HTTP-wireshark-file2.html]
+    File Data: 371 bytes<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+
 
 <h1 id="SMTP"><a href="#SMTP" class="headerlink" title="SMTP"></a>SMTP</h1><p>国内常见的邮件服务商</p>
 <pre class="line-numbers language-http" data-language="http"><code class="language-http">smtp.qq.com
@@ -1578,7 +1685,7 @@ alibaba.com    nameserver = ns1.alibabadns.com.<span aria-hidden="true" class="l
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">32k</span>&nbsp;字
+                class="white-color">32.7k</span>&nbsp;字
             
             
             
