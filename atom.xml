@@ -6,7 +6,7 @@
   <link href="https://www.matemaster.cn/atom.xml" rel="self"/>
   
   <link href="https://www.matemaster.cn/"/>
-  <updated>2021-03-28T11:51:27.281Z</updated>
+  <updated>2021-03-29T09:21:21.718Z</updated>
   <id>https://www.matemaster.cn/</id>
   
   <author>
@@ -21,14 +21,14 @@
     <link href="https://www.matemaster.cn/posts/64831.html"/>
     <id>https://www.matemaster.cn/posts/64831.html</id>
     <published>2021-03-27T13:57:26.000Z</published>
-    <updated>2021-03-28T11:51:27.281Z</updated>
+    <updated>2021-03-29T09:21:21.718Z</updated>
     
     
       
       
         
         
-    <summary type="html">&lt;h1 id=&quot;DNS&quot;&gt;&lt;a href=&quot;#DNS&quot; class=&quot;headerlink&quot; title=&quot;DNS&quot;&gt;&lt;/a&gt;DNS&lt;/h1&gt;&lt;h2 id=&quot;DNS基本服务&quot;&gt;&lt;a href=&quot;#DNS基本服务&quot; class=&quot;headerlink&quot;</summary>
+    <summary type="html">&lt;h1 id=&quot;HTTP&quot;&gt;&lt;a href=&quot;#HTTP&quot; class=&quot;headerlink&quot; title=&quot;HTTP&quot;&gt;&lt;/a&gt;HTTP&lt;/h1&gt;&lt;h2 id=&quot;基本知识&quot;&gt;&lt;a href=&quot;#基本知识&quot; class=&quot;headerlink&quot;</summary>
         
       
     
@@ -179,11 +179,11 @@
   </entry>
   
   <entry>
-    <title>线性表——逻辑结构|存储结构|基本操作</title>
+    <title>线性表数据结构</title>
     <link href="https://www.matemaster.cn/posts/55225.html"/>
     <id>https://www.matemaster.cn/posts/55225.html</id>
     <published>2021-03-22T01:23:50.000Z</published>
-    <updated>2021-03-28T11:40:20.069Z</updated>
+    <updated>2021-03-29T09:33:39.525Z</updated>
     
     
       

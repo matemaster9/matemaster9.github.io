@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="线性表——逻辑结构|存储结构|基本操作, MasterStudio">
+    <meta name="keywords" content="线性表数据结构, MasterStudio">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>线性表——逻辑结构|存储结构|基本操作 | MasterStudio</title>
+    <title>线性表数据结构 | MasterStudio</title>
     <link rel="icon" type="image/png" href="/bg.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -274,7 +274,7 @@
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">线性表——逻辑结构|存储结构|基本操作</h1>
+                    <h1 class="description center-align post-title">线性表数据结构</h1>
                 </div>
             </div>
         </div>
@@ -428,14 +428,14 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2021-03-28
+                    2021-03-29
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    2k
+                    2.2k
                 </div>
                 
 
@@ -723,7 +723,7 @@
 
 <p><b style="color: chocolate;">链表存储</b></p>
 <p>算法一致，好处就是链表不需要再单独创建一个链表，只要遵循上面的算法进行结果集的链接！看下图</p>
-<img src="https://cdn.jsdelivr.net/gh/matemaster9/image-one/images/20210324232448.jpg" style="zoom:50%;">
+<img src="https://cdn.jsdelivr.net/gh/matemaster9/image-one/images/20210324232448.jpg" style="width:80%;">
 
 <h3 id="图书管理系统案例"><a href="#图书管理系统案例" class="headerlink" title="图书管理系统案例"></a>图书管理系统案例</h3><p>一般涉及到一个图书管理关系表 <strong>Book (IBSN,name,price)</strong></p>
 <p>此时数组和链表存储的数据对象将是抽象数据类型（ADT） Book</p>
@@ -1014,6 +1014,32 @@ Status InsertList_Sq(SqList &amp;L,int i,ElemType e) {
     L.length--;
     return OK;
 }<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<h2 id="链表实现"><a href="#链表实现" class="headerlink" title="链表实现"></a>链表实现</h2><pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">typedef struct Lnode {
+    ElemType data;
+    struct Lnode *next;
+}Lnode, *LinkList;
+
+typedef struct {
+    int score;
+    cha[] name;
+}ElemType;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>这里的单链表是带有头结点的链表结构</p>
+<p>初始化空链表的思想：</p>
+<p>1）生成新的结点作为头结点，并且将头指针指向头结点</p>
+<p>2）将头结点的指针域置空（代表当前的链表为空）</p>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">Status InitList_L (LinkList &amp;L) {
+    L = new Lnode;   //等价于 L = (LinkList) malloc(sizeOf(Lnode));
+    L-&gt;next = NULL;
+    return OK;
+}
+
+LinkList L; // 代表不带有头结点的链表结构<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
 
 
                 
@@ -1809,7 +1835,7 @@ Status InsertList_Sq(SqList &amp;L,int i,ElemType e) {
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">30.3k</span>&nbsp;字
+                class="white-color">31.8k</span>&nbsp;字
             
             
             

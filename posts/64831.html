@@ -424,21 +424,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2021-03-28
+                    2021-03-29
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.2k
+                    2.5k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    5 分
+                    10 分
                 </div>
                 
 
@@ -467,7 +467,112 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="DNS"><a href="#DNS" class="headerlink" title="DNS"></a>DNS</h1><h2 id="DNS基本服务"><a href="#DNS基本服务" class="headerlink" title="DNS基本服务"></a>DNS基本服务</h2><p><code>DNS</code>提供了域名-&gt;ip的解析服务。主要由：DNS分布式数据库以及使得主机可以查询数据库的应用层协议构成。</p>
+                <h1 id="HTTP"><a href="#HTTP" class="headerlink" title="HTTP"></a>HTTP</h1><h2 id="基本知识"><a href="#基本知识" class="headerlink" title="基本知识"></a>基本知识</h2><p><code>URI</code>和<code>URL</code>的联系</p>
+<pre class="line-numbers language-http" data-language="http"><code class="language-http"><span class="token header-name keyword">mailto:</span> matemaster@163.com
+<span class="token header-name keyword">https:</span>//matemaster.cn/posts/52745.html
+<span class="token header-name keyword">ftp:</span>//ftp.sjtu.edu.cn
+<span class="token header-name keyword">news:</span>comp.infosystem.www.servers.unix
+<span class="token header-name keyword">telnet:</span>//124.70.110.117:443/<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<pre class="line-numbers language-uri" data-language="uri"><code class="language-uri"># 绝对URI格式
+http://user:pass@www.server.com:80/dir/index.htm?uid=1#ch1
+
+# user:pass ：登录信息验证
+# www.server.com ：服务器地址
+# 80 ：端口号
+# dir/index.htm ：带层次的文件路径
+# uid = 1 ：查询字符串
+# ch1 ：片段标识符<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<h2 id="持续性"><a href="#持续性" class="headerlink" title="持续性"></a>持续性</h2><p>非持续性连接：假设现在访问<code>https://matemaster.cn/posts/52745.html</code>页面，此页面大概含有60个资源对象</p>
+<p>1）<code>华为浏览器</code>的http进程从<code>port:80</code>端口发起一个与 <code>mateamster.cn</code>的<code>TCP连接</code></p>
+<p>2）华为浏览器客户端发出一个<code>https://matemaster.cn/posts/52745.html</code>请求报文</p>
+<p>3）<code>Nginx</code>接受请求，从后端数据库获取请求资源封装成响应报文，并返回该响应报文</p>
+<p>4）华为浏览器发起tcp连接关闭的请求，Nginx回应，并关闭连接。</p>
+<p>5）华为浏览器分析<code>52745.html</code>的引用，并根据引用请求资源，重复上面四步，直至资源请求完毕！</p>
+<p>也就是说：此次获取页面资源，大概需要<code>60个tcp连接</code></p>
+<p>持续性连接：则是在上面的第四步发生不同，</p>
+<h2 id="状态码"><a href="#状态码" class="headerlink" title="状态码"></a>状态码</h2><h2 id="cookie"><a href="#cookie" class="headerlink" title="cookie"></a>cookie</h2><h2 id="代理服务器"><a href="#代理服务器" class="headerlink" title="代理服务器"></a>代理服务器</h2><h2 id="HTTP报文"><a href="#HTTP报文" class="headerlink" title="HTTP报文"></a>HTTP报文</h2><p><code>start https://matemaster.cn</code></p>
+<img src="https://cdn.jsdelivr.net/gh/matemaster9/imgs-masterstudio/imgs/20210329165927.jpg" style="width:80%;border:solid">
+
+<h1 id="SMTP"><a href="#SMTP" class="headerlink" title="SMTP"></a>SMTP</h1><p>国内常见的邮件服务商</p>
+<pre class="line-numbers language-http" data-language="http"><code class="language-http">smtp.qq.com
+smtp.163.com
+smtp.aliyun.com
+smtp.sina.com
+//关于国际知名的邮件，因为网络限制就不介绍了，国内的几个已经够用<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="mail"><a href="#mail" class="headerlink" title="mail"></a>mail</h2><p>邮件系统的组成：<code>user-agent</code>、<code>mail server</code>、<code>SMTP</code></p>
+<p>邮件的发送过程：以<code>matemaster@163.com</code>向<code>2099625007@qq.com</code>为例</p>
+<p>1）首先，matemaster本地的用户代理，会将含有发送方和接收方信息，以及邮件主体信息的邮件报文<code>(SMTP)</code>发送给对应的网易邮件服务器，并且将报文存在服务器的报文队列当中</p>
+<p>2）网易邮件服务器，将根据接收方信息，利用<code>tcp</code>连接将邮件报文发送给腾讯邮件服务器<code>(SMTP)</code></p>
+<p>3）腾讯邮件服务器在收到邮件报文之后，主动将报文推送给对应接收方的用户代理<code>(SMTP)</code></p>
+<p><code>SMTP</code>与<code>HTTP</code>之间区别在于：SMTP属于push协议，不可以主动从服务器端获取邮件，只能等待服务器推送！HTTP属于pull协议，可以主动向服务器请求获取资源！</p>
+<p><strong>Wireshark抓包</strong>看出<code>SMTP</code>报文信息：（就是<code>matemaster@163.com-&gt;user-agent</code>与网易邮件服务器的对话）👇</p>
+<img src="https://cdn.jsdelivr.net/gh/matemaster9/imgs-masterstudio/imgs/20210329150920.jpg" style="width:80%;border:solid ;">
+
+<h2 id="Telnet"><a href="#Telnet" class="headerlink" title="Telnet"></a>Telnet</h2><p>基于<code>telnet</code>命令可以使用SMTP协议向指定用户发送信息，完整演示效果，可以参看下图👇</p>
+<pre class="line-numbers language-none"><code class="language-none"># telnet 服务器域名 端口号
+telnet smtp.163.com 25
+
+# 连接服务器成功之后，可以使用HELO指定向服务器发出指令
+helo 163.com
+
+# 登录邮箱用户
+auth login 
+
+# 334 username:
+# 334 password:
+
+# 登录成功后，向指定的邮箱发送消息
+mail from: &lt;matemaster@163.com&gt;
+rcpt to: &lt;35679808@qq.com&gt;
+
+data # 邮件报文内容
+from: matemaster
+to: 35679808@qq.com
+subject: mail title
+
+This is main content of mail message!
+.
+
+# send successful!<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<img src="https://cdn.jsdelivr.net/gh/matemaster9/imgs-masterstudio/imgs/20210329142131.jpg" style="width:80%; border:solid ">
+
+<h2 id="基于python的邮件发送"><a href="#基于python的邮件发送" class="headerlink" title="基于python的邮件发送"></a>基于python的邮件发送</h2><p>这里暂时不支持附近传送，因为没有导入包</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> smtplib
+<span class="token keyword">from</span> email<span class="token punctuation">.</span>mime<span class="token punctuation">.</span>text <span class="token keyword">import</span> MIMEText
+<span class="token keyword">from</span> email<span class="token punctuation">.</span>header <span class="token keyword">import</span> header
+
+<span class="token comment"># SMTP需要邮件服务商授权，获取一个授权码，自行百度</span>
+auth_passport <span class="token operator">=</span> <span class="token string">"邮件服务商的授权码"</span>
+
+<span class="token comment"># 建立与qq服务商的SMTP联系</span>
+server <span class="token operator">=</span> smtplib<span class="token punctuation">.</span>SMTP<span class="token punctuation">(</span><span class="token punctuation">)</span>
+server<span class="token punctuation">.</span>connect<span class="token punctuation">(</span><span class="token string">"smtp.qq.com"</span><span class="token punctuation">)</span>
+server<span class="token punctuation">.</span>login<span class="token punctuation">(</span><span class="token string">"35679808@qq.com"</span><span class="token punctuation">,</span>auth_passport<span class="token punctuation">)</span>
+
+<span class="token comment"># 邮件参数：发送者、接收者、邮件标题</span>
+sendedr <span class="token operator">=</span> <span class="token string">'35679808@qq.com'</span>
+receiver <span class="token operator">=</span> <span class="token string">'matemaster@163.com'</span>
+subject <span class="token operator">=</span> <span class="token string">'Python SMTP 邮件发送测试代码'</span>
+
+<span class="token comment"># 发送邮件</span>
+message <span class="token operator">=</span> MIMEText<span class="token punctuation">(</span><span class="token string">'Python send email test!'</span><span class="token punctuation">,</span><span class="token string">'plain'</span><span class="token punctuation">,</span><span class="token string">'utf-8'</span><span class="token punctuation">)</span>
+message<span class="token punctuation">[</span><span class="token string">'Subject'</span><span class="token punctuation">]</span> <span class="token operator">=</span> header<span class="token punctuation">(</span>subject<span class="token punctuation">,</span><span class="token string">'utf-8'</span><span class="token punctuation">)</span>
+server<span class="token punctuation">.</span>sendmail<span class="token punctuation">(</span>sender<span class="token punctuation">,</span>receiver<span class="token punctuation">,</span>message<span class="token punctuation">.</span>as_string<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+<span class="token comment"># 关闭与服务器的连接</span>
+server<span class="token punctuation">.</span>quit<span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<h1 id="DNS"><a href="#DNS" class="headerlink" title="DNS"></a>DNS</h1><h2 id="DNS基本服务"><a href="#DNS基本服务" class="headerlink" title="DNS基本服务"></a>DNS基本服务</h2><p><code>DNS</code>提供了域名-&gt;ip的解析服务。主要由：DNS分布式数据库以及使得主机可以查询数据库的应用层协议构成。</p>
 <p><code>DNS</code>建立在<code>UDP</code>协议之上进行网络传输，互联网端口<code>port:53</code></p>
 <p>举个栗子<span class="github-emoji"><span>✌</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/270c.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span></p>
 <p>从应用层解释：本地主机<code>(@localhost)</code>向服务器请求<code>www.matemaster.cn/index.html</code>资源时，<code>DNS</code>的操作过程</p>
@@ -481,13 +586,13 @@
 <p><code>负载分配</code>：简单理解：就是一个IP地址集合与同一个规范主机名相联系！（可以参考下面在Ubuntu系统下的nslookup alibaba.com）。从那里看出，一个<strong>alibaba.com</strong>对应了4个IP地址</p>
 <h2 id="DNS分布式数据库"><a href="#DNS分布式数据库" class="headerlink" title="DNS分布式数据库"></a>DNS分布式数据库</h2><p>DNS采取的是：<code>分布式、层次数据库</code>。层次：root、TLD、权威</p>
 <p>看看例图<span class="github-emoji"><span>✌</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/270c.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span></p>
-<img src="https://cdn.jsdelivr.net/gh/matemaster9/imgs-masterstudio/imgs/20210328145741.jpg" style="width:80%">
+<img src="https://cdn.jsdelivr.net/gh/matemaster9/imgs-masterstudio/imgs/20210328145741.jpg" style="width:80%;border:solid">
 
 <p><code>root server</code>：提供了对应顶级域服务器的<code>ip</code></p>
 <p><code>TLD</code>：顶级域服务器提供了存储了<code>主机ip</code>的权威服务器的<code>ip</code></p>
 <p><code>权威服务器</code>：存储了<code>对应主机名的ip地址</code></p>
 <p><code>本地DNS server</code>：虽然不属于分布式层次结构中的数据库，但是在DNS中起重要作用。与DNS缓存有关！</p>
-<h3 id="分布式数据库的工作过程"><a href="#分布式数据库的工作过程" class="headerlink" title="分布式数据库的工作过程"></a>分布式数据库的工作过程</h3><img src="https://cdn.jsdelivr.net/gh/matemaster9/imgs-masterstudio/imgs/20210328151824.jpg" style="width:80%">
+<h3 id="分布式数据库的工作过程"><a href="#分布式数据库的工作过程" class="headerlink" title="分布式数据库的工作过程"></a>分布式数据库的工作过程</h3><img src="https://cdn.jsdelivr.net/gh/matemaster9/imgs-masterstudio/imgs/20210328151824.jpg" style="width:80%;border:solid red">
 
 <p>在这里<code>alibaba.com</code>服务器的<code>ip</code>采取了负载分配的方式，我这里的对应ali的DNS服务器，以及ip如下<span class="github-emoji"><span>👇</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/1f447.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span></p>
 <pre class="line-numbers language-ubuntu" data-language="ubuntu"><code class="language-ubuntu">matemaster@matemaster:~$ nslookup alibaba.com
@@ -524,8 +629,9 @@ alibaba.com    nameserver = ns1.alibabadns.com.<span aria-hidden="true" class="l
 <p><code>A(alibaba.com,203.119.215.82,A,100)</code></p>
 <h2 id="DNS报文"><a href="#DNS报文" class="headerlink" title="DNS报文"></a>DNS报文</h2><img src="https://cdn.jsdelivr.net/gh/matemaster9/imgs-masterstudio/imgs/20210328155528.jfif" style="width:80%">
 
+<h3 id="Wireshark抓包"><a href="#Wireshark抓包" class="headerlink" title="Wireshark抓包"></a>Wireshark抓包</h3><p>首先说下，这里的抓包操作，借鉴了计算机网络自顶向下方法：DNS实验。关于完整的实验文档我放在了自己的仓库当中，如果有需要的可以自己<code>git clone</code>。👉 <a target="_blank" rel="noopener" href="https://gitee.com/matemaster/master-depository/tree/master/2021-03-28/wireshark%E5%AE%9E%E9%AA%8C%E6%96%87%E6%A1%A3-en">Wireshark实验报告文档</a></p>
 <p>下面是我利用<strong>Wireshark</strong>抓取本地主机访问<code>matemaster.cn</code>主机的<code>DNS请求报文</code></p>
-<img src="https://cdn.jsdelivr.net/gh/matemaster9/imgs-masterstudio/imgs/20210328195018.jpg" style="width:80%">
+<img src="https://cdn.jsdelivr.net/gh/matemaster9/imgs-masterstudio/imgs/20210328195018.jpg" style="width:80%;border:solid">
 
 <pre class="line-numbers language-wireshark" data-language="wireshark"><code class="language-wireshark">Domain Name System (query)
     Transaction ID: 0x49f1
@@ -550,7 +656,7 @@ alibaba.com    nameserver = ns1.alibabadns.com.<span aria-hidden="true" class="l
     [Response In: 498]<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>相对于的来自<code>DNS server</code>的响应报文</p>
-<img src="https://cdn.jsdelivr.net/gh/matemaster9/imgs-masterstudio/imgs/20210328195022.jpg" style="width:80%">
+<img src="https://cdn.jsdelivr.net/gh/matemaster9/imgs-masterstudio/imgs/20210328195022.jpg" style="width:80%;border:solid">
 
 <pre class="line-numbers language-wireshark" data-language="wireshark"><code class="language-wireshark">Domain Name System (response)
     Transaction ID: 0x49f1
@@ -571,11 +677,11 @@ alibaba.com    nameserver = ns1.alibabadns.com.<span aria-hidden="true" class="l
     Additional RRs: 0
     Queries
         matemaster.cn: type A, class IN
-            Name: matemaster.cn
+            Name: matemaster.cn        # 查询名
             [Name Length: 13]
             [Label Count: 2]
-            Type: A (Host Address) (1)
-            Class: IN (0x0001)
+            Type: A (Host Address) (1) # 查询类型
+            Class: IN (0x0001)         # 查询类
     Answers
         matemaster.cn: type A, class IN, addr 124.70.110.117
             Name: matemaster.cn
@@ -587,6 +693,84 @@ alibaba.com    nameserver = ns1.alibabadns.com.<span aria-hidden="true" class="l
     [Request In: 495]
     [Time: 0.005763000 seconds]<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
+
+
+<h3 id="报文参数"><a href="#报文参数" class="headerlink" title="报文参数"></a>报文参数</h3><p><code>Transaction ID</code>：事务ID，只是单纯的2B，16bit的数据，用于标识报文的唯一性</p>
+<p><code>Flags</code>：</p>
+<ul>
+<li><p><strong>QR(Response)</strong> <code>1bit</code>：标记是请求还是响应报文</p>
+<ul>
+<li>0：请求</li>
+<li>1：响应</li>
+</ul>
+</li>
+<li><p><strong>Opcode</strong> <code>4bit</code>：</p>
+<ul>
+<li>0：标准查询</li>
+<li>1：反向查询</li>
+<li>2：服务器状态请求</li>
+</ul>
+</li>
+<li><p><strong>Authoritative</strong> <code>1bit</code>：标记发送此响应报文的服务器是否为权威服务器</p>
+<ul>
+<li>0：</li>
+<li>1：是权威服务器</li>
+</ul>
+</li>
+<li><p><strong>Truncated</strong> <code>1bit</code>：数据是否被截断，在数据超过512B时自动截断，也就是只能传输512B</p>
+<ul>
+<li>0：</li>
+<li>1：</li>
+</ul>
+</li>
+<li><p><strong>Recursion desired</strong> <code>1bit</code>：是递归查询还是迭代查询</p>
+<ul>
+<li>0：</li>
+<li>1：</li>
+</ul>
+</li>
+<li><p><strong>Recursion available</strong> <code>1bit</code>：只出现在响应报文，表明服务器是否支持递归查询</p>
+<ul>
+<li>0：</li>
+<li>1：</li>
+</ul>
+</li>
+<li><p><strong>Z</strong> <code>1bit</code>：保留字段只能为0</p>
+</li>
+<li><p><strong>Answer authenticated</strong> <code>1bit</code>：服务器授权验证</p>
+<ul>
+<li>0：</li>
+<li>1：</li>
+</ul>
+</li>
+<li><p><strong>Non-authenticated data</strong> <code>1bit</code>：保留字段，只能为0</p>
+</li>
+<li><p><strong>Reply code</strong> <code>4bit</code></p>
+<ul>
+<li>0：无差错 </li>
+<li>1：格式差错</li>
+<li>2：问题在域名服务器上 </li>
+<li>3：域参照问题 </li>
+<li>4：查询类型不支持 </li>
+<li>5：在管理上被禁止 </li>
+<li>6 ~ 15 保留</li>
+</ul>
+</li>
+</ul>
+<p><code>Queries</code>：</p>
+<ul>
+<li>查询名：<strong>域名</strong>-<code>matemaster.cn</code>或者 <strong>IP地址</strong></li>
+<li>查询类型：（比较多，这里介绍一下比较常见的）<ul>
+<li>A（1）：IPV4地址</li>
+<li>NS（2）：域名服务器</li>
+<li>CNAME（5）：规范主机名的别名</li>
+<li>MX（15）：</li>
+<li>AAAA（28）：IPV6地址</li>
+<li>PTR（12）：IP转域名</li>
+</ul>
+</li>
+<li>查询类：IN-<code>Internet</code></li>
+</ul>
 
                 
             </div>
@@ -1106,7 +1290,7 @@ alibaba.com    nameserver = ns1.alibabadns.com.<span aria-hidden="true" class="l
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            应用层协议及HTTP协议详解
+                            Wireshark解析应用层协议及HTTP详解
                         
                     </div>
                     <div class="publish-info">
@@ -1364,7 +1548,7 @@ alibaba.com    nameserver = ns1.alibabadns.com.<span aria-hidden="true" class="l
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">30.3k</span>&nbsp;字
+                class="white-color">31.8k</span>&nbsp;字
             
             
             
