@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="线性表数据结构, MasterStudio">
+    <meta name="keywords" content="解析线性表结构, MasterStudio">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>线性表数据结构 | MasterStudio</title>
+    <title>解析线性表结构 | MasterStudio</title>
     <link rel="icon" type="image/png" href="/bg.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -29,9 +29,9 @@
 
     <script src="https://cdn.jsdelivr.net/gh/matemaster9/source@2.0/matery-libs/js/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="MasterStudio" type="application/atom+xml">
-
+<meta name="generator" content="Hexo 5.4.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+<link rel="alternate" href="/atom.xml" title="MasterStudio" type="application/atom+xml">
 </head>
 
 
@@ -256,7 +256,7 @@
 <script src="https://cdn.jsdelivr.net/gh/matemaster9/source@2.0/matery-libs/js/crypto-js.min.js"></script>
 <script>
     (function() {
-        let pwd = 'f9c7af7ebcbf098b9f5f37361d1b168bb2e5b98d930ceef0f055377a8c94db61';
+        let pwd = '';
         if (pwd && pwd.length > 0) {
             if (pwd !== CryptoJS.SHA256(prompt('请输入访问本文章的密码')).toString(CryptoJS.enc.Hex)) {
                 alert('密码错误，将返回主页！');
@@ -274,7 +274,7 @@
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">线性表数据结构</h1>
+                    <h1 class="description center-align post-title">解析线性表结构</h1>
                 </div>
             </div>
         </div>
@@ -428,21 +428,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2021-03-29
+                    2021-03-30
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    2.2k
+                    2.9k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    9 分
+                    13 分
                 </div>
                 
 
@@ -1039,7 +1039,140 @@ typedef struct {
 
 LinkList L; // 代表不带有头结点的链表结构<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
+<p>我们对于带头结点的链表是以这种方式判空👇</p>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">int ListEmpty(LinkList L) {
+    if(L-&gt;next == null) 
+        return 1;
+    else return 0;
+}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
+<p>对于单链表的销毁，我们采取将从头结点的释放开始！</p>
+<p>利用辅助指针p，进行临时存放待删除结点的地址，不断进行头指针的后移，直至链表结点不在存在</p>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">Status DestroyList_L(LinkList &amp;L) {
+    LinkList p;
+    while(L) {
+        p = L;
+        L = L-&gt;next;
+        delete p;
+    }
+}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>对于清空单链表来说，我们也是释放头结点之后的所有结点，并且将头结点的next域置空！使链表恢复最初的空链表状态！（释放头结点后面的所有结点）</p>
+<p>1）首先将p指向首元结点</p>
+<p>2）将q指向p的后继节点</p>
+<p>3）释放p</p>
+<p>4）将p指向q</p>
+<p>5）q指向q的后继节点</p>
+<p>6）重复 3、4、5直至p结点为空</p>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">Status ClearList_L(LinkList L) {
+    LinkList p,q;
+    p = L-&gt;next;
+    /*
+    while(p) {
+    	q = p-&gt;next;
+    	delete p; 
+    	p = q;
+    }
+    */
+    q = p-&gt;next;      
+    while(p) {
+        delete p;
+        p = q;
+        q = q-&gt;next;        
+    }
+    L-&gt;next = null;
+    return OK;
+}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>如何求取链表的表长（含有多少个元素）</p>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">int GetLength_L(LinkList L) {
+    LinkList p = L-&gt;next;
+    int len;
+    while(p) {
+        len++;
+        p = p-&gt;next;
+    }
+    return len;
+}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>获取单链表中指定位置的元素（取第i个值）</p>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">Status GetElem_L(LinkList L,int i,ElemType &amp;e) {
+    LinkList p = L-&gt;next;
+    j = 1;
+    while(p&amp;&amp;j&lt;i) {
+        p = p-&gt;next;
+        j++;
+    }
+    if(!P||j&gt;i) return ERROR;   //条件判断：确定没有检索到第i个值、i的合理性(i&gt;0)
+    e = p-&gt;data;
+    return OK;
+}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>查找链表中指定元素的位置</p>
+<p>1）从首元结点开始，与元素e比较</p>
+<p>2）若相等则返回元素的位置|地址</p>
+<p>3）若查找所有元素都不相等则返回0|null</p>
+<ul>
+<li>返回位置的算法</li>
+</ul>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">int LocateElem_L(LinkList L,ElemType e) {
+    LinkList p = L-&gt;next;
+    i = 1;
+    while(p&amp;&amp;p-&gt;data != e) {
+        p = p-&gt;next;
+        i++;
+    }
+    if(p == null) return 0;
+    return i;
+}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<ul>
+<li>返回地址的算法</li>
+</ul>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">Lnode * LocateElem_L(LinkList L,ElemType e) {
+    p = L-&gt;next;
+    while(p&amp;&amp;p-&gt;data!=e)
+        p = p-&gt;next;
+    return p;
+}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>链表的优势操作</p>
+<p>在第i个元素前面插入结点e</p>
+<p>1）找出指向第i-1个结点的指针</p>
+<p>2）生成结点e</p>
+<p>3）将结点e插入到i前面</p>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">Status InsertList_L(LinkList &amp;L,int i,ElemType e) {
+    p = L;
+    j = 0;
+    while(p&amp;&amp;j&lt;i-1) {
+        p = p-&gt;next;
+        j++
+    }
+    if(!p||j&gt;i-1) return ERROR;
+    s = new Lnode;
+    s-&gt;data = e;
+    s-&gt;next = p-&gt;next;
+    p = s;
+    L.length++;
+    return OK;
+}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>删除第i个元素</p>
+<p>1）找出指向第i-1个结点的指针</p>
+<p>2）删除结点i</p>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">Status DeleteList_L(LinkList &amp;L,int i,ElemType &amp;e) {
+    p = L;
+    j = 0;
+    while(p-&gt;next&amp;&amp;j&lt;i-1) {
+        p = p-&gt;next;
+        j++
+    }
+    if(!(p-&gt;next)||j&gt;i-1) return ERROR;
+    p-&gt;next = p-&gt;next-&gt;next;
+    e = p-&gt;data;
+    delete p;
+    return OK;
+}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 
                 
@@ -1607,15 +1740,15 @@ LinkList L; // 代表不带有头结点的链表结构<span aria-hidden="true" c
                 <a href="/posts/10300.html">
                     <div class="card-image">
                         
-                        <img src="https://cdn.jsdelivr.net/gh/matemaster9/image-one/images/20210321193546.png" class="responsive-img" alt="Query for MySQL">
+                        <img src="https://cdn.jsdelivr.net/gh/matemaster9/image-one/images/20210321193546.png" class="responsive-img" alt="MySQL的高级数据查询">
                         
-                        <span class="card-title">Query for MySQL</span>
+                        <span class="card-title">MySQL的高级数据查询</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            MySQL的数据查询（select系列语句！）
+                            MySQL的数据查询-select
                         
                     </div>
                     <div class="publish-info">
@@ -1835,7 +1968,7 @@ LinkList L; // 代表不带有头结点的链表结构<span aria-hidden="true" c
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">32.7k</span>&nbsp;字
+                class="white-color">33.7k</span>&nbsp;字
             
             
             

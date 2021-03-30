@@ -6,7 +6,7 @@
   <link href="https://www.matemaster.cn/atom.xml" rel="self"/>
   
   <link href="https://www.matemaster.cn/"/>
-  <updated>2021-03-29T11:56:22.640Z</updated>
+  <updated>2021-03-30T00:17:52.431Z</updated>
   <id>https://www.matemaster.cn/</id>
   
   <author>
@@ -17,11 +17,11 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>HTTP协议解析</title>
+    <title>HTTP及应用层协议解析</title>
     <link href="https://www.matemaster.cn/posts/64831.html"/>
     <id>https://www.matemaster.cn/posts/64831.html</id>
     <published>2021-03-27T13:57:26.000Z</published>
-    <updated>2021-03-29T11:56:22.640Z</updated>
+    <updated>2021-03-30T00:17:52.431Z</updated>
     
     
       
@@ -46,7 +46,7 @@
     <link href="https://www.matemaster.cn/posts/52745.html"/>
     <id>https://www.matemaster.cn/posts/52745.html</id>
     <published>2021-03-26T08:59:03.000Z</published>
-    <updated>2021-03-27T06:01:16.438Z</updated>
+    <updated>2021-03-30T00:20:16.655Z</updated>
     
     
       
@@ -67,11 +67,11 @@
   </entry>
   
   <entry>
-    <title>MySQL存储过程和函数</title>
+    <title>MySQL的存储程序</title>
     <link href="https://www.matemaster.cn/posts/55362.html"/>
     <id>https://www.matemaster.cn/posts/55362.html</id>
     <published>2021-03-25T06:38:49.000Z</published>
-    <updated>2021-03-27T13:41:53.108Z</updated>
+    <updated>2021-03-30T00:19:24.460Z</updated>
     
     
       
@@ -179,11 +179,11 @@
   </entry>
   
   <entry>
-    <title>线性表数据结构</title>
+    <title>解析线性表结构</title>
     <link href="https://www.matemaster.cn/posts/55225.html"/>
     <id>https://www.matemaster.cn/posts/55225.html</id>
     <published>2021-03-22T01:23:50.000Z</published>
-    <updated>2021-03-29T09:33:39.525Z</updated>
+    <updated>2021-03-30T02:19:02.271Z</updated>
     
     
       
@@ -206,11 +206,11 @@
   </entry>
   
   <entry>
-    <title>Query for MySQL</title>
+    <title>MySQL的高级数据查询</title>
     <link href="https://www.matemaster.cn/posts/10300.html"/>
     <id>https://www.matemaster.cn/posts/10300.html</id>
     <published>2021-03-21T11:36:25.000Z</published>
-    <updated>2021-03-26T01:39:22.292Z</updated>
+    <updated>2021-03-30T00:57:12.833Z</updated>
     
     
       

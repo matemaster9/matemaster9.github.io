@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="HTTP协议解析, MasterStudio">
+    <meta name="keywords" content="HTTP及应用层协议解析, MasterStudio">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>HTTP协议解析 | MasterStudio</title>
+    <title>HTTP及应用层协议解析 | MasterStudio</title>
     <link rel="icon" type="image/png" href="/bg.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -29,9 +29,9 @@
 
     <script src="https://cdn.jsdelivr.net/gh/matemaster9/source@2.0/matery-libs/js/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="MasterStudio" type="application/atom+xml">
-
+<meta name="generator" content="Hexo 5.4.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+<link rel="alternate" href="/atom.xml" title="MasterStudio" type="application/atom+xml">
 </head>
 
 
@@ -274,7 +274,7 @@
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">HTTP协议解析</h1>
+                    <h1 class="description center-align post-title">HTTP及应用层协议解析</h1>
                 </div>
             </div>
         </div>
@@ -424,21 +424,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2021-03-29
+                    2021-03-30
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    3.4k
+                    3.8k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    15 分
+                    17 分
                 </div>
                 
 
@@ -522,9 +522,19 @@ http://user:pass@www.server.com:80/dir/index.htm?uid=1#ch1
 <li><strong>500 Internal Server Error</strong>：服务器执行请求错误</li>
 <li><strong>503 Service Unavailable</strong>：服务器繁忙</li>
 </ul>
-<h2 id="cookie"><a href="#cookie" class="headerlink" title="cookie"></a>cookie</h2><img src="https://cdn.jsdelivr.net/gh/matemaster9/imgs-masterstudio/imgs/20210329191736.jpg" style="width:80%;border:solid">
+<h2 id="cookie"><a href="#cookie" class="headerlink" title="cookie"></a>cookie</h2><p><b style="color: red;">HTTP协议是一种无状态的协议，简而言之就是，服务器不会记录浏览器的访问请求，即使是刚请求的浏览器，服务器依旧视为第一次请求访问！</b>但是<code>Cookie</code>引入，支持了HTTP状态，第一次华为浏览器访问阿里官网，阿里服务器会在响应报文中加入<code>cookie</code>字段，并且在阿里的后端数据库记录该cookie。并且在华为浏览器下一次访问时，进行数据库检索，如果存在cookie记录，那么阿里将会自动记录该浏览器的浏览记录，保持状态！</p>
+<img src="https://cdn.jsdelivr.net/gh/matemaster9/imgs-masterstudio/imgs/20210329191736.jpg" style="width:80%;border:solid">
 
-<h2 id="代理服务器"><a href="#代理服务器" class="headerlink" title="代理服务器"></a>代理服务器</h2><img src="https://cdn.jsdelivr.net/gh/matemaster9/imgs-masterstudio/imgs/20210329184233.jpg" style="width:80% ;border:solid;">
+<h2 id="代理服务器"><a href="#代理服务器" class="headerlink" title="代理服务器"></a>代理服务器</h2><p>代理服务器的作用就是做<code>web缓存</code>。web缓存可以减轻接入英特网的压力，并且加快了客户端的响应速度！</p>
+<p>这里为了保证<code>web缓存有效期</code>，我们的web缓存服务器，会向源服务器发送GET请求，并且在字段中存在<code>If-Modified-Since</code>与<code>Last-Modified</code>做对比，当不一致时说明缓存过期，那么将更新web缓存！</p>
+<pre class="line-numbers language-wireshark" data-language="wireshark"><code class="language-wireshark"># 上一次修改时间
+Last-Modified: Mon, 29 Mar 2021 05:59:01 GMT
+# 假设上一次修改时间
+If-Modified-Since: Mon, 29 Mar 2021 05:59:01 GMT<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<img src="https://cdn.jsdelivr.net/gh/matemaster9/imgs-masterstudio/imgs/20210329184233.jpg" style="width:80% ;border:solid;">
 
 <h2 id="HTTP报文"><a href="#HTTP报文" class="headerlink" title="HTTP报文"></a>HTTP报文</h2><p><code>start https://matemaster.cn</code></p>
 <img src="https://cdn.jsdelivr.net/gh/matemaster9/imgs-masterstudio/imgs/20210329165927.jpg" style="width:80%;border:solid">
@@ -764,6 +774,7 @@ alibaba.com    nameserver = ns1.alibabadns.com.<span aria-hidden="true" class="l
 <p><code>A(ns1.alibabadns.com,198.11.138.254,A,100)</code></p>
 <p>（2）当某个服务器<code>server_ali</code>是<code>alibaba.com</code>的权威服务器，那么<code>server_ali</code>一定含有A记录</p>
 <p><code>A(alibaba.com,203.119.215.82,A,100)</code></p>
+<p><b style="color: hotpink;">比如我在华为云域名服务器注册的域名matemaster.cn，在DNS系统数据库中至少存在两个关于我域名的记录：(matemaster.cn,ns1-huaweiclound-dns.net,NS)、<br>(ns1-huaweiclound-dns.net,198.70.153.255,A)</b></p>
 <h2 id="DNS报文"><a href="#DNS报文" class="headerlink" title="DNS报文"></a>DNS报文</h2><img src="https://cdn.jsdelivr.net/gh/matemaster9/imgs-masterstudio/imgs/20210328155528.jfif" style="width:80%">
 
 <h3 id="Wireshark抓包"><a href="#Wireshark抓包" class="headerlink" title="Wireshark抓包"></a>Wireshark抓包</h3><p>首先说下，这里的抓包操作，借鉴了计算机网络自顶向下方法：DNS实验。关于完整的实验文档我放在了自己的仓库当中，如果有需要的可以自己<code>git clone</code>。👉 <a target="_blank" rel="noopener" href="https://gitee.com/matemaster/master-depository/tree/master/2021-03-28/wireshark%E5%AE%9E%E9%AA%8C%E6%96%87%E6%A1%A3-en">Wireshark实验报告文档</a></p>
@@ -1419,9 +1430,9 @@ alibaba.com    nameserver = ns1.alibabadns.com.<span aria-hidden="true" class="l
                 <a href="/posts/64831.html">
                     <div class="card-image">
                         
-                        <img src="https://cdn.jsdelivr.net/gh/matemaster9/imgs-masterstudio/imgs/20210327215628.jpg" class="responsive-img" alt="HTTP协议解析">
+                        <img src="https://cdn.jsdelivr.net/gh/matemaster9/imgs-masterstudio/imgs/20210327215628.jpg" class="responsive-img" alt="HTTP及应用层协议解析">
                         
-                        <span class="card-title">HTTP协议解析</span>
+                        <span class="card-title">HTTP及应用层协议解析</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1685,7 +1696,7 @@ alibaba.com    nameserver = ns1.alibabadns.com.<span aria-hidden="true" class="l
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">32.7k</span>&nbsp;字
+                class="white-color">33.7k</span>&nbsp;字
             
             
             
