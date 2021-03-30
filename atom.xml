@@ -183,7 +183,7 @@
     <link href="https://www.matemaster.cn/posts/55225.html"/>
     <id>https://www.matemaster.cn/posts/55225.html</id>
     <published>2021-03-22T01:23:50.000Z</published>
-    <updated>2021-03-30T02:19:02.271Z</updated>
+    <updated>2021-03-30T15:11:17.296Z</updated>
     
     
       
@@ -266,7 +266,7 @@
     <link href="https://www.matemaster.cn/posts/53096.html"/>
     <id>https://www.matemaster.cn/posts/53096.html</id>
     <published>2021-03-19T07:14:31.000Z</published>
-    <updated>2021-03-26T01:39:22.233Z</updated>
+    <updated>2021-03-30T03:15:02.599Z</updated>
     
     
       
@@ -289,18 +289,18 @@
   </entry>
   
   <entry>
-    <title>关系代数</title>
+    <title>基于MySQL的SCT数据库操作</title>
     <link href="https://www.matemaster.cn/posts/53808.html"/>
     <id>https://www.matemaster.cn/posts/53808.html</id>
     <published>2021-03-19T06:25:01.000Z</published>
-    <updated>2021-03-26T01:39:22.013Z</updated>
+    <updated>2021-03-30T15:06:51.973Z</updated>
     
     
       
       
         
         
-    <summary type="html">&lt;h1 id=&quot;示例表&quot;&gt;&lt;a href=&quot;#示例表&quot; class=&quot;headerlink&quot;</summary>
+    <summary type="html">&lt;h1 id=&quot;示例表&quot;&gt;&lt;a href=&quot;#示例表&quot; class=&quot;headerlink&quot; title=&quot;示例表&quot;&gt;&lt;/a&gt;示例表&lt;/h1&gt;&lt;img</summary>
         
       
     
@@ -309,9 +309,7 @@
     <category term="数据库" scheme="https://www.matemaster.cn/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
     
     
-    <category term="原创" scheme="https://www.matemaster.cn/tags/%E5%8E%9F%E5%88%9B/"/>
-    
-    <category term="关系模型" scheme="https://www.matemaster.cn/tags/%E5%85%B3%E7%B3%BB%E6%A8%A1%E5%9E%8B/"/>
+    <category term="MySQL" scheme="https://www.matemaster.cn/tags/MySQL/"/>
     
   </entry>
   
@@ -339,7 +337,7 @@
     <link href="https://www.matemaster.cn/posts/11059.html"/>
     <id>https://www.matemaster.cn/posts/11059.html</id>
     <published>2021-03-19T02:19:44.000Z</published>
-    <updated>2021-03-26T01:39:22.002Z</updated>
+    <updated>2021-03-30T11:20:25.757Z</updated>
     
     
       

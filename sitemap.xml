@@ -9,6 +9,34 @@
   </url>
   
   <url>
+    <loc>https://www.matemaster.cn/posts/53808.html</loc>
+    
+    <lastmod>2021-03-30</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://www.matemaster.cn/posts/11059.html</loc>
+    
+    <lastmod>2021-03-30</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://www.matemaster.cn/posts/9622.html</loc>
+    
+    <lastmod>2021-03-30</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://www.matemaster.cn/posts/53096.html</loc>
+    
+    <lastmod>2021-03-30</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://www.matemaster.cn/posts/10300.html</loc>
     
     <lastmod>2021-03-30</lastmod>
@@ -44,13 +72,6 @@
   </url>
   
   <url>
-    <loc>https://www.matemaster.cn/posts/9622.html</loc>
-    
-    <lastmod>2021-03-26</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://www.matemaster.cn/contact/index.html</loc>
     
     <lastmod>2021-03-26</lastmod>
@@ -59,13 +80,6 @@
   
   <url>
     <loc>https://www.matemaster.cn/posts/43043.html</loc>
-    
-    <lastmod>2021-03-26</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://www.matemaster.cn/posts/53096.html</loc>
     
     <lastmod>2021-03-26</lastmod>
     
@@ -108,20 +122,6 @@
   
   <url>
     <loc>https://www.matemaster.cn/posts/64199.html</loc>
-    
-    <lastmod>2021-03-26</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://www.matemaster.cn/posts/53808.html</loc>
-    
-    <lastmod>2021-03-26</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://www.matemaster.cn/posts/11059.html</loc>
     
     <lastmod>2021-03-26</lastmod>
     
@@ -235,7 +235,7 @@
   </url>
   
   <url>
-    <loc>https://www.matemaster.cn/tags/%E5%85%B3%E7%B3%BB%E6%A8%A1%E5%9E%8B/</loc>
+    <loc>https://www.matemaster.cn/tags/Matery/</loc>
     <lastmod>2021-03-30</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -256,13 +256,6 @@
   </url>
   
   <url>
-    <loc>https://www.matemaster.cn/tags/Matery/</loc>
-    <lastmod>2021-03-30</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://www.matemaster.cn/tags/%E8%BD%AC%E8%BD%BD/</loc>
     <lastmod>2021-03-30</lastmod>
     <changefreq>daily</changefreq>
@@ -271,6 +264,13 @@
   
   <url>
     <loc>https://www.matemaster.cn/tags/OS/</loc>
+    <lastmod>2021-03-30</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.matemaster.cn/tags/%E8%AE%A1%E7%BB%84/</loc>
     <lastmod>2021-03-30</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -292,13 +292,6 @@
   
   <url>
     <loc>https://www.matemaster.cn/tags/Ubuntu/</loc>
-    <lastmod>2021-03-30</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.matemaster.cn/tags/%E8%AE%A1%E7%BB%84/</loc>
     <lastmod>2021-03-30</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -363,14 +356,14 @@
   </url>
   
   <url>
-    <loc>https://www.matemaster.cn/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/</loc>
+    <loc>https://www.matemaster.cn/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/</loc>
     <lastmod>2021-03-30</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://www.matemaster.cn/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/</loc>
+    <loc>https://www.matemaster.cn/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/</loc>
     <lastmod>2021-03-30</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
