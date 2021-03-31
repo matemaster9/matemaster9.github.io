@@ -6,10 +6,8 @@ https://prismjs.com/download.html#themes=prism-okaidia&languages=markup+css+clik
  * @author ocodia
  */
 
-@font-face {
-	font-family: 'JetBrains Mono', monospace;
-	src: url('https://fonts.googleapis.com/css2?family=JetBrains+Mono&display=swap');
-}
+ @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono&display=swap');
+
 
 code[class*="language-"],
 pre[class*="language-"] {
