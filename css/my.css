@@ -1,11 +1,11 @@
 
 @font-face {
-    font-family: 'JetBrainsMono-Regular';
-    src: url('../font/JetBrainsMono-Regular.ttf');
+    font-family: 'JetBrains Mono', monospace;
+    src: url('https://fonts.googleapis.com/css2?family=JetBrains+Mono&display=swap');
 }
 
 body{
-    font-family: 'JetBrainsMono-Regular';
+    font-family: 'JetBrains Mono', monospace;
 }
 
 
