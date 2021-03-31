@@ -1,9 +1,11 @@
-/* Here is your custom css styles. */
-@font-face{
-    font-family: 'IBMPlexMono-Italic';
-    src: url('../font/IBMPlexMono-Italic.ttf');    
+
+@font-face {
+    font-family: 'JetBrainsMono-Regular';
+    src: url('../font/JetBrainsMono-Regular.ttf');
 }
 
 body{
-    font-family: 'IBMPlexMono-Italic','微软雅黑';
+    font-family: 'JetBrainsMono-Regular';
 }
+
+
