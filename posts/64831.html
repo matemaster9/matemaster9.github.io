@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="HTTP及应用层协议解析, MasterStudio">
+    <meta name="keywords" content="应用层协议解析, MasterStudio">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>HTTP及应用层协议解析 | MasterStudio</title>
+    <title>应用层协议解析 | MasterStudio</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -278,7 +278,7 @@
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">HTTP及应用层协议解析</h1>
+                    <h1 class="description center-align post-title">应用层协议解析</h1>
                 </div>
             </div>
         </div>
@@ -386,7 +386,7 @@
 <div class="row">
     <div id="main-content" class="col s12 m12 l9">
         <!-- 文章内容详情 -->
-<div id="artDetail">
+<div id="artDetail" class="diy-font">
     <div class="card">
         <div class="card-content article-info">
             <div class="row tag-cate">
@@ -428,7 +428,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2021-03-30
+                    2021-03-31
                 </div>
                 
 
@@ -527,7 +527,7 @@ http://user:pass@www.server.com:80/dir/index.htm?uid=1#ch1
 <li><strong>503 Service Unavailable</strong>：服务器繁忙</li>
 </ul>
 <h2 id="cookie"><a href="#cookie" class="headerlink" title="cookie"></a>cookie</h2><p><b style="color: red;">HTTP协议是一种无状态的协议，简而言之就是，服务器不会记录浏览器的访问请求，即使是刚请求的浏览器，服务器依旧视为第一次请求访问！</b>但是<code>Cookie</code>引入，支持了HTTP状态，第一次华为浏览器访问阿里官网，阿里服务器会在响应报文中加入<code>cookie</code>字段，并且在阿里的后端数据库记录该cookie。并且在华为浏览器下一次访问时，进行数据库检索，如果存在cookie记录，那么阿里将会自动记录该浏览器的浏览记录，保持状态！</p>
-<img src="https://cdn.jsdelivr.net/gh/matemaster9/imgs-masterstudio/imgs/20210329191736.jpg" style="width:80%;border:solid">
+<img src="https://cdn.jsdelivr.net/gh/matemaster9/imgs-masterstudio@1.2/imgs/20210329191736.jpg" style="width:80%;border:solid">
 
 <h2 id="代理服务器"><a href="#代理服务器" class="headerlink" title="代理服务器"></a>代理服务器</h2><p>代理服务器的作用就是做<code>web缓存</code>。web缓存可以减轻接入英特网的压力，并且加快了客户端的响应速度！</p>
 <p>这里为了保证<code>web缓存有效期</code>，我们的web缓存服务器，会向源服务器发送GET请求，并且在字段中存在<code>If-Modified-Since</code>与<code>Last-Modified</code>做对比，当不一致时说明缓存过期，那么将更新web缓存！</p>
@@ -538,10 +538,10 @@ If-Modified-Since: Mon, 29 Mar 2021 05:59:01 GMT<span aria-hidden="true" class="
 
 
 
-<img src="https://cdn.jsdelivr.net/gh/matemaster9/imgs-masterstudio/imgs/20210329184233.jpg" style="width:80% ;border:solid;">
+<img src="https://cdn.jsdelivr.net/gh/matemaster9/imgs-masterstudio@1.2/imgs/20210329184233.jpg" style="width:80% ;border:solid;">
 
 <h2 id="HTTP报文"><a href="#HTTP报文" class="headerlink" title="HTTP报文"></a>HTTP报文</h2><p><code>start https://matemaster.cn</code></p>
-<img src="https://cdn.jsdelivr.net/gh/matemaster9/imgs-masterstudio/imgs/20210329165927.jpg" style="width:80%;border:solid">
+<img src="https://cdn.jsdelivr.net/gh/matemaster9/imgs-masterstudio@1.2/imgs/20210329165927.jpg" style="width:80%;border:solid">
 
 
 
@@ -664,7 +664,7 @@ smtp.sina.com
 <p>3）腾讯邮件服务器在收到邮件报文之后，主动将报文推送给对应接收方的用户代理<code>(SMTP)</code></p>
 <p><code>SMTP</code>与<code>HTTP</code>之间区别在于：SMTP属于push协议，不可以主动从服务器端获取邮件，只能等待服务器推送！HTTP属于pull协议，可以主动向服务器请求获取资源！</p>
 <p><strong>Wireshark抓包</strong>看出<code>SMTP</code>报文信息：（就是<code>matemaster@163.com-&gt;user-agent</code>与网易邮件服务器的对话）👇</p>
-<img src="https://cdn.jsdelivr.net/gh/matemaster9/imgs-masterstudio/imgs/20210329150920.jpg" style="width:80%;border:solid ;">
+<img src="https://cdn.jsdelivr.net/gh/matemaster9/imgs-masterstudio@1.2/imgs/20210329150920.jpg" style="width:80%;border:solid ;">
 
 <h2 id="Telnet"><a href="#Telnet" class="headerlink" title="Telnet"></a>Telnet</h2><p>基于<code>telnet</code>命令可以使用SMTP协议向指定用户发送信息，完整演示效果，可以参看下图👇</p>
 <pre class="line-numbers language-none"><code class="language-none"># telnet 服务器域名 端口号
@@ -693,7 +693,7 @@ This is main content of mail message!
 
 # send successful!<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<img src="https://cdn.jsdelivr.net/gh/matemaster9/imgs-masterstudio/imgs/20210329142131.jpg" style="width:80%; border:solid ">
+<img src="https://cdn.jsdelivr.net/gh/matemaster9/imgs-masterstudio@1.2/imgs/20210329142131.jpg" style="width:80%; border:solid ">
 
 <h2 id="基于python的邮件发送"><a href="#基于python的邮件发送" class="headerlink" title="基于python的邮件发送"></a>基于python的邮件发送</h2><p>这里暂时不支持附件传送，因为没有导入包</p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> smtplib
@@ -737,13 +737,13 @@ server<span class="token punctuation">.</span>quit<span class="token punctuation
 <p><code>负载分配</code>：简单理解：就是一个IP地址集合与同一个规范主机名相联系！（可以参考下面在Ubuntu系统下的nslookup alibaba.com）。从那里看出，一个<strong>alibaba.com</strong>对应了4个IP地址</p>
 <h2 id="DNS分布式数据库"><a href="#DNS分布式数据库" class="headerlink" title="DNS分布式数据库"></a>DNS分布式数据库</h2><p>DNS采取的是：<code>分布式、层次数据库</code>。层次：root、TLD、权威</p>
 <p>看看例图<span class="github-emoji"><span>✌</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/270c.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span></p>
-<img src="https://cdn.jsdelivr.net/gh/matemaster9/imgs-masterstudio/imgs/20210328145741.jpg" style="width:80%;border:solid">
+<img src="https://cdn.jsdelivr.net/gh/matemaster9/imgs-masterstudio@1.2/imgs/20210328145741.jpg" style="width:80%;border:solid">
 
 <p><code>root server</code>：提供了对应顶级域服务器的<code>ip</code></p>
 <p><code>TLD</code>：顶级域服务器提供了存储了<code>主机ip</code>的权威服务器的<code>ip</code></p>
 <p><code>权威服务器</code>：存储了<code>对应主机名的ip地址</code></p>
 <p><code>本地DNS server</code>：虽然不属于分布式层次结构中的数据库，但是在DNS中起重要作用。与DNS缓存有关！</p>
-<h3 id="分布式数据库的工作过程"><a href="#分布式数据库的工作过程" class="headerlink" title="分布式数据库的工作过程"></a>分布式数据库的工作过程</h3><img src="https://cdn.jsdelivr.net/gh/matemaster9/imgs-masterstudio/imgs/20210328151824.jpg" style="width:80%;border:solid red">
+<h3 id="分布式数据库的工作过程"><a href="#分布式数据库的工作过程" class="headerlink" title="分布式数据库的工作过程"></a>分布式数据库的工作过程</h3><img src="https://cdn.jsdelivr.net/gh/matemaster9/imgs-masterstudio@1.2/imgs/20210328151824.jpg" style="width:80%;border:solid red">
 
 <p>在这里<code>alibaba.com</code>服务器的<code>ip</code>采取了负载分配的方式，我这里的对应ali的DNS服务器，以及ip如下<span class="github-emoji"><span>👇</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/1f447.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span></p>
 <pre class="line-numbers language-ubuntu" data-language="ubuntu"><code class="language-ubuntu">matemaster@matemaster:~$ nslookup alibaba.com
@@ -779,11 +779,11 @@ alibaba.com    nameserver = ns1.alibabadns.com.<span aria-hidden="true" class="l
 <p>（2）当某个服务器<code>server_ali</code>是<code>alibaba.com</code>的权威服务器，那么<code>server_ali</code>一定含有A记录</p>
 <p><code>A(alibaba.com,203.119.215.82,A,100)</code></p>
 <p><b style="color: hotpink;">比如我在华为云域名服务器注册的域名matemaster.cn，在DNS系统数据库中至少存在两个关于我域名的记录：(matemaster.cn,ns1-huaweiclound-dns.net,NS)、<br>(ns1-huaweiclound-dns.net,198.70.153.255,A)</b></p>
-<h2 id="DNS报文"><a href="#DNS报文" class="headerlink" title="DNS报文"></a>DNS报文</h2><img src="https://cdn.jsdelivr.net/gh/matemaster9/imgs-masterstudio/imgs/20210328155528.jfif" style="width:80%">
+<h2 id="DNS报文"><a href="#DNS报文" class="headerlink" title="DNS报文"></a>DNS报文</h2><img src="https://cdn.jsdelivr.net/gh/matemaster9/imgs-masterstudio@1.2/imgs/20210328155528.jfif" style="width:80%">
 
 <h3 id="Wireshark抓包"><a href="#Wireshark抓包" class="headerlink" title="Wireshark抓包"></a>Wireshark抓包</h3><p>首先说下，这里的抓包操作，借鉴了计算机网络自顶向下方法：DNS实验。关于完整的实验文档我放在了自己的仓库当中，如果有需要的可以自己<code>git clone</code>。👉 <a target="_blank" rel="noopener" href="https://gitee.com/matemaster/master-depository/tree/master/2021-03-28/wireshark%E5%AE%9E%E9%AA%8C%E6%96%87%E6%A1%A3-en">Wireshark实验报告文档</a></p>
 <p>下面是我利用<strong>Wireshark</strong>抓取本地主机访问<code>matemaster.cn</code>主机的<code>DNS请求报文</code></p>
-<img src="https://cdn.jsdelivr.net/gh/matemaster9/imgs-masterstudio/imgs/20210328195018.jpg" style="width:80%;border:solid">
+<img src="https://cdn.jsdelivr.net/gh/matemaster9/imgs-masterstudio@1.2/imgs/20210328195018.jpg" style="width:80%;border:solid">
 
 <pre class="line-numbers language-wireshark" data-language="wireshark"><code class="language-wireshark">Domain Name System (query)
     Transaction ID: 0x49f1
@@ -808,7 +808,7 @@ alibaba.com    nameserver = ns1.alibabadns.com.<span aria-hidden="true" class="l
     [Response In: 498]<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>相对于的来自<code>DNS server</code>的响应报文</p>
-<img src="https://cdn.jsdelivr.net/gh/matemaster9/imgs-masterstudio/imgs/20210328195022.jpg" style="width:80%;border:solid">
+<img src="https://cdn.jsdelivr.net/gh/matemaster9/imgs-masterstudio@1.2/imgs/20210328195022.jpg" style="width:80%;border:solid">
 
 <pre class="line-numbers language-wireshark" data-language="wireshark"><code class="language-wireshark">Domain Name System (response)
     Transaction ID: 0x49f1
@@ -1110,7 +1110,7 @@ alibaba.com    nameserver = ns1.alibabadns.com.<span aria-hidden="true" class="l
     <div id="rewardModal" class="modal">
         <div class="modal-content">
             <a class="close modal-close"><i class="fas fa-times"></i></a>
-            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <h4 class="reward-title">你的赞赏是我最大的创作动力</h4>
             <div class="reward-content">
                 <div class="reward-tabs">
                     <ul class="tabs row">
@@ -1403,10 +1403,10 @@ alibaba.com    nameserver = ns1.alibabadns.com.<span aria-hidden="true" class="l
         notify: 'false' === 'true',
         verify: 'false' === 'true',
         visitor: 'true' === 'true',
-        avatar: 'mm',
+        avatar: 'hide',
         pageSize: '10',
         lang: 'zh-cn',
-        placeholder: 'just go go'
+        placeholder: '请留言'
     });
 </script>
 
@@ -1434,9 +1434,9 @@ alibaba.com    nameserver = ns1.alibabadns.com.<span aria-hidden="true" class="l
                 <a href="/posts/64831.html">
                     <div class="card-image">
                         
-                        <img src="https://cdn.jsdelivr.net/gh/matemaster9/imgs-masterstudio/imgs/20210327215628.jpg" class="responsive-img" alt="HTTP及应用层协议解析">
+                        <img src="https://cdn.jsdelivr.net/gh/matemaster9/imgs-masterstudio/imgs/20210327215628.jpg" class="responsive-img" alt="应用层协议解析">
                         
-                        <span class="card-title">HTTP及应用层协议解析</span>
+                        <span class="card-title">应用层协议解析</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1483,15 +1483,15 @@ alibaba.com    nameserver = ns1.alibabadns.com.<span aria-hidden="true" class="l
                 <a href="/posts/52745.html">
                     <div class="card-image">
                         
-                        <img src="https://cdn.jsdelivr.net/gh/matemaster9/image-one/images/20210326165806.jpg" class="responsive-img" alt="基于Matery主题的网站优化">
+                        <img src="https://cdn.jsdelivr.net/gh/matemaster9/image-one/images/20210326165806.jpg" class="responsive-img" alt="Matery主题自定义魔改">
                         
-                        <span class="card-title">基于Matery主题的网站优化</span>
+                        <span class="card-title">Matery主题自定义魔改</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            关于hexo博客框架以及matery主题的优化
+                            hexo框架与matery主题的优化
                         
                     </div>
                     <div class="publish-info">
@@ -1700,7 +1700,7 @@ alibaba.com    nameserver = ns1.alibabadns.com.<span aria-hidden="true" class="l
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">36.2k</span>&nbsp;字
+                class="white-color">36.9k</span>&nbsp;字
             
             
             

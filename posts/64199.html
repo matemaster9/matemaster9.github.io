@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="基于Matery主题魔改——留言板信封动画">
+    <meta name="keywords" content="基于Matery主题魔改自定义留言版动画">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>留言板信封动画 | MasterStudio</title>
+    <title>CSS3实现信封动画 | MasterStudio</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -278,7 +278,7 @@
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">留言板信封动画</h1>
+                    <h1 class="description center-align post-title">CSS3实现信封动画</h1>
                 </div>
             </div>
         </div>
@@ -386,7 +386,7 @@
 <div class="row">
     <div id="main-content" class="col s12 m12 l9">
         <!-- 文章内容详情 -->
-<div id="artDetail">
+<div id="artDetail" class="diy-font">
     <div class="card">
         <div class="card-content article-info">
             <div class="row tag-cate">
@@ -436,7 +436,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2021-03-26
+                    2021-03-31
                 </div>
                 
 
@@ -541,6 +541,8 @@
 <h1 id="css渲染动画"><a href="#css渲染动画" class="headerlink" title="css渲染动画"></a>css渲染动画</h1><pre class="line-numbers language-html" data-language="html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>link</span> <span class="token attr-name">rel</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>stylesheet<span class="token punctuation">"</span></span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>/css/envelope.css<span class="token punctuation">"</span></span><span class="token punctuation">/&gt;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p>将css文件放在 <strong>hexo-theme-matery</strong> 主题文件夹的 <strong>source/css</strong> 目录下，<strong>然后直接按照此方式引用即可！ 源码中我写的link为了演示效果，与这里引用的href不一致，注意修改</strong></p>
+<img src="https://cdn.jsdelivr.net/gh/matemaster9/image-one/images/20210319145308.gif" style="width: 75%;border:solid">
+
 <h1 id="完整源码资源"><a href="#完整源码资源" class="headerlink" title="完整源码资源"></a>完整源码资源</h1><p>这里骨架结构，为了代码演示美观，我就直接把图片的<strong>src</strong>省略了，具体的可以直接在我的<strong>gitee</strong>仓库中下载源码</p>
 <p><strong>首页就有gitee仓库的直通车O(∩_∩)O</strong></p>
 <p>👉 <a target="_blank" rel="noopener" href="https://gitee.com/matemaster/master-depository/tree/master/2021-03-17"><b>信封动画的源代码</b></a></p>
@@ -739,7 +741,7 @@
     <div id="rewardModal" class="modal">
         <div class="modal-content">
             <a class="close modal-close"><i class="fas fa-times"></i></a>
-            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <h4 class="reward-title">你的赞赏是我最大的创作动力</h4>
             <div class="reward-content">
                 <div class="reward-tabs">
                     <ul class="tabs row">
@@ -1032,10 +1034,10 @@
         notify: 'false' === 'true',
         verify: 'false' === 'true',
         visitor: 'true' === 'true',
-        avatar: 'mm',
+        avatar: 'hide',
         pageSize: '10',
         lang: 'zh-cn',
-        placeholder: 'just go go'
+        placeholder: '请留言'
     });
 </script>
 
@@ -1335,7 +1337,7 @@
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">36.2k</span>&nbsp;字
+                class="white-color">36.9k</span>&nbsp;字
             
             
             

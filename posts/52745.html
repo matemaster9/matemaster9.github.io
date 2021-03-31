@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="基于Matery主题的网站优化, MasterStudio">
+    <meta name="keywords" content="Matery主题自定义魔改, MasterStudio">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>基于Matery主题的网站优化 | MasterStudio</title>
+    <title>Matery主题自定义魔改 | MasterStudio</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -278,7 +278,7 @@
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">基于Matery主题的网站优化</h1>
+                    <h1 class="description center-align post-title">Matery主题自定义魔改</h1>
                 </div>
             </div>
         </div>
@@ -386,7 +386,7 @@
 <div class="row">
     <div id="main-content" class="col s12 m12 l9">
         <!-- 文章内容详情 -->
-<div id="artDetail">
+<div id="artDetail" class="diy-font">
     <div class="card">
         <div class="card-content article-info">
             <div class="row tag-cate">
@@ -428,21 +428,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2021-03-30
+                    2021-03-31
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    3k
+                    3.7k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    13 分
+                    15 分
                 </div>
                 
 
@@ -471,7 +471,88 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="Hexo部署华为云"><a href="#Hexo部署华为云" class="headerlink" title="Hexo部署华为云"></a>Hexo部署华为云</h1><p>准确来说，这部分是介绍，如何将hexo部署到云服务器。也就说这部分是面向那些想把自己的博客网站放到自己的云服务器上运行的朋友们！</p>
+                <h1 id="基于Matery的魔改"><a href="#基于Matery的魔改" class="headerlink" title="基于Matery的魔改"></a>基于Matery的魔改</h1><h2 id="自定义网站字体"><a href="#自定义网站字体" class="headerlink" title="自定义网站字体"></a>自定义网站字体</h2><h3 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h3><p>首先确保主题存在css文件：<code>(hexo-theme-matery/source/css/.mycss)</code></p>
+<p><b style="color: chocolate;">路径很重要！文件没有用就自己创！</b></p>
+<p><b style="color: red;">本站使用的开源字体:JetBrains Mono</b></p>
+<h3 id="网站局部个性化字体"><a href="#网站局部个性化字体" class="headerlink" title="网站局部个性化字体"></a>网站局部个性化字体</h3><p>一般网站的web字体都可以直接从<a target="_blank" rel="noopener" href="https://fonts.google.com/">Google-Font</a>获取资源，这样不用担心字体商业带来的法律问题</p>
+<p>1）创建web字体引用</p>
+<pre class="line-numbers language-css" data-language="css"><code class="language-css"><span class="token atrule"><span class="token rule">@font-face</span></span><span class="token punctuation">{</span>
+    <span class="token property">font-family</span><span class="token punctuation">:</span> <span class="token string">'引用的字体名称'</span><span class="token punctuation">;</span>
+    <span class="token property">src</span><span class="token punctuation">:</span> <span class="token url"><span class="token function">url</span><span class="token punctuation">(</span><span class="token string url">'谷歌字体路径（或者其他什么字体引用）'</span><span class="token punctuation">)</span></span><span class="token punctuation">;</span>   
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>2）在网页合适的位置进行字体引用</p>
+<p>①利用浏览器检查元素，获取需要定义字体的部分</p>
+<p>②在主体的配置文件中(hexo-theme-matery/layout/…)找到对应的渲染(.ejs)文件，查找需要修改的部分</p>
+<p>①演示一下利用浏览器获取定义字体的部分</p>
+<img src="https://cdn.jsdelivr.net/gh/matemaster9/imgs-masterstudio/imgs1/20210331113624.jpg" style="width:80%;">
+
+<p>对获取到的<code>id选择器：#artDetail</code>进行css渲染</p>
+<pre class="line-numbers language-css" data-language="css"><code class="language-css"><span class="token selector">#artDetail</span> <span class="token punctuation">{</span>
+    <span class="token property">font-family</span><span class="token punctuation">:</span> <span class="token string">'引用的web字体'</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p>②利用主体的ejs渲染文件找出需要修饰的部分（加入自定义类）</p>
+<img src="https://cdn.jsdelivr.net/gh/matemaster9/imgs-masterstudio/imgs1/20210331114123.jpg" style="width:80%">
+
+<pre class="line-numbers language-css" data-language="css"><code class="language-css"><span class="token comment">/*使用我在文章内容详情定义的diyFnot类**/</span>
+<span class="token selector">.diyfont</span> <span class="token punctuation">{</span>
+   <span class="token property">font-family</span><span class="token punctuation">:</span> <span class="token string">'引用的web字体'</span><span class="token punctuation">;</span> 
+<span class="token punctuation">}</span>
+
+<span class="token comment">/*也可以使用自带的id*/</span>
+<span class="token selector">#artDetail</span> <span class="token punctuation">{</span>
+    <span class="token property">font-family</span><span class="token punctuation">:</span> <span class="token string">'引用的web字体'</span><span class="token punctuation">;</span> 
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<h3 id="网站全局化字体定义"><a href="#网站全局化字体定义" class="headerlink" title="网站全局化字体定义"></a>网站全局化字体定义</h3><pre class="line-numbers language-css" data-language="css"><code class="language-css"><span class="token atrule"><span class="token rule">@font-face</span></span><span class="token punctuation">{</span>
+    <span class="token property">font-family</span><span class="token punctuation">:</span> <span class="token string">'引用的字体名称'</span><span class="token punctuation">;</span>
+    <span class="token property">src</span><span class="token punctuation">:</span> <span class="token url"><span class="token function">url</span><span class="token punctuation">(</span><span class="token string url">'谷歌字体路径（或者其他什么字体引用）'</span><span class="token punctuation">)</span></span><span class="token punctuation">;</span>   
+<span class="token punctuation">}</span>
+
+<span class="token selector">body</span> <span class="token punctuation">{</span>
+    <span class="token property">font-family</span><span class="token punctuation">:</span> <span class="token string">'引用的web字体名称'</span><span class="token punctuation">;</span> 
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<h3 id="引用本地的字体文件"><a href="#引用本地的字体文件" class="headerlink" title="引用本地的字体文件"></a>引用本地的字体文件</h3><p>当然有时候那个谷歌字体的网站可能登录不上去，需要科学上网，很烦人！我们也可以直接下载下字体文件，将他放在本地，进行直接引用！看下面操作👇</p>
+<p>①在本地的hexo根目录的source文件下创立diy-font文件夹:<code>/source/diy-font</code></p>
+<p>在该文件下存放你的字体文件，比如：<code>/source/diy-font/IBMPlexMono-Italic.ttf</code></p>
+<p>②引用本地字体（仍然是在my.css文件中书写代码）</p>
+<pre class="line-numbers language-css" data-language="css"><code class="language-css"><span class="token atrule"><span class="token rule">@font-face</span></span><span class="token punctuation">{</span>
+    <span class="token property">font-family</span><span class="token punctuation">:</span> <span class="token string">'IBMPlexMono-Italic'</span><span class="token punctuation">;</span>
+    <span class="token property">src</span><span class="token punctuation">:</span> <span class="token url"><span class="token function">url</span><span class="token punctuation">(</span><span class="token string url">'../diy-font/IBMPlexMono-Italic.ttf'</span><span class="token punctuation">)</span></span><span class="token punctuation">;</span>   
+<span class="token punctuation">}</span>
+
+<span class="token selector">body</span> <span class="token punctuation">{</span>
+    <span class="token property">font-family</span><span class="token punctuation">:</span> <span class="token string">'IBMPlexMono-Italic'</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>这样我们就可以实现引用本地的字体了，并且在web有效！</p>
+<h1 id="字蛛压缩字体"><a href="#字蛛压缩字体" class="headerlink" title="字蛛压缩字体"></a>字蛛压缩字体</h1><p>在上面我们介绍了如何在网站上引用自己喜欢的字体，但是这样会出现一个问题：字体文件太大！（尤其是中文，有时候为了几个字引入一个数十兆的字体文件，得不偿失），所有需要字体压缩！</p>
+<p>①下载字蛛插件</p>
+<pre class="line-numbers language-nodejs" data-language="nodejs"><code class="language-nodejs">npm install font-spider -g<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>②在网站上引用自己的字体</p>
+<pre class="line-numbers language-css" data-language="css"><code class="language-css"><span class="token atrule"><span class="token rule">@font-face</span></span><span class="token punctuation">{</span>
+    <span class="token property">font-family</span><span class="token punctuation">:</span> <span class="token string">'IBMPlexMono-Italic'</span><span class="token punctuation">;</span>
+    <span class="token property">src</span><span class="token punctuation">:</span> <span class="token url"><span class="token function">url</span><span class="token punctuation">(</span><span class="token string url">'../diy-font/IBMPlexMono-Italic.ttf'</span><span class="token punctuation">)</span></span><span class="token punctuation">;</span>   
+<span class="token punctuation">}</span>
+
+<span class="token selector">body</span> <span class="token punctuation">{</span>
+    <span class="token property">font-family</span><span class="token punctuation">:</span> <span class="token string">'IBMPlexMono-Italic'</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>③字蛛命令直接压缩引用了你自定义字体的页面</p>
+<pre class="line-numbers language-nodejs" data-language="nodejs"><code class="language-nodejs">font-spider 引用字体页面的路径
+
+// 比如：font-spider /public/*.html<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p>关于字体压缩有很多方式：可以自己编译自己的常用字体，这样文件最小，当然最好就直接捡现成的开源字体！</p>
+<h1 id="Hexo部署云服务器"><a href="#Hexo部署云服务器" class="headerlink" title="Hexo部署云服务器"></a>Hexo部署云服务器</h1><p>准确来说，这部分是介绍，如何将hexo部署到云服务器。也就说这部分是面向那些想把自己的博客网站放到自己的云服务器上运行的朋友们！</p>
 <h2 id="云服务器"><a href="#云服务器" class="headerlink" title="云服务器"></a>云服务器</h2><p><b style="color: yellowgreen;">云服务器配置</b></p>
 <table>
 <thead>
@@ -493,7 +574,7 @@
 <td><strong><a href="http://www.matemaster.cn/">www.matemaster.cn</a></strong></td>
 </tr>
 </tbody></table>
-<img src="https://cdn.jsdelivr.net/gh/matemaster9/imgs-masterstudio/imgs/20210327105816.jpg" style="width:80%">
+<img src="https://cdn.jsdelivr.net/gh/matemaster9/imgs-masterstudio@1.2/imgs/20210327105816.jpg" style="width:80%">
 
 <h2 id="连接云服务器"><a href="#连接云服务器" class="headerlink" title="连接云服务器"></a>连接云服务器</h2><h3 id="创建git用户"><a href="#创建git用户" class="headerlink" title="创建git用户"></a>创建git用户</h3><p>（1）登录云服务器，切换root用户（华为云默认root用户）</p>
 <p>（2）安装git（可以git–version测试是否成功）</p>
@@ -604,16 +685,16 @@ wget -O install.sh http://download.bt.cn/install/install-ubuntu_6.0.sh &amp;&amp
 <pre class="line-numbers language-none"><code class="language-none">wget -O install.sh http://download.bt.cn/install/install_6.0.sh &amp;&amp; bash install.sh<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 </blockquote>
 <p>下载nginx</p>
-<img src="https://cdn.jsdelivr.net/gh/matemaster9/imgs-masterstudio/imgs/20210327113052.jpg" style="width:90%">
+<img src="https://cdn.jsdelivr.net/gh/matemaster9/imgs-masterstudio@1.2/imgs/20210327113052.jpg" style="width:90%">
 
 <p>添加站点</p>
-<img src="https://cdn.jsdelivr.net/gh/matemaster9/imgs-masterstudio/imgs/20210327113213.jpg" style="width:90%">
+<img src="https://cdn.jsdelivr.net/gh/matemaster9/imgs-masterstudio@1.2/imgs/20210327113213.jpg" style="width:90%">
 
 <p>设置配置文件</p>
-<img src="https://cdn.jsdelivr.net/gh/matemaster9/imgs-masterstudio/imgs/20210327113305.jpg" style="width:90%">
+<img src="https://cdn.jsdelivr.net/gh/matemaster9/imgs-masterstudio@1.2/imgs/20210327113305.jpg" style="width:90%">
 
 <p>设置网站目录</p>
-<img src="https://cdn.jsdelivr.net/gh/matemaster9/imgs-masterstudio/imgs/20210327113329.jpg" style="width:90%">
+<img src="https://cdn.jsdelivr.net/gh/matemaster9/imgs-masterstudio@1.2/imgs/20210327113329.jpg" style="width:90%">
 
 <p>重启宝塔服务（在云服务器中进行）</p>
 <pre class="line-numbers language-cloundshell" data-language="cloundshell"><code class="language-cloundshell">bt restart   //这样才会使上面在宝塔linux面板的配置生效<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
@@ -636,11 +717,11 @@ chown -R git:git /var/hexo/<span aria-hidden="true" class="line-numbers-rows"><s
 
 
 <h1 id="SSL证书"><a href="#SSL证书" class="headerlink" title="SSL证书"></a>SSL证书</h1><h2 id="获取SSL证书"><a href="#获取SSL证书" class="headerlink" title="获取SSL证书"></a>获取SSL证书</h2><p>这个SSL可以买，也可以直接白嫖。当然为了省钱的话，还是教大家怎么白嫖！<a target="_blank" rel="noopener" href="https://support.huaweicloud.com/scm_faq/scm_01_0192.html">华为云官方教程</a></p>
-<img src="https://cdn.jsdelivr.net/gh/matemaster9/imgs-masterstudio/imgs/20210327131003.jpg" style="width:90%">
+<img src="https://cdn.jsdelivr.net/gh/matemaster9/imgs-masterstudio@1.2/imgs/20210327131003.jpg" style="width:90%">
 
 <p>将证书的*.key以及*.pem内容保存到对应位置即可！</p>
 <h1 id="前端库CDN加速"><a href="#前端库CDN加速" class="headerlink" title="前端库CDN加速"></a>前端库CDN加速</h1><p>在<code>Matery</code>主题配置文件中，作者对于<code>libs</code>下的文件做出这样的解释：使用到的前端库，可按需替换成对应的CDN地址，如果下面未指定具体的版本号，使用最新的版本即可。👉<a target="_blank" rel="noopener" href="https://github.com/matemaster9/source@2.0/matery-libs">Github前端库</a></p>
-<pre class="line-numbers language-yml" data-language="yml"><code class="language-yml">libs:
+<h2 id="libs"><a href="#libs" class="headerlink" title="libs"></a>libs</h2><pre class="line-numbers language-yml" data-language="yml"><code class="language-yml">libs:
   css:
     matery: https://cdn.jsdelivr.net/gh/matemaster9/source@2.0/matery-libs/css/matery.css 
     mycss:  /css/my.css 
@@ -704,15 +785,15 @@ site:www.matemaster.cn<span aria-hidden="true" class="line-numbers-rows"><span><
 <p><b style="color: hotpink;">没有收录？那么看下面操作</b></p>
 <p>（1）登录<a target="_blank" rel="noopener" href="https://ziyuan.baidu.com/">百度搜索资源平台</a></p>
 <p>（2）登录成功后，在用户中心-&gt;站点管理-&gt;添加网站操作 <span class="github-emoji"><span>👇</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/1f447.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span>看下图</p>
-<img src="https://cdn.jsdelivr.net/gh/matemaster9/imgs-masterstudio/imgs/20210326232547.jpg" style="width: 90%">
+<img src="https://cdn.jsdelivr.net/gh/matemaster9/imgs-masterstudio@1.2/imgs/20210326232547.jpg" style="width: 90%">
 
 <p>（3）这里讲一下第三步：验证网站！最好选择CNAME解析（换而言之，就用这个最好，帮你选好方式省的纠结）</p>
-<img src="https://cdn.jsdelivr.net/gh/matemaster9/imgs-masterstudio/imgs/20210326233923.jpg" style="width: 90%">
+<img src="https://cdn.jsdelivr.net/gh/matemaster9/imgs-masterstudio@1.2/imgs/20210326233923.jpg" style="width: 90%">
 
 
 
 <p><b style="color: orange;">华为云域名为例，添加域名记录集（阿里云、腾讯云、七牛云……）都一样的操作，实在不会的可以直接百度，或者就在官方云服务网站找教程！</b></p>
-<img src="https://cdn.jsdelivr.net/gh/matemaster9/imgs-masterstudio/imgs/20210326234541.jpg" style="zoom: 67%;">
+<img src="https://cdn.jsdelivr.net/gh/matemaster9/imgs-masterstudio@1.2/imgs/20210326234541.jpg" style="zoom: 67%;">
 
 <p><b style="color: hotpink;">以上操作，只是单纯的将网站域名提交的百度收录了！，但是为了以后自己写的每一篇博客文章都可以被百度收录，那么我们还是主动推送为好！</b></p>
 <h3 id="主动推送"><a href="#主动推送" class="headerlink" title="主动推送"></a>主动推送</h3><p>首先说一句，推送的方式有三种：主动推送、自动推送、sitemap推送。这里<code>matery</code>已经内部集成了自动推送，<code>hexo-theme-matery</code>内部文档中有解释，这里就介绍最好的方式：<strong>主动推送</strong></p>
@@ -725,7 +806,7 @@ site:www.matemaster.cn<span aria-hidden="true" class="line-numbers-rows"><span><
   path: baidu_urls.txt # 文本文档的地址， 新链接会保存在此文本文档里 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>❓：密钥从哪里获取<span class="github-emoji"><span>😄</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/1f604.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span> <strong>token = 密钥</strong></p>
-<img src="https://cdn.jsdelivr.net/gh/matemaster9/imgs-masterstudio/imgs/20210326235758.jpg" style="width:90%">
+<img src="https://cdn.jsdelivr.net/gh/matemaster9/imgs-masterstudio@1.2/imgs/20210326235758.jpg" style="width:90%">
 
 <p>这里要添加新的<code>deploy</code>类型</p>
 <pre class="line-numbers language-yml" data-language="yml"><code class="language-yml"># hexo根目录下
@@ -994,7 +1075,7 @@ npm config set registry https://registry.npm.taobao.org<span aria-hidden="true" 
     <div id="rewardModal" class="modal">
         <div class="modal-content">
             <a class="close modal-close"><i class="fas fa-times"></i></a>
-            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <h4 class="reward-title">你的赞赏是我最大的创作动力</h4>
             <div class="reward-content">
                 <div class="reward-tabs">
                     <ul class="tabs row">
@@ -1287,10 +1368,10 @@ npm config set registry https://registry.npm.taobao.org<span aria-hidden="true" 
         notify: 'false' === 'true',
         verify: 'false' === 'true',
         visitor: 'true' === 'true',
-        avatar: 'mm',
+        avatar: 'hide',
         pageSize: '10',
         lang: 'zh-cn',
-        placeholder: 'just go go'
+        placeholder: '请留言'
     });
 </script>
 
@@ -1317,9 +1398,9 @@ npm config set registry https://registry.npm.taobao.org<span aria-hidden="true" 
                 <a href="/posts/64831.html">
                     <div class="card-image">
                         
-                        <img src="https://cdn.jsdelivr.net/gh/matemaster9/imgs-masterstudio/imgs/20210327215628.jpg" class="responsive-img" alt="HTTP及应用层协议解析">
+                        <img src="https://cdn.jsdelivr.net/gh/matemaster9/imgs-masterstudio/imgs/20210327215628.jpg" class="responsive-img" alt="应用层协议解析">
                         
-                        <span class="card-title">HTTP及应用层协议解析</span>
+                        <span class="card-title">应用层协议解析</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1365,15 +1446,15 @@ npm config set registry https://registry.npm.taobao.org<span aria-hidden="true" 
                 <a href="/posts/55362.html">
                     <div class="card-image">
                         
-                        <img src="https://cdn.jsdelivr.net/gh/matemaster9/image-one/images/20210319124742.png" class="responsive-img" alt="MySQL的存储程序">
+                        <img src="https://cdn.jsdelivr.net/gh/matemaster9/image-one/images/20210319124742.png" class="responsive-img" alt="MySQL存储程序">
                         
-                        <span class="card-title">MySQL的存储程序</span>
+                        <span class="card-title">MySQL存储程序</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            理解基本的MySQL存储过程和存储函数
+                            关于MySQL的存储程序
                         
                     </div>
                     <div class="publish-info">
@@ -1582,7 +1663,7 @@ npm config set registry https://registry.npm.taobao.org<span aria-hidden="true" 
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">36.2k</span>&nbsp;字
+                class="white-color">36.9k</span>&nbsp;字
             
             
             
