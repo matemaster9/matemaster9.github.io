@@ -235,7 +235,7 @@
   </url>
   
   <url>
-    <loc>https://www.matemaster.cn/tags/%E8%BD%AC%E8%BD%BD/</loc>
+    <loc>https://www.matemaster.cn/tags/MasterStudio/</loc>
     <lastmod>2021-04-02</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -249,14 +249,7 @@
   </url>
   
   <url>
-    <loc>https://www.matemaster.cn/tags/MasterStudio/</loc>
-    <lastmod>2021-04-02</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.matemaster.cn/tags/OS/</loc>
+    <loc>https://www.matemaster.cn/tags/%E8%BD%AC%E8%BD%BD/</loc>
     <lastmod>2021-04-02</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -264,6 +257,13 @@
   
   <url>
     <loc>https://www.matemaster.cn/tags/%E8%AE%A1%E7%BD%91/</loc>
+    <lastmod>2021-04-02</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.matemaster.cn/tags/OS/</loc>
     <lastmod>2021-04-02</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -305,14 +305,14 @@
   </url>
   
   <url>
-    <loc>https://www.matemaster.cn/tags/%E4%B8%BB%E9%A2%98/</loc>
+    <loc>https://www.matemaster.cn/tags/Http/</loc>
     <lastmod>2021-04-02</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://www.matemaster.cn/tags/Http/</loc>
+    <loc>https://www.matemaster.cn/tags/%E4%B8%BB%E9%A2%98/</loc>
     <lastmod>2021-04-02</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -349,14 +349,14 @@
   </url>
   
   <url>
-    <loc>https://www.matemaster.cn/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/</loc>
+    <loc>https://www.matemaster.cn/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/</loc>
     <lastmod>2021-04-02</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://www.matemaster.cn/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/</loc>
+    <loc>https://www.matemaster.cn/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/</loc>
     <lastmod>2021-04-02</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
