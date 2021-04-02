@@ -2,5 +2,3 @@ https://www.matemaster.cn/
 https://www.matemaster.cn/about/
 https://www.matemaster.cn/contact/
 https://www.matemaster.cn/#indexCard
-https://www.zhihu.com/people/matemaster
-https://gitee.com/matemaster
