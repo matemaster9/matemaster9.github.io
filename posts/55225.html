@@ -428,21 +428,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2021-03-31
+                    2021-04-01
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    3.1k
+                    3.9k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    14 分
+                    17 分
                 </div>
                 
 
@@ -1217,6 +1217,85 @@ LinkList L<span class="token punctuation">;</span> <span class="token comment">/
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 
+
+<h1 id="链表拓展"><a href="#链表拓展" class="headerlink" title="链表拓展"></a>链表拓展</h1><h2 id="循环链表"><a href="#循环链表" class="headerlink" title="循环链表"></a>循环链表</h2><h3 id="两种结构"><a href="#两种结构" class="headerlink" title="两种结构"></a>两种结构</h3><p>目前只针对单向循环链表，并且是带有头指针或者是尾指针的循环链表！</p>
+<img src="https://cdn.jsdelivr.net/gh/matemaster9/imgs-masterstudio/imgs1/20210401142223.jpg" style="width:80%">
+
+<img src="https://cdn.jsdelivr.net/gh/matemaster9/imgs-masterstudio/imgs1/20210401142220.jpg" style="width:80%">
+
+<p>针对循环链表的判空标准，不会再与单向链表相同</p>
+<pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token comment">// 循环链表的判断方式     // 单向链表的判断方式   </span>
+R<span class="token operator">-&gt;</span>next <span class="token operator">==</span> R<span class="token punctuation">;</span>          L<span class="token operator">-&gt;</span>next <span class="token operator">==</span> <span class="token constant">NULL</span><span class="token punctuation">;</span>
+H<span class="token operator">-&gt;</span>next <span class="token operator">==</span> H<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p>以带有头指针的单向循环链表的遍历为例</p>
+<pre class="line-numbers language-c" data-language="c"><code class="language-c">p <span class="token operator">=</span> H<span class="token punctuation">;</span>
+<span class="token keyword">while</span><span class="token punctuation">(</span>p<span class="token operator">-&gt;</span>next <span class="token operator">!=</span> H<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    p <span class="token operator">=</span> p<span class="token operator">-&gt;</span>next<span class="token punctuation">;</span>
+    p<span class="token operator">++</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>我们从上面的结构看出，H循环链表在访问表头元素时，复杂度属于常量阶，而表尾元素依旧是n阶！</p>
+<p>但是对于R循环链表时，访问表头与表尾元素复杂度都是常量阶！这样也看出尾指针循环链表的好处！</p>
+<h3 id="链表合并"><a href="#链表合并" class="headerlink" title="链表合并"></a>链表合并</h3><p>既然尾指针循环链表的好处多多，那么我们可以测试一下，循环链表的合并操作</p>
+<p>1）保留A的头结点指针</p>
+<p>2）将A的表尾指向B的首元结点</p>
+<p>3）释放B的头结点</p>
+<p>4）将B的表尾指向A的表头</p>
+<pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token keyword">void</span> <span class="token function">ConnectList_L</span><span class="token punctuation">(</span>LinkList A<span class="token punctuation">,</span>LinkList B<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    LinkList p <span class="token operator">=</span> A<span class="token operator">-&gt;</span>next<span class="token punctuation">;</span>
+    A<span class="token operator">-&gt;</span>next <span class="token operator">=</span> B<span class="token operator">-&gt;</span>next<span class="token operator">-&gt;</span>next<span class="token punctuation">;</span>
+    delete B<span class="token operator">-&gt;</span>next<span class="token punctuation">;</span>
+    B<span class="token operator">-&gt;</span>next <span class="token operator">=</span>  p<span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="双向链表"><a href="#双向链表" class="headerlink" title="双向链表"></a>双向链表</h2><p>单向链表的弊端在于，当已知一个结点的位置，无法访问它的前驱结点。而双向链表并解决了这样的问题。比如在Java中的LinkedList就是使用的双向链表，那么在对于大量的增删改查时，双向链表的优势就出现了。</p>
+<p>双向链表的结构</p>
+<pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token keyword">typedef</span> <span class="token keyword">struct</span> <span class="token punctuation">{</span>
+    DuLnode prior<span class="token punctuation">;</span>
+    DuLnode next<span class="token punctuation">;</span>
+    ElemType data<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>DuLnode Dulink<span class="token operator">*</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="Java的双向链表"><a href="#Java的双向链表" class="headerlink" title="Java的双向链表"></a>Java的双向链表</h3><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">private</span> <span class="token keyword">class</span> <span class="token class-name">Node</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">E</span><span class="token punctuation">&gt;</span></span> <span class="token punctuation">{</span> 
+    <span class="token keyword">public</span> <span class="token class-name">E</span> item<span class="token punctuation">;</span> 
+    <span class="token keyword">public</span> <span class="token class-name">Node</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">E</span><span class="token punctuation">&gt;</span></span> prev<span class="token punctuation">;</span> 
+    <span class="token keyword">public</span> <span class="token class-name">Node</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">E</span><span class="token punctuation">&gt;</span></span> next<span class="token punctuation">;</span> 
+    <span class="token class-name">Node</span><span class="token punctuation">(</span><span class="token class-name">Node</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">E</span><span class="token punctuation">&gt;</span></span> prev<span class="token punctuation">,</span> <span class="token class-name">E</span> item<span class="token punctuation">,</span> <span class="token class-name">Node</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">E</span><span class="token punctuation">&gt;</span></span> next<span class="token punctuation">)</span> <span class="token punctuation">{</span> 
+        <span class="token keyword">this</span><span class="token punctuation">.</span>item <span class="token operator">=</span> item<span class="token punctuation">;</span> 
+        <span class="token keyword">this</span><span class="token punctuation">.</span>next <span class="token operator">=</span> next<span class="token punctuation">;</span> 
+        <span class="token keyword">this</span><span class="token punctuation">.</span>prev <span class="token operator">=</span> prev<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="插入元素"><a href="#插入元素" class="headerlink" title="插入元素"></a>插入元素</h3><p>对于c系列双向链表的插入，要简化与Java的插入（这里假设插入位置的前驱和后继结点都存在）</p>
+<p>1）遍历获取待插入的第i个结点的指针p</p>
+<p>2）生成插入结点s</p>
+<p>3）将s的前驱和后继指针，分别指向p的前驱和p自身</p>
+<p>4）将p的前驱的后继指向s，将p的前驱指向s</p>
+<pre class="line-numbers language-c" data-language="c"><code class="language-c">Status <span class="token function">ListInsert_Dul</span><span class="token punctuation">(</span>Dulink <span class="token operator">&amp;</span>L<span class="token punctuation">,</span><span class="token keyword">int</span> i<span class="token punctuation">,</span>ElemType e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token operator">!</span><span class="token punctuation">(</span>p <span class="token operator">=</span> <span class="token function">GetElem</span><span class="token punctuation">(</span>L<span class="token punctuation">,</span>i<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token keyword">return</span> ERROR<span class="token punctuation">;</span>
+    s <span class="token operator">=</span> new DuLnode<span class="token punctuation">;</span>
+    s<span class="token operator">-&gt;</span>data <span class="token operator">=</span> e<span class="token punctuation">;</span>
+    s<span class="token operator">-&gt;</span>prior <span class="token operator">=</span> p<span class="token operator">-&gt;</span>prior<span class="token punctuation">;</span>
+    s<span class="token operator">-&gt;</span>next <span class="token operator">=</span> p<span class="token punctuation">;</span>
+    p<span class="token operator">-&gt;</span>prior<span class="token operator">-&gt;</span>next <span class="token operator">=</span> s<span class="token punctuation">;</span>
+    p<span class="token operator">-&gt;</span>prior <span class="token operator">=</span> s<span class="token punctuation">;</span>
+    <span class="token keyword">return</span> OK<span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="删除元素"><a href="#删除元素" class="headerlink" title="删除元素"></a>删除元素</h3><p>对于删除操作，假设删除位置的前驱和后继都存在，不考虑删除之后为空表的情况,也不获取删除元素的内容，只考虑删除结点时，删除位置前驱和后继结点的指针变化！</p>
+<p>1）将p的后继的前驱指针指向p的前驱结点</p>
+<p>2）将p的前驱的后继指针指向p的后继结点</p>
+<pre class="line-numbers language-c" data-language="c"><code class="language-c">Status <span class="token function">ListDelete_Dul</span><span class="token punctuation">(</span>Dulink <span class="token operator">&amp;</span>L<span class="token punctuation">,</span><span class="token keyword">int</span> i<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token operator">!</span><span class="token punctuation">(</span>p <span class="token operator">=</span> <span class="token function">GetElem</span><span class="token punctuation">(</span>L<span class="token punctuation">,</span>i<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token keyword">return</span> ERROR<span class="token punctuation">;</span>
+    p<span class="token operator">-&gt;</span>next<span class="token operator">-&gt;</span>prior <span class="token operator">=</span> p<span class="token operator">-&gt;</span>prior<span class="token punctuation">;</span>
+    p<span class="token operator">-&gt;</span>prior<span class="token operator">-&gt;</span>next <span class="token operator">=</span> p<span class="token operator">-&gt;</span>next<span class="token punctuation">;</span>
+    <span class="token keyword">return</span> OK<span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>关于复杂的双向链表的增删改查，可以参考 <a href="https://www.matemaster.cn/posts/53096.html#toc-heading-2">LinkedList底层原理</a></p>
+
                 
             </div>
             <hr/>
@@ -1730,15 +1809,15 @@ LinkList L<span class="token punctuation">;</span> <span class="token comment">/
                 <a href="/posts/61237.html">
                     <div class="card-image">
                         
-                        <img src="https://cdn.jsdelivr.net/gh/matemaster9/image-one/images/20210322094215.jpg" class="responsive-img" alt="排序算法">
+                        <img src="https://cdn.jsdelivr.net/gh/matemaster9/image-one/images/20210322094215.jpg" class="responsive-img" alt="经典排序算法">
                         
-                        <span class="card-title">排序算法</span>
+                        <span class="card-title">经典排序算法</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            冒泡（待更新……）
+                            算法四-经典排序
                         
                     </div>
                     <div class="publish-info">
@@ -1764,8 +1843,8 @@ LinkList L<span class="token punctuation">;</span> <span class="token comment">/
                         <span class="chip bg-color">原创</span>
                     </a>
                     
-                    <a href="/tags/algorithm/">
-                        <span class="chip bg-color">algorithm</span>
+                    <a href="/tags/algorithms/">
+                        <span class="chip bg-color">algorithms</span>
                     </a>
                     
                 </div>
@@ -2010,7 +2089,7 @@ LinkList L<span class="token punctuation">;</span> <span class="token comment">/
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">36.9k</span>&nbsp;字
+                class="white-color">38.1k</span>&nbsp;字
             
             
             

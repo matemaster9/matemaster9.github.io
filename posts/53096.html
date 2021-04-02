@@ -428,21 +428,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2021-03-30
+                    2021-03-31
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    3k
+                    3.2k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    15 分
+                    16 分
                 </div>
                 
 
@@ -487,6 +487,8 @@
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>除了基本的内部节点<code>Node</code>之外，还存在三个不可序列化的变量：<code>first（头结点）</code>、<code>last（尾结点）</code>、<code>size</code></p>
+<p>first(null,item,next)</p>
+<p>last(prev,item,null)</p>
 
 &nbsp;&nbsp;&nbsp;&nbsp;
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -505,7 +507,7 @@
 
 
 
-<h1 id="List-lt-E-gt"><a href="#List-lt-E-gt" class="headerlink" title="List<E>"></a>List&lt;E&gt;</h1><h2 id="List-lt-E-gt-接口"><a href="#List-lt-E-gt-接口" class="headerlink" title="List<E>接口"></a>List&lt;E&gt;接口</h2><p><code>LinkedList&lt;E&gt;</code>作为一种链表型的列表，首先就有着列表的相关概念，也就是<code>List&lt;E&gt;</code>接口中的方法。</p>
+<h1 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h1><h2 id="List-lt-E-gt-接口"><a href="#List-lt-E-gt-接口" class="headerlink" title="List<E>接口"></a>List&lt;E&gt;接口</h2><p><code>LinkedList&lt;E&gt;</code>作为一种链表型的列表，首先就有着列表的相关概念，也就是<code>List&lt;E&gt;</code>接口中的方法。</p>
 <p><span class="github-emoji"><span>👀</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/1f440.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span>我们先看一下<code>List&lt;E&gt;</code>自己在<code>Collection&lt;E&gt;</code>接口之上增加的方法 </p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">interface</span> <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">E</span><span class="token punctuation">&gt;</span></span> <span class="token punctuation">{</span>
     <span class="token class-name">E</span> <span class="token function">get</span><span class="token punctuation">(</span><span class="token keyword">int</span> index<span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -549,7 +551,8 @@
 
 
 
-<h2 id="LinkedList实现"><a href="#LinkedList实现" class="headerlink" title="LinkedList实现"></a>LinkedList实现</h2><h3 id="获取器和更改器"><a href="#获取器和更改器" class="headerlink" title="获取器和更改器"></a>获取器和更改器</h3><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token class-name">E</span> <span class="token function">get</span><span class="token punctuation">(</span><span class="token keyword">int</span> index<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+<h2 id="LinkedList实现"><a href="#LinkedList实现" class="headerlink" title="LinkedList实现"></a>LinkedList实现</h2><h3 id="修改"><a href="#修改" class="headerlink" title="修改"></a>修改</h3><p>将LinkList视为列表，设置指定位置的元素，以及获取指定位置的元素。</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token class-name">E</span> <span class="token function">get</span><span class="token punctuation">(</span><span class="token keyword">int</span> index<span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token function">checkElementIndex</span><span class="token punctuation">(</span>index<span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token keyword">return</span> <span class="token function">node</span><span class="token punctuation">(</span>index<span class="token punctuation">)</span><span class="token punctuation">.</span>item<span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
@@ -590,11 +593,10 @@
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-
-
+<p>从node(int)方法中可以看出，LinkedList的元素位置是从0开始计数！所以[0,1,2,3,4,5,6,7,8,9]</p>
 <h3 id="添加"><a href="#添加" class="headerlink" title="添加"></a>添加</h3><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">add</span><span class="token punctuation">(</span><span class="token keyword">int</span> index<span class="token punctuation">,</span> <span class="token class-name">E</span> element<span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token function">checkPositionIndex</span><span class="token punctuation">(</span>index<span class="token punctuation">)</span><span class="token punctuation">;</span>
-
+	<span class="token comment">// 判断插入的位置是：尾部还是中间任意位置</span>
     <span class="token keyword">if</span> <span class="token punctuation">(</span>index <span class="token operator">==</span> size<span class="token punctuation">)</span>
         <span class="token function">linkLast</span><span class="token punctuation">(</span>element<span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token keyword">else</span>
@@ -618,7 +620,16 @@
         <td style="background-color:white">next == null</td>
     </tr>
 </tbody></table>
+算法思想：
 
+<p>1）保留尾结点的内容</p>
+<p>2）生成前驱结点为last的插入结点</p>
+<p>3）将last指向新插入的结点</p>
+<p>4）验证空表的情况：</p>
+<ul>
+<li>是空链表时，将first指向新插入的结点</li>
+<li>不是空链表时，将last指向新插入的结点</li>
+</ul>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">void</span> <span class="token function">linkLast</span><span class="token punctuation">(</span><span class="token class-name">E</span> e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token keyword">final</span> <span class="token class-name">Node</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">E</span><span class="token punctuation">&gt;</span></span> l <span class="token operator">=</span> last<span class="token punctuation">;</span>
     <span class="token keyword">final</span> <span class="token class-name">Node</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">E</span><span class="token punctuation">&gt;</span></span> newNode <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Node</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token punctuation">&gt;</span></span><span class="token punctuation">(</span>l<span class="token punctuation">,</span> e<span class="token punctuation">,</span> <span class="token keyword">null</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -632,6 +643,8 @@
     modCount<span class="token operator">++</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
+
+
 <p>👉<strong>中间任意位置元素之前插入</strong></p>
 <table>
     <tbody><tr>
@@ -640,7 +653,16 @@
         <td style="background-color:white">next == succ</td>
     </tr>
 </tbody></table>
+算法思想：
 
+<p>1）保留待插入位置结点succ的前驱引用</p>
+<p>2）生成一个(succ.prev,item,succ)的插入结点</p>
+<p>3)将succ.repv指向新的结点</p>
+<p>4）验证当前插入的结点是不是头结点first</p>
+<ul>
+<li>是first时，first指向新的插入结点</li>
+<li>不是first时，将新插入的结点next指向succ</li>
+</ul>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">void</span> <span class="token function">linkBefore</span><span class="token punctuation">(</span><span class="token class-name">E</span> e<span class="token punctuation">,</span> <span class="token class-name">Node</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">E</span><span class="token punctuation">&gt;</span></span> succ<span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token comment">// assert succ != null;</span>
     <span class="token keyword">final</span> <span class="token class-name">Node</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">E</span><span class="token punctuation">&gt;</span></span> pred <span class="token operator">=</span> succ<span class="token punctuation">.</span>prev<span class="token punctuation">;</span>
@@ -734,7 +756,7 @@
 
 
 
-<h3 id="🔗添加集合"><a href="#🔗添加集合" class="headerlink" title="🔗添加集合"></a>🔗添加集合</h3><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">boolean</span> <span class="token function">addAll</span><span class="token punctuation">(</span><span class="token keyword">int</span> index<span class="token punctuation">,</span> <span class="token class-name">Collection</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token operator">?</span> <span class="token keyword">extends</span> <span class="token class-name">E</span><span class="token punctuation">&gt;</span></span> c<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+<h3 id="添加集合"><a href="#添加集合" class="headerlink" title="添加集合*"></a>添加集合*</h3><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">boolean</span> <span class="token function">addAll</span><span class="token punctuation">(</span><span class="token keyword">int</span> index<span class="token punctuation">,</span> <span class="token class-name">Collection</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token operator">?</span> <span class="token keyword">extends</span> <span class="token class-name">E</span><span class="token punctuation">&gt;</span></span> c<span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token function">checkPositionIndex</span><span class="token punctuation">(</span>index<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
     <span class="token class-name">Object</span><span class="token punctuation">[</span><span class="token punctuation">]</span> a <span class="token operator">=</span> c<span class="token punctuation">.</span><span class="token function">toArray</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -941,7 +963,7 @@
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>当<code>if</code>条件满足时，表示此时调用的是<code>previous</code>。当<code>else</code>条件满足时，表示调用的是<code>next</code>。</p>
-<h1 id="Deque-lt-E-gt"><a href="#Deque-lt-E-gt" class="headerlink" title="Deque<E>"></a>Deque&lt;E&gt;</h1><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">// 自拓展双向队列方法</span>
+<h1 id="拓展结构"><a href="#拓展结构" class="headerlink" title="拓展结构"></a>拓展结构</h1><h2 id="Deque-lt-E-gt"><a href="#Deque-lt-E-gt" class="headerlink" title="Deque<E>"></a>Deque&lt;E&gt;</h2><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">// 自拓展双向队列方法</span>
 <span class="token keyword">void</span> <span class="token function">addFirst</span><span class="token punctuation">(</span><span class="token class-name">E</span> e<span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token keyword">void</span> <span class="token function">addLast</span><span class="token punctuation">(</span><span class="token class-name">E</span> e<span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token keyword">boolean</span> <span class="token function">offerFirst</span><span class="token punctuation">(</span><span class="token class-name">E</span> e<span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -1171,7 +1193,7 @@
 
 
 
-<h2 id="双向队列☆"><a href="#双向队列☆" class="headerlink" title="双向队列☆"></a>双向队列☆</h2><h3 id="插入元素"><a href="#插入元素" class="headerlink" title="插入元素"></a>插入元素</h3><ul>
+<h2 id="双向队列"><a href="#双向队列" class="headerlink" title="双向队列*"></a>双向队列*</h2><h3 id="插入元素"><a href="#插入元素" class="headerlink" title="插入元素"></a>插入元素</h3><ul>
 <li>正向队列-add</li>
 </ul>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">addFirst</span><span class="token punctuation">(</span><span class="token class-name">E</span> e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
@@ -2053,7 +2075,7 @@
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">36.9k</span>&nbsp;字
+                class="white-color">38.1k</span>&nbsp;字
             
             
             

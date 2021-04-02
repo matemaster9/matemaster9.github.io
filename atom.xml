@@ -6,7 +6,7 @@
   <link href="https://www.matemaster.cn/atom.xml" rel="self"/>
   
   <link href="https://www.matemaster.cn/"/>
-  <updated>2021-03-31T05:35:00.090Z</updated>
+  <updated>2021-03-31T15:18:10.707Z</updated>
   <id>https://www.matemaster.cn/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://www.matemaster.cn/posts/64831.html"/>
     <id>https://www.matemaster.cn/posts/64831.html</id>
     <published>2021-03-27T13:57:26.000Z</published>
-    <updated>2021-03-31T05:35:00.090Z</updated>
+    <updated>2021-03-31T15:18:10.707Z</updated>
     
     
       
@@ -113,11 +113,11 @@
     <category term="MasterStudio" scheme="https://www.matemaster.cn/categories/MasterStudio/"/>
     
     
-    <category term="MasterStudio" scheme="https://www.matemaster.cn/tags/MasterStudio/"/>
+    <category term="转载" scheme="https://www.matemaster.cn/tags/%E8%BD%AC%E8%BD%BD/"/>
     
     <category term="动画" scheme="https://www.matemaster.cn/tags/%E5%8A%A8%E7%94%BB/"/>
     
-    <category term="转载" scheme="https://www.matemaster.cn/tags/%E8%BD%AC%E8%BD%BD/"/>
+    <category term="MasterStudio" scheme="https://www.matemaster.cn/tags/MasterStudio/"/>
     
   </entry>
   
@@ -160,11 +160,11 @@
   </entry>
   
   <entry>
-    <title>排序算法</title>
+    <title>经典排序算法</title>
     <link href="https://www.matemaster.cn/posts/61237.html"/>
     <id>https://www.matemaster.cn/posts/61237.html</id>
     <published>2021-03-22T01:23:59.000Z</published>
-    <updated>2021-03-26T01:39:21.988Z</updated>
+    <updated>2021-03-31T11:17:38.187Z</updated>
     
     
     
@@ -174,7 +174,7 @@
     
     <category term="原创" scheme="https://www.matemaster.cn/tags/%E5%8E%9F%E5%88%9B/"/>
     
-    <category term="algorithm" scheme="https://www.matemaster.cn/tags/algorithm/"/>
+    <category term="algorithms" scheme="https://www.matemaster.cn/tags/algorithms/"/>
     
   </entry>
   
@@ -183,7 +183,7 @@
     <link href="https://www.matemaster.cn/posts/55225.html"/>
     <id>https://www.matemaster.cn/posts/55225.html</id>
     <published>2021-03-22T01:23:50.000Z</published>
-    <updated>2021-03-31T05:37:32.206Z</updated>
+    <updated>2021-04-01T06:54:05.685Z</updated>
     
     
       
@@ -266,7 +266,7 @@
     <link href="https://www.matemaster.cn/posts/53096.html"/>
     <id>https://www.matemaster.cn/posts/53096.html</id>
     <published>2021-03-19T07:14:31.000Z</published>
-    <updated>2021-03-30T03:15:02.599Z</updated>
+    <updated>2021-03-31T10:36:33.856Z</updated>
     
     
       
@@ -466,9 +466,9 @@
     
     <category term="原创" scheme="https://www.matemaster.cn/tags/%E5%8E%9F%E5%88%9B/"/>
     
-    <category term="MasterStudio" scheme="https://www.matemaster.cn/tags/MasterStudio/"/>
-    
     <category term="动画" scheme="https://www.matemaster.cn/tags/%E5%8A%A8%E7%94%BB/"/>
+    
+    <category term="MasterStudio" scheme="https://www.matemaster.cn/tags/MasterStudio/"/>
     
   </entry>
   

@@ -431,7 +431,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    3.8k
+                    3.9k
                 </div>
                 
 
@@ -525,7 +525,7 @@ http://user:pass@www.server.com:80/dir/index.htm?uid=1#ch1
 <h2 id="cookie"><a href="#cookie" class="headerlink" title="cookie"></a>cookie</h2><p><b style="color: red;">HTTP协议是一种无状态的协议，简而言之就是，服务器不会记录浏览器的访问请求，即使是刚请求的浏览器，服务器依旧视为第一次请求访问！</b>但是<code>Cookie</code>引入，支持了HTTP状态，第一次华为浏览器访问阿里官网，阿里服务器会在响应报文中加入<code>cookie</code>字段，并且在阿里的后端数据库记录该cookie。并且在华为浏览器下一次访问时，进行数据库检索，如果存在cookie记录，那么阿里将会自动记录该浏览器的浏览记录，保持状态！</p>
 <img src="https://cdn.jsdelivr.net/gh/matemaster9/imgs-masterstudio@1.2/imgs/20210329191736.jpg" style="width:80%;border:solid">
 
-<h2 id="代理服务器"><a href="#代理服务器" class="headerlink" title="代理服务器"></a>代理服务器</h2><p>代理服务器的作用就是做<code>web缓存</code>。web缓存可以减轻接入英特网的压力，并且加快了客户端的响应速度！</p>
+<h2 id="web服务器"><a href="#web服务器" class="headerlink" title="web服务器"></a>web服务器</h2><p>代理服务器的作用就是做<code>web缓存</code>。web缓存可以减轻接入英特网的压力，并且加快了客户端的响应速度！</p>
 <p>这里为了保证<code>web缓存有效期</code>，我们的web缓存服务器，会向源服务器发送GET请求，并且在字段中存在<code>If-Modified-Since</code>与<code>Last-Modified</code>做对比，当不一致时说明缓存过期，那么将更新web缓存！</p>
 <pre class="line-numbers language-wireshark" data-language="wireshark"><code class="language-wireshark"># 上一次修改时间
 Last-Modified: Mon, 29 Mar 2021 05:59:01 GMT
@@ -731,7 +731,7 @@ server<span class="token punctuation">.</span>quit<span class="token punctuation
 <p><code>主机别名</code>：对于含有复杂hostname的主机，可以支持多别名的操作。而其中存在一个<code>规范主机名</code>和多个<code>主机别名</code>而DNS便是提供，将多个主机别名，转为对应的规范主机名。</p>
 <p><code>邮件服务器别名</code>：为了让邮件用户可以自己定义好记的邮件名，我们就需要利用类似主机别名的方式，为邮件服务器提供别名操作，而在DNS记录中存在的MX记录，允许邮件服务器名和web服务器名相同。</p>
 <p><code>负载分配</code>：简单理解：就是一个IP地址集合与同一个规范主机名相联系！（可以参考下面在Ubuntu系统下的nslookup alibaba.com）。从那里看出，一个<strong>alibaba.com</strong>对应了4个IP地址</p>
-<h2 id="DNS分布式数据库"><a href="#DNS分布式数据库" class="headerlink" title="DNS分布式数据库"></a>DNS分布式数据库</h2><p>DNS采取的是：<code>分布式、层次数据库</code>。层次：root、TLD、权威</p>
+<h2 id="DNS分布式数据库"><a href="#DNS分布式数据库" class="headerlink" title="DNS分布式数据库"></a>DNS分布式数据库</h2><h3 id="分布式数据库结构"><a href="#分布式数据库结构" class="headerlink" title="分布式数据库结构"></a>分布式数据库结构</h3><p>DNS采取的是：<code>分布式、层次数据库</code>。层次：root、TLD、权威</p>
 <p>看看例图<span class="github-emoji"><span>✌</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/270c.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span></p>
 <img src="https://cdn.jsdelivr.net/gh/matemaster9/imgs-masterstudio@1.2/imgs/20210328145741.jpg" style="width:80%;border:solid">
 
@@ -739,6 +739,21 @@ server<span class="token punctuation">.</span>quit<span class="token punctuation
 <p><code>TLD</code>：顶级域服务器提供了存储了<code>主机ip</code>的权威服务器的<code>ip</code></p>
 <p><code>权威服务器</code>：存储了<code>对应主机名的ip地址</code></p>
 <p><code>本地DNS server</code>：虽然不属于分布式层次结构中的数据库，但是在DNS中起重要作用。与DNS缓存有关！</p>
+<p>alibaba.com的DNS解析过程：</p>
+<p>1）@matemaster_pc向本地DNS服务器发送请求，以获取alibaba.com域名的ip地址</p>
+<p>2）本地DNS服务器先查询数据库，看是否存在对应ip地址的缓存。</p>
+<ul>
+<li><p>若存在直接返回给主机</p>
+</li>
+<li><p>若不存在则，向根服务器发送请求</p>
+</li>
+</ul>
+<p>3）响应报文，获取com顶级域服务器的ip地址</p>
+<p>4）向com顶级域发送请求报文</p>
+<p>5）响应报文，获取alibaba.com权威服务器的ip地址</p>
+<p>6）向权威服务器发送请求</p>
+<p>7）响应报文，获取alibaba.com主机的ip地址</p>
+<p>8）返回给@matemaster_pc</p>
 <h3 id="分布式数据库的工作过程"><a href="#分布式数据库的工作过程" class="headerlink" title="分布式数据库的工作过程"></a>分布式数据库的工作过程</h3><img src="https://cdn.jsdelivr.net/gh/matemaster9/imgs-masterstudio@1.2/imgs/20210328151824.jpg" style="width:80%;border:solid red">
 
 <p>在这里<code>alibaba.com</code>服务器的<code>ip</code>采取了负载分配的方式，我这里的对应ali的DNS服务器，以及ip如下<span class="github-emoji"><span>👇</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/1f447.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span></p>
@@ -1696,7 +1711,7 @@ alibaba.com    nameserver = ns1.alibabadns.com.<span aria-hidden="true" class="l
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">36.9k</span>&nbsp;字
+                class="white-color">38.1k</span>&nbsp;字
             
             
             
