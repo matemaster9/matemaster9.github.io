@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://www.matemaster.cn/posts/52745.html</loc>
+    
+    <lastmod>2021-04-02</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://www.matemaster.cn/posts/46256.html</loc>
+    
+    <lastmod>2021-04-02</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://www.matemaster.cn/posts/55225.html</loc>
     
     <lastmod>2021-04-01</lastmod>
@@ -59,13 +73,6 @@
   
   <url>
     <loc>https://www.matemaster.cn/posts/55362.html</loc>
-    
-    <lastmod>2021-03-31</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://www.matemaster.cn/posts/52745.html</loc>
     
     <lastmod>2021-03-31</lastmod>
     
@@ -318,6 +325,13 @@
     <priority>0.6</priority>
   </url>
   
+  <url>
+    <loc>https://www.matemaster.cn/tags/leetcode/</loc>
+    <lastmod>2021-04-02</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
 
   
   <url>
@@ -371,6 +385,13 @@
   
   <url>
     <loc>https://www.matemaster.cn/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/</loc>
+    <lastmod>2021-04-02</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.matemaster.cn/categories/leetcode/</loc>
     <lastmod>2021-04-02</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
