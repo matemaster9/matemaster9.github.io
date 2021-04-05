@@ -435,21 +435,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2021-04-04
+                    2021-04-05
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    853
+                    2.1k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    4 分
+                    9 分
                 </div>
                 
 
@@ -478,7 +478,9 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="栈"><a href="#栈" class="headerlink" title="栈"></a>栈</h1><p><code>栈</code>：只允许在一端（栈顶）操作的线性表。<code>栈顶</code>：允许增删的一端。<code>空栈</code>：不含任何元素的空表。</p>
+                <h1 id="栈"><a href="#栈" class="headerlink" title="栈"></a>栈</h1><p><code>栈</code>：只允许在一端（栈顶）操作的线性表。</p>
+<p><code>栈顶</code>：允许增删的一端。</p>
+<p><code>空栈</code>：不含任何元素的空表。</p>
 <p>栈的数学性质：入栈的n个元素，有多少个不同排列方式的出栈序列！</p>
 <h2 id="栈的基本知识"><a href="#栈的基本知识" class="headerlink" title="栈的基本知识"></a>栈的基本知识</h2><h3 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h3><ul>
 <li>c语言定义的栈的基本操作</li>
@@ -500,7 +502,7 @@
 <span class="token function">peek</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token function">destroy</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h3 id="栈顶指针定义与基本操作的关系"><a href="#栈顶指针定义与基本操作的关系" class="headerlink" title="栈顶指针定义与基本操作的关系"></a>栈顶指针定义与基本操作的关系</h3><p>1）假设我们规定S.top = -1为栈顶的初始化设置，那么代表着栈顶从0开始计数，栈顶指针始终指向栈顶元素！</p>
+<h3 id="初始状态与基本操作的关系"><a href="#初始状态与基本操作的关系" class="headerlink" title="初始状态与基本操作的关系"></a>初始状态与基本操作的关系</h3><p>1）假设我们规定S.top = -1为栈顶的初始化设置，那么代表着栈顶从0开始计数，栈顶指针始终指向栈顶元素！</p>
 <p><code>栈顶指针</code>：S.top = -1</p>
 <p><code>进栈操作</code>：先将栈顶指针移动到下一位，在赋值元素 S.data[++S.top] = e</p>
 <p><code>出栈操作</code>：先将出栈元素保存，再将栈顶指针移动到下一位 e = S.data[S.top–]</p>
@@ -696,6 +698,281 @@ LiStack S<span class="token punctuation">;</span><span aria-hidden="true" class=
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 
+
+<h1 id="队列"><a href="#队列" class="headerlink" title="队列"></a>队列</h1><p><code>队列</code>：一种操作受限制的线性表，只允许在<code>队头</code>出队<code>队尾</code>入队！</p>
+<p><code>队头</code>：允许删除的一端</p>
+<p><code>队尾</code>：允许插入的一端</p>
+<h2 id="队列基本知识"><a href="#队列基本知识" class="headerlink" title="队列基本知识"></a>队列基本知识</h2><h3 id="基本操作-1"><a href="#基本操作-1" class="headerlink" title="基本操作"></a>基本操作</h3><ul>
+<li>c类语言</li>
+</ul>
+<pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token function">InitQueue</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>Q<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">QueueEmpty</span><span class="token punctuation">(</span>Q<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">EnQueue</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>Q<span class="token punctuation">,</span>x<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">DeQueue</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>Q<span class="token punctuation">,</span><span class="token operator">&amp;</span>x<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">GetHead</span><span class="token punctuation">(</span>Q<span class="token punctuation">,</span><span class="token operator">&amp;</span>x<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<ul>
+<li>Java语言</li>
+</ul>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token function">initQ</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">isEmptyQ</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">insQueue</span><span class="token punctuation">(</span><span class="token class-name">E</span> e<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">delQueue</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">getHead</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="初始状态与基本操作的关系-1"><a href="#初始状态与基本操作的关系-1" class="headerlink" title="初始状态与基本操作的关系"></a>初始状态与基本操作的关系</h3><p>1）假设我们设置初始状态下，Q.front = Q.rear = 0！此时队尾指针始终指向队尾元素的下一个存储单元！</p>
+<p><code>初始状态</code>：Q.front = Q.rear = 0</p>
+<p><code>队空条件</code>：Q.front == Q.rear </p>
+<p><code>队满条件</code>：存在三种实现方式（这里的队列是循环队列结构）</p>
+<p><code>入队操作</code>：Q.data = x ; Q.rear = (Q.rear+1)%MaxSize;</p>
+<p><code>出队操作</code>：x = Q.data ; Q.front = (Q.front+1)%MaxSize</p>
+<p>通过模运算就可以实现类似于<code>(0,1,2,……,MaxSize-1)</code>的周期序列</p>
+<p>2）假设我们设置初始状态下，Q.front = 0、Q.rear = MaxSize-1！此时队尾指针始终指向队尾元素！</p>
+<p><code>初始状态</code>：Q.front = 0、Q.rear = MaxSize-1</p>
+<p><code>队空条件</code>：Q.front == (Q.rear+1)%MaxSize</p>
+<p><code>队满条件</code>：存在三种实现方式（这里的队列是循环队列结构）</p>
+<p><code>入队操作</code>：Q.rear = (Q.rear+1)%MaxSize ; Q.data = x </p>
+<p><code>出队操作</code>：x = Q.data ; Q.front = (Q.front+1)%MaxSize</p>
+<p><b style="color: red;">注：</b><strong>因为无论是哪一种初始状态，队头指针始终指向队头，所以两种状态下的出队操作保持一致！</strong></p>
+<h2 id="顺序队列"><a href="#顺序队列" class="headerlink" title="顺序队列"></a>顺序队列</h2><h3 id="C类语言实现"><a href="#C类语言实现" class="headerlink" title="C类语言实现"></a>C类语言实现</h3><p>①假设初始状态一</p>
+<pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token macro property"><span class="token directive-hash">#</span> <span class="token directive keyword">define</span> <span class="token macro-name">MaxSize</span> <span class="token expression"><span class="token number">100</span></span></span>
+<span class="token keyword">typedef</span> <span class="token keyword">struct</span> <span class="token punctuation">{</span>
+    Elemtype data <span class="token punctuation">[</span>MaxSize<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token keyword">int</span> front<span class="token punctuation">,</span>rear<span class="token punctuation">;</span>
+<span class="token punctuation">}</span> SqQueue<span class="token punctuation">;</span>
+
+SqQueue Q<span class="token punctuation">;</span>
+
+<span class="token keyword">void</span> <span class="token function">InitQueue</span><span class="token punctuation">(</span>SqQueue <span class="token operator">&amp;</span>Q<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    Q<span class="token punctuation">.</span>front <span class="token operator">=</span> Q<span class="token punctuation">.</span>rear <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+bool <span class="token function">QueueEmpty</span><span class="token punctuation">(</span>SqQueue Q<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token punctuation">(</span>Q<span class="token punctuation">.</span>front <span class="token operator">==</span> Q<span class="token punctuation">.</span>rear<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+bool <span class="token function">QueueFull</span><span class="token punctuation">(</span>SqQueue Q<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// 补充操作，用于判断队列是否满，具体实现会在后面展出三种方案，目前可以直接使用</span>
+<span class="token punctuation">}</span>
+
+bool <span class="token function">EnQueue</span><span class="token punctuation">(</span>SqQueue <span class="token operator">&amp;</span>Q<span class="token punctuation">,</span>Elemtype x<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token function">QueueFull</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+        <span class="token keyword">return</span> false<span class="token punctuation">;</span>
+    Q<span class="token punctuation">.</span>data<span class="token punctuation">[</span>Q<span class="token punctuation">.</span>rear<span class="token punctuation">]</span> <span class="token operator">=</span> x<span class="token punctuation">;</span>
+    Q<span class="token punctuation">.</span>rear <span class="token operator">=</span> <span class="token punctuation">(</span>Q<span class="token punctuation">.</span>rear<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token operator">%</span>MaxSize<span class="token punctuation">;</span>       <span class="token comment">//循环周期操作：初始值为0、步长为1、循环周期为MaxSize的序列</span>
+    <span class="token keyword">return</span> true<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+bool <span class="token function">DeQueue</span><span class="token punctuation">(</span>SqQueue <span class="token operator">&amp;</span>Q<span class="token punctuation">,</span>Elemtype <span class="token operator">&amp;</span>x<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token function">QueueEmpty</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+        <span class="token keyword">return</span> false<span class="token punctuation">;</span>
+    x <span class="token operator">=</span> Q<span class="token punctuation">.</span>data<span class="token punctuation">[</span>Q<span class="token punctuation">.</span>front<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    Q<span class="token punctuation">.</span>front <span class="token operator">=</span> <span class="token punctuation">(</span>Q<span class="token punctuation">.</span>front<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token operator">%</span>MaxSize<span class="token punctuation">;</span>
+    <span class="token keyword">return</span> true<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+bool <span class="token function">GetHead</span><span class="token punctuation">(</span>SqQueue Q<span class="token punctuation">,</span>Elemtype <span class="token operator">&amp;</span>x<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token function">QueueEmpty</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+        <span class="token keyword">return</span> false<span class="token punctuation">;</span>
+    x <span class="token operator">=</span> Q<span class="token punctuation">.</span>data<span class="token punctuation">[</span>Q<span class="token punctuation">.</span>front<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> true<span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><b style="color: darkred;">QueueFull(SqQueue Q)判断操作的三种实现方案</b></p>
+<p>1）牺牲一个存储空间：保留最后一个位置<code>Q.data[MaxSize-1]</code>以区别和队空的判断条件</p>
+<pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token comment">// 队空</span>
+bool <span class="token function">QueueEmpty</span><span class="token punctuation">(</span>SqQueue Q<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token punctuation">(</span>Q<span class="token punctuation">.</span>front <span class="token operator">==</span> Q<span class="token punctuation">.</span>rear<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// 队满</span>
+bool <span class="token function">QueueFull</span><span class="token punctuation">(</span>SqQueue Q<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>Q<span class="token punctuation">.</span>rear<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token operator">&amp;</span>MaxSize <span class="token operator">==</span> Q<span class="token punctuation">.</span>front<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>2）增加标记元素个数的辅助变量size：此时队空和队满都有各自的标准，结构体也要做响应修正，以及进出队size变量的变化。<strong>入队：size++、出队：size–。</strong></p>
+<pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token keyword">typedef</span> <span class="token keyword">struct</span> <span class="token punctuation">{</span>
+    Elemtype data<span class="token punctuation">[</span>MaxSize<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token keyword">int</span> front<span class="token punctuation">,</span>rear<span class="token punctuation">;</span>
+    <span class="token keyword">int</span> size<span class="token punctuation">;</span>
+<span class="token punctuation">}</span> SqQueue<span class="token punctuation">;</span>
+
+<span class="token comment">// 队空</span>
+bool <span class="token function">QueueEmpty</span><span class="token punctuation">(</span>SqQueue Q<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token punctuation">(</span>Q<span class="token punctuation">.</span>size <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// 队满</span>
+bool <span class="token function">QueueFull</span><span class="token punctuation">(</span>SqQueue Q<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token punctuation">(</span>Q<span class="token punctuation">.</span>size <span class="token operator">==</span> MaxSize<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>3）对于数组空间的每一位元素添加进出队标记tag。<strong>出队：flag == 0、入队：flag == 1。</strong></p>
+<pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token keyword">typedef</span> <span class="token keyword">struct</span> <span class="token punctuation">{</span>
+    Elemtype data<span class="token punctuation">[</span>MaxSize<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token keyword">int</span> front<span class="token punctuation">,</span>rear<span class="token punctuation">;</span>
+    <span class="token keyword">int</span> flag<span class="token punctuation">;</span>
+<span class="token punctuation">}</span> SqQueue<span class="token punctuation">;</span>
+
+<span class="token comment">// 队空</span>
+bool <span class="token function">QueueEmpty</span><span class="token punctuation">(</span>SqQueue Q<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token punctuation">(</span>Q<span class="token punctuation">.</span>rear <span class="token operator">==</span> Q<span class="token punctuation">.</span>front <span class="token operator">&amp;&amp;</span> flag <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// 队满</span>
+bool <span class="token function">QueueFull</span><span class="token punctuation">(</span>SqQueue Q<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token punctuation">(</span>Q<span class="token punctuation">.</span>rear <span class="token operator">==</span> Q<span class="token punctuation">.</span>front <span class="token operator">&amp;&amp;</span> flag <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="Java语言实现"><a href="#Java语言实现" class="headerlink" title="Java语言实现"></a>Java语言实现</h3><p>1）牺牲一个存储空间：保留最后一个位置<code>data[capacity]</code>以区别和队空的判断条件</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">SqQueue1</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">E</span><span class="token punctuation">&gt;</span></span> <span class="token punctuation">{</span>
+    <span class="token keyword">private</span> <span class="token class-name">Object</span><span class="token punctuation">[</span><span class="token punctuation">]</span> data<span class="token punctuation">;</span>
+    <span class="token keyword">private</span> <span class="token keyword">int</span> front<span class="token punctuation">,</span>rear<span class="token punctuation">;</span>
+
+    <span class="token comment">// capacity：表示可用的队列空间（因为这里是采取牺牲存储空间的方式）</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">initQ</span><span class="token punctuation">(</span><span class="token keyword">int</span> capacity<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        data <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Object</span><span class="token punctuation">[</span>capacity<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+        front <span class="token operator">=</span> rear <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">boolean</span> <span class="token function">isEmptyQ</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token punctuation">(</span>front <span class="token operator">==</span> rear<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">boolean</span> <span class="token function">isFullQ</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token punctuation">(</span>rear<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token operator">%</span> data<span class="token punctuation">.</span>length <span class="token operator">==</span> front<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">boolean</span> <span class="token function">insQueue</span><span class="token punctuation">(</span><span class="token class-name">E</span> e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token function">isFullQ</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">StackOverflowError</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        data<span class="token punctuation">[</span>rear<span class="token punctuation">]</span> <span class="token operator">=</span> e<span class="token punctuation">;</span>
+        rear <span class="token operator">=</span> <span class="token punctuation">(</span>rear<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token operator">%</span>data<span class="token punctuation">.</span>length<span class="token punctuation">;</span>
+        <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+
+    <span class="token keyword">public</span> <span class="token class-name">E</span> <span class="token function">delQueue</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token function">isEmptyQ</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token class-name">E</span> elem <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token class-name">E</span><span class="token punctuation">)</span> data<span class="token punctuation">[</span>front<span class="token punctuation">]</span><span class="token punctuation">;</span>
+        front <span class="token operator">=</span> <span class="token punctuation">(</span>front<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token operator">%</span> data<span class="token punctuation">.</span>length<span class="token punctuation">;</span>
+        <span class="token keyword">return</span> elem<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> <span class="token class-name">E</span> <span class="token function">getHead</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">isEmptyQ</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token keyword">return</span> <span class="token punctuation">(</span><span class="token class-name">E</span><span class="token punctuation">)</span> data<span class="token punctuation">[</span>front<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>2）增加标记元素个数的辅助变量size：此时队空和队满都有各自的标准，属性也要做响应修正，以及进出队size变量的变化。<strong>入队：size++、出队：size–。</strong></p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">SqQueue2</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">E</span><span class="token punctuation">&gt;</span></span> <span class="token punctuation">{</span>
+    <span class="token keyword">private</span> <span class="token class-name">Object</span><span class="token punctuation">[</span><span class="token punctuation">]</span> data<span class="token punctuation">;</span>
+    <span class="token keyword">private</span> <span class="token keyword">int</span> front<span class="token punctuation">,</span>rear<span class="token punctuation">;</span>
+    <span class="token keyword">private</span> <span class="token keyword">int</span> size<span class="token punctuation">;</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">initQ</span><span class="token punctuation">(</span><span class="token keyword">int</span> capacity<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        data <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Object</span><span class="token punctuation">[</span>capacity<span class="token punctuation">]</span><span class="token punctuation">;</span>
+        front <span class="token operator">=</span> rear <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+        size <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">boolean</span> <span class="token function">isEmptyQ</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token punctuation">(</span>size <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">boolean</span> <span class="token function">isFullQ</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token punctuation">(</span>size <span class="token operator">==</span> data<span class="token punctuation">.</span>length<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">boolean</span> <span class="token function">insQueue</span><span class="token punctuation">(</span><span class="token class-name">E</span> e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token function">isFullQ</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">StackOverflowError</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        data<span class="token punctuation">[</span>rear<span class="token punctuation">]</span> <span class="token operator">=</span> e<span class="token punctuation">;</span>
+        rear <span class="token operator">=</span> <span class="token punctuation">(</span>rear<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token operator">%</span>data<span class="token punctuation">.</span>length<span class="token punctuation">;</span>
+        size<span class="token operator">++</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+
+    <span class="token keyword">public</span> <span class="token class-name">E</span> <span class="token function">delQueue</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token function">isEmptyQ</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token class-name">E</span> elem <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token class-name">E</span><span class="token punctuation">)</span> data<span class="token punctuation">[</span>front<span class="token punctuation">]</span><span class="token punctuation">;</span>
+        front <span class="token operator">=</span> <span class="token punctuation">(</span>front<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token operator">%</span> data<span class="token punctuation">.</span>length<span class="token punctuation">;</span>
+        size<span class="token operator">--</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> elem<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> <span class="token class-name">E</span> <span class="token function">getHead</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">isEmptyQ</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token keyword">return</span> <span class="token punctuation">(</span><span class="token class-name">E</span><span class="token punctuation">)</span> data<span class="token punctuation">[</span>front<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>3）对于添加进出队标记flag。<strong>出队：flag == 0、入队：flag == 1。</strong></p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">SqQueue3</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">E</span><span class="token punctuation">&gt;</span></span> <span class="token punctuation">{</span>
+    <span class="token keyword">private</span> <span class="token class-name">Object</span><span class="token punctuation">[</span><span class="token punctuation">]</span> data<span class="token punctuation">;</span>
+    <span class="token keyword">private</span> <span class="token keyword">int</span> front<span class="token punctuation">,</span>rear<span class="token punctuation">;</span>
+    <span class="token keyword">private</span> <span class="token keyword">int</span> flag<span class="token punctuation">;</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">initQ</span><span class="token punctuation">(</span><span class="token keyword">int</span> capacity<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        data <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Object</span><span class="token punctuation">[</span>capacity<span class="token punctuation">]</span><span class="token punctuation">;</span>
+        front <span class="token operator">=</span> rear <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+        flag <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">boolean</span> <span class="token function">isEmptyQ</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token punctuation">(</span>front <span class="token operator">==</span> rear <span class="token operator">&amp;&amp;</span> flag <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">boolean</span> <span class="token function">isFullQ</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token punctuation">(</span>front <span class="token operator">==</span> rear <span class="token operator">&amp;&amp;</span> flag <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">boolean</span> <span class="token function">insQueue</span><span class="token punctuation">(</span><span class="token class-name">E</span> e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token function">isFullQ</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">StackOverflowError</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        data<span class="token punctuation">[</span>rear<span class="token punctuation">]</span> <span class="token operator">=</span> e<span class="token punctuation">;</span>
+        rear <span class="token operator">=</span> <span class="token punctuation">(</span>rear<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token operator">%</span>data<span class="token punctuation">.</span>length<span class="token punctuation">;</span>
+        flag <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+
+    <span class="token keyword">public</span> <span class="token class-name">E</span> <span class="token function">delQueue</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token function">isEmptyQ</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token class-name">E</span> elem <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token class-name">E</span><span class="token punctuation">)</span> data<span class="token punctuation">[</span>front<span class="token punctuation">]</span><span class="token punctuation">;</span>
+        front <span class="token operator">=</span> <span class="token punctuation">(</span>front<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token operator">%</span> data<span class="token punctuation">.</span>length<span class="token punctuation">;</span>
+        flag <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> elem<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> <span class="token class-name">E</span> <span class="token function">getHead</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">isEmptyQ</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token keyword">return</span> <span class="token punctuation">(</span><span class="token class-name">E</span><span class="token punctuation">)</span> data<span class="token punctuation">[</span>front<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
                 
             </div>
             <hr/>
@@ -1472,7 +1749,7 @@ LiStack S<span class="token punctuation">;</span><span aria-hidden="true" class=
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">39.9k</span>&nbsp;字
+                class="white-color">41.1k</span>&nbsp;字
             
             
             
