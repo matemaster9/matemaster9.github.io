@@ -435,21 +435,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2021-04-03
+                    2021-04-05
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    872
+                    1.6k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    3 分
+                    6 分
                 </div>
                 
 
@@ -519,7 +519,7 @@
 </tr>
 </tbody></table>
 <h2 id="力扣刷题"><a href="#力扣刷题" class="headerlink" title="力扣刷题"></a>力扣刷题</h2><h3 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h3><p>为了后面的复习以及刷题复盘，我将自己解题的答案及思路全部放在了自己的仓库中👉 <a target="_blank" rel="noopener" href="https://gitee.com/matemaster/master-depository/tree/master/leetcode/">力扣刷题</a></p>
-<h3 id="一-数组-1"><a href="#一-数组-1" class="headerlink" title="一. 数组"></a>一. 数组</h3><ul>
+<h3 id="一-数组-1"><a href="#一-数组-1" class="headerlink" title="一. 数组"></a>一. 数组</h3><h4 id="数组遍历"><a href="#数组遍历" class="headerlink" title="数组遍历"></a>数组遍历</h4><ul>
 <li>485</li>
 </ul>
 <p>给定一个二进制数组， 计算其中最大连续 1 的个数。</p>
@@ -527,7 +527,7 @@
 <p>示例：<br>输入：[1,1,0,1,1,1]<br>输出：3<br>解释：开头的两位和最后的三位都是连续 1 ，所以最大连续 1 的个数是 3.</p>
 </blockquote>
 <p>解题思路：</p>
-<p>使用一个连续1的计数器i和最大连续数标志max！通过对计数器i的每一次更新以获取最大连续数！（更新条件就是：当每一次出现新的最大的i时，更新）</p>
+<p>使用一个连续1的计数器i和最大连续数标志max！通过对计数器i记录连续1的个数！当数组元素为1时，计数器i+1当数组元素为0时，计数器需要重新清零计数。并且更新最大连续1数max，</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">{</span>
     <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">findMaxConsecutiveOnes</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> nums<span class="token punctuation">)</span> <span class="token punctuation">{</span>
         <span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span> <span class="token punctuation">,</span> max <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
@@ -541,6 +541,55 @@
              <span class="token punctuation">}</span>                   
         <span class="token punctuation">}</span>
         <span class="token keyword">return</span> max<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<ul>
+<li>495</li>
+</ul>
+<p>在《英雄联盟》的世界中，有一个叫 “提莫” 的英雄，他的攻击可以让敌方英雄艾希（编者注：寒冰射手）进入中毒状态。现在，给出提莫对艾希的攻击时间序列和提莫攻击的中毒持续时间，你需要输出艾希的中毒状态总时长。</p>
+<p>你可以认为提莫在给定的时间点进行攻击，并立即使艾希处于中毒状态。</p>
+<blockquote>
+<p>示例1:</p>
+<p>输入: [1,4], 2<br>输出: 4<br>原因: 第 1 秒初，提莫开始对艾希进行攻击并使其立即中毒。中毒状态会维持 2 秒钟，直到第 2 秒末结束。<br>第 4 秒初，提莫再次攻击艾希，使得艾希获得另外 2 秒中毒时间。<br>所以最终输出 4 秒。<br>示例2:</p>
+<p>输入: [1,2], 2<br>输出: 3<br>原因: 第 1 秒初，提莫开始对艾希进行攻击并使其立即中毒。中毒状态会维持 2 秒钟，直到第 2 秒末结束。<br>但是第 2 秒初，提莫再次攻击了已经处于中毒状态的艾希。<br>由于中毒状态不可叠加，提莫在第 2 秒初的这次攻击会在第 3 秒末结束。<br>所以最终输出 3 。</p>
+<p>提示：</p>
+<p>你可以假定时间序列数组的总长度不超过 10000。<br>你可以假定提莫攻击时间序列中的数字和提莫攻击的中毒持续时间都是非负整数，并且不超过 10,000,000。</p>
+</blockquote>
+<p>解题思路：</p>
+<p>我们从题目中得出，数组元素为中毒的开始时刻，那么当时间间隔大于中毒的持续时间<code>duration</code>时，我们的整个中毒过程持续时间直接就是：数组的长度✖中毒的持续时间<code>total</code>。但是当其中的时间间隔有小于中毒持续时间的情况时，也就是说中毒效果存在叠加，那么我们就要在上面的total就需要去除重复时间。</p>
+<p>可以看出，题目的难度就聚集在如何确定中毒的叠加时间<code>repeat</code>！</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">findPoisonedDuration</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> timeSeries<span class="token punctuation">,</span> <span class="token keyword">int</span> duration<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">int</span> repeat <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+        <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>i<span class="token operator">&lt;</span>timeSeries<span class="token punctuation">.</span>length<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token punctuation">(</span>timeSeries<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">+</span>duration<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">&gt;=</span> timeSeries<span class="token punctuation">[</span>i<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+                repeat <span class="token operator">+=</span>  <span class="token punctuation">(</span>timeSeries<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">+</span> duration <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">-</span> timeSeries<span class="token punctuation">[</span>i<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">;</span>
+            <span class="token keyword">else</span>
+                <span class="token keyword">continue</span><span class="token punctuation">;</span>    
+        <span class="token punctuation">}</span>
+
+        <span class="token keyword">return</span> timeSeries<span class="token punctuation">.</span>length<span class="token operator">*</span>duration <span class="token operator">-</span> repeat<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// 任意时刻i中毒的结束时刻：endForI = (timeSeries[i]+duration-1)</span>
+<span class="token comment">// 任意时刻i+1中毒的开始时刻：startForIplus = timeSeries[i+1]</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><b style="color: chocolate;">增强可读性版本</b></p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">findPoisonedDuration</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> timeSeries<span class="token punctuation">,</span> <span class="token keyword">int</span> duration<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">int</span> repeat <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+        <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>i<span class="token operator">&lt;</span>timeSeries<span class="token punctuation">.</span>length<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">int</span> endForI <span class="token operator">=</span> <span class="token punctuation">(</span>timeSeries<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">+</span>duration<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">int</span> startForIplus <span class="token operator">=</span> timeSeries<span class="token punctuation">[</span>i<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">]</span>
+            <span class="token keyword">if</span><span class="token punctuation">(</span>endForI <span class="token operator">&gt;=</span> startForIplus<span class="token punctuation">)</span>
+                repeat <span class="token operator">+=</span>  endForI <span class="token operator">-</span> startForIplus <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">;</span>
+            <span class="token keyword">else</span>
+                <span class="token keyword">continue</span><span class="token punctuation">;</span>    
+        <span class="token punctuation">}</span>
+
+        <span class="token keyword">return</span> timeSeries<span class="token punctuation">.</span>length<span class="token operator">*</span>duration <span class="token operator">-</span> repeat<span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
@@ -1126,7 +1175,7 @@
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            栈和队列的存储结构
+                            栈和队列的数据结构
                         
                     </div>
                     <div class="publish-info">
@@ -1383,7 +1432,7 @@
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">41.1k</span>&nbsp;字
+                class="white-color">42.9k</span>&nbsp;字
             
             
             
