@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="解析栈与队列结构, MasterStudio">
+    <meta name="keywords" content="线性表的受限和推广, MasterStudio">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -27,7 +27,7 @@
 </script>
 
 
-    <title>解析栈与队列结构 | MasterStudio</title>
+    <title>线性表的受限和推广 | MasterStudio</title>
     <link rel="icon" type="image/jpeg" href="/mashimaro.jpg">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -285,7 +285,7 @@
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">解析栈与队列结构</h1>
+                    <h1 class="description center-align post-title">线性表的受限和推广</h1>
                 </div>
             </div>
         </div>
@@ -401,8 +401,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/%E6%A0%88%E5%92%8C%E9%98%9F%E5%88%97/">
-                                <span class="chip bg-color">栈和队列</span>
+                            <a href="/tags/DataStructure/">
+                                <span class="chip bg-color">DataStructure</span>
                             </a>
                         
                     </div>
@@ -435,21 +435,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2021-04-06
+                    2021-04-07
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    3.2k
+                    3.6k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    15 分
+                    17 分
                 </div>
                 
 
@@ -612,7 +612,53 @@ bool <span class="token function">GetTop</span><span class="token punctuation">(
 
 
 
-<h2 id="共享栈"><a href="#共享栈" class="headerlink" title="共享栈"></a>共享栈</h2><h2 id="链栈"><a href="#链栈" class="headerlink" title="链栈"></a>链栈</h2><ul>
+<h2 id="共享栈"><a href="#共享栈" class="headerlink" title="共享栈"></a>共享栈</h2><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token class-name">ShareStack</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">E</span><span class="token punctuation">&gt;</span></span> <span class="token punctuation">{</span>
+    <span class="token keyword">private</span> <span class="token class-name">Object</span><span class="token punctuation">[</span><span class="token punctuation">]</span> data<span class="token punctuation">;</span>
+    <span class="token keyword">private</span> <span class="token keyword">int</span> top1<span class="token punctuation">,</span>top2<span class="token punctuation">;</span>
+    
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">init</span><span class="token punctuation">(</span><span class="token keyword">int</span> capacity<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        data <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Object</span><span class="token punctuation">[</span>capacity<span class="token punctuation">]</span><span class="token punctuation">;</span>
+        top1 <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>
+        top2 <span class="token operator">=</span> data<span class="token punctuation">.</span>length<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    
+    <span class="token keyword">public</span> <span class="token keyword">boolean</span> <span class="token function">isEmpty</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token punctuation">(</span>top1 <span class="token operator">==</span> <span class="token operator">-</span><span class="token number">1</span><span class="token operator">&amp;&amp;</span>top2 <span class="token operator">==</span> data<span class="token punctuation">.</span>length<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    
+    <span class="token keyword">public</span> <span class="token keyword">boolean</span> <span class="token function">isFull</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token punctuation">(</span>top2 <span class="token operator">-</span> top1 <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">ins1</span><span class="token punctuation">(</span><span class="token class-name">E</span> e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token function">isFull</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+            <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">StackOverFlowException</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        data<span class="token punctuation">[</span><span class="token operator">++</span>top1<span class="token punctuation">]</span> <span class="token operator">=</span> e<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">ins2</span><span class="token punctuation">(</span><span class="token class-name">E</span> e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token function">isFull</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+            <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">StackOverFlowException</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        data<span class="token punctuation">[</span><span class="token operator">--</span>top2<span class="token punctuation">]</span> <span class="token operator">=</span> e<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    
+    <span class="token keyword">public</span> <span class="token class-name">E</span> <span class="token function">del1</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token function">isEmpty</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+            <span class="token keyword">return</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> <span class="token punctuation">(</span><span class="token class-name">E</span><span class="token punctuation">)</span> data<span class="token punctuation">[</span>top1<span class="token operator">--</span><span class="token punctuation">]</span>
+    <span class="token punctuation">}</span>
+    
+    <span class="token keyword">public</span> <span class="token class-name">E</span> <span class="token function">del2</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token function">isEmpty</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+            <span class="token keyword">return</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> <span class="token punctuation">(</span><span class="token class-name">E</span><span class="token punctuation">)</span> data<span class="token punctuation">[</span>top2<span class="token operator">++</span><span class="token punctuation">]</span>
+    <span class="token punctuation">}</span>
+    
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<h2 id="链栈"><a href="#链栈" class="headerlink" title="链栈"></a>链栈</h2><ul>
 <li>链表结构</li>
 </ul>
 <pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token keyword">typedef</span> <span class="token keyword">struct</span> <span class="token class-name">LinkNode</span><span class="token punctuation">{</span>
@@ -1099,7 +1145,24 @@ bool <span class="token function">GetHead</span><span class="token punctuation">
 
 
 
-<h1 id="栈的应用"><a href="#栈的应用" class="headerlink" title="栈的应用"></a>栈的应用</h1><h2 id="Polish-Notation"><a href="#Polish-Notation" class="headerlink" title="Polish Notation"></a>Polish Notation</h2><p>中缀表达式转化为逆波兰式<code>(Reverse Polish Notation)</code></p>
+<h1 id="栈的应用"><a href="#栈的应用" class="headerlink" title="栈的应用"></a>栈的应用</h1><h2 id="括号匹配"><a href="#括号匹配" class="headerlink" title="括号匹配"></a>括号匹配</h2><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">boolean</span> <span class="token function">bracesMatch</span><span class="token punctuation">(</span><span class="token keyword">char</span><span class="token punctuation">[</span><span class="token punctuation">]</span> braces<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token class-name">Stack</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Character</span><span class="token punctuation">&gt;</span></span> stack <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Stack</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token punctuation">&gt;</span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">char</span> ch <span class="token operator">:</span> braces<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span>ch <span class="token operator">==</span> <span class="token string">'['</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            stack<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>ch<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span>ch <span class="token operator">==</span> <span class="token string">']'</span><span class="token punctuation">)</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>stack<span class="token punctuation">.</span><span class="token function">isEmpty</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">||</span>stack<span class="token punctuation">.</span><span class="token function">pop</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">==</span> ch<span class="token punctuation">)</span>
+                <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token operator">!</span>stack<span class="token punctuation">.</span><span class="token function">isEmpty</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+        <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<h2 id="Polish-Notation"><a href="#Polish-Notation" class="headerlink" title="Polish Notation"></a>Polish Notation</h2><p>中缀表达式转化为逆波兰式<code>(Reverse Polish Notation)</code></p>
 <p><code>toRPN</code>接受的表达式必须是将各字符之间必须存在空格分离开！</p>
 <p>算法思想：</p>
 <p>1）扫描数组，当字符是操作数时，直接将操作数加入rpn数组</p>
@@ -1181,7 +1244,7 @@ bool <span class="token function">GetHead</span><span class="token punctuation">
 
 
 
-<h2 id="波兰式计算"><a href="#波兰式计算" class="headerlink" title="波兰式计算"></a>波兰式计算</h2><p>栈结构实现逆波兰式的计算</p>
+<h2 id="逆波兰式计算"><a href="#逆波兰式计算" class="headerlink" title="逆波兰式计算"></a>逆波兰式计算</h2><p>栈结构实现逆波兰式的计算</p>
 <p>①从左扫描数组</p>
 <p>②判断扫描的字符</p>
 <ul>
@@ -1224,7 +1287,71 @@ bool <span class="token function">GetHead</span><span class="token punctuation">
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
+<h2 id="递归栈"><a href="#递归栈" class="headerlink" title="递归栈"></a>递归栈</h2><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">fiboracci</span><span class="token punctuation">(</span><span class="token keyword">int</span> n<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span>n <span class="token operator">&lt;=</span> <span class="token number">1</span><span class="token punctuation">)</span>
+        <span class="token keyword">return</span> <span class="token number">1</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token function">fiboracci</span><span class="token punctuation">(</span>n<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token operator">+</span><span class="token function">fiboracci</span><span class="token punctuation">(</span>n<span class="token operator">-</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
 
+<span class="token comment">// console : fiboracci(5) = 5</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<img src="https://cdn.jsdelivr.net/gh/matemaster9/imgs-masterstudio/imgs1/20210406174136.jpg" style="width:80%;border:solid">
+
+<h1 id="队列应用"><a href="#队列应用" class="headerlink" title="队列应用"></a>队列应用</h1><h2 id="树的层次遍历"><a href="#树的层次遍历" class="headerlink" title="树的层次遍历"></a>树的层次遍历</h2><h2 id="图的广度优先遍历"><a href="#图的广度优先遍历" class="headerlink" title="图的广度优先遍历"></a>图的广度优先遍历</h2><h2 id="先来先服务"><a href="#先来先服务" class="headerlink" title="先来先服务"></a>先来先服务</h2><h1 id="矩阵"><a href="#矩阵" class="headerlink" title="矩阵"></a>矩阵</h1><h2 id="矩阵压缩存储"><a href="#矩阵压缩存储" class="headerlink" title="矩阵压缩存储"></a>矩阵压缩存储</h2><ul>
+<li><b style="color: chocolate;">对称矩阵的压缩存储</b></li>
+</ul>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token function">compressSymmetricMatrix</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token punctuation">]</span> symmetricMatrix<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">int</span> len <span class="token operator">=</span> matrix<span class="token punctuation">.</span>length<span class="token punctuation">;</span>
+    <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> compressed <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token keyword">int</span><span class="token punctuation">[</span>len<span class="token operator">*</span><span class="token punctuation">(</span>len<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token operator">/</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> len<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> j <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> j <span class="token operator">&lt;</span> len<span class="token punctuation">;</span> j<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">if</span><span class="token punctuation">(</span>i <span class="token operator">&gt;=</span> j<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                compressed<span class="token punctuation">[</span>i<span class="token operator">*</span><span class="token punctuation">(</span>i<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token operator">/</span><span class="token number">2</span><span class="token operator">+</span>j<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> matrix<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+                compressed<span class="token punctuation">[</span>j<span class="token operator">*</span><span class="token punctuation">(</span>j<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token operator">/</span><span class="token number">2</span><span class="token operator">+</span>i<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> matrix<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> compressed<span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<ul>
+<li><b style="color: chocolate;">下三角矩阵的压缩存储</b></li>
+</ul>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token function">compressTriangularMatrixDown</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token punctuation">]</span> triangularMatrix<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">int</span> len <span class="token operator">=</span> matrix<span class="token punctuation">.</span>length<span class="token punctuation">;</span>
+    <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> compressed <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token keyword">int</span><span class="token punctuation">[</span>len<span class="token operator">*</span><span class="token punctuation">(</span>len<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token operator">/</span><span class="token number">2</span><span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> len<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> j <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> j <span class="token operator">&lt;</span> len<span class="token punctuation">;</span> j<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">if</span><span class="token punctuation">(</span>i <span class="token operator">&gt;=</span> j<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                compressed<span class="token punctuation">[</span>i<span class="token operator">*</span><span class="token punctuation">(</span>i<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token operator">/</span><span class="token number">2</span><span class="token operator">+</span>j<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> matrix<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+                <span class="token keyword">continue</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+    compressed<span class="token punctuation">[</span>compress<span class="token punctuation">.</span>length<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> triangularMatrix<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> compressed<span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<ul>
+<li><b style="color: chocolate;">上三角矩阵压缩存储</b></li>
+</ul>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token function">compressTriangularMatrixUp</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token punctuation">]</span> triangularMatrix<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">int</span> len <span class="token operator">=</span> matrix<span class="token punctuation">.</span>length<span class="token punctuation">;</span>
+    <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> compressed <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token keyword">int</span><span class="token punctuation">[</span>len<span class="token operator">*</span><span class="token punctuation">(</span>len<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token operator">/</span><span class="token number">2</span><span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> len<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> j <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> j <span class="token operator">&lt;</span> len<span class="token punctuation">;</span> j<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">if</span><span class="token punctuation">(</span>i <span class="token operator">&lt;=</span> j<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                compressed<span class="token punctuation">[</span><span class="token punctuation">(</span>i<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token operator">*</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token operator">*</span>len<span class="token operator">-</span>i<span class="token operator">+</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token operator">/</span><span class="token number">2</span><span class="token operator">+</span>j<span class="token operator">-</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> matrix<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+                <span class="token keyword">continue</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+    compressed<span class="token punctuation">[</span>compress<span class="token punctuation">.</span>length<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> triangularMatrix<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> compressed<span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 
                 
@@ -1290,8 +1417,8 @@ bool <span class="token function">GetHead</span><span class="token punctuation">
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/%E6%A0%88%E5%92%8C%E9%98%9F%E5%88%97/">
-                                    <span class="chip bg-color">栈和队列</span>
+                                <a href="/tags/DataStructure/">
+                                    <span class="chip bg-color">DataStructure</span>
                                 </a>
                             
                         </div>
@@ -1729,47 +1856,45 @@ bool <span class="token function">GetHead</span><span class="token punctuation">
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;本篇
-            </div>
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/posts/27874.html">
+                <a href="/posts/22726.html">
                     <div class="card-image">
                         
-                        <img src="https://cdn.jsdelivr.net/gh/matemaster9/imgs-masterstudio/imgs1/20210403225349.png" class="responsive-img" alt="解析栈与队列结构">
+                        <img src="https://cdn.jsdelivr.net/gh/matemaster9/imgs-masterstudio/imgs1/20210407121041.png" class="responsive-img" alt="Spring5">
                         
-                        <span class="card-title">解析栈与队列结构</span>
+                        <span class="card-title">Spring5</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            栈和队列的数据结构
+                            Spring学习笔记(不对外)
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-04-03
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2021-04-07
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="post-category">
-                                    数据结构
+                            <a href="/categories/JavaEE/" class="post-category">
+                                    JavaEE
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E6%A0%88%E5%92%8C%E9%98%9F%E5%88%97/">
-                        <span class="chip bg-color">栈和队列</span>
+                    <a href="/tags/Spring/">
+                        <span class="chip bg-color">Spring</span>
                     </a>
                     
                 </div>
@@ -1805,8 +1930,8 @@ bool <span class="token function">GetHead</span><span class="token punctuation">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/leetcode/" class="post-category">
-                                    leetcode
+                            <a href="/categories/%E7%AE%97%E6%B3%95/" class="post-category">
+                                    算法
                                 </a>
                             
                             
@@ -2003,7 +2128,7 @@ bool <span class="token function">GetHead</span><span class="token punctuation">
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">42.9k</span>&nbsp;字
+                class="white-color">46.5k</span>&nbsp;字
             
             
             

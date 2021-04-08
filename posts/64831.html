@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="应用层协议解析, MasterStudio">
+    <meta name="keywords" content="网络应用层, MasterStudio">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -27,7 +27,7 @@
 </script>
 
 
-    <title>应用层协议解析 | MasterStudio</title>
+    <title>网络应用层 | MasterStudio</title>
     <link rel="icon" type="image/jpeg" href="/mashimaro.jpg">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -285,7 +285,7 @@
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">应用层协议解析</h1>
+                    <h1 class="description center-align post-title">网络应用层</h1>
                 </div>
             </div>
         </div>
@@ -435,21 +435,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2021-03-31
+                    2021-04-07
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    3.9k
+                    4.3k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    17 分
+                    19 分
                 </div>
                 
 
@@ -497,8 +497,6 @@ http://user:pass@www.server.com:80/dir/index.htm?uid=1#ch1
 # uid = 1 ：查询字符串
 # ch1 ：片段标识符<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-
-
 <h2 id="持续性"><a href="#持续性" class="headerlink" title="持续性"></a>持续性</h2><p>非持续性连接：假设现在访问<code>https://matemaster.cn/posts/52745.html</code>页面，此页面大概含有60个资源对象</p>
 <p>1）<code>华为浏览器</code>的http进程从<code>port:80</code>端口发起一个与 <code>mateamster.cn</code>的<code>TCP连接</code></p>
 <p>2）华为浏览器客户端发出一个<code>https://matemaster.cn/posts/52745.html</code>请求报文</p>
@@ -533,7 +531,7 @@ http://user:pass@www.server.com:80/dir/index.htm?uid=1#ch1
 <li><strong>500 Internal Server Error</strong>：服务器执行请求错误</li>
 <li><strong>503 Service Unavailable</strong>：服务器繁忙</li>
 </ul>
-<h2 id="cookie"><a href="#cookie" class="headerlink" title="cookie"></a>cookie</h2><p><b style="color: red;">HTTP协议是一种无状态的协议，简而言之就是，服务器不会记录浏览器的访问请求，即使是刚请求的浏览器，服务器依旧视为第一次请求访问！</b>但是<code>Cookie</code>引入，支持了HTTP状态，第一次华为浏览器访问阿里官网，阿里服务器会在响应报文中加入<code>cookie</code>字段，并且在阿里的后端数据库记录该cookie。并且在华为浏览器下一次访问时，进行数据库检索，如果存在cookie记录，那么阿里将会自动记录该浏览器的浏览记录，保持状态！</p>
+<h2 id="cookie"><a href="#cookie" class="headerlink" title="cookie"></a>cookie</h2><p><b style="color: red;">HTTP协议是一种无状态的协议，简而言之就是，服务器不会记录浏览器的访问请求，即使是刚请求的浏览器，服务器依旧视为第一次请求访问！</b>但是<code>Cookie</code>引入，支持了HTTP状态，第一次华为浏览器访问阿里官网，阿里服务器会在响应报文中加入<code>cookie</code>字段，并且在阿里的后端数据库记录该cookie。同时华为浏览器在来自阿里服务器的响应报文中查找到<code>Set-Cookie: sid = 18967626</code>，并在浏览器的cookie管理中添加这个信息，以便于下次**@matemaster_pc**访问阿里官网时，将cookie加入到请求头中。阿里服务器在华为浏览器下一次访问时，进行数据库检索，如果存在cookie记录，那么阿里将会自动记录该浏览器的浏览记录，保持状态！</p>
 <img src="https://cdn.jsdelivr.net/gh/matemaster9/imgs-masterstudio@1.2/imgs/20210329191736.jpg" style="width:80%;border:solid">
 
 <h2 id="web服务器"><a href="#web服务器" class="headerlink" title="web服务器"></a>web服务器</h2><p>代理服务器的作用就是做<code>web缓存</code>。web缓存可以减轻接入英特网的压力，并且加快了客户端的响应速度！</p>
@@ -653,10 +651,6 @@ If-Modified-Since: Mon, 29 Mar 2021 05:59:01 GMT<span aria-hidden="true" class="
     [Request URI: http://gaia.cs.umass.edu/wireshark-labs/HTTP-wireshark-file2.html]
     File Data: 371 bytes<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-
-
-
-
 <h1 id="SMTP"><a href="#SMTP" class="headerlink" title="SMTP"></a>SMTP</h1><p>国内常见的邮件服务商</p>
 <pre class="line-numbers language-http" data-language="http"><code class="language-http">smtp.qq.com
 smtp.163.com
@@ -666,15 +660,21 @@ smtp.sina.com
 
 <h2 id="mail"><a href="#mail" class="headerlink" title="mail"></a>mail</h2><p>邮件系统的组成：<code>user-agent</code>、<code>mail server</code>、<code>SMTP</code></p>
 <p>邮件的发送过程：以<code>matemaster@163.com</code>向<code>2099625007@qq.com</code>为例</p>
-<p>1）首先，matemaster本地的用户代理，会将含有发送方和接收方信息，以及邮件主体信息的邮件报文<code>(SMTP)</code>发送给对应的网易邮件服务器，并且将报文存在服务器的报文队列当中</p>
+<p>1）首先，matemaster本地的用户代理，会将含有发送方和接收方信息，以及邮件主体信息的邮件报文<code>(SMTP)</code>。并且<strong>在25号端口建立与邮件服务器的tcp连接</strong>，发送给对应的网易邮件服务器，并且将报文存在服务器的报文队列当中</p>
 <p>2）网易邮件服务器，将根据接收方信息，利用<code>tcp</code>连接将邮件报文发送给腾讯邮件服务器<code>(SMTP)</code></p>
 <p>3）腾讯邮件服务器在收到邮件报文之后，主动将报文推送给对应接收方的用户代理<code>(SMTP)</code></p>
-<p><code>SMTP</code>与<code>HTTP</code>之间区别在于：SMTP属于push协议，不可以主动从服务器端获取邮件，只能等待服务器推送！HTTP属于pull协议，可以主动向服务器请求获取资源！</p>
+<p><code>SMTP</code>与<code>HTTP</code>之间区别在于：</p>
+<p>①SMTP属于push协议，不可以主动从服务器端获取邮件，只能等待服务器推送！HTTP属于pull协议，可以主动向服务器请求获取资源！<br>②SMTP每个报文的内容必须是7位ASCII码格式</p>
 <p><strong>Wireshark抓包</strong>看出<code>SMTP</code>报文信息：（就是<code>matemaster@163.com-&gt;user-agent</code>与网易邮件服务器的对话）👇</p>
 <img src="https://cdn.jsdelivr.net/gh/matemaster9/imgs-masterstudio@1.2/imgs/20210329150920.jpg" style="width:80%;border:solid ;">
 
+<p>标准的报文格式：</p>
+<pre class="line-numbers language-smtp" data-language="smtp"><code class="language-smtp">From: matemaster@163.com
+To: matemaster@qq.com
+Subject: This is a simple title!<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
 <h2 id="Telnet"><a href="#Telnet" class="headerlink" title="Telnet"></a>Telnet</h2><p>基于<code>telnet</code>命令可以使用SMTP协议向指定用户发送信息，完整演示效果，可以参看下图👇</p>
-<pre class="line-numbers language-none"><code class="language-none"># telnet 服务器域名 端口号
+<pre class="line-numbers language-cmd" data-language="cmd"><code class="language-cmd"># telnet 服务器域名 端口号
 telnet smtp.163.com 25
 
 # 连接服务器成功之后，可以使用HELO指定向服务器发出指令
@@ -728,9 +728,38 @@ server<span class="token punctuation">.</span>sendmail<span class="token punctua
 <span class="token comment"># 关闭与服务器的连接</span>
 server<span class="token punctuation">.</span>quit<span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
+<h2 id="邮件访问POP3"><a href="#邮件访问POP3" class="headerlink" title="邮件访问POP3"></a>邮件访问POP3</h2><p>POP3三个工作阶段</p>
+<p>1）客户校验<code>authorization</code>：此时主要为了校验用户的身份</p>
+<p>2）事务处理：取回SMTP报文、对报文进行删除标记和取消删除标记，获取邮件的统计信息</p>
+<p>3）更新：在用户指向quit命令之后，邮件服务器会删除那些被删除标记的报文</p>
+<p><b style="color: chocolate;">POP3用户代理与邮件服务器的对话过程</b></p>
+<p><b style="color: blue;">C: telnet pop.163.com 110</b></p>
+<p><b style="color: red;">S: +OK Welcome to coremail Mail Pop3 Server (163coms[blahblah])</b></p>
+<p><b style="color: blue;">C: user matemaster-mail</b></p>
+<p><b style="color: red;">S: +OK core mail </b></p>
+<p><b style="color: blue;">C: pass matemaster-authorizationCode</b></p>
+<p><b style="color: red;">S: +OK user successfully logged on（验证成功）或 S:-ERR Unable to log on（验证失败）</b></p>
+<p><b style="color: blue;">C: list</b></p>
+<p><b style="color: red;">S: 1 [980bytes] 2[990bytes] ……</b></p>
+<p><b style="color: blue;">C: quit</b></p>
+<p><b style="color: red;">S: +OK core mail</b></p>
+<p><strong>POP3命令</strong></p>
+<pre class="line-numbers language-cmd" data-language="cmd"><code class="language-cmd"># 登录用户的账号以及授权码
+user usermail
+pass authorization code
+
+# 事务处理阶段的命令
+
+list #列出邮件服务器的邮件  Server: 序号 [邮件字节数]
+stat #返回邮件服务器的状态（我使用的pop.163.com不支持这个）
+top n #列出第n个邮件的内容
+retr n #接受第n个邮件
+dele n #删除第n个邮件（这里只是做删除标记，在quit之后才会删除）
+quit #退出邮件服务器<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 
-<h1 id="DNS"><a href="#DNS" class="headerlink" title="DNS"></a>DNS</h1><h2 id="DNS基本服务"><a href="#DNS基本服务" class="headerlink" title="DNS基本服务"></a>DNS基本服务</h2><p><code>DNS</code>提供了域名-&gt;ip的解析服务。主要由：DNS分布式数据库以及使得主机可以查询数据库的应用层协议构成。</p>
+
+<h1 id="DNS"><a href="#DNS" class="headerlink" title="DNS"></a>DNS</h1><h2 id="DNS服务"><a href="#DNS服务" class="headerlink" title="DNS服务"></a>DNS服务</h2><h3 id="基本服务"><a href="#基本服务" class="headerlink" title="基本服务"></a>基本服务</h3><p><code>DNS</code>提供了域名-&gt;ip的解析服务。主要由：DNS分布式数据库以及使得主机可以查询数据库的应用层协议构成。</p>
 <p><code>DNS</code>建立在<code>UDP</code>协议之上进行网络传输，互联网端口<code>port:53</code></p>
 <p>举个栗子<span class="github-emoji"><span>✌</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/270c.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span></p>
 <p>从应用层解释：本地主机<code>(@localhost)</code>向服务器请求<code>www.matemaster.cn/index.html</code>资源时，<code>DNS</code>的操作过程</p>
@@ -738,7 +767,7 @@ server<span class="token punctuation">.</span>quit<span class="token punctuation
 <p>2）本地电脑的<code>DNS客户端</code>向远端<code>DNS server</code>发送上述请求报文</p>
 <p>3）<code>DNS server</code>从后端分布式数据库或者DNS缓存中获取ip，并封装成响应报文，返回给<code>DNS客户端</code></p>
 <p>4)<code>web browser:华为浏览器</code>根据<code>DNS客户端</code>返回的<code>ip</code>与远端服务器<code>www.matemaster.cn</code>建立<code>tcp</code>连接</p>
-<h2 id="DNS额外服务"><a href="#DNS额外服务" class="headerlink" title="DNS额外服务"></a>DNS额外服务</h2><p>除了<code>域名-&gt;ip的解析服务</code>，DNS支持：主机别名、邮件服务器别名、负载分配。</p>
+<h3 id="额外服务"><a href="#额外服务" class="headerlink" title="额外服务"></a>额外服务</h3><p>除了<code>域名-&gt;ip的解析服务</code>，DNS支持：主机别名、邮件服务器别名、负载分配。</p>
 <p><code>主机别名</code>：对于含有复杂hostname的主机，可以支持多别名的操作。而其中存在一个<code>规范主机名</code>和多个<code>主机别名</code>而DNS便是提供，将多个主机别名，转为对应的规范主机名。</p>
 <p><code>邮件服务器别名</code>：为了让邮件用户可以自己定义好记的邮件名，我们就需要利用类似主机别名的方式，为邮件服务器提供别名操作，而在DNS记录中存在的MX记录，允许邮件服务器名和web服务器名相同。</p>
 <p><code>负载分配</code>：简单理解：就是一个IP地址集合与同一个规范主机名相联系！（可以参考下面在Ubuntu系统下的nslookup alibaba.com）。从那里看出，一个<strong>alibaba.com</strong>对应了4个IP地址</p>
@@ -1474,8 +1503,8 @@ alibaba.com    nameserver = ns1.alibabadns.com.<span aria-hidden="true" class="l
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/leetcode/" class="post-category">
-                                    leetcode
+                            <a href="/categories/%E7%AE%97%E6%B3%95/" class="post-category">
+                                    算法
                                 </a>
                             
                             
@@ -1720,7 +1749,7 @@ alibaba.com    nameserver = ns1.alibabadns.com.<span aria-hidden="true" class="l
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">42.9k</span>&nbsp;字
+                class="white-color">46.5k</span>&nbsp;字
             
             
             
