@@ -35,7 +35,7 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/matemaster9/source@2.0/matery-libs/css/aos.css">
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/matemaster9/source@2.0/matery-libs/css/animate.min.css">
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/matemaster9/source@2.0/matery-libs/css/lightgallery.min.css">
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/matemaster9/source@2.0/matery-libs/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/matemaster9/source/matery-libs/css/matery.css">
     <link rel="stylesheet" type="text/css" href="/css/my.css">
 
     <script src="https://cdn.jsdelivr.net/gh/matemaster9/source@2.0/matery-libs/js/jquery.min.js"></script>
@@ -1111,6 +1111,7 @@
 <p>编写好了数据校验机制之后，我们还需要对校验的时机做出规定。也就是解决什么时候校验的问题？</p>
 <p>修改控制器的执行校验时机：在每一次绑定表单数据之后，调用对应的post方法之前。如果此时出现校验错误，系统会捕获Errors将信息传递给对应的post请求处理方法。</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@PostMapping</span>
+<span class="token comment">// 前端表单传递来的数据 design</span>
 <span class="token keyword">public</span> <span class="token class-name">String</span> <span class="token function">processDesign</span><span class="token punctuation">(</span><span class="token annotation punctuation">@Valid</span>  <span class="token annotation punctuation">@ModelAttribute</span><span class="token punctuation">(</span><span class="token string">"/design"</span><span class="token punctuation">)</span>
 <span class="token class-name">Taco</span> design<span class="token punctuation">,</span> <span class="token class-name">Errors</span> errors<span class="token punctuation">,</span> <span class="token class-name">Model</span> model<span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token keyword">if</span><span class="token punctuation">(</span>errors<span class="token punctuation">.</span><span class="token function">hasErrors</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
@@ -1122,15 +1123,14 @@
 
 
 <span class="token annotation punctuation">@PostMapping</span>
+<span class="token comment">// 前端表单传递来的数据 order</span>
 <span class="token keyword">public</span> <span class="token class-name">String</span> <span class="token function">processOrder</span><span class="token punctuation">(</span><span class="token annotation punctuation">@Valid</span> <span class="token class-name">Order</span> order<span class="token punctuation">,</span> <span class="token class-name">Errors</span> errors<span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token keyword">if</span><span class="token punctuation">(</span>errors<span class="token punctuation">.</span><span class="token function">hasErrors</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
         <span class="token keyword">return</span> <span class="token string">"orderForm"</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
     log<span class="token punctuation">.</span><span class="token function">info</span><span class="token punctuation">(</span><span class="token string">"Processing Order:"</span> <span class="token operator">+</span> order<span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token keyword">return</span> <span class="token string">"redirect:/"</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <h3 id="视图控制器"><a href="#视图控制器" class="headerlink" title="视图控制器"></a>视图控制器</h3><p>在上面的叙述过程中，我们已经创建了三个控制器：HomeController、DesignTaacoController、OrderController。除了HomeController之外，其他两个控制器都具有类似的编程模型：完成填充模型或者是处理输入。而对于HomeController来说，它只是简单的做了一个将请求转发到一个视图，而没有其他功能。对于这种 <strong>只做了一个将请求转发到一个视图</strong>的控制器，我们可以实现视图控制器完成任务</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">package</span> <span class="token namespace">com<span class="token punctuation">.</span>example<span class="token punctuation">.</span>tacocloud<span class="token punctuation">.</span>controller</span><span class="token punctuation">;</span>
@@ -1148,7 +1148,7 @@
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>对于实现视图控制器，我们需要实现一个 <strong>WebMvcConfigurer</strong>接口，这个接口提供所有接口方法的默认实现，我们所要做的就是，在实现接口功能时覆盖相应的方法即可！</p>
-<p>这里的 <strong>WebConfig</strong>与 <strong>HomeController</strong>功能一致</p>
+<p>这里的 <strong>WebConfig</strong>与 <strong>HomeController</strong>功能一致。</p>
 
                 
             </div>
@@ -1652,47 +1652,45 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;本篇
-            </div>
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/posts/22726.html">
+                <a href="/posts/10092.html">
                     <div class="card-image">
                         
-                        <img src="https://cdn.jsdelivr.net/gh/matemaster9/imgs-masterstudio/imgs1/20210407121041.png" class="responsive-img" alt="Spring5">
+                        <img src="https://cdn.jsdelivr.net/gh/matemaster9/imgs-masterstudio/imgs1/20210410194916.jpg" class="responsive-img" alt="HashMap底层原理">
                         
-                        <span class="card-title">Spring5</span>
+                        <span class="card-title">HashMap底层原理</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            Spring学习笔记(不对外)
+                            理解HashMap的逻辑结构
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-04-07
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2021-04-10
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/JavaEE/" class="post-category">
-                                    JavaEE
+                            <a href="/categories/CoreJava/" class="post-category">
+                                    CoreJava
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Spring/">
-                        <span class="chip bg-color">Spring</span>
+                    <a href="/tags/Java/">
+                        <span class="chip bg-color">Java</span>
                     </a>
                     
                 </div>
@@ -1926,7 +1924,7 @@
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">49.4k</span>&nbsp;字
+                class="white-color">51.8k</span>&nbsp;字
             
             
             
