@@ -479,21 +479,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2021-04-23
+                    2021-04-26
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    5.8k
+                    7.6k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    27 分
+                    37 分
                 </div>
                 
 
@@ -1193,45 +1193,113 @@
 
 <p>对于实现视图控制器，我们需要实现一个 <strong>WebMvcConfigurer</strong>接口，这个接口提供所有接口方法的默认实现，我们所要做的就是，在实现接口功能时覆盖相应的方法即可！</p>
 <p>这里的 <strong>WebConfig</strong>与 <strong>HomeController</strong>功能一致。<b style="color: red;">编写的时候不要忘了@Configuration</b></p>
-<h2 id="Data持久化"><a href="#Data持久化" class="headerlink" title="Data持久化"></a>Data持久化</h2><h3 id="JdbcTemplate"><a href="#JdbcTemplate" class="headerlink" title="JdbcTemplate"></a>JdbcTemplate</h3><p>对于上面的程序开发，数据始终是瞬时状态，并没有在本地进行数据持久化。下面就是对TacoCloud应用添加数据持久化操作。</p>
+<h2 id="Data持久化"><a href="#Data持久化" class="headerlink" title="Data持久化"></a>Data持久化</h2><img src="https://cdn.jsdelivr.net/gh/matemaster9/imgs-masterstudio/imgs1/20210426091718.png" style="width:80%">
+
+<h3 id="JdbcTemplate"><a href="#JdbcTemplate" class="headerlink" title="JdbcTemplate"></a>JdbcTemplate</h3><p>☁️<a target="_blank" rel="noopener" href="https://gitee.com/matemaster/master-depository/tree/master/spring/JdbcDemo">项目的JdbcTemplate源码</a></p>
+<h4 id="定义持久化对象"><a href="#定义持久化对象" class="headerlink" title="定义持久化对象"></a>定义持久化对象</h4><p>对于上面的程序开发，数据始终是瞬时状态，并没有在本地进行数据持久化。下面就是对TacoCloud应用添加数据持久化操作。</p>
 <p>①：构建持久化的对象，因为每一个数据都对应着一个Java对象，所以我们需要先创建封装数据的类 Javabean（在之前创建的组件类基础之上，做稍微的变动）</p>
 <p><b style="background-color: black;color: white;">Taco</b></p>
-<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">package</span> <span class="token namespace">com<span class="token punctuation">.</span>example<span class="token punctuation">.</span>tacocloud<span class="token punctuation">.</span>bean</span><span class="token punctuation">;</span>
-
-<span class="token keyword">import</span> <span class="token namespace">lombok<span class="token punctuation">.</span></span><span class="token class-name">Data</span><span class="token punctuation">;</span>
-
-<span class="token keyword">import</span> <span class="token namespace">javax<span class="token punctuation">.</span>validation<span class="token punctuation">.</span>constraints<span class="token punctuation">.</span></span><span class="token class-name">NotNull</span><span class="token punctuation">;</span>
-<span class="token keyword">import</span> <span class="token namespace">javax<span class="token punctuation">.</span>validation<span class="token punctuation">.</span>constraints<span class="token punctuation">.</span></span><span class="token class-name">Size</span><span class="token punctuation">;</span>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">package</span> <span class="token namespace">tacos</span><span class="token punctuation">;</span>
 <span class="token keyword">import</span> <span class="token namespace">java<span class="token punctuation">.</span>util<span class="token punctuation">.</span></span><span class="token class-name">Date</span><span class="token punctuation">;</span>
 <span class="token keyword">import</span> <span class="token namespace">java<span class="token punctuation">.</span>util<span class="token punctuation">.</span></span><span class="token class-name">List</span><span class="token punctuation">;</span>
 
-<span class="token annotation punctuation">@Data</span>
-<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Taco</span> <span class="token punctuation">{</span>
-    <span class="token comment">// 进行数据持久化时 加入的属性</span>
-    <span class="token keyword">private</span> <span class="token keyword">long</span> id<span class="token punctuation">;</span>
-    <span class="token keyword">private</span> <span class="token class-name">Date</span> createdAt<span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<p><b style="background-color: black;color: white;">Order</b></p>
-<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">package</span> <span class="token namespace">com<span class="token punctuation">.</span>example<span class="token punctuation">.</span>tacocloud<span class="token punctuation">.</span>bean</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token namespace">javax<span class="token punctuation">.</span>validation<span class="token punctuation">.</span>constraints<span class="token punctuation">.</span></span><span class="token class-name">NotNull</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token namespace">javax<span class="token punctuation">.</span>validation<span class="token punctuation">.</span>constraints<span class="token punctuation">.</span></span><span class="token class-name">Size</span><span class="token punctuation">;</span>
 
 <span class="token keyword">import</span> <span class="token namespace">lombok<span class="token punctuation">.</span></span><span class="token class-name">Data</span><span class="token punctuation">;</span>
-<span class="token keyword">import</span> <span class="token namespace">org<span class="token punctuation">.</span>hibernate<span class="token punctuation">.</span>validator<span class="token punctuation">.</span>constraints<span class="token punctuation">.</span></span><span class="token class-name">CreditCardNumber</span><span class="token punctuation">;</span>
-
-<span class="token keyword">import</span> <span class="token namespace">javax<span class="token punctuation">.</span>validation<span class="token punctuation">.</span>constraints<span class="token punctuation">.</span></span><span class="token class-name">Digits</span><span class="token punctuation">;</span>
-<span class="token keyword">import</span> <span class="token namespace">javax<span class="token punctuation">.</span>validation<span class="token punctuation">.</span>constraints<span class="token punctuation">.</span></span><span class="token class-name">NotBlank</span><span class="token punctuation">;</span>
-<span class="token keyword">import</span> <span class="token namespace">javax<span class="token punctuation">.</span>validation<span class="token punctuation">.</span>constraints<span class="token punctuation">.</span></span><span class="token class-name">Pattern</span><span class="token punctuation">;</span>
-<span class="token keyword">import</span> <span class="token namespace">java<span class="token punctuation">.</span>util<span class="token punctuation">.</span></span><span class="token class-name">Date</span><span class="token punctuation">;</span>
 
 <span class="token annotation punctuation">@Data</span>
-<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Order</span> <span class="token punctuation">{</span>
-    <span class="token comment">// 进行数据持久化时 加入的属性</span>
-    <span class="token keyword">private</span> <span class="token keyword">long</span> id<span class="token punctuation">;</span>
-    <span class="token keyword">private</span> <span class="token class-name">Date</span> placedAt<span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Taco</span> <span class="token punctuation">{</span>
+    <span class="token comment">//-----Data persistence-----</span>
+    <span class="token keyword">private</span> <span class="token class-name">Long</span> id<span class="token punctuation">;</span>
+    <span class="token keyword">private</span> <span class="token class-name">Date</span> createdAt<span class="token punctuation">;</span>
+	<span class="token comment">//--------------------------</span>
+    
+    <span class="token annotation punctuation">@NotNull</span>
+    <span class="token annotation punctuation">@Size</span><span class="token punctuation">(</span>min<span class="token operator">=</span><span class="token number">5</span><span class="token punctuation">,</span> message<span class="token operator">=</span><span class="token string">"Name must be at least 5 characters long"</span><span class="token punctuation">)</span>
+    <span class="token keyword">private</span> <span class="token class-name">String</span> name<span class="token punctuation">;</span>
 
-<p>②：构建相应的关系型数据库、模式以及关系表（这里利用的内嵌的H2数据库）</p>
-<p><b style="color: red;">注：这里编写的sql文件需要放在根类路径下</b></p>
+    <span class="token annotation punctuation">@Size</span><span class="token punctuation">(</span>min<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">,</span> message<span class="token operator">=</span><span class="token string">"You must choose at least 1 ingredient"</span><span class="token punctuation">)</span>
+    <span class="token keyword">private</span> <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Ingredient</span><span class="token punctuation">&gt;</span></span> ingredients<span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><b style="background-color: black;color: white;">Ingredient</b></p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">package</span> <span class="token namespace">tacos</span><span class="token punctuation">;</span>
+
+<span class="token keyword">import</span> <span class="token namespace">lombok<span class="token punctuation">.</span></span><span class="token class-name">Data</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token namespace">lombok<span class="token punctuation">.</span></span><span class="token class-name">RequiredArgsConstructor</span><span class="token punctuation">;</span>
+
+<span class="token annotation punctuation">@Data</span>
+<span class="token annotation punctuation">@RequiredArgsConstructor</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Ingredient</span> <span class="token punctuation">{</span>
+    
+    <span class="token keyword">private</span> <span class="token keyword">final</span> <span class="token class-name">String</span> id<span class="token punctuation">;</span>
+    <span class="token keyword">private</span> <span class="token keyword">final</span> <span class="token class-name">String</span> name<span class="token punctuation">;</span>
+    <span class="token keyword">private</span> <span class="token keyword">final</span> <span class="token class-name">Type</span> type<span class="token punctuation">;</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">enum</span> <span class="token class-name">Type</span> <span class="token punctuation">{</span>
+        WRAP<span class="token punctuation">,</span> PROTEIN<span class="token punctuation">,</span> VEGGIES<span class="token punctuation">,</span> CHEESE<span class="token punctuation">,</span> SAUCE
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><b style="background-color: black;color: white;">Order</b></p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">package</span> <span class="token namespace">tacos</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token namespace">java<span class="token punctuation">.</span>util<span class="token punctuation">.</span></span><span class="token class-name">ArrayList</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token namespace">java<span class="token punctuation">.</span>util<span class="token punctuation">.</span></span><span class="token class-name">Date</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token namespace">java<span class="token punctuation">.</span>util<span class="token punctuation">.</span></span><span class="token class-name">List</span><span class="token punctuation">;</span>
+
+<span class="token keyword">import</span> <span class="token namespace">javax<span class="token punctuation">.</span>validation<span class="token punctuation">.</span>constraints<span class="token punctuation">.</span></span><span class="token class-name">Digits</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token namespace">javax<span class="token punctuation">.</span>validation<span class="token punctuation">.</span>constraints<span class="token punctuation">.</span></span><span class="token class-name">Pattern</span><span class="token punctuation">;</span>
+
+<span class="token keyword">import</span> <span class="token namespace">org<span class="token punctuation">.</span>hibernate<span class="token punctuation">.</span>validator<span class="token punctuation">.</span>constraints<span class="token punctuation">.</span></span><span class="token class-name">CreditCardNumber</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token namespace">org<span class="token punctuation">.</span>hibernate<span class="token punctuation">.</span>validator<span class="token punctuation">.</span>constraints<span class="token punctuation">.</span></span><span class="token class-name">NotBlank</span><span class="token punctuation">;</span>
+
+<span class="token keyword">import</span> <span class="token namespace">lombok<span class="token punctuation">.</span></span><span class="token class-name">Data</span><span class="token punctuation">;</span>
+
+<span class="token comment">//tag::newFields[]</span>
+<span class="token annotation punctuation">@Data</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Order</span> <span class="token punctuation">{</span>
+  	<span class="token comment">//-----Data persistence-----</span>
+  	<span class="token keyword">private</span> <span class="token class-name">Long</span> id<span class="token punctuation">;</span>
+  	<span class="token keyword">private</span> <span class="token class-name">Date</span> placedAt<span class="token punctuation">;</span>
+  	<span class="token comment">//--------------------------</span>
+    
+    <span class="token annotation punctuation">@NotBlank</span><span class="token punctuation">(</span>message<span class="token operator">=</span><span class="token string">"Delivery name is required"</span><span class="token punctuation">)</span>
+    <span class="token keyword">private</span> <span class="token class-name">String</span> deliveryName<span class="token punctuation">;</span>
+
+    <span class="token annotation punctuation">@NotBlank</span><span class="token punctuation">(</span>message<span class="token operator">=</span><span class="token string">"Street is required"</span><span class="token punctuation">)</span>
+    <span class="token keyword">private</span> <span class="token class-name">String</span> deliveryStreet<span class="token punctuation">;</span>
+
+    <span class="token annotation punctuation">@NotBlank</span><span class="token punctuation">(</span>message<span class="token operator">=</span><span class="token string">"City is required"</span><span class="token punctuation">)</span>
+    <span class="token keyword">private</span> <span class="token class-name">String</span> deliveryCity<span class="token punctuation">;</span>
+
+    <span class="token annotation punctuation">@NotBlank</span><span class="token punctuation">(</span>message<span class="token operator">=</span><span class="token string">"State is required"</span><span class="token punctuation">)</span>
+    <span class="token keyword">private</span> <span class="token class-name">String</span> deliveryState<span class="token punctuation">;</span>
+
+    <span class="token annotation punctuation">@NotBlank</span><span class="token punctuation">(</span>message<span class="token operator">=</span><span class="token string">"Zip code is required"</span><span class="token punctuation">)</span>
+    <span class="token keyword">private</span> <span class="token class-name">String</span> deliveryZip<span class="token punctuation">;</span>
+
+    <span class="token annotation punctuation">@CreditCardNumber</span><span class="token punctuation">(</span>message<span class="token operator">=</span><span class="token string">"Not a valid credit card number"</span><span class="token punctuation">)</span>
+    <span class="token keyword">private</span> <span class="token class-name">String</span> ccNumber<span class="token punctuation">;</span>
+
+    <span class="token annotation punctuation">@Pattern</span><span class="token punctuation">(</span>regexp<span class="token operator">=</span><span class="token string">"^(0[1-9]|1[0-2])([\\/])([1-9][0-9])$"</span><span class="token punctuation">,</span>
+             message<span class="token operator">=</span><span class="token string">"Must be formatted MM/YY"</span><span class="token punctuation">)</span>
+    <span class="token keyword">private</span> <span class="token class-name">String</span> ccExpiration<span class="token punctuation">;</span>
+
+    <span class="token annotation punctuation">@Digits</span><span class="token punctuation">(</span>integer<span class="token operator">=</span><span class="token number">3</span><span class="token punctuation">,</span> fraction<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">,</span> message<span class="token operator">=</span><span class="token string">"Invalid CVV"</span><span class="token punctuation">)</span>
+    <span class="token keyword">private</span> <span class="token class-name">String</span> ccCVV<span class="token punctuation">;</span>
+
+    <span class="token keyword">private</span> <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Taco</span><span class="token punctuation">&gt;</span></span> tacos <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token punctuation">&gt;</span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">addDesign</span><span class="token punctuation">(</span><span class="token class-name">Taco</span> design<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>tacos<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>design<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h4 id="定义DAO"><a href="#定义DAO" class="headerlink" title="定义DAO"></a>定义DAO</h4><p>②：构建相应的关系型数据库、模式以及关系表（这里利用的内嵌的H2数据库）</p>
+<p><b style="color: red;">注：这里编写的sql文件需要放在根类路径下</b>：<code>src/main/resources/xxx.sql</code></p>
+<p><strong>数据库模式定义的sql文件</strong></p>
 <pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">create</span> <span class="token keyword">table</span> <span class="token keyword">if</span> <span class="token operator">not</span> <span class="token keyword">exists</span> Ingredient <span class="token punctuation">(</span>
   id <span class="token keyword">varchar</span><span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">)</span> <span class="token operator">not</span> <span class="token boolean">null</span><span class="token punctuation">,</span>
   name <span class="token keyword">varchar</span><span class="token punctuation">(</span><span class="token number">25</span><span class="token punctuation">)</span> <span class="token operator">not</span> <span class="token boolean">null</span><span class="token punctuation">,</span>
@@ -1255,23 +1323,62 @@
     <span class="token keyword">add</span> <span class="token keyword">foreign</span> <span class="token keyword">key</span> <span class="token punctuation">(</span>ingredient<span class="token punctuation">)</span> <span class="token keyword">references</span> Ingredient<span class="token punctuation">(</span>id<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
 <span class="token keyword">create</span> <span class="token keyword">table</span> <span class="token keyword">if</span> <span class="token operator">not</span> <span class="token keyword">exists</span> Taco_Order <span class="token punctuation">(</span>
-   id <span class="token keyword">identity</span><span class="token punctuation">,</span>
-   deliveryName <span class="token keyword">varchar</span><span class="token punctuation">(</span><span class="token number">50</span><span class="token punctuation">)</span> <span class="token operator">not</span> <span class="token boolean">null</span><span class="token punctuation">,</span>
-   deliveryStreet <span class="token keyword">varchar</span><span class="token punctuation">(</span><span class="token number">50</span><span class="token punctuation">)</span> <span class="token operator">not</span> <span class="token boolean">null</span><span class="token punctuation">,</span>
-   deliveryCity <span class="token keyword">varchar</span><span class="token punctuation">(</span><span class="token number">50</span><span class="token punctuation">)</span> <span class="token operator">not</span> <span class="token boolean">null</span><span class="token punctuation">,</span>
-   deliveryState <span class="token keyword">varchar</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span> <span class="token operator">not</span> <span class="token boolean">null</span><span class="token punctuation">,</span>
-   deliveryZip <span class="token keyword">varchar</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span> <span class="token operator">not</span> <span class="token boolean">null</span><span class="token punctuation">,</span>
-   ccNumber <span class="token keyword">varchar</span><span class="token punctuation">(</span><span class="token number">16</span><span class="token punctuation">)</span> <span class="token operator">not</span> <span class="token boolean">null</span><span class="token punctuation">,</span>
-   ccExpiration <span class="token keyword">varchar</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span> <span class="token operator">not</span> <span class="token boolean">null</span><span class="token punctuation">,</span>
-   ccCVV <span class="token keyword">varchar</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span> <span class="token operator">not</span> <span class="token boolean">null</span><span class="token punctuation">,</span>
-   placedAt <span class="token keyword">timestamp</span> <span class="token operator">not</span> <span class="token boolean">null</span>
-<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+	id <span class="token keyword">identity</span><span class="token punctuation">,</span>
+	deliveryName <span class="token keyword">varchar</span><span class="token punctuation">(</span><span class="token number">50</span><span class="token punctuation">)</span> <span class="token operator">not</span> <span class="token boolean">null</span><span class="token punctuation">,</span>
+	deliveryStreet <span class="token keyword">varchar</span><span class="token punctuation">(</span><span class="token number">50</span><span class="token punctuation">)</span> <span class="token operator">not</span> <span class="token boolean">null</span><span class="token punctuation">,</span>
+	deliveryCity <span class="token keyword">varchar</span><span class="token punctuation">(</span><span class="token number">50</span><span class="token punctuation">)</span> <span class="token operator">not</span> <span class="token boolean">null</span><span class="token punctuation">,</span>
+	deliveryState <span class="token keyword">varchar</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span> <span class="token operator">not</span> <span class="token boolean">null</span><span class="token punctuation">,</span>
+	deliveryZip <span class="token keyword">varchar</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span> <span class="token operator">not</span> <span class="token boolean">null</span><span class="token punctuation">,</span>
+	ccNumber <span class="token keyword">varchar</span><span class="token punctuation">(</span><span class="token number">16</span><span class="token punctuation">)</span> <span class="token operator">not</span> <span class="token boolean">null</span><span class="token punctuation">,</span>
+	ccExpiration <span class="token keyword">varchar</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span> <span class="token operator">not</span> <span class="token boolean">null</span><span class="token punctuation">,</span>
+	ccCVV <span class="token keyword">varchar</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span> <span class="token operator">not</span> <span class="token boolean">null</span><span class="token punctuation">,</span>
+    placedAt <span class="token keyword">timestamp</span> <span class="token operator">not</span> <span class="token boolean">null</span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">create</span> <span class="token keyword">table</span> <span class="token keyword">if</span> <span class="token operator">not</span> <span class="token keyword">exists</span> Taco_Order_Tacos <span class="token punctuation">(</span>
+	tacoOrder <span class="token keyword">bigint</span> <span class="token operator">not</span> <span class="token boolean">null</span><span class="token punctuation">,</span>
+	taco <span class="token keyword">bigint</span> <span class="token operator">not</span> <span class="token boolean">null</span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">alter</span> <span class="token keyword">table</span> Taco_Order_Tacos
+    <span class="token keyword">add</span> <span class="token keyword">foreign</span> <span class="token keyword">key</span> <span class="token punctuation">(</span>tacoOrder<span class="token punctuation">)</span> <span class="token keyword">references</span> Taco_Order<span class="token punctuation">(</span>id<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">alter</span> <span class="token keyword">table</span> Taco_Order_Tacos
+    <span class="token keyword">add</span> <span class="token keyword">foreign</span> <span class="token keyword">key</span> <span class="token punctuation">(</span>taco<span class="token punctuation">)</span> <span class="token keyword">references</span> Taco<span class="token punctuation">(</span>id<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><strong>数据库数据填充的sql文件</strong></p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java">delete from <span class="token class-name">Taco_Order_Tacos</span><span class="token punctuation">;</span>
+delete from <span class="token class-name">Taco_Ingredients</span><span class="token punctuation">;</span>
+delete from <span class="token class-name">Taco</span><span class="token punctuation">;</span>
+delete from <span class="token class-name">Taco_Order</span><span class="token punctuation">;</span>
+
+delete from <span class="token class-name">Ingredient</span><span class="token punctuation">;</span>
+insert into <span class="token class-name">Ingredient</span> <span class="token punctuation">(</span>id<span class="token punctuation">,</span> name<span class="token punctuation">,</span> type<span class="token punctuation">)</span> 
+                values <span class="token punctuation">(</span><span class="token string">'FLTO'</span><span class="token punctuation">,</span> <span class="token string">'Flour Tortilla'</span><span class="token punctuation">,</span> <span class="token string">'WRAP'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+insert into <span class="token class-name">Ingredient</span> <span class="token punctuation">(</span>id<span class="token punctuation">,</span> name<span class="token punctuation">,</span> type<span class="token punctuation">)</span> 
+                values <span class="token punctuation">(</span><span class="token string">'COTO'</span><span class="token punctuation">,</span> <span class="token string">'Corn Tortilla'</span><span class="token punctuation">,</span> <span class="token string">'WRAP'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+insert into <span class="token class-name">Ingredient</span> <span class="token punctuation">(</span>id<span class="token punctuation">,</span> name<span class="token punctuation">,</span> type<span class="token punctuation">)</span> 
+                values <span class="token punctuation">(</span><span class="token string">'GRBF'</span><span class="token punctuation">,</span> <span class="token string">'Ground Beef'</span><span class="token punctuation">,</span> <span class="token string">'PROTEIN'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+insert into <span class="token class-name">Ingredient</span> <span class="token punctuation">(</span>id<span class="token punctuation">,</span> name<span class="token punctuation">,</span> type<span class="token punctuation">)</span> 
+                values <span class="token punctuation">(</span><span class="token string">'CARN'</span><span class="token punctuation">,</span> <span class="token string">'Carnitas'</span><span class="token punctuation">,</span> <span class="token string">'PROTEIN'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+insert into <span class="token class-name">Ingredient</span> <span class="token punctuation">(</span>id<span class="token punctuation">,</span> name<span class="token punctuation">,</span> type<span class="token punctuation">)</span> 
+                values <span class="token punctuation">(</span><span class="token string">'TMTO'</span><span class="token punctuation">,</span> <span class="token string">'Diced Tomatoes'</span><span class="token punctuation">,</span> <span class="token string">'VEGGIES'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+insert into <span class="token class-name">Ingredient</span> <span class="token punctuation">(</span>id<span class="token punctuation">,</span> name<span class="token punctuation">,</span> type<span class="token punctuation">)</span> 
+                values <span class="token punctuation">(</span><span class="token string">'LETC'</span><span class="token punctuation">,</span> <span class="token string">'Lettuce'</span><span class="token punctuation">,</span> <span class="token string">'VEGGIES'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+insert into <span class="token class-name">Ingredient</span> <span class="token punctuation">(</span>id<span class="token punctuation">,</span> name<span class="token punctuation">,</span> type<span class="token punctuation">)</span> 
+                values <span class="token punctuation">(</span><span class="token string">'CHED'</span><span class="token punctuation">,</span> <span class="token string">'Cheddar'</span><span class="token punctuation">,</span> <span class="token string">'CHEESE'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+insert into <span class="token class-name">Ingredient</span> <span class="token punctuation">(</span>id<span class="token punctuation">,</span> name<span class="token punctuation">,</span> type<span class="token punctuation">)</span> 
+                values <span class="token punctuation">(</span><span class="token string">'JACK'</span><span class="token punctuation">,</span> <span class="token string">'Monterrey Jack'</span><span class="token punctuation">,</span> <span class="token string">'CHEESE'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+insert into <span class="token class-name">Ingredient</span> <span class="token punctuation">(</span>id<span class="token punctuation">,</span> name<span class="token punctuation">,</span> type<span class="token punctuation">)</span> 
+                values <span class="token punctuation">(</span><span class="token string">'SLSA'</span><span class="token punctuation">,</span> <span class="token string">'Salsa'</span><span class="token punctuation">,</span> <span class="token string">'SAUCE'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+insert into <span class="token class-name">Ingredient</span> <span class="token punctuation">(</span>id<span class="token punctuation">,</span> name<span class="token punctuation">,</span> type<span class="token punctuation">)</span> 
+                values <span class="token punctuation">(</span><span class="token string">'SRCR'</span><span class="token punctuation">,</span> <span class="token string">'Sour Cream'</span><span class="token punctuation">,</span> <span class="token string">'SAUCE'</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>③：利用JdbcTemplate进行数据库操作</p>
 <p>准备工作：导入相应的依赖文件（jdbc和h2DB）</p>
 <p>1）编写操作数据的功能接口（JDBC repository）</p>
 <p>2）编写实现上面定义的接口功能的repository类</p>
 <p>3）将上面的编写的类注入到相应的控制器中</p>
+<p><strong>项目依赖</strong></p>
 <pre class="line-numbers language-xml" data-language="xml"><code class="language-xml"><span class="token comment">&lt;!--SpringBoot的jdbc依赖--&gt;</span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">&gt;</span></span>
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">&gt;</span></span>org.springframework.boot<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">&gt;</span></span>
@@ -1284,35 +1391,41 @@
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>scope</span><span class="token punctuation">&gt;</span></span>runtime<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>scope</span><span class="token punctuation">&gt;</span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">&gt;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<ul>
-<li>IngredientRepository</li>
-</ul>
-<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">package</span> <span class="token namespace">com<span class="token punctuation">.</span>example<span class="token punctuation">.</span>tacocloud<span class="token punctuation">.</span>data</span><span class="token punctuation">;</span>
+<p><strong>数据库的连接操作</strong></p>
+<p><b style="background-color: black;color: white;">DAO接口：IngredientRepository</b></p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">package</span> <span class="token namespace">tacos<span class="token punctuation">.</span>data</span><span class="token punctuation">;</span>
 
-<span class="token keyword">import</span> <span class="token namespace">com<span class="token punctuation">.</span>example<span class="token punctuation">.</span>tacocloud<span class="token punctuation">.</span>bean<span class="token punctuation">.</span></span><span class="token class-name">Ingredient</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token namespace">tacos<span class="token punctuation">.</span></span><span class="token class-name">Ingredient</span><span class="token punctuation">;</span>
 
 <span class="token keyword">public</span> <span class="token keyword">interface</span> <span class="token class-name">IngredientRepository</span> <span class="token punctuation">{</span>
-    <span class="token class-name">Iterable</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Ingredient</span><span class="token punctuation">&gt;</span></span> <span class="token function">findAll</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token class-name">Ingredient</span> <span class="token function">findOne</span><span class="token punctuation">(</span><span class="token class-name">String</span> id<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token class-name">Ingredient</span> <span class="token function">save</span><span class="token punctuation">(</span><span class="token class-name">Ingredient</span> ingredient<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<ul>
-<li></li>
-</ul>
-<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">package</span> <span class="token namespace">com<span class="token punctuation">.</span>example<span class="token punctuation">.</span>tacocloud<span class="token punctuation">.</span>bean</span><span class="token punctuation">;</span>
+  <span class="token class-name">Iterable</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Ingredient</span><span class="token punctuation">&gt;</span></span> <span class="token function">findAll</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  
+  <span class="token class-name">Ingredient</span> <span class="token function">findById</span><span class="token punctuation">(</span><span class="token class-name">String</span> id<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  
+  <span class="token class-name">Ingredient</span> <span class="token function">save</span><span class="token punctuation">(</span><span class="token class-name">Ingredient</span> ingredient<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<span class="token keyword">import</span> <span class="token namespace">com<span class="token punctuation">.</span>example<span class="token punctuation">.</span>tacocloud<span class="token punctuation">.</span>data<span class="token punctuation">.</span></span><span class="token class-name">IngredientRepository</span><span class="token punctuation">;</span>
-<span class="token keyword">import</span> <span class="token namespace">org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>beans<span class="token punctuation">.</span>factory<span class="token punctuation">.</span>annotation<span class="token punctuation">.</span></span><span class="token class-name">Autowired</span><span class="token punctuation">;</span>
-<span class="token keyword">import</span> <span class="token namespace">org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>jdbc<span class="token punctuation">.</span>core<span class="token punctuation">.</span></span><span class="token class-name">JdbcTemplate</span><span class="token punctuation">;</span>
-<span class="token keyword">import</span> <span class="token namespace">org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>stereotype<span class="token punctuation">.</span></span><span class="token class-name">Repository</span><span class="token punctuation">;</span>
+<p><b style="background-color: black;color: white;">实现：JdbcIngredientRepository</b></p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">package</span> <span class="token namespace">tacos<span class="token punctuation">.</span>data</span><span class="token punctuation">;</span>
 
 <span class="token keyword">import</span> <span class="token namespace">java<span class="token punctuation">.</span>sql<span class="token punctuation">.</span></span><span class="token class-name">ResultSet</span><span class="token punctuation">;</span>
 <span class="token keyword">import</span> <span class="token namespace">java<span class="token punctuation">.</span>sql<span class="token punctuation">.</span></span><span class="token class-name">SQLException</span><span class="token punctuation">;</span>
 
+<span class="token keyword">import</span> <span class="token namespace">org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>beans<span class="token punctuation">.</span>factory<span class="token punctuation">.</span>annotation<span class="token punctuation">.</span></span><span class="token class-name">Autowired</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token namespace">org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>jdbc<span class="token punctuation">.</span>core<span class="token punctuation">.</span></span><span class="token class-name">JdbcTemplate</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token namespace">org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>jdbc<span class="token punctuation">.</span>core<span class="token punctuation">.</span></span><span class="token class-name">RowMapper</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token namespace">org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>stereotype<span class="token punctuation">.</span></span><span class="token class-name">Repository</span><span class="token punctuation">;</span>
+
+<span class="token keyword">import</span> <span class="token namespace">tacos<span class="token punctuation">.</span></span><span class="token class-name">Ingredient</span><span class="token punctuation">;</span>
+
 <span class="token annotation punctuation">@Repository</span>
 <span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">JdbcIngredientRepository</span> <span class="token keyword">implements</span> <span class="token class-name">IngredientRepository</span> <span class="token punctuation">{</span>
+
+    <span class="token comment">// 注入依赖的组件：JdbcTemplate</span>
     <span class="token keyword">private</span> <span class="token class-name">JdbcTemplate</span> jdbc<span class="token punctuation">;</span>
+
 
     <span class="token annotation punctuation">@Autowired</span>
     <span class="token keyword">public</span> <span class="token class-name">JdbcIngredientRepository</span><span class="token punctuation">(</span><span class="token class-name">JdbcTemplate</span> jdbc<span class="token punctuation">)</span> <span class="token punctuation">{</span>
@@ -1322,37 +1435,529 @@
     <span class="token annotation punctuation">@Override</span>
     <span class="token keyword">public</span> <span class="token class-name">Iterable</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Ingredient</span><span class="token punctuation">&gt;</span></span> <span class="token function">findAll</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
         <span class="token keyword">return</span> jdbc<span class="token punctuation">.</span><span class="token function">query</span><span class="token punctuation">(</span><span class="token string">"select id, name, type from Ingredient"</span><span class="token punctuation">,</span>
-                <span class="token keyword">this</span><span class="token operator">::</span><span class="token function">mapRowToIngredient</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                          <span class="token keyword">this</span><span class="token operator">::</span><span class="token function">mapRowToIngredient</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 
     <span class="token annotation punctuation">@Override</span>
-    <span class="token keyword">public</span> <span class="token class-name">Ingredient</span> <span class="token function">findOne</span><span class="token punctuation">(</span><span class="token class-name">String</span> id<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">return</span> jdbc<span class="token punctuation">.</span><span class="token function">queryForObject</span><span class="token punctuation">(</span><span class="token string">"select id, name, type from Ingredient where id = ?"</span><span class="token punctuation">,</span>
-                <span class="token keyword">this</span><span class="token operator">::</span><span class="token function">mapRowToIngredient</span><span class="token punctuation">,</span>id<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token class-name">Ingredient</span> <span class="token function">findById</span><span class="token punctuation">(</span><span class="token class-name">String</span> id<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> jdbc<span class="token punctuation">.</span><span class="token function">queryForObject</span><span class="token punctuation">(</span>
+            <span class="token string">"select id, name, type from Ingredient where id=?"</span><span class="token punctuation">,</span>
+            <span class="token keyword">this</span><span class="token operator">::</span><span class="token function">mapRowToIngredient</span><span class="token punctuation">,</span> id<span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
+
+
+    <span class="token comment">/**
+    @Override
+    public Ingredient findOne(String id) {
+        return jdbc.queryForObject(
+            "select id, name, type from Ingredient where id=?",
+            new RowMapper&lt;Ingredient&gt;() {
+                public Ingredient mapRow(ResultSet rs, int rowNum) 
+                    throws SQLException {
+                    return new Ingredient(
+                        rs.getString("id"), 
+                        rs.getString("name"),
+                        Ingredient.Type.valueOf(rs.getString("type")));
+                };
+            }, id);
+    }
+	*/</span>
 
     <span class="token annotation punctuation">@Override</span>
     <span class="token keyword">public</span> <span class="token class-name">Ingredient</span> <span class="token function">save</span><span class="token punctuation">(</span><span class="token class-name">Ingredient</span> ingredient<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        jdbc<span class="token punctuation">.</span><span class="token function">update</span><span class="token punctuation">(</span><span class="token string">"insert into Ingredient (id, name, type) values (?, ?, ?)"</span><span class="token punctuation">,</span>
-                ingredient<span class="token punctuation">.</span><span class="token function">getId</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-                ingredient<span class="token punctuation">.</span><span class="token function">getName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-                ingredient<span class="token punctuation">.</span><span class="token function">getType</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        jdbc<span class="token punctuation">.</span><span class="token function">update</span><span class="token punctuation">(</span>
+            <span class="token string">"insert into Ingredient (id, name, type) values (?, ?, ?)"</span><span class="token punctuation">,</span>
+            ingredient<span class="token punctuation">.</span><span class="token function">getId</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> 
+            ingredient<span class="token punctuation">.</span><span class="token function">getName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+            ingredient<span class="token punctuation">.</span><span class="token function">getType</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
         <span class="token keyword">return</span> ingredient<span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 
-    <span class="token keyword">private</span> <span class="token class-name">Ingredient</span> <span class="token function">mapRowToIngredient</span><span class="token punctuation">(</span><span class="token class-name">ResultSet</span> rs<span class="token punctuation">,</span> <span class="token keyword">int</span> rowNum<span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">SQLException</span> <span class="token punctuation">{</span>
-        <span class="token class-name">String</span> id <span class="token operator">=</span> rs<span class="token punctuation">.</span><span class="token function">getString</span><span class="token punctuation">(</span><span class="token string">"id"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token class-name">String</span> name <span class="token operator">=</span> rs<span class="token punctuation">.</span><span class="token function">getString</span><span class="token punctuation">(</span><span class="token string">"name"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token class-name">Ingredient<span class="token punctuation">.</span>Type</span> type <span class="token operator">=</span> <span class="token class-name">Ingredient<span class="token punctuation">.</span>Type</span><span class="token punctuation">.</span><span class="token function">valjavaueOf</span><span class="token punctuation">(</span>rs<span class="token punctuation">.</span><span class="token function">getString</span><span class="token punctuation">(</span><span class="token string">"type"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token class-name">Ingredient</span> ing <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Ingredient</span><span class="token punctuation">(</span>id<span class="token punctuation">,</span>name<span class="token punctuation">,</span>type<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token keyword">return</span> ing<span class="token punctuation">;</span>
+    <span class="token keyword">private</span> <span class="token class-name">Ingredient</span> <span class="token function">mapRowToIngredient</span><span class="token punctuation">(</span><span class="token class-name">ResultSet</span> rs<span class="token punctuation">,</span> <span class="token keyword">int</span> rowNum<span class="token punctuation">)</span>
+        <span class="token keyword">throws</span> <span class="token class-name">SQLException</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">Ingredient</span><span class="token punctuation">(</span>
+            rs<span class="token punctuation">.</span><span class="token function">getString</span><span class="token punctuation">(</span><span class="token string">"id"</span><span class="token punctuation">)</span><span class="token punctuation">,</span> 
+            rs<span class="token punctuation">.</span><span class="token function">getString</span><span class="token punctuation">(</span><span class="token string">"name"</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+            <span class="token class-name">Ingredient<span class="token punctuation">.</span>Type</span><span class="token punctuation">.</span><span class="token function">valueOf</span><span class="token punctuation">(</span>rs<span class="token punctuation">.</span><span class="token function">getString</span><span class="token punctuation">(</span><span class="token string">"type"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<p>这里在查询的语句中<code>jdbc.query(String sql,RowMapper\&lt;T&gt; rowMapper)</code>。对于函数式接口的实现，采用了方法引用的语法糖。@Repository构造型注解，可以将我们的实现类JdbcIngredientRepository初始化为bean</p>
-<ul>
-<li>将编写的组件注入到相应的控制器中</li>
-</ul>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><code>@Repository</code>是 Spring 注解，指示装饰的类是存储库。 存储库是一种用于封装存储，检索和搜索行为的机制，该机制模仿对象的集合。 它是<code>@Component</code>注解的一种特殊功能，允许通过类路径扫描自动检测实现类。</p>
+<p><code>@ComponentScan</code>确保找到用<code>@Component</code>和其派生词包括<code>@Repository</code>装饰的类并将其注册为 Spring Bean。 <code>@ComponentScan</code>自动包含在<code>@SpringBootApplication</code>中。</p>
+<p><code>query(String sql, RowMapper&lt;T&gt; rowMapper)</code></p>
+<p><code>queryForObject(String sql, RowMapper&lt;T&gt; rowMapper, @Nullable Object... args)</code></p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">package</span> <span class="token namespace">tacos<span class="token punctuation">.</span>data</span><span class="token punctuation">;</span>
+
+<span class="token keyword">import</span> <span class="token namespace">tacos<span class="token punctuation">.</span></span><span class="token class-name">Order</span><span class="token punctuation">;</span>
+
+<span class="token keyword">public</span> <span class="token keyword">interface</span> <span class="token class-name">OrderRepository</span> <span class="token punctuation">{</span>
+
+  <span class="token class-name">Order</span> <span class="token function">save</span><span class="token punctuation">(</span><span class="token class-name">Order</span> order<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><b style="background-color: black;color: white;">实现：JdbcOrderRepository</b></p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">package</span> <span class="token namespace">tacos<span class="token punctuation">.</span>data</span><span class="token punctuation">;</span>
+
+<span class="token keyword">import</span> <span class="token namespace">java<span class="token punctuation">.</span>util<span class="token punctuation">.</span></span><span class="token class-name">Date</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token namespace">java<span class="token punctuation">.</span>util<span class="token punctuation">.</span></span><span class="token class-name">HashMap</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token namespace">java<span class="token punctuation">.</span>util<span class="token punctuation">.</span></span><span class="token class-name">List</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token namespace">java<span class="token punctuation">.</span>util<span class="token punctuation">.</span></span><span class="token class-name">Map</span><span class="token punctuation">;</span>
+
+<span class="token keyword">import</span> <span class="token namespace">org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>beans<span class="token punctuation">.</span>factory<span class="token punctuation">.</span>annotation<span class="token punctuation">.</span></span><span class="token class-name">Autowired</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token namespace">org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>jdbc<span class="token punctuation">.</span>core<span class="token punctuation">.</span></span><span class="token class-name">JdbcTemplate</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token namespace">org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>jdbc<span class="token punctuation">.</span>core<span class="token punctuation">.</span>simple<span class="token punctuation">.</span></span><span class="token class-name">SimpleJdbcInsert</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token namespace">org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>stereotype<span class="token punctuation">.</span></span><span class="token class-name">Repository</span><span class="token punctuation">;</span>
+
+<span class="token keyword">import</span> <span class="token namespace">com<span class="token punctuation">.</span>fasterxml<span class="token punctuation">.</span>jackson<span class="token punctuation">.</span>databind<span class="token punctuation">.</span></span><span class="token class-name">ObjectMapper</span><span class="token punctuation">;</span>
+
+<span class="token keyword">import</span> <span class="token namespace">tacos<span class="token punctuation">.</span></span><span class="token class-name">Taco</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token namespace">tacos<span class="token punctuation">.</span></span><span class="token class-name">Order</span><span class="token punctuation">;</span>
+
+<span class="token annotation punctuation">@Repository</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">JdbcOrderRepository</span> <span class="token keyword">implements</span> <span class="token class-name">OrderRepository</span> <span class="token punctuation">{</span>
+
+    <span class="token keyword">private</span> <span class="token class-name">SimpleJdbcInsert</span> orderInserter<span class="token punctuation">;</span>
+    <span class="token keyword">private</span> <span class="token class-name">SimpleJdbcInsert</span> orderTacoInserter<span class="token punctuation">;</span>
+    <span class="token keyword">private</span> <span class="token class-name">ObjectMapper</span> objectMapper<span class="token punctuation">;</span>
+
+    <span class="token annotation punctuation">@Autowired</span>
+    <span class="token keyword">public</span> <span class="token class-name">JdbcOrderRepository</span><span class="token punctuation">(</span><span class="token class-name">JdbcTemplate</span> jdbc<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        
+        <span class="token comment">// 指定需要插入数据的表格以及生成键的列</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>orderInserter <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">SimpleJdbcInsert</span><span class="token punctuation">(</span>jdbc<span class="token punctuation">)</span>
+            <span class="token punctuation">.</span><span class="token function">withTableName</span><span class="token punctuation">(</span><span class="token string">"Taco_Order"</span><span class="token punctuation">)</span>
+            <span class="token punctuation">.</span><span class="token function">usingGeneratedKeyColumns</span><span class="token punctuation">(</span><span class="token string">"id"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token keyword">this</span><span class="token punctuation">.</span>orderTacoInserter <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">SimpleJdbcInsert</span><span class="token punctuation">(</span>jdbc<span class="token punctuation">)</span>
+            <span class="token punctuation">.</span><span class="token function">withTableName</span><span class="token punctuation">(</span><span class="token string">"Taco_Order_Tacos"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token keyword">this</span><span class="token punctuation">.</span>objectMapper <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ObjectMapper</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token class-name">Order</span> <span class="token function">save</span><span class="token punctuation">(</span><span class="token class-name">Order</span> order<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        order<span class="token punctuation">.</span><span class="token function">setPlacedAt</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">long</span> orderId <span class="token operator">=</span> <span class="token function">saveOrderDetails</span><span class="token punctuation">(</span>order<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        order<span class="token punctuation">.</span><span class="token function">setId</span><span class="token punctuation">(</span>orderId<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Taco</span><span class="token punctuation">&gt;</span></span> tacos <span class="token operator">=</span> order<span class="token punctuation">.</span><span class="token function">getTacos</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token class-name">Taco</span> taco <span class="token operator">:</span> tacos<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token function">saveTacoToOrder</span><span class="token punctuation">(</span>taco<span class="token punctuation">,</span> orderId<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token keyword">return</span> order<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">private</span> <span class="token keyword">long</span> <span class="token function">saveOrderDetails</span><span class="token punctuation">(</span><span class="token class-name">Order</span> order<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token annotation punctuation">@SuppressWarnings</span><span class="token punctuation">(</span><span class="token string">"unchecked"</span><span class="token punctuation">)</span>
+        <span class="token class-name">Map</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">,</span> <span class="token class-name">Object</span><span class="token punctuation">&gt;</span></span> values <span class="token operator">=</span>
+            objectMapper<span class="token punctuation">.</span><span class="token function">convertValue</span><span class="token punctuation">(</span>order<span class="token punctuation">,</span> <span class="token class-name">Map</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        
+        <span class="token comment">// 因为Jackson会自动将Date转化为Long，所以这里需要单独将值输入Map</span>
+        <span class="token comment">// 保持与数据表类型一致</span>
+        values<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span><span class="token string">"placedAt"</span><span class="token punctuation">,</span> order<span class="token punctuation">.</span><span class="token function">getPlacedAt</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token keyword">long</span> orderId <span class="token operator">=</span>
+            <span class="token comment">// 指向插入语句，并且将生成的键返回</span>
+            orderInserter
+            <span class="token punctuation">.</span><span class="token function">executeAndReturnKey</span><span class="token punctuation">(</span>values<span class="token punctuation">)</span>
+            <span class="token punctuation">.</span><span class="token function">longValue</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> orderId<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">private</span> <span class="token keyword">void</span> <span class="token function">saveTacoToOrder</span><span class="token punctuation">(</span><span class="token class-name">Taco</span> taco<span class="token punctuation">,</span> <span class="token keyword">long</span> orderId<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token class-name">Map</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">,</span> <span class="token class-name">Object</span><span class="token punctuation">&gt;</span></span> values <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">HashMap</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token punctuation">&gt;</span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        values<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span><span class="token string">"tacoOrder"</span><span class="token punctuation">,</span> orderId<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        values<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span><span class="token string">"taco"</span><span class="token punctuation">,</span> taco<span class="token punctuation">.</span><span class="token function">getId</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        orderTacoInserter<span class="token punctuation">.</span><span class="token function">execute</span><span class="token punctuation">(</span>values<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+
+
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">package</span> <span class="token namespace">tacos<span class="token punctuation">.</span>data</span><span class="token punctuation">;</span>
+
+<span class="token keyword">import</span> <span class="token namespace">tacos<span class="token punctuation">.</span></span><span class="token class-name">Taco</span><span class="token punctuation">;</span>
+
+<span class="token keyword">public</span> <span class="token keyword">interface</span> <span class="token class-name">TacoRepository</span>  <span class="token punctuation">{</span>
+
+  <span class="token class-name">Taco</span> <span class="token function">save</span><span class="token punctuation">(</span><span class="token class-name">Taco</span> design<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><b style="background-color: black;color: white;">实现：JdbcTacoRepository</b></p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">package</span> <span class="token namespace">tacos<span class="token punctuation">.</span>data</span><span class="token punctuation">;</span>
+
+<span class="token keyword">import</span> <span class="token namespace">java<span class="token punctuation">.</span>sql<span class="token punctuation">.</span></span><span class="token class-name">Timestamp</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token namespace">java<span class="token punctuation">.</span>sql<span class="token punctuation">.</span></span><span class="token class-name">Types</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token namespace">java<span class="token punctuation">.</span>util<span class="token punctuation">.</span></span><span class="token class-name">Arrays</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token namespace">java<span class="token punctuation">.</span>util<span class="token punctuation">.</span></span><span class="token class-name">Date</span><span class="token punctuation">;</span>
+
+<span class="token keyword">import</span> <span class="token namespace">org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>jdbc<span class="token punctuation">.</span>core<span class="token punctuation">.</span></span><span class="token class-name">JdbcTemplate</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token namespace">org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>jdbc<span class="token punctuation">.</span>core<span class="token punctuation">.</span></span><span class="token class-name">PreparedStatementCreator</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token namespace">org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>jdbc<span class="token punctuation">.</span>core<span class="token punctuation">.</span></span><span class="token class-name">PreparedStatementCreatorFactory</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token namespace">org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>jdbc<span class="token punctuation">.</span>support<span class="token punctuation">.</span></span><span class="token class-name">GeneratedKeyHolder</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token namespace">org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>jdbc<span class="token punctuation">.</span>support<span class="token punctuation">.</span></span><span class="token class-name">KeyHolder</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token namespace">org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>stereotype<span class="token punctuation">.</span></span><span class="token class-name">Repository</span><span class="token punctuation">;</span>
+
+<span class="token keyword">import</span> <span class="token namespace">tacos<span class="token punctuation">.</span></span><span class="token class-name">Ingredient</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token namespace">tacos<span class="token punctuation">.</span></span><span class="token class-name">Taco</span><span class="token punctuation">;</span>
+
+<span class="token annotation punctuation">@Repository</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">JdbcTacoRepository</span> <span class="token keyword">implements</span> <span class="token class-name">TacoRepository</span> <span class="token punctuation">{</span>
+
+    <span class="token keyword">private</span> <span class="token class-name">JdbcTemplate</span> jdbc<span class="token punctuation">;</span>
+
+    <span class="token keyword">public</span> <span class="token class-name">JdbcTacoRepository</span><span class="token punctuation">(</span><span class="token class-name">JdbcTemplate</span> jdbc<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>jdbc <span class="token operator">=</span> jdbc<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token class-name">Taco</span> <span class="token function">save</span><span class="token punctuation">(</span><span class="token class-name">Taco</span> taco<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">long</span> tacoId <span class="token operator">=</span> <span class="token function">saveTacoInfo</span><span class="token punctuation">(</span>taco<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        taco<span class="token punctuation">.</span><span class="token function">setId</span><span class="token punctuation">(</span>tacoId<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token class-name">Ingredient</span> ingredient <span class="token operator">:</span> taco<span class="token punctuation">.</span><span class="token function">getIngredients</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token function">saveIngredientToTaco</span><span class="token punctuation">(</span>ingredient<span class="token punctuation">,</span> tacoId<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token keyword">return</span> taco<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">private</span> <span class="token keyword">long</span> <span class="token function">saveTacoInfo</span><span class="token punctuation">(</span><span class="token class-name">Taco</span> taco<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        taco<span class="token punctuation">.</span><span class="token function">setCreatedAt</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name">PreparedStatementCreator</span> psc <span class="token operator">=</span>
+            <span class="token keyword">new</span> <span class="token class-name">PreparedStatementCreatorFactory</span><span class="token punctuation">(</span>
+            <span class="token string">"insert into Taco (name, createdAt) values (?, ?)"</span><span class="token punctuation">,</span>
+            <span class="token class-name">Types</span><span class="token punctuation">.</span>VARCHAR<span class="token punctuation">,</span> <span class="token class-name">Types</span><span class="token punctuation">.</span>TIMESTAMP
+        <span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">newPreparedStatementCreator</span><span class="token punctuation">(</span>
+            <span class="token class-name">Arrays</span><span class="token punctuation">.</span><span class="token function">asList</span><span class="token punctuation">(</span>
+                taco<span class="token punctuation">.</span><span class="token function">getName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+                <span class="token keyword">new</span> <span class="token class-name">Timestamp</span><span class="token punctuation">(</span>taco<span class="token punctuation">.</span><span class="token function">getCreatedAt</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getTime</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token comment">// 自动生成键值</span>
+        <span class="token class-name">KeyHolder</span> keyHolder <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">GeneratedKeyHolder</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        jdbc<span class="token punctuation">.</span><span class="token function">update</span><span class="token punctuation">(</span>psc<span class="token punctuation">,</span> keyHolder<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token keyword">return</span> keyHolder<span class="token punctuation">.</span><span class="token function">getKey</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">longValue</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">private</span> <span class="token keyword">void</span> <span class="token function">saveIngredientToTaco</span><span class="token punctuation">(</span>
+        <span class="token class-name">Ingredient</span> ingredient<span class="token punctuation">,</span> <span class="token keyword">long</span> tacoId<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        jdbc<span class="token punctuation">.</span><span class="token function">update</span><span class="token punctuation">(</span>
+            <span class="token string">"insert into Taco_Ingredients (taco, ingredient) "</span> <span class="token operator">+</span>
+            <span class="token string">"values (?, ?)"</span><span class="token punctuation">,</span>
+            tacoId<span class="token punctuation">,</span> ingredient<span class="token punctuation">.</span><span class="token function">getId</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+
+
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">package</span> <span class="token namespace">tacos<span class="token punctuation">.</span>data</span><span class="token punctuation">;</span>
+
+<span class="token keyword">import</span> <span class="token namespace">java<span class="token punctuation">.</span>sql<span class="token punctuation">.</span></span><span class="token class-name">Connection</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token namespace">java<span class="token punctuation">.</span>sql<span class="token punctuation">.</span></span><span class="token class-name">PreparedStatement</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token namespace">java<span class="token punctuation">.</span>sql<span class="token punctuation">.</span></span><span class="token class-name">ResultSet</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token namespace">java<span class="token punctuation">.</span>sql<span class="token punctuation">.</span></span><span class="token class-name">SQLException</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token namespace">java<span class="token punctuation">.</span>sql<span class="token punctuation">.</span></span><span class="token class-name">Statement</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token namespace">java<span class="token punctuation">.</span>util<span class="token punctuation">.</span></span><span class="token class-name">ArrayList</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token namespace">java<span class="token punctuation">.</span>util<span class="token punctuation">.</span></span><span class="token class-name">List</span><span class="token punctuation">;</span>
+
+<span class="token keyword">import</span> <span class="token namespace">javax<span class="token punctuation">.</span>sql<span class="token punctuation">.</span></span><span class="token class-name">DataSource</span><span class="token punctuation">;</span>
+
+<span class="token keyword">import</span> <span class="token namespace">org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>jdbc<span class="token punctuation">.</span>core<span class="token punctuation">.</span></span><span class="token class-name">JdbcTemplate</span><span class="token punctuation">;</span>
+
+<span class="token keyword">import</span> <span class="token namespace">tacos<span class="token punctuation">.</span></span><span class="token class-name">Ingredient</span><span class="token punctuation">;</span>
+
+<span class="token comment">/**
+ * Raw implementation of {@link IngredientRepository} for
+ * comparison with {@link JdbcIngredientRepository} to illustrate
+ * the power of using {@link JdbcTemplate}. 
+ * @author habuma
+ */</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">RawJdbcIngredientRepository</span> <span class="token keyword">implements</span> <span class="token class-name">IngredientRepository</span> <span class="token punctuation">{</span>
+
+    <span class="token keyword">private</span> <span class="token class-name">DataSource</span> dataSource<span class="token punctuation">;</span>
+
+    <span class="token keyword">public</span> <span class="token class-name">RawJdbcIngredientRepository</span><span class="token punctuation">(</span><span class="token class-name">DataSource</span> dataSource<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>dataSource <span class="token operator">=</span> dataSource<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token class-name">Iterable</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Ingredient</span><span class="token punctuation">&gt;</span></span> <span class="token function">findAll</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Ingredient</span><span class="token punctuation">&gt;</span></span> ingredients <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token punctuation">&gt;</span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name">Connection</span> connection <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+        <span class="token class-name">PreparedStatement</span> statement <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+        <span class="token class-name">ResultSet</span> resultSet <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+        <span class="token keyword">try</span> <span class="token punctuation">{</span>
+            connection <span class="token operator">=</span> dataSource<span class="token punctuation">.</span><span class="token function">getConnection</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            statement <span class="token operator">=</span> connection<span class="token punctuation">.</span><span class="token function">prepareStatement</span><span class="token punctuation">(</span>
+                <span class="token string">"select id, name, type from Ingredient"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            resultSet <span class="token operator">=</span> statement<span class="token punctuation">.</span><span class="token function">executeQuery</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">while</span><span class="token punctuation">(</span>resultSet<span class="token punctuation">.</span><span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token class-name">Ingredient</span> ingredient <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Ingredient</span><span class="token punctuation">(</span>
+                    resultSet<span class="token punctuation">.</span><span class="token function">getString</span><span class="token punctuation">(</span><span class="token string">"id"</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+                    resultSet<span class="token punctuation">.</span><span class="token function">getString</span><span class="token punctuation">(</span><span class="token string">"name"</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+                    <span class="token class-name">Ingredient<span class="token punctuation">.</span>Type</span><span class="token punctuation">.</span><span class="token function">valueOf</span><span class="token punctuation">(</span>resultSet<span class="token punctuation">.</span><span class="token function">getString</span><span class="token punctuation">(</span><span class="token string">"type"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                ingredients<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>ingredient<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>      
+        <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">SQLException</span> e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token comment">// ??? What should be done here ???</span>
+        <span class="token punctuation">}</span> <span class="token keyword">finally</span> <span class="token punctuation">{</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>resultSet <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token keyword">try</span> <span class="token punctuation">{</span>
+                    resultSet<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">SQLException</span> e<span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+            <span class="token punctuation">}</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>statement <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token keyword">try</span> <span class="token punctuation">{</span>
+                    statement<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">SQLException</span> e<span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+            <span class="token punctuation">}</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>connection <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token keyword">try</span> <span class="token punctuation">{</span>
+                    connection<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">SQLException</span> e<span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">return</span> ingredients<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment">// tag::rawfindOne[]</span>
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token class-name">Ingredient</span> <span class="token function">findById</span><span class="token punctuation">(</span><span class="token class-name">String</span> id<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token class-name">Connection</span> connection <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+        <span class="token class-name">PreparedStatement</span> statement <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+        <span class="token class-name">ResultSet</span> resultSet <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+        <span class="token keyword">try</span> <span class="token punctuation">{</span>
+            connection <span class="token operator">=</span> dataSource<span class="token punctuation">.</span><span class="token function">getConnection</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            statement <span class="token operator">=</span> connection<span class="token punctuation">.</span><span class="token function">prepareStatement</span><span class="token punctuation">(</span>
+                <span class="token string">"select id, name, type from Ingredient"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            statement<span class="token punctuation">.</span><span class="token function">setString</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> id<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            resultSet <span class="token operator">=</span> statement<span class="token punctuation">.</span><span class="token function">executeQuery</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token class-name">Ingredient</span> ingredient <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+            <span class="token keyword">if</span><span class="token punctuation">(</span>resultSet<span class="token punctuation">.</span><span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                ingredient <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Ingredient</span><span class="token punctuation">(</span>
+                    resultSet<span class="token punctuation">.</span><span class="token function">getString</span><span class="token punctuation">(</span><span class="token string">"id"</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+                    resultSet<span class="token punctuation">.</span><span class="token function">getString</span><span class="token punctuation">(</span><span class="token string">"name"</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+                    <span class="token class-name">Ingredient<span class="token punctuation">.</span>Type</span><span class="token punctuation">.</span><span class="token function">valueOf</span><span class="token punctuation">(</span>resultSet<span class="token punctuation">.</span><span class="token function">getString</span><span class="token punctuation">(</span><span class="token string">"type"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span> 
+            <span class="token keyword">return</span> ingredient<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">SQLException</span> e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token comment">// ??? What should be done here ???</span>
+        <span class="token punctuation">}</span> <span class="token keyword">finally</span> <span class="token punctuation">{</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>resultSet <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token keyword">try</span> <span class="token punctuation">{</span>
+                    resultSet<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">SQLException</span> e<span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+            <span class="token punctuation">}</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>statement <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token keyword">try</span> <span class="token punctuation">{</span>
+                    statement<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">SQLException</span> e<span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+            <span class="token punctuation">}</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>connection <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token keyword">try</span> <span class="token punctuation">{</span>
+                    connection<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">SQLException</span> e<span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">return</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token comment">// end::rawfindOne[]</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token class-name">Ingredient</span> <span class="token function">save</span><span class="token punctuation">(</span><span class="token class-name">Ingredient</span> ingredient<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment">// TODO: I only needed one method for comparison purposes, so</span>
+        <span class="token comment">//       I've not bothered implementing this one (yet).</span>
+        <span class="token keyword">return</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+  
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h4 id="web控制器"><a href="#web控制器" class="headerlink" title="web控制器"></a>web控制器</h4><p>关于<code>/design</code>页面的控制器</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">package</span> <span class="token namespace">tacos<span class="token punctuation">.</span>web</span><span class="token punctuation">;</span>
+
+<span class="token keyword">import</span> <span class="token namespace">java<span class="token punctuation">.</span>util<span class="token punctuation">.</span></span><span class="token class-name">ArrayList</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token namespace">java<span class="token punctuation">.</span>util<span class="token punctuation">.</span></span><span class="token class-name">List</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token namespace">java<span class="token punctuation">.</span>util<span class="token punctuation">.</span>stream<span class="token punctuation">.</span></span><span class="token class-name">Collectors</span><span class="token punctuation">;</span>
+
+<span class="token keyword">import</span> <span class="token namespace">javax<span class="token punctuation">.</span>servlet<span class="token punctuation">.</span>http<span class="token punctuation">.</span></span><span class="token class-name">HttpServletRequest</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token namespace">javax<span class="token punctuation">.</span>validation<span class="token punctuation">.</span></span><span class="token class-name">Valid</span><span class="token punctuation">;</span>
+
+<span class="token keyword">import</span> <span class="token namespace">org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>beans<span class="token punctuation">.</span>factory<span class="token punctuation">.</span>annotation<span class="token punctuation">.</span></span><span class="token class-name">Autowired</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token namespace">org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>stereotype<span class="token punctuation">.</span></span><span class="token class-name">Controller</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token namespace">org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>ui<span class="token punctuation">.</span></span><span class="token class-name">Model</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token namespace">org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>validation<span class="token punctuation">.</span></span><span class="token class-name">Errors</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token namespace">org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>web<span class="token punctuation">.</span>bind<span class="token punctuation">.</span>annotation<span class="token punctuation">.</span></span><span class="token class-name">GetMapping</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token namespace">org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>web<span class="token punctuation">.</span>bind<span class="token punctuation">.</span>annotation<span class="token punctuation">.</span></span><span class="token class-name">ModelAttribute</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token namespace">org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>web<span class="token punctuation">.</span>bind<span class="token punctuation">.</span>annotation<span class="token punctuation">.</span></span><span class="token class-name">PostMapping</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token namespace">org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>web<span class="token punctuation">.</span>bind<span class="token punctuation">.</span>annotation<span class="token punctuation">.</span></span><span class="token class-name">RequestMapping</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token namespace">org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>web<span class="token punctuation">.</span>bind<span class="token punctuation">.</span>annotation<span class="token punctuation">.</span></span><span class="token class-name">SessionAttributes</span><span class="token punctuation">;</span>
+
+<span class="token keyword">import</span> <span class="token namespace">tacos<span class="token punctuation">.</span></span><span class="token class-name">Taco</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token namespace">tacos<span class="token punctuation">.</span></span><span class="token class-name">Ingredient</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token namespace">tacos<span class="token punctuation">.</span></span><span class="token class-name">Ingredient<span class="token punctuation">.</span>Type</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token namespace">tacos<span class="token punctuation">.</span></span><span class="token class-name">Order</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token namespace">tacos<span class="token punctuation">.</span>data<span class="token punctuation">.</span></span><span class="token class-name">TacoRepository</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token namespace">tacos<span class="token punctuation">.</span>data<span class="token punctuation">.</span></span><span class="token class-name">IngredientRepository</span><span class="token punctuation">;</span>
+
+<span class="token annotation punctuation">@Controller</span>
+<span class="token annotation punctuation">@RequestMapping</span><span class="token punctuation">(</span><span class="token string">"/design"</span><span class="token punctuation">)</span>
+<span class="token annotation punctuation">@SessionAttributes</span><span class="token punctuation">(</span><span class="token string">"order"</span><span class="token punctuation">)</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">DesignTacoController</span> <span class="token punctuation">{</span>
+
+    <span class="token keyword">private</span> <span class="token keyword">final</span> <span class="token class-name">IngredientRepository</span> ingredientRepo<span class="token punctuation">;</span>
+    <span class="token keyword">private</span> <span class="token class-name">TacoRepository</span> designRepo<span class="token punctuation">;</span>
+
+	<span class="token comment">/**
+    // tag::ingredientRepoOnlyCtor[]
+    @Autowired
+    public DesignTacoController(IngredientRepository ingredientRepo) {
+        this.ingredientRepo = ingredientRepo;
+    }
+    // end::ingredientRepoOnlyCtor[]
+    **/</span>
+
+    <span class="token annotation punctuation">@Autowired</span>
+    <span class="token keyword">public</span> <span class="token class-name">DesignTacoController</span><span class="token punctuation">(</span>
+        <span class="token class-name">IngredientRepository</span> ingredientRepo<span class="token punctuation">,</span> 
+        <span class="token class-name">TacoRepository</span> designRepo<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>ingredientRepo <span class="token operator">=</span> ingredientRepo<span class="token punctuation">;</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>designRepo <span class="token operator">=</span> designRepo<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token annotation punctuation">@ModelAttribute</span><span class="token punctuation">(</span>name <span class="token operator">=</span> <span class="token string">"order"</span><span class="token punctuation">)</span>
+    <span class="token keyword">public</span> <span class="token class-name">Order</span> <span class="token function">order</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">Order</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token annotation punctuation">@ModelAttribute</span><span class="token punctuation">(</span>name <span class="token operator">=</span> <span class="token string">"taco"</span><span class="token punctuation">)</span>
+    <span class="token keyword">public</span> <span class="token class-name">Taco</span> <span class="token function">taco</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">Taco</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+
+    <span class="token annotation punctuation">@GetMapping</span>
+    <span class="token keyword">public</span> <span class="token class-name">String</span> <span class="token function">showDesignForm</span><span class="token punctuation">(</span><span class="token class-name">Model</span> model<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Ingredient</span><span class="token punctuation">&gt;</span></span> ingredients <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token punctuation">&gt;</span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        ingredientRepo<span class="token punctuation">.</span><span class="token function">findAll</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span>i <span class="token operator">-&gt;</span> ingredients<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token class-name">Type</span><span class="token punctuation">[</span><span class="token punctuation">]</span> types <span class="token operator">=</span> <span class="token class-name">Ingredient<span class="token punctuation">.</span>Type</span><span class="token punctuation">.</span><span class="token function">values</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token class-name">Type</span> type <span class="token operator">:</span> types<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            model<span class="token punctuation">.</span><span class="token function">addAttribute</span><span class="token punctuation">(</span>type<span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toLowerCase</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> 
+                               <span class="token function">filterByType</span><span class="token punctuation">(</span>ingredients<span class="token punctuation">,</span> type<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>      
+        <span class="token punctuation">}</span>
+
+        <span class="token keyword">return</span> <span class="token string">"design"</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token annotation punctuation">@PostMapping</span>
+    <span class="token keyword">public</span> <span class="token class-name">String</span> <span class="token function">processDesign</span><span class="token punctuation">(</span>
+        <span class="token annotation punctuation">@Valid</span> <span class="token class-name">Taco</span> design<span class="token punctuation">,</span> <span class="token class-name">Errors</span> errors<span class="token punctuation">,</span> 
+        <span class="token annotation punctuation">@ModelAttribute</span> <span class="token class-name">Order</span> order<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>errors<span class="token punctuation">.</span><span class="token function">hasErrors</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> <span class="token string">"design"</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token class-name">Taco</span> saved <span class="token operator">=</span> designRepo<span class="token punctuation">.</span><span class="token function">save</span><span class="token punctuation">(</span>design<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        order<span class="token punctuation">.</span><span class="token function">addDesign</span><span class="token punctuation">(</span>saved<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token keyword">return</span> <span class="token string">"redirect:/orders/current"</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">private</span> <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Ingredient</span><span class="token punctuation">&gt;</span></span> <span class="token function">filterByType</span><span class="token punctuation">(</span>
+        <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Ingredient</span><span class="token punctuation">&gt;</span></span> ingredients<span class="token punctuation">,</span> <span class="token class-name">Type</span> type<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> ingredients
+            <span class="token punctuation">.</span><span class="token function">stream</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+            <span class="token punctuation">.</span><span class="token function">filter</span><span class="token punctuation">(</span>x <span class="token operator">-&gt;</span> x<span class="token punctuation">.</span><span class="token function">getType</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">equals</span><span class="token punctuation">(</span>type<span class="token punctuation">)</span><span class="token punctuation">)</span>
+            <span class="token punctuation">.</span><span class="token function">collect</span><span class="token punctuation">(</span><span class="token class-name">Collectors</span><span class="token punctuation">.</span><span class="token function">toList</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>关于订单页面的控制器</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">package</span> <span class="token namespace">tacos<span class="token punctuation">.</span>web</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token namespace">javax<span class="token punctuation">.</span>validation<span class="token punctuation">.</span></span><span class="token class-name">Valid</span><span class="token punctuation">;</span>
+
+<span class="token keyword">import</span> <span class="token namespace">org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>stereotype<span class="token punctuation">.</span></span><span class="token class-name">Controller</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token namespace">org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>validation<span class="token punctuation">.</span></span><span class="token class-name">Errors</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token namespace">org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>web<span class="token punctuation">.</span>bind<span class="token punctuation">.</span>annotation<span class="token punctuation">.</span></span><span class="token class-name">GetMapping</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token namespace">org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>web<span class="token punctuation">.</span>bind<span class="token punctuation">.</span>annotation<span class="token punctuation">.</span></span><span class="token class-name">PostMapping</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token namespace">org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>web<span class="token punctuation">.</span>bind<span class="token punctuation">.</span>annotation<span class="token punctuation">.</span></span><span class="token class-name">RequestMapping</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token namespace">org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>web<span class="token punctuation">.</span>bind<span class="token punctuation">.</span>annotation<span class="token punctuation">.</span></span><span class="token class-name">SessionAttributes</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token namespace">org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>web<span class="token punctuation">.</span>bind<span class="token punctuation">.</span>support<span class="token punctuation">.</span></span><span class="token class-name">SessionStatus</span><span class="token punctuation">;</span>
+
+<span class="token keyword">import</span> <span class="token namespace">tacos<span class="token punctuation">.</span></span><span class="token class-name">Order</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token namespace">tacos<span class="token punctuation">.</span>data<span class="token punctuation">.</span></span><span class="token class-name">OrderRepository</span><span class="token punctuation">;</span>
+
+<span class="token annotation punctuation">@Controller</span>
+<span class="token annotation punctuation">@RequestMapping</span><span class="token punctuation">(</span><span class="token string">"/orders"</span><span class="token punctuation">)</span>
+<span class="token annotation punctuation">@SessionAttributes</span><span class="token punctuation">(</span><span class="token string">"order"</span><span class="token punctuation">)</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">OrderController</span> <span class="token punctuation">{</span>
+
+    <span class="token keyword">private</span> <span class="token class-name">OrderRepository</span> orderRepo<span class="token punctuation">;</span>
+
+    <span class="token keyword">public</span> <span class="token class-name">OrderController</span><span class="token punctuation">(</span><span class="token class-name">OrderRepository</span> orderRepo<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>orderRepo <span class="token operator">=</span> orderRepo<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token annotation punctuation">@GetMapping</span><span class="token punctuation">(</span><span class="token string">"/current"</span><span class="token punctuation">)</span>
+    <span class="token keyword">public</span> <span class="token class-name">String</span> <span class="token function">orderForm</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token string">"orderForm"</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token annotation punctuation">@PostMapping</span>
+    <span class="token keyword">public</span> <span class="token class-name">String</span> <span class="token function">processOrder</span><span class="token punctuation">(</span><span class="token annotation punctuation">@Valid</span> <span class="token class-name">Order</span> order<span class="token punctuation">,</span> <span class="token class-name">Errors</span> errors<span class="token punctuation">,</span> 
+                               <span class="token class-name">SessionStatus</span> sessionStatus<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>errors<span class="token punctuation">.</span><span class="token function">hasErrors</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> <span class="token string">"orderForm"</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        orderRepo<span class="token punctuation">.</span><span class="token function">save</span><span class="token punctuation">(</span>order<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        
+        <span class="token comment">// 重置session信息</span>
+        sessionStatus<span class="token punctuation">.</span><span class="token function">setComplete</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token keyword">return</span> <span class="token string">"redirect:/"</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>在Taco类中存在一个<code>private List&lt;Ingredient&gt; ingredients</code>。但是在前端页面输入配料信息，表单返回后台时，因为传入的是String类型，而这里list是Ingredient类型会出现类型转化失败的错误，所以我们需要实现一个类型转换接口<code>Converter&lt;String, Ingredient&gt;</code></p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">package</span> <span class="token namespace">tacos<span class="token punctuation">.</span>web</span><span class="token punctuation">;</span>
+
+<span class="token keyword">import</span> <span class="token namespace">org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>beans<span class="token punctuation">.</span>factory<span class="token punctuation">.</span>annotation<span class="token punctuation">.</span></span><span class="token class-name">Autowired</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token namespace">org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>core<span class="token punctuation">.</span>convert<span class="token punctuation">.</span>converter<span class="token punctuation">.</span></span><span class="token class-name">Converter</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token namespace">org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>stereotype<span class="token punctuation">.</span></span><span class="token class-name">Component</span><span class="token punctuation">;</span>
+
+<span class="token keyword">import</span> <span class="token namespace">tacos<span class="token punctuation">.</span></span><span class="token class-name">Ingredient</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token namespace">tacos<span class="token punctuation">.</span>data<span class="token punctuation">.</span></span><span class="token class-name">IngredientRepository</span><span class="token punctuation">;</span>
+
+<span class="token annotation punctuation">@Component</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">IngredientByIdConverter</span> <span class="token keyword">implements</span> <span class="token class-name">Converter</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">,</span> <span class="token class-name">Ingredient</span><span class="token punctuation">&gt;</span></span> <span class="token punctuation">{</span>
+
+  <span class="token keyword">private</span> <span class="token class-name">IngredientRepository</span> ingredientRepo<span class="token punctuation">;</span>
+
+  <span class="token annotation punctuation">@Autowired</span>
+  <span class="token keyword">public</span> <span class="token class-name">IngredientByIdConverter</span><span class="token punctuation">(</span><span class="token class-name">IngredientRepository</span> ingredientRepo<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>ingredientRepo <span class="token operator">=</span> ingredientRepo<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  
+  <span class="token annotation punctuation">@Override</span>
+  <span class="token keyword">public</span> <span class="token class-name">Ingredient</span> <span class="token function">convert</span><span class="token punctuation">(</span><span class="token class-name">String</span> id<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> ingredientRepo<span class="token punctuation">.</span><span class="token function">findById</span><span class="token punctuation">(</span>id<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <h3 id="Spring-Data-JPA"><a href="#Spring-Data-JPA" class="headerlink" title="Spring Data JPA"></a>Spring Data JPA</h3>
                 
             </div>
@@ -1998,7 +2603,7 @@
             tocSelector: '#toc-content',
             contentSelector: '#articleContent',
             headingsOffset: -($(window).height() * 0.4 - 45),
-            collapseDepth: Number('2'),
+            collapseDepth: Number('1'),
             headingSelector: 'h1, h2, h3, h4'
         });
 
@@ -2089,7 +2694,7 @@
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">64.5k</span>&nbsp;字
+                class="white-color">68.4k</span>&nbsp;字
             
             
             
