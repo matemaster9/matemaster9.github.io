@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Ubuntu, MateMaster">
+    <meta name="keywords" content="数据结构工具包, MateMaster">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -27,7 +27,7 @@
 </script>
 
 
-    <title>Ubuntu | MateMaster</title>
+    <title>数据结构工具包 | MateMaster</title>
     <link rel="icon" type="image/jpeg" href="/mashimaro.jpg">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -311,7 +311,7 @@
 <script src="https://cdn.jsdelivr.net/gh/matemaster9/source@2.0/matery-libs/js/crypto-js.min.js"></script>
 <script>
     (function() {
-        let pwd = '710eb4f4d7f72b0e329a51d30a83377bc7ef6c0cca1a444bd8d2e70e72326e8f';
+        let pwd = '';
         if (pwd && pwd.length > 0) {
             if (pwd !== CryptoJS.SHA256(prompt('请输入访问本文章的密码')).toString(CryptoJS.enc.Hex)) {
                 alert('密码错误，将返回主页！');
@@ -324,12 +324,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('https://cdn.jsdelivr.net/gh/matemaster9/image-one/images/20210320160740.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('https://cdn.jsdelivr.net/gh/matemaster9/imgs-masterstudio/imgs1/20210504231133.png')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Ubuntu</h1>
+                    <h1 class="description center-align post-title">数据结构工具包</h1>
                 </div>
             </div>
         </div>
@@ -445,16 +445,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/%E5%8E%9F%E5%88%9B/">
-                                <span class="chip bg-color">原创</span>
-                            </a>
-                        
-                            <a href="/tags/Linux/">
-                                <span class="chip bg-color">Linux</span>
-                            </a>
-                        
-                            <a href="/tags/Ubuntu/">
-                                <span class="chip bg-color">Ubuntu</span>
+                            <a href="/tags/DataStructure/">
+                                <span class="chip bg-color">DataStructure</span>
                             </a>
                         
                     </div>
@@ -465,8 +457,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" class="post-category">
-                                操作系统
+                            <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="post-category">
+                                数据结构
                             </a>
                         
                     </div>
@@ -480,28 +472,28 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-03-20
+                    2021-05-04
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2021-03-31
+                    2021-05-06
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    48
+                    465
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    1 分
+                    2 分
                 </div>
                 
 
@@ -530,11 +522,92 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="如何用Linux"><a href="#如何用Linux" class="headerlink" title="如何用Linux"></a>如何用Linux</h1><h2 id="下载Ubuntu镜像"><a href="#下载Ubuntu镜像" class="headerlink" title="下载Ubuntu镜像"></a>下载Ubuntu镜像</h2><p>👉<a target="_blank" rel="noopener" href="https://mirrors.tuna.tsinghua.edu.cn/">清华大学开源软件镜像网站</a></p>
-<p>👉<a target="_blank" rel="noopener" href="http://mirrors.ustc.edu.cn/">中国科学技术大学开源镜像网站</a></p>
-<p>👉<a target="_blank" rel="noopener" href="https://ubuntu.com/">Ubuntu官方</a></p>
-<h2 id="下载vm"><a href="#下载vm" class="headerlink" title="下载vm"></a>下载vm</h2><p><a target="_blank" rel="noopener" href="https://www.virtualbox.org/">Oracle vm virtualBox</a></p>
-<h2 id="创建Linux虚拟机"><a href="#创建Linux虚拟机" class="headerlink" title="创建Linux虚拟机"></a>创建Linux虚拟机</h2>
+                <h1 id="优先队列"><a href="#优先队列" class="headerlink" title="优先队列"></a>优先队列</h1><p><b style="color: red;">MaxPQ-API</b></p>
+<img src="https://cdn.jsdelivr.net/gh/matemaster9/imgs-masterstudio/imgs1/20210506125009.png">
+
+<p>在设计这个最大优先队列（最大堆）时，我们利用数组的结构会<strong>闲置0索引不用</strong>。这样使得父结点和子结点索引存在下面的数学关系：</p>
+<img src="https://cdn.jsdelivr.net/gh/matemaster9/imgs-masterstudio/imgs1/20210506093826.png">
+
+<p>在维持优先队列（最大堆）的有序性时，最重要的是在有序状态被破坏时如何恢复（插入、删除）。为了维持父结点大于等于子结点的状态，我们在插入时会对插入的结点进行<strong>上浮操作</strong>，删除时对删除的根结点进行<strong>下沉操作</strong> </p>
+<p><b style="color: deeppink;">上浮、下沉消除插入和删除带来的不平衡图解</b></p>
+<img src="https://cdn.jsdelivr.net/gh/matemaster9/imgs-masterstudio/imgs1/20210506130410.png">
+
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">private</span> <span class="token keyword">void</span> <span class="token function">swim</span><span class="token punctuation">(</span><span class="token keyword">int</span> child<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">while</span> <span class="token punctuation">(</span>child <span class="token operator">&gt;</span> <span class="token number">1</span> <span class="token operator">&amp;&amp;</span> <span class="token function">less</span><span class="token punctuation">(</span>child<span class="token operator">/</span><span class="token number">2</span><span class="token punctuation">,</span> child<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token function">swap</span><span class="token punctuation">(</span>child<span class="token operator">/</span><span class="token number">2</span><span class="token punctuation">,</span> child<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        child <span class="token operator">=</span> child<span class="token operator">/</span><span class="token number">2</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">private</span> <span class="token keyword">void</span> <span class="token function">sink</span><span class="token punctuation">(</span><span class="token keyword">int</span> parent<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token number">2</span><span class="token operator">*</span>parent <span class="token operator">&lt;=</span> n<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">int</span> maxChild <span class="token operator">=</span> <span class="token number">2</span><span class="token operator">*</span>parent<span class="token punctuation">;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>maxChild <span class="token operator">&lt;</span> n <span class="token operator">&amp;&amp;</span> <span class="token function">less</span><span class="token punctuation">(</span>maxChild<span class="token punctuation">,</span> maxChild<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span> maxChild<span class="token operator">++</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token function">less</span><span class="token punctuation">(</span>parent<span class="token punctuation">,</span> maxChild<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token keyword">break</span><span class="token punctuation">;</span>
+        <span class="token function">swap</span><span class="token punctuation">(</span>parent<span class="token punctuation">,</span> maxChild<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        parent <span class="token operator">=</span> maxChild<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">insert</span><span class="token punctuation">(</span><span class="token class-name">Key</span> k<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>n <span class="token operator">==</span> pq<span class="token punctuation">.</span>length<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token function">resize</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token operator">*</span>pq<span class="token punctuation">.</span>length<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    pq<span class="token punctuation">[</span><span class="token operator">++</span>n<span class="token punctuation">]</span> <span class="token operator">=</span> k<span class="token punctuation">;</span>
+    <span class="token function">swim</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">assert</span> <span class="token function">isMaxHeap</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">:</span> <span class="token string">"Priority queue condition not met！"</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">public</span> <span class="token class-name">Key</span> <span class="token function">delMax</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token class-name">Key</span> max <span class="token operator">=</span> pq<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token function">swap</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> n<span class="token operator">--</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">sink</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    pq<span class="token punctuation">[</span>n<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>n <span class="token operator">&gt;</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token operator">&amp;&amp;</span> <span class="token punctuation">(</span>n <span class="token operator">==</span> <span class="token punctuation">(</span>pq<span class="token punctuation">.</span>length<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token operator">/</span><span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token function">resize</span><span class="token punctuation">(</span>pq<span class="token punctuation">.</span>length<span class="token operator">/</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">assert</span> <span class="token function">isMaxHeap</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">:</span> <span class="token string">"Priority queue condition not met！"</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> max<span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><strong>二叉堆的数组表示形式</strong></p>
+<img src="https://cdn.jsdelivr.net/gh/matemaster9/imgs-masterstudio/imgs1/20210505151018.png" style="width:60%">
+
+<p>最大优先队列（最大堆）的设计要素：</p>
+<ul>
+<li>二叉堆的数组 PQ</li>
+<li>记录存储元素个数n</li>
+<li>自定义的元素比较器 comparator</li>
+</ul>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">private</span> <span class="token class-name">Key</span><span class="token punctuation">[</span><span class="token punctuation">]</span> pq<span class="token punctuation">;</span>
+<span class="token keyword">private</span> <span class="token keyword">int</span> n<span class="token punctuation">;</span>
+<span class="token keyword">private</span> <span class="token class-name">Comparator</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Key</span><span class="token punctuation">&gt;</span></span> comparator<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p>专门针对二叉堆实现的迭代器：</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">private</span> <span class="token keyword">class</span> <span class="token class-name">HeapIterator</span> <span class="token keyword">implements</span> <span class="token class-name">Iterator</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Key</span><span class="token punctuation">&gt;</span></span> <span class="token punctuation">{</span>
+
+    <span class="token keyword">private</span> <span class="token class-name">MaxPQ</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Key</span><span class="token punctuation">&gt;</span></span> copy<span class="token punctuation">;</span>
+
+    <span class="token comment">//根据是否自定义比较器，获取不同的副本</span>
+    <span class="token keyword">public</span> <span class="token class-name">HeapIterator</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>comparator <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span> copy <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">MaxPQ</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token punctuation">&gt;</span></span><span class="token punctuation">(</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">else</span>                    copy <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">MaxPQ</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token punctuation">&gt;</span></span><span class="token punctuation">(</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>comparator<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">&lt;=</span> n<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>
+            copy<span class="token punctuation">.</span><span class="token function">insert</span><span class="token punctuation">(</span>pq<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token punctuation">}</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">boolean</span> <span class="token function">hasNext</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token operator">!</span>copy<span class="token punctuation">.</span><span class="token function">isEmpty</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment">// 每次的next操作都将删除当前队列的最大值</span>
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token class-name">Key</span> <span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token function">hasNext</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">NoSuchElementException</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> copy<span class="token punctuation">.</span><span class="token function">delMax</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
                 
             </div>
             <hr/>
@@ -560,7 +633,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://www.matemaster.cn/posts/2216.html">https://www.matemaster.cn/posts/2216.html</a>
+                    <a href="https://www.matemaster.cn/posts/34482.html">https://www.matemaster.cn/posts/34482.html</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -598,16 +671,8 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/%E5%8E%9F%E5%88%9B/">
-                                    <span class="chip bg-color">原创</span>
-                                </a>
-                            
-                                <a href="/tags/Linux/">
-                                    <span class="chip bg-color">Linux</span>
-                                </a>
-                            
-                                <a href="/tags/Ubuntu/">
-                                    <span class="chip bg-color">Ubuntu</span>
+                                <a href="/tags/DataStructure/">
+                                    <span class="chip bg-color">DataStructure</span>
                                 </a>
                             
                         </div>
@@ -1049,30 +1114,30 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/posts/10300.html">
+                <a href="/posts/33757.html">
                     <div class="card-image">
                         
-                        <img src="https://cdn.jsdelivr.net/gh/matemaster9/image-one/images/20210321193546.png" class="responsive-img" alt="MySQL的高级数据查询">
+                        <img src="https://cdn.jsdelivr.net/gh/matemaster9/imgs-masterstudio/imgs1/20210507162238.png" class="responsive-img" alt="SpringBoot">
                         
-                        <span class="card-title">MySQL的高级数据查询</span>
+                        <span class="card-title">SpringBoot</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            MySQL的数据查询-select
+                            下定决心学习springboot
                         
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-03-21
+                            <i class="far fa-clock fa-fw icon-date"></i>2021-05-07
                         </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" class="post-category">
-                                    数据库
+                            <a href="/categories/JavaEE/" class="post-category">
+                                    JavaEE
                                 </a>
                             
                             
@@ -1082,12 +1147,8 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E5%8E%9F%E5%88%9B/">
-                        <span class="chip bg-color">原创</span>
-                    </a>
-                    
-                    <a href="/tags/MySQL/">
-                        <span class="chip bg-color">MySQL</span>
+                    <a href="/tags/SpringBoot/">
+                        <span class="chip bg-color">SpringBoot</span>
                     </a>
                     
                 </div>
@@ -1101,30 +1162,30 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/posts/53096.html">
+                <a href="/posts/26790.html">
                     <div class="card-image">
                         
-                        <img src="https://cdn.jsdelivr.net/gh/matemaster9/image-one/images/20210319151231.jpg" class="responsive-img" alt="LinkedList&lt;E&gt;底层原理">
+                        <img src="https://cdn.jsdelivr.net/gh/matemaster9/imgs-masterstudio/imgs1/20210428090554.gif" class="responsive-img" alt="HarmonyOS">
                         
-                        <span class="card-title">LinkedList&lt;E&gt;底层原理</span>
+                        <span class="card-title">HarmonyOS</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            理解LinkedList的逻辑结构
+                            鸿蒙操作系统
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-03-19
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-04-28
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/CoreJava/" class="post-category">
-                                    CoreJava
+                            <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" class="post-category">
+                                    操作系统
                                 </a>
                             
                             
@@ -1134,12 +1195,8 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Java/">
-                        <span class="chip bg-color">Java</span>
-                    </a>
-                    
-                    <a href="/tags/%E5%8E%9F%E5%88%9B/">
-                        <span class="chip bg-color">原创</span>
+                    <a href="/tags/HarmonyOS/">
+                        <span class="chip bg-color">HarmonyOS</span>
                     </a>
                     
                 </div>

@@ -1,11 +1,11 @@
 
 @font-face {
-    font-family: 'JetBrainsMono-Regular';
-    src: url('../font/JetBrainsMono-Regular.ttf');
+    font-family: 'HarmonyOS_Sans_Regular';
+    src: url('../font/HarmonyOS_Sans_Regular.ttf');
 }
 
 body{
-    font-family: 'JetBrainsMono-Regular';
+    font-family: 'HarmonyOS_Sans_Regular';
 }
 
 

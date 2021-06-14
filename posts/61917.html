@@ -324,7 +324,7 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('https://cdn.jsdelivr.net/gh/matemaster9/imgs-masterstudio/imgs1/20210424112307.svg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('https://cdn.jsdelivr.net/gh/matemaster9/imgs-masterstudio/imgs1/20210428214056.png')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
@@ -490,14 +490,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    467
+                    853
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    1 分
+                    3 分
                 </div>
                 
 
@@ -539,6 +539,7 @@
 <li>设计TacoCloud的主页面 <code>home.html</code></li>
 <li>编写转发视图的视图控制器 <code>WebConfig</code>。还可以使用<code>HomeController</code>。<br><b style="color: red;">过程记录</b>：1.在编写视图模板时，home记住要防止语法错误！2.视图控制器一定要注意Java配置的问题！</li>
 </ol>
+<p>这里需要掌握的就是一个视图控制器的编写！</p>
 <p><b style="background-color: black;color: white;">实现TacoCloud产品设计模块</b></p>
 <p>对于来自<code>/design</code>的网络请求，系统会自动返回一个Taco产品设计的页面，在这个页面我们可以提交自己根据配料所制作的产品，并且为这个表单请求生成一个订单。然后客户在订单页面输入自己的客户信息，完成订购操作之后返回系统主页面！</p>
 <ol>
@@ -551,18 +552,36 @@
 </ol>
 <img src="https://cdn.jsdelivr.net/gh/matemaster9/imgs-masterstudio/imgs1/20210424232209.png" style="border:solid red">
 
+<p>学习知识点：</p>
+<p>1）thymeleaf模板语法</p>
+<p>2）SpringMVC常用注解</p>
 <p><b style="background-color: black;color: white;">实现TacoCloud数据持久化</b></p>
-<p style="color:deeppink;">(1)Spring JDBC <br>(2)Spring Data JPA</p>
-
-
-
-
+<p style="color:deeppink;">技术栈：<br>(1)Spring JDBC <br>(2)Spring Data JPA</p>
 
 <p>JPA利用lombok出现了失效的问题</p>
 <blockquote>
 <p>You aren’t using a compiler supported by lombok, so lombok will not work and has been disabled.</p>
 </blockquote>
 <p>在<code>settings-&gt;Compiler</code>添加：-Djps.track.ap.dependencies=false</p>
+<p><b style="background-color: black;color: white;">实现TacoCloud用户存储</b></p>
+<p style="color:deeppink;">技术栈：<br>Spring Security</p>
+
+<p><code>SecurityConfig</code>配置用户存储的方式</p>
+<p>1）作为事优先的原则：我们首先需要一个用户类<code>User</code>。还需要数据库业务操作的接口<code>UserRepository</code></p>
+<p>2）创建用户详情服务<code>UserRepositoryUserDetailService</code></p>
+<p>3）将自定义的用户服务装配到Spring Security</p>
+<p>4）提供一个用户注册界面，并且将注册的用户信息传入数据库，这里就需要一个专门管理注册页面的控制器<code>RegistrationController</code>，还需要注册页面的模板<code>login.html</code>，一起注册表单绑定的组件<code>RegistrationForm</code></p>
+<p><b style="color: red;">注：</b>此时来自注册页面的web请求会全部被拦截，因为在默认情况下所有的请求都会需要认证！</p>
+<p>接下来就是解决认证问题：</p>
+<p>因为TacoCloud系统的安全要求，我们对于来自设计页面：用户选择配料设计产品以及提交表单的请求都需要认证。但是对于主页以及登录和注册页面对所有用户放开！</p>
+<p>这里就需要<code>HttpSecurity</code>对象的帮助，可以利用它配置的功能有：</p>
+<ul>
+<li>在为某一个请求服务时，可以让它先满足一定的要求</li>
+<li>配置自定义的登录页面</li>
+<li>支持用户推出应用</li>
+<li>预防CSRF攻击</li>
+</ul>
+<p>对于不同的页面进行权限设定</p>
 
                 
             </div>
@@ -1303,7 +1322,7 @@
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">68.4k</span>&nbsp;字
+                class="white-color">88.7k</span>&nbsp;字
             
             
             
