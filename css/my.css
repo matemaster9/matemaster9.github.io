@@ -1,11 +1,11 @@
 
 @font-face {
-    font-family: 'HarmonyOS_Sans_Regular';
-    src: url('../font/HarmonyOS_Sans_Regular.ttf');
+    font-family: 'IBMPlexMono-Italic';
+    src: url('../font/IBMPlexMono-Italic.ttf');
 }
 
 body{
-    font-family: 'HarmonyOS_Sans_Regular';
+    font-family: 'IBMPlexMono-Italic';
 }
 
 
