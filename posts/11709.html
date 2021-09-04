@@ -479,21 +479,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2021-08-13
+                    2021-08-19
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    0
+                    1k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    1 分
+                    3 分
                 </div>
                 
 
@@ -522,7 +522,134 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                
+                <h1 id="传输层服务"><a href="#传输层服务" class="headerlink" title="传输层服务"></a>传输层服务</h1><img src="https://cdn.jsdelivr.net/gh/matemaster9/ali-note/img/20210815164425.png" style="zoom:80%;">
+
+<p>从IP层来说，通信的两端是两台主机。严格地讲，两台主机进行通信就是两台主机中的应用进程互相通信。</p>
+<p>从运输层的角度看，通信的真正端点并不是主机而是主机中的进程。也就是说，端到端的通信是应用进程之间的通信。<b style="color:red">传输层的协议主要提供不同主机间进程通信</b></p>
+<p>端口是应用层服务的一种 代号，标志应用层的进程。</p>
+<h1 id="多路分解和多路复用"><a href="#多路分解和多路复用" class="headerlink" title="多路分解和多路复用"></a>多路分解和多路复用</h1><p>多路复用和多路分解：就是网络层的主机与主机之间的交付，拓展到传输层应用程序进程间的交付。</p>
+<p>概念：</p>
+<ul>
+<li>多路分解：传输层的报文段数据交付到相应的套接字</li>
+<li>多路复用：从源主机的不同套接字收集数据块，并且封装成报文段，将报文段交付到网络层</li>
+</ul>
+<img src="https://cdn.jsdelivr.net/gh/matemaster9/ali-note/img/20210815165317.png" style="zoom:80%;">
+
+<p>基于套接字的分解和复用：</p>
+<p><strong>套接字</strong>：从网络向进程和从进程向网络发送数据的大门</p>
+<p>UDP的套接字：【目的IP、目的端口号】</p>
+<p>TCP的套接字：【源IP、源端口号、目的IP、目的端口号】</p>
+<h1 id="端口"><a href="#端口" class="headerlink" title="端口"></a>端口</h1><blockquote>
+<p>传输层的端口</p>
+<ol>
+<li><p>运行在计算机中的进程是用进程标识符来标志的。 </p>
+</li>
+<li><p>但运行在应用层的各种应用进程却不应当让计算机操作系统指派它的 进程标识符。这是因为在互联网上使用的计算机的操作系统种类很多,而不同的操作系统又使用不同格式的进程标识符。 </p>
+</li>
+<li><p>为了使运行不同操作系统的计算机的应用进程能够互相通信，就必须用统一的方法对 TCP/IP 体系的应用进程进行标志</p>
+</li>
+</ol>
+</blockquote>
+<blockquote>
+<p>tcp/ip的端口要求：</p>
+<ol>
+<li><p>端口用一个 16 位端口号进行标志，允许有65,535个不同的端口号。 </p>
+</li>
+<li><p><strong>端口号只具有本地意义</strong>，即端口号只是为了标志本计算机应用层中的各进程。在互联网中，不同计算机的相同端口号是没有联系的</p>
+</li>
+</ol>
+</blockquote>
+<p>两大类端口：</p>
+<ol>
+<li>服务器端口<ul>
+<li>熟知端口，数值一般为 0 ~ 1023。 </li>
+<li>登记端口号，数值为 1024 ~ 49151，为没有熟知端口号的应用程序使用的。</li>
+</ul>
+</li>
+<li>客户端端口<ul>
+<li>数值为 49152 ~ 65535，留给客户进程选择暂时使用。 </li>
+<li>当服务器进程收到客户进程的报文时，就知道了客户进程所使用的动态端口号。通信结束后，这个端口号可供其他客户进程以后使用。</li>
+</ul>
+</li>
+</ol>
+<p>常用的端口</p>
+<img src="https://cdn.jsdelivr.net/gh/matemaster9/ali-note/img/20210815170838.png" style="zoom:80%;">
+
+<h1 id="两大协议"><a href="#两大协议" class="headerlink" title="两大协议"></a>两大协议</h1><p>TCP/IP 的运输层有两个主要协议： </p>
+<ol>
+<li>用户数据报协议 UDP (User Datagram Protocol) </li>
+<li>传输控制协议 TCP (Transmission Control Protocol)</li>
+</ol>
+<p>两个对等运输实体在通信时传送的数据单位叫作运输协议数据单元 TPDU (Transport Protocol Data Unit)。</p>
+<p>TCP 传送的数据单位协议是 TCP 报文段(segment)。 </p>
+<p>UDP 传送的数据单位协议是 UDP 报文或用户数据报。</p>
+<table>
+<thead>
+<tr>
+<th>UDP</th>
+<th>TCP</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>无连接的协议，提供无连接服务</td>
+<td>面向连接的协议，提供面向连接服务</td>
+</tr>
+<tr>
+<td>其传送的运输协议数据单元TPDU 是 UDP 报文或用户数据报</td>
+<td>其传送的运输协议数据单元TPDU 是 TCP 报文</td>
+</tr>
+<tr>
+<td>支持单播、多播、广播</td>
+<td>支持点对点单播，不支持多播、广播</td>
+</tr>
+<tr>
+<td>不提供可靠交付</td>
+<td>提供可靠服务</td>
+</tr>
+<tr>
+<td>简单。适用于很多应用，如：多媒体 应用等。</td>
+<td>复杂。用于大多数应用，如：万维网、 电子邮件、文件传送等</td>
+</tr>
+</tbody></table>
+<h1 id="可靠传输"><a href="#可靠传输" class="headerlink" title="可靠传输"></a>可靠传输</h1><table>
+<thead>
+<tr>
+<th></th>
+<th>ARQ</th>
+<th>停止-等待</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>超时重传</strong></td>
+<td>回退N</td>
+<td>一个分组</td>
+</tr>
+<tr>
+<td><strong>编号</strong></td>
+<td>每个分组</td>
+<td>每个分组</td>
+</tr>
+<tr>
+<td><strong>确认方式</strong></td>
+<td>累积确认/单个确认</td>
+<td>单个确认</td>
+</tr>
+<tr>
+<td>发送分组的数目</td>
+<td>多个分组</td>
+<td>一个分组</td>
+</tr>
+<tr>
+<td><strong>发送控制方式</strong></td>
+<td>滑动窗口</td>
+<td>停止等待</td>
+</tr>
+<tr>
+<td>超时计时器</td>
+<td>每个分组</td>
+<td>每个分组</td>
+</tr>
+</tbody></table>
                 
             </div>
             <hr/>
@@ -1258,7 +1385,7 @@
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">89.2k</span>&nbsp;字
+                class="white-color">102.2k</span>&nbsp;字
             
             
             
