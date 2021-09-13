@@ -6,7 +6,7 @@
   <link href="https://www.matemaster.cn/atom.xml" rel="self"/>
   
   <link href="https://www.matemaster.cn/"/>
-  <updated>2021-08-15T09:42:44.079Z</updated>
+  <updated>2021-09-13T13:11:19.620Z</updated>
   <id>https://www.matemaster.cn/</id>
   
   <author>
@@ -15,6 +15,56 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>IP协议簇</title>
+    <link href="https://www.matemaster.cn/posts/13410.html"/>
+    <id>https://www.matemaster.cn/posts/13410.html</id>
+    <published>2021-08-20T13:09:37.000Z</published>
+    <updated>2021-09-13T13:11:19.620Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;IP首部&quot;&gt;&lt;a href=&quot;#IP首部&quot; class=&quot;headerlink&quot; title=&quot;IP首部&quot;&gt;&lt;/a&gt;IP首部&lt;/h2&gt;&lt;h3 id=&quot;首部格式图&quot;&gt;&lt;a href=&quot;#首部格式图&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="计算机网络" scheme="https://www.matemaster.cn/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/"/>
+    
+    
+    <category term="计网" scheme="https://www.matemaster.cn/tags/%E8%AE%A1%E7%BD%91/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>IP网络协议</title>
+    <link href="https://www.matemaster.cn/posts/5713.html"/>
+    <id>https://www.matemaster.cn/posts/5713.html</id>
+    <published>2021-08-17T13:02:27.000Z</published>
+    <updated>2021-09-13T13:18:30.712Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;编址与分配&quot;&gt;&lt;a href=&quot;#编址与分配&quot; class=&quot;headerlink&quot; title=&quot;编址与分配&quot;&gt;&lt;/a&gt;编址与分配&lt;/h1&gt;&lt;h2 id=&quot;分类IP地址&quot;&gt;&lt;a href=&quot;#分类IP地址&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="计算机网络" scheme="https://www.matemaster.cn/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/"/>
+    
+    
+    <category term="计网" scheme="https://www.matemaster.cn/tags/%E8%AE%A1%E7%BD%91/"/>
+    
+  </entry>
   
   <entry>
     <title>UDP网络协议</title>
@@ -148,6 +198,168 @@
     
     
     <category term="技术" scheme="https://www.matemaster.cn/tags/%E6%8A%80%E6%9C%AF/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>装饰器模式</title>
+    <link href="https://www.matemaster.cn/posts/64336.html"/>
+    <id>https://www.matemaster.cn/posts/64336.html</id>
+    <published>2021-06-15T13:37:00.000Z</published>
+    <updated>2021-09-13T13:44:58.841Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h3 id=&quot;装饰器模式&quot;&gt;&lt;a href=&quot;#装饰器模式&quot; class=&quot;headerlink&quot; title=&quot;装饰器模式&quot;&gt;&lt;/a&gt;装饰器模式&lt;/h3&gt;&lt;img</summary>
+        
+      
+    
+    
+    
+    <category term="设计模式" scheme="https://www.matemaster.cn/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
+    
+    
+    <category term="设计模式" scheme="https://www.matemaster.cn/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>适配器模式</title>
+    <link href="https://www.matemaster.cn/posts/39554.html"/>
+    <id>https://www.matemaster.cn/posts/39554.html</id>
+    <published>2021-06-15T13:36:52.000Z</published>
+    <updated>2021-09-13T13:44:51.922Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h3 id=&quot;适配器模式&quot;&gt;&lt;a href=&quot;#适配器模式&quot; class=&quot;headerlink&quot; title=&quot;适配器模式&quot;&gt;&lt;/a&gt;适配器模式&lt;/h3&gt;&lt;img</summary>
+        
+      
+    
+    
+    
+    <category term="设计模式" scheme="https://www.matemaster.cn/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
+    
+    
+    <category term="设计模式" scheme="https://www.matemaster.cn/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>代理模式</title>
+    <link href="https://www.matemaster.cn/posts/48003.html"/>
+    <id>https://www.matemaster.cn/posts/48003.html</id>
+    <published>2021-06-14T13:36:41.000Z</published>
+    <updated>2021-09-13T13:44:44.392Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h3 id=&quot;代理模式&quot;&gt;&lt;a href=&quot;#代理模式&quot; class=&quot;headerlink&quot; title=&quot;代理模式&quot;&gt;&lt;/a&gt;代理模式&lt;/h3&gt;&lt;img</summary>
+        
+      
+    
+    
+    
+    <category term="设计模式" scheme="https://www.matemaster.cn/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
+    
+    
+    <category term="设计模式" scheme="https://www.matemaster.cn/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>工厂模式</title>
+    <link href="https://www.matemaster.cn/posts/6013.html"/>
+    <id>https://www.matemaster.cn/posts/6013.html</id>
+    <published>2021-06-13T13:34:06.000Z</published>
+    <updated>2021-09-13T13:44:34.839Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h3 id=&quot;工厂模式&quot;&gt;&lt;a href=&quot;#工厂模式&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="设计模式" scheme="https://www.matemaster.cn/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
+    
+    
+    <category term="设计模式" scheme="https://www.matemaster.cn/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>单例模式</title>
+    <link href="https://www.matemaster.cn/posts/46132.html"/>
+    <id>https://www.matemaster.cn/posts/46132.html</id>
+    <published>2021-06-11T13:30:08.000Z</published>
+    <updated>2021-09-13T13:44:27.608Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h3 id=&quot;单例模式&quot;&gt;&lt;a href=&quot;#单例模式&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="设计模式" scheme="https://www.matemaster.cn/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
+    
+    
+    <category term="设计模式" scheme="https://www.matemaster.cn/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>JVM内存模型</title>
+    <link href="https://www.matemaster.cn/posts/49686.html"/>
+    <id>https://www.matemaster.cn/posts/49686.html</id>
+    <published>2021-06-07T11:11:51.000Z</published>
+    <updated>2021-09-13T13:05:12.906Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;java运行时数据区：&lt;/p&gt;
+&lt;p&gt;线程私有：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;程序计数器&lt;/li&gt;
+&lt;li&gt;虚拟机栈&lt;/li&gt;
+&lt;li&gt;本地方法栈&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;线程共享：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;堆&lt;/li&gt;
+&lt;li&gt;方法区（元空间-直接内存：JDK1.8）</summary>
+        
+      
+    
+    
+    
+    <category term="CoreJava" scheme="https://www.matemaster.cn/categories/CoreJava/"/>
+    
+    
+    <category term="Java" scheme="https://www.matemaster.cn/tags/Java/"/>
+    
+    <category term="JVM" scheme="https://www.matemaster.cn/tags/JVM/"/>
     
   </entry>
   
@@ -298,206 +510,6 @@
     
     
     <category term="并发编程" scheme="https://www.matemaster.cn/tags/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>HarmonyOS</title>
-    <link href="https://www.matemaster.cn/posts/26790.html"/>
-    <id>https://www.matemaster.cn/posts/26790.html</id>
-    <published>2021-04-28T01:38:38.000Z</published>
-    <updated>2021-04-28T01:40:47.393Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;img</summary>
-        
-      
-    
-    
-    
-    <category term="操作系统" scheme="https://www.matemaster.cn/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"/>
-    
-    
-    <category term="HarmonyOS" scheme="https://www.matemaster.cn/tags/HarmonyOS/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>树形结构</title>
-    <link href="https://www.matemaster.cn/posts/44723.html"/>
-    <id>https://www.matemaster.cn/posts/44723.html</id>
-    <published>2021-04-19T09:51:55.000Z</published>
-    <updated>2021-04-22T12:34:07.209Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;二叉树&quot;&gt;&lt;a href=&quot;#二叉树&quot; class=&quot;headerlink&quot; title=&quot;二叉树&quot;&gt;&lt;/a&gt;二叉树&lt;/h1&gt;&lt;h2 id=&quot;存储结构&quot;&gt;&lt;a href=&quot;#存储结构&quot; class=&quot;headerlink&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="数据结构" scheme="https://www.matemaster.cn/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
-    
-    
-    <category term="DataStructure" scheme="https://www.matemaster.cn/tags/DataStructure/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>查找算法</title>
-    <link href="https://www.matemaster.cn/posts/50339.html"/>
-    <id>https://www.matemaster.cn/posts/50339.html</id>
-    <published>2021-04-17T07:15:40.000Z</published>
-    <updated>2021-04-27T13:20:04.853Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;符号表&quot;&gt;&lt;a href=&quot;#符号表&quot; class=&quot;headerlink&quot; title=&quot;符号表&quot;&gt;&lt;/a&gt;符号表&lt;/h1&gt;&lt;h2 id=&quot;SymbolTable&quot;&gt;&lt;a href=&quot;#SymbolTable&quot; class=&quot;headerlink&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="算法" scheme="https://www.matemaster.cn/categories/%E7%AE%97%E6%B3%95/"/>
-    
-    
-    <category term="algorithms" scheme="https://www.matemaster.cn/tags/algorithms/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>字符串算法</title>
-    <link href="https://www.matemaster.cn/posts/21226.html"/>
-    <id>https://www.matemaster.cn/posts/21226.html</id>
-    <published>2021-04-17T02:48:02.000Z</published>
-    <updated>2021-04-20T02:48:51.263Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;子字符串查找&quot;&gt;&lt;a href=&quot;#子字符串查找&quot; class=&quot;headerlink&quot; title=&quot;子字符串查找&quot;&gt;&lt;/a&gt;子字符串查找&lt;/h2&gt;&lt;h3 id=&quot;暴力匹配&quot;&gt;&lt;a href=&quot;#暴力匹配&quot; class=&quot;headerlink&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="算法" scheme="https://www.matemaster.cn/categories/%E7%AE%97%E6%B3%95/"/>
-    
-    
-    <category term="algorithms" scheme="https://www.matemaster.cn/tags/algorithms/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Java集合框架的应用</title>
-    <link href="https://www.matemaster.cn/posts/25676.html"/>
-    <id>https://www.matemaster.cn/posts/25676.html</id>
-    <published>2021-04-16T04:32:38.000Z</published>
-    <updated>2021-04-20T02:49:42.902Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;Map&quot;&gt;&lt;a href=&quot;#Map&quot; class=&quot;headerlink&quot; title=&quot;Map&quot;&gt;&lt;/a&gt;Map&lt;/h1&gt;&lt;h2 id=&quot;HashMap&quot;&gt;&lt;a href=&quot;#HashMap&quot; class=&quot;headerlink&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="CoreJava" scheme="https://www.matemaster.cn/categories/CoreJava/"/>
-    
-    
-    <category term="Java" scheme="https://www.matemaster.cn/tags/Java/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>HashMap底层原理</title>
-    <link href="https://www.matemaster.cn/posts/10092.html"/>
-    <id>https://www.matemaster.cn/posts/10092.html</id>
-    <published>2021-04-10T11:53:48.000Z</published>
-    <updated>2021-04-20T02:50:09.229Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;HashMap&quot;&gt;&lt;a href=&quot;#HashMap&quot; class=&quot;headerlink&quot; title=&quot;HashMap&quot;&gt;&lt;/a&gt;HashMap&lt;/h1&gt;&lt;p&gt;基于哈希表的 &lt;code&gt;Map&lt;/code&gt;</summary>
-        
-      
-    
-    
-    
-    <category term="CoreJava" scheme="https://www.matemaster.cn/categories/CoreJava/"/>
-    
-    
-    <category term="Java" scheme="https://www.matemaster.cn/tags/Java/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Spring5</title>
-    <link href="https://www.matemaster.cn/posts/22726.html"/>
-    <id>https://www.matemaster.cn/posts/22726.html</id>
-    <published>2021-04-07T04:00:39.000Z</published>
-    <updated>2021-04-28T13:14:45.084Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;Spring基础&quot;&gt;&lt;a href=&quot;#Spring基础&quot; class=&quot;headerlink&quot; title=&quot;Spring基础&quot;&gt;&lt;/a&gt;Spring基础&lt;/h1&gt;&lt;h2 id=&quot;Spring起步&quot;&gt;&lt;a href=&quot;#Spring起步&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="JavaEE" scheme="https://www.matemaster.cn/categories/JavaEE/"/>
-    
-    
-    <category term="Spring" scheme="https://www.matemaster.cn/tags/Spring/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>线性表的拓展结构</title>
-    <link href="https://www.matemaster.cn/posts/27874.html"/>
-    <id>https://www.matemaster.cn/posts/27874.html</id>
-    <published>2021-04-03T13:58:28.000Z</published>
-    <updated>2021-04-21T02:59:19.314Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;栈&quot;&gt;&lt;a href=&quot;#栈&quot; class=&quot;headerlink&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="数据结构" scheme="https://www.matemaster.cn/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
-    
-    
-    <category term="DataStructure" scheme="https://www.matemaster.cn/tags/DataStructure/"/>
     
   </entry>
   
