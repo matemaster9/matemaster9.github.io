@@ -324,7 +324,7 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('https://spring.io/images/spring-initializr-4291cc0115eb104348717b82161a81de.svg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('https://cdn.jsdelivr.net/gh/matemaster9/ali-note/img/20210914224854.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
@@ -445,8 +445,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/springboot/">
-                                <span class="chip bg-color">springboot</span>
+                            <a href="/tags/SpringBoot/">
+                                <span class="chip bg-color">SpringBoot</span>
                             </a>
                         
                     </div>
@@ -479,7 +479,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2021-09-13
+                    2021-09-14
                 </div>
                 
 
@@ -943,9 +943,9 @@
 <p>一般情况下，我们还可以利用<code>application.yml</code>配置文件，来完成对spring boot属性的配置任务。那么我们如何获取上面配置文件的内容？</p>
 <p>答：<code>@ConfigurationProperties</code>注解就可以读取到配置文件里面的内容，例如 <strong>@ConfigurationProperties(prefix = “属性前缀”)</strong></p>
 <p><code>application.yml</code>的内容：</p>
-<pre class="line-numbers language-yml" data-language="yml"><code class="language-yml"><span class="token key atrule">mycar</span><span class="token punctuation">:</span>
-  <span class="token key atrule">brand</span><span class="token punctuation">:</span> HW
-  <span class="token key atrule">price</span><span class="token punctuation">:</span> <span class="token number">1000</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-yml" data-language="yml"><code class="language-yml">mycar:
+  brand: HW
+  price: 1000<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 
 <p>① @Component + @ConfigurationProperties(prefix = “属性前缀”)</p>
 <p>在组件类上，先将类注册为spring组件，然后该组件就可以使用@ConfigurationProperties的功能</p>
@@ -1004,61 +1004,61 @@
 <p>导入<code>dev-tools</code>之后，下次修改代码的时候，可以直接<code>crtl+f9</code>即可重新更新</p>
 <h1 id="核心功能"><a href="#核心功能" class="headerlink" title="核心功能"></a>核心功能</h1><h2 id="配置文件"><a href="#配置文件" class="headerlink" title="配置文件"></a>配置文件</h2><p>主要分为两种配置文件的形式：<code>application.properties</code>和<code>application.yml</code></p>
 <p><strong>yml适合以数据为中心的配置文件</strong></p>
-<pre class="line-numbers language-yml" data-language="yml"><code class="language-yml"><span class="token key atrule">server</span><span class="token punctuation">:</span>
-  <span class="token key atrule">port</span><span class="token punctuation">:</span> <span class="token number">8000</span>
+<pre class="line-numbers language-yml" data-language="yml"><code class="language-yml">server:
+  port: 8000
 
-<span class="token key atrule">spring</span><span class="token punctuation">:</span>
-  <span class="token key atrule">freemarker</span><span class="token punctuation">:</span>
-    <span class="token key atrule">check-template-location</span><span class="token punctuation">:</span> <span class="token boolean important">false</span>
-  <span class="token key atrule">profiles</span><span class="token punctuation">:</span>
-    <span class="token key atrule">active</span><span class="token punctuation">:</span> dev
-  <span class="token key atrule">jackson</span><span class="token punctuation">:</span>
-    <span class="token key atrule">time-zone</span><span class="token punctuation">:</span> GMT+8
-  <span class="token key atrule">data</span><span class="token punctuation">:</span>
-    <span class="token key atrule">redis</span><span class="token punctuation">:</span>
-      <span class="token key atrule">repositories</span><span class="token punctuation">:</span>
-        <span class="token key atrule">enabled</span><span class="token punctuation">:</span> <span class="token boolean important">false</span>
+spring:
+  freemarker:
+    check-template-location: false
+  profiles:
+    active: dev
+  jackson:
+    time-zone: GMT+8
+  data:
+    redis:
+      repositories:
+        enabled: false
 
-  <span class="token comment">#配置 Jpa</span>
-  <span class="token key atrule">jpa</span><span class="token punctuation">:</span>
-    <span class="token key atrule">properties</span><span class="token punctuation">:</span>
-      <span class="token key atrule">hibernate</span><span class="token punctuation">:</span>
-        <span class="token key atrule">ddl-auto</span><span class="token punctuation">:</span> none
-        <span class="token key atrule">dialect</span><span class="token punctuation">:</span> org.hibernate.dialect.MySQL5InnoDBDialect
-    <span class="token key atrule">open-in-view</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
+  #配置 Jpa
+  jpa:
+    properties:
+      hibernate:
+        ddl-auto: none
+        dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+    open-in-view: true
 
-  <span class="token key atrule">redis</span><span class="token punctuation">:</span>
-    <span class="token comment">#数据库索引</span>
-    <span class="token key atrule">database</span><span class="token punctuation">:</span> $<span class="token punctuation">{</span>REDIS_DB<span class="token punctuation">:</span><span class="token number">0</span><span class="token punctuation">}</span>
-    <span class="token key atrule">host</span><span class="token punctuation">:</span> $<span class="token punctuation">{</span>REDIS_HOST<span class="token punctuation">:</span>127.0.0.1<span class="token punctuation">}</span>
-    <span class="token key atrule">port</span><span class="token punctuation">:</span> $<span class="token punctuation">{</span>REDIS_PORT<span class="token punctuation">:</span><span class="token number">6379</span><span class="token punctuation">}</span>
-    <span class="token key atrule">password</span><span class="token punctuation">:</span> $<span class="token punctuation">{</span>REDIS_PWD<span class="token punctuation">:</span><span class="token punctuation">}</span>
-    <span class="token comment">#连接超时时间</span>
-    <span class="token key atrule">timeout</span><span class="token punctuation">:</span> <span class="token number">5000</span>
+  redis:
+    #数据库索引
+    database: ${REDIS_DB:0}
+    host: ${REDIS_HOST:127.0.0.1}
+    port: ${REDIS_PORT:6379}
+    password: ${REDIS_PWD:}
+    #连接超时时间
+    timeout: 5000
 
-<span class="token key atrule">task</span><span class="token punctuation">:</span>
-  <span class="token key atrule">pool</span><span class="token punctuation">:</span>
-    <span class="token comment"># 核心线程池大小</span>
-    <span class="token key atrule">core-pool-size</span><span class="token punctuation">:</span> <span class="token number">10</span>
-    <span class="token comment"># 最大线程数</span>
-    <span class="token key atrule">max-pool-size</span><span class="token punctuation">:</span> <span class="token number">30</span>
-    <span class="token comment"># 活跃时间</span>
-    <span class="token key atrule">keep-alive-seconds</span><span class="token punctuation">:</span> <span class="token number">60</span>
-    <span class="token comment"># 队列容量</span>
-    <span class="token key atrule">queue-capacity</span><span class="token punctuation">:</span> <span class="token number">50</span>
+task:
+  pool:
+    # 核心线程池大小
+    core-pool-size: 10
+    # 最大线程数
+    max-pool-size: 30
+    # 活跃时间
+    keep-alive-seconds: 60
+    # 队列容量
+    queue-capacity: 50
 
-<span class="token comment">#七牛云</span>
-<span class="token key atrule">qiniu</span><span class="token punctuation">:</span>
-  <span class="token comment"># 文件大小 /M</span>
-  <span class="token key atrule">max-size</span><span class="token punctuation">:</span> <span class="token number">15</span>
+#七牛云
+qiniu:
+  # 文件大小 /M
+  max-size: 15
 
-<span class="token comment">#邮箱验证码有效时间/秒</span>
-<span class="token key atrule">code</span><span class="token punctuation">:</span>
-  <span class="token key atrule">expiration</span><span class="token punctuation">:</span> <span class="token number">300</span>
+#邮箱验证码有效时间/秒
+code:
+  expiration: 300
 
-<span class="token comment">#密码加密传输，前端公钥加密，后端私钥解密</span>
-<span class="token key atrule">rsa</span><span class="token punctuation">:</span>
-  <span class="token key atrule">private_key</span><span class="token punctuation">:</span> xxxxx<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+#密码加密传输，前端公钥加密，后端私钥解密
+rsa:
+  private_key: xxxxx<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>我们在定义配置类时，为了方便可以引入一个自动配置提示插件<code>spring-boot-configuration-processor</code></p>
 <pre class="line-numbers language-xml" data-language="xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">&gt;</span></span>
@@ -1121,14 +1121,14 @@
     <span class="token keyword">new</span> <span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">{</span><span class="token string">"classpath:/META-INF/resources/"</span><span class="token punctuation">,</span> <span class="token string">"classpath:/resources/"</span><span class="token punctuation">,</span> <span class="token string">"classpath:/static/"</span><span class="token punctuation">,</span> <span class="token string">"classpath:/public/"</span><span class="token punctuation">}</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
 <p>在<code>application.yml</code>配置路径及访问前缀</p>
-<pre class="line-numbers language-yml" data-language="yml"><code class="language-yml"><span class="token comment">#自定义静态资源访问前缀，以及静态资源目录</span>
-<span class="token key atrule">spring</span><span class="token punctuation">:</span> 
-  <span class="token key atrule">mvc</span><span class="token punctuation">:</span>
-    <span class="token key atrule">static-path-pattern</span><span class="token punctuation">:</span> /diy/<span class="token important">**</span>
+<pre class="line-numbers language-yml" data-language="yml"><code class="language-yml">#自定义静态资源访问前缀，以及静态资源目录
+spring: 
+  mvc:
+    static-path-pattern: /diy/**
 
-  <span class="token key atrule">web</span><span class="token punctuation">:</span>
-    <span class="token key atrule">resources</span><span class="token punctuation">:</span>
-      <span class="token key atrule">static-locations</span><span class="token punctuation">:</span> <span class="token punctuation">[</span>classpath<span class="token punctuation">:</span>/diy/<span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+  web:
+    resources:
+      static-locations: [classpath:/diy/]<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p style="color: red;">静态资源存放位置：</p>
 
@@ -1167,12 +1167,12 @@
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>当然了最最最重要的就是：表单的rest功能默认是不开启的，所以需要我们手动配置开启这项功能！</p>
-<pre class="line-numbers language-yml" data-language="yml"><code class="language-yml"><span class="token comment">#开启页面表单的Rest功能</span>
-<span class="token key atrule">spring</span><span class="token punctuation">:</span>
-  <span class="token key atrule">mvc</span><span class="token punctuation">:</span>
-    <span class="token key atrule">hiddenmethod</span><span class="token punctuation">:</span>
-      <span class="token key atrule">filter</span><span class="token punctuation">:</span>
-        <span class="token key atrule">enabled</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>  <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-yml" data-language="yml"><code class="language-yml">#开启页面表单的Rest功能
+spring:
+  mvc:
+    hiddenmethod:
+      filter:
+        enabled: true  <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>到此都是针对表单的http请求（因为表单默认只存在两种请求方式，所以需要我们做些变化），<strong>对于一些可以直接发送相应请求的客户端，我们就不需要配置filter</strong></p>
 <hr>
@@ -1248,12 +1248,12 @@
 <p>因为 spring boot 默认禁用了 ”后缀匹配“ 采取 ”内容协商“ 的方式，所以类似这样的请求<code>"GET /projects/spring-boot.json"</code>，就不会被映射到 <code>@GetMapping("/projects/spring-boot")</code>映射的控制器方法上。</p>
 <p>虽然禁用了 后缀匹配 ，但是对于 ”不能发送Accept的浏览器“ ，我们可以采取 <strong>”参数查询“</strong> 的方式解决。比如这样的链接： <code>"GET /projects/spring-boot?format=json"</code>就可以被映射到 <code>@GetMapping("/projects/spring-boot")</code>映射的控制器方法</p>
 <p>为了能让 spring boot 开启上面的参数查询功能，我们需要进行配置</p>
-<pre class="line-numbers language-yml" data-language="yml"><code class="language-yml"><span class="token key atrule">spring</span><span class="token punctuation">:</span>
-  <span class="token key atrule">mvc</span><span class="token punctuation">:</span>
-    <span class="token key atrule">contentnegotiation</span><span class="token punctuation">:</span>
-      <span class="token key atrule">favor-parameter</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>      <span class="token comment"># 开启 query parameter 功能</span>
-      <span class="token key atrule">parameter-name</span><span class="token punctuation">:</span> myparam    <span class="token comment"># 定义参数查询的名称（比如上面的format = json---&gt; myparam = json）</span>
-      <span class="token key atrule">media-types</span><span class="token punctuation">:</span> text/markdown <span class="token comment"># 额外增加返回资源的格式</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-yml" data-language="yml"><code class="language-yml">spring:
+  mvc:
+    contentnegotiation:
+      favor-parameter: true      # 开启 query parameter 功能
+      parameter-name: myparam    # 定义参数查询的名称（比如上面的format = json---&gt; myparam = json）
+      media-types: text/markdown # 额外增加返回资源的格式<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <hr>
 <p><b style="font-size:27px">Spring HATEOAS</b></p>
@@ -1377,10 +1377,10 @@
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">&gt;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>因为有时候自己编写控制器的端点可能会与Spring Data REST创建的端点冲突，我们可以在配置中设置rest的端点路径</p>
-<pre class="line-numbers language-yml" data-language="yml"><code class="language-yml"><span class="token key atrule">spring</span><span class="token punctuation">:</span>
-  <span class="token key atrule">data</span><span class="token punctuation">:</span>
-    <span class="token key atrule">rest</span><span class="token punctuation">:</span>
-      <span class="token key atrule">base-path</span><span class="token punctuation">:</span> /api<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-yml" data-language="yml"><code class="language-yml">spring:
+  data:
+    rest:
+      base-path: /api<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>这样我们可以使用<code>curl http://localhost:8080/api</code> 查看 Spring Data REST 自动创建的端点：</p>
 <pre class="line-numbers language-json" data-language="json"><code class="language-json"><span class="token punctuation">{</span>
@@ -3059,8 +3059,8 @@ ${companies?size}：获取序列的长度<span aria-hidden="true" class="line-nu
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/springboot/">
-                                    <span class="chip bg-color">springboot</span>
+                                <a href="/tags/SpringBoot/">
+                                    <span class="chip bg-color">SpringBoot</span>
                                 </a>
                             
                         </div>
@@ -3735,7 +3735,7 @@ ${companies?size}：获取序列的长度<span aria-hidden="true" class="line-nu
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">123.3k</span>&nbsp;字
+                class="white-color">127.4k</span>&nbsp;字
             
             
             
