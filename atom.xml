@@ -6,7 +6,7 @@
   <link href="https://www.matemaster.cn/atom.xml" rel="self"/>
   
   <link href="https://www.matemaster.cn/"/>
-  <updated>2021-09-21T14:34:35.678Z</updated>
+  <updated>2021-09-27T14:57:34.604Z</updated>
   <id>https://www.matemaster.cn/</id>
   
   <author>
@@ -15,6 +15,56 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Linux常用命令</title>
+    <link href="https://www.matemaster.cn/posts/48230.html"/>
+    <id>https://www.matemaster.cn/posts/48230.html</id>
+    <published>2021-09-27T09:28:08.000Z</published>
+    <updated>2021-09-27T14:57:34.604Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;文件目录&quot;&gt;&lt;a href=&quot;#文件目录&quot; class=&quot;headerlink&quot; title=&quot;文件目录&quot;&gt;&lt;/a&gt;文件目录&lt;/h1&gt;&lt;h2 id=&quot;ls&quot;&gt;&lt;a href=&quot;#ls&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="操作系统" scheme="https://www.matemaster.cn/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"/>
+    
+    
+    <category term="Linux" scheme="https://www.matemaster.cn/tags/Linux/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Ubuntu节点</title>
+    <link href="https://www.matemaster.cn/posts/38490.html"/>
+    <id>https://www.matemaster.cn/posts/38490.html</id>
+    <published>2021-09-22T12:47:20.000Z</published>
+    <updated>2021-09-27T14:36:59.590Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;服务器环境&quot;&gt;&lt;a href=&quot;#服务器环境&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="操作系统" scheme="https://www.matemaster.cn/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"/>
+    
+    
+    <category term="Ubuntu" scheme="https://www.matemaster.cn/tags/Ubuntu/"/>
+    
+  </entry>
   
   <entry>
     <title>后台管理系统授权实现</title>
@@ -71,7 +121,7 @@
     <link href="https://www.matemaster.cn/posts/28354.html"/>
     <id>https://www.matemaster.cn/posts/28354.html</id>
     <published>2021-09-14T14:50:18.000Z</published>
-    <updated>2021-09-15T11:24:55.382Z</updated>
+    <updated>2021-09-21T14:42:43.423Z</updated>
     
     
     
@@ -79,7 +129,7 @@
     <category term="SpringFramework" scheme="https://www.matemaster.cn/categories/SpringFramework/"/>
     
     
-    <category term="SpringBoot" scheme="https://www.matemaster.cn/tags/SpringBoot/"/>
+    <category term="Spring" scheme="https://www.matemaster.cn/tags/Spring/"/>
     
   </entry>
   
@@ -443,56 +493,6 @@
         
         
     <summary type="html">&lt;h1 id=&quot;Java并发锁&quot;&gt;&lt;a href=&quot;#Java并发锁&quot; class=&quot;headerlink&quot; title=&quot;Java并发锁&quot;&gt;&lt;/a&gt;Java并发锁&lt;/h1&gt;&lt;h2 id=&quot;重入锁&quot;&gt;&lt;a href=&quot;#重入锁&quot; class=&quot;headerlink&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="CoreJava" scheme="https://www.matemaster.cn/categories/CoreJava/"/>
-    
-    
-    <category term="并发编程" scheme="https://www.matemaster.cn/tags/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Executor框架</title>
-    <link href="https://www.matemaster.cn/posts/54338.html"/>
-    <id>https://www.matemaster.cn/posts/54338.html</id>
-    <published>2021-05-18T08:02:45.000Z</published>
-    <updated>2021-08-14T03:50:31.319Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;Executor框架&quot;&gt;&lt;a href=&quot;#Executor框架&quot; class=&quot;headerlink&quot; title=&quot;Executor框架&quot;&gt;&lt;/a&gt;Executor框架&lt;/h2&gt;&lt;h3 id=&quot;框架结构&quot;&gt;&lt;a href=&quot;#框架结构&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="CoreJava" scheme="https://www.matemaster.cn/categories/CoreJava/"/>
-    
-    
-    <category term="并发编程" scheme="https://www.matemaster.cn/tags/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Java中的线程池</title>
-    <link href="https://www.matemaster.cn/posts/64302.html"/>
-    <id>https://www.matemaster.cn/posts/64302.html</id>
-    <published>2021-05-13T12:33:34.000Z</published>
-    <updated>2021-08-13T13:50:56.470Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;Java中的线程池&quot;&gt;&lt;a href=&quot;#Java中的线程池&quot; class=&quot;headerlink&quot; title=&quot;Java中的线程池&quot;&gt;&lt;/a&gt;Java中的线程池&lt;/h2&gt;&lt;h3 id=&quot;线程池实现原理&quot;&gt;&lt;a href=&quot;#线程池实现原理&quot;</summary>
         
       
     

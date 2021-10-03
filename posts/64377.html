@@ -479,21 +479,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2021-08-13
+                    2021-10-03
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    2.1k
+                    2.5k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    8 分
+                    10 分
                 </div>
                 
 
@@ -683,15 +683,73 @@
 <td>数组的长度</td>
 </tr>
 </tbody></table>
-<p>📌 Mark Word 的存储结果及锁的状态变化</p>
+<p>📌 <code>Hotspot VM(32-Bit)</code>实现加锁</p>
 <table border="1" cellspacing="0"><tbody><tr><td rowspan="2" style="background-color:#bfbfbf;width:71pt;"> <p style="margin-left:0cm;">锁状态</p> </td><td colspan="2" style="background-color:#bfbfbf;width:142pt;"> <p style="margin-left:0cm;">25bit</p> </td><td rowspan="2" style="background-color:#bfbfbf;width:71pt;"> <p style="margin-left:0cm;">4bit</p> </td><td style="background-color:#bfbfbf;width:71.05pt;"> <p style="margin-left:0cm;">1bit</p> </td><td style="background-color:#bfbfbf;width:71.05pt;"> <p style="margin-left:0cm;">2bit</p> </td></tr><tr><td style="background-color:#bfbfbf;width:71pt;"> <p style="margin-left:0cm;">23bit</p> </td><td style="background-color:#bfbfbf;width:71pt;"> <p style="margin-left:0cm;">2bit</p> </td><td style="background-color:#bfbfbf;width:71.05pt;"> <p style="margin-left:0cm;">是否偏向锁</p> </td><td style="background-color:#bfbfbf;width:71.05pt;"> <p style="margin-left:0cm;">锁标志位</p> </td></tr><tr><td style="vertical-align:top;width:71pt;"> <p style="margin-left:0cm;">无锁</p> </td><td colspan="2" style="vertical-align:top;width:142pt;"> <p style="margin-left:0cm;">对象的HashCode</p> </td><td style="vertical-align:top;width:71pt;"> <p style="margin-left:0cm;">分代年龄</p> </td><td style="vertical-align:top;width:71.05pt;"> <p style="margin-left:0cm;">0</p> </td><td style="vertical-align:top;width:71.05pt;"> <p style="margin-left:0cm;">01</p> </td></tr><tr><td style="vertical-align:top;width:71pt;"> <p style="margin-left:0cm;">偏向锁</p> </td><td style="vertical-align:top;width:71pt;"> <p style="margin-left:0cm;">线程ID</p> </td><td style="vertical-align:top;width:71pt;"> <p style="margin-left:0cm;">Epoch</p> </td><td style="vertical-align:top;width:71pt;"> <p style="margin-left:0cm;">分代年龄</p> </td><td style="vertical-align:top;width:71.05pt;"> <p style="margin-left:0cm;">1</p> </td><td style="vertical-align:top;width:71.05pt;"> <p style="margin-left:0cm;">01</p> </td></tr><tr><td style="vertical-align:top;width:71pt;"> <p style="margin-left:0cm;">轻量级锁</p> </td><td colspan="4" style="vertical-align:top;width:284.05pt;"> <p style="margin-left:0cm;">指向栈中锁记录的指针</p> </td><td style="vertical-align:top;width:71.05pt;"> <p style="margin-left:0cm;">00</p> </td></tr><tr><td style="vertical-align:top;width:71pt;"> <p style="margin-left:0cm;">重量级锁</p> </td><td colspan="4" style="vertical-align:top;width:284.05pt;"> <p style="margin-left:0cm;">指向重量级锁的指针</p> </td><td style="vertical-align:top;width:71.05pt;"> <p style="margin-left:0cm;">10</p> </td></tr><tr><td style="vertical-align:top;width:71pt;"> <p style="margin-left:0cm;">GC标记</p> </td><td colspan="4" style="vertical-align:top;width:284.05pt;"> <p style="margin-left:0cm;">空</p> </td><td style="vertical-align:top;width:71.05pt;"> <p style="margin-left:0cm;">11</p> </td></tr></tbody></table>
+
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">package</span> <span class="token namespace">cn<span class="token punctuation">.</span>matemaster<span class="token punctuation">.</span>offer<span class="token punctuation">.</span>sync</span><span class="token punctuation">;</span>
+
+<span class="token keyword">import</span> <span class="token namespace">org<span class="token punctuation">.</span>openjdk<span class="token punctuation">.</span>jol<span class="token punctuation">.</span>info<span class="token punctuation">.</span></span><span class="token class-name">ClassLayout</span><span class="token punctuation">;</span>
+
+<span class="token comment">/**
+ * 理解多线程原理: volatile 、 synchronized
+ * @author HUAWEI
+ */</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Sync</span> <span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+        <span class="token comment">/** 此时锁对象 lock 处于新建状态，并且没有调用 hashCode() */</span>
+        <span class="token class-name">Object</span> lock <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Object</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"上锁前: lock 对象头信息"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token class-name">ClassLayout</span><span class="token punctuation">.</span><span class="token function">parseInstance</span><span class="token punctuation">(</span>lock<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toPrintable</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token keyword">synchronized</span> <span class="token punctuation">(</span>lock<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"上锁后: lock 对象头信息"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token class-name">ClassLayout</span><span class="token punctuation">.</span><span class="token function">parseInstance</span><span class="token punctuation">(</span>lock<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toPrintable</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token comment">/** 调用 hashCode() 方法 查看对象头的变化*/</span>
+        <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>lock<span class="token punctuation">.</span><span class="token function">hashCode</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token class-name">ClassLayout</span><span class="token punctuation">.</span><span class="token function">parseInstance</span><span class="token punctuation">(</span>lock<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toPrintable</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>控制台打印的lock对象头信息：</p>
+<pre class="line-numbers language-none"><code class="language-none">上锁前: lock 对象头信息
+java.lang.Object object internals:
+ OFFSET  SIZE   TYPE DESCRIPTION                               VALUE
+      0     4        (object header)                           01 00 00 00 (00000001 00000000 00000000 00000000) (1)
+      4     4        (object header)                           00 00 00 00 (00000000 00000000 00000000 00000000) (0)
+      8     4        (object header)                           e5 01 00 20 (11100101 00000001 00000000 00100000) (536871397)
+     12     4        (loss due to the next object alignment)
+Instance size: 16 bytes
+Space losses: 0 bytes internal + 4 bytes external = 4 bytes total
+
+上锁后: lock 对象头信息
+java.lang.Object object internals:
+ OFFSET  SIZE   TYPE DESCRIPTION                               VALUE
+      0     4        (object header)                           08 f5 ef 81 (00001000 11110101 11101111 10000001) (-2114980600)
+      4     4        (object header)                           80 00 00 00 (10000000 00000000 00000000 00000000) (128)
+      8     4        (object header)                           e5 01 00 20 (11100101 00000001 00000000 00100000) (536871397)
+     12     4        (loss due to the next object alignment)
+Instance size: 16 bytes
+Space losses: 0 bytes internal + 4 bytes external = 4 bytes total
+
+254413710
+java.lang.Object object internals:
+ OFFSET  SIZE   TYPE DESCRIPTION                               VALUE
+      0     4        (object header)                           01 8e 0b 2a (00000001 10001110 00001011 00101010) (705400321)
+      4     4        (object header)                           0f 00 00 00 (00001111 00000000 00000000 00000000) (15)
+      8     4        (object header)                           e5 01 00 20 (11100101 00000001 00000000 00100000) (536871397)
+     12     4        (loss due to the next object alignment)
+Instance size: 16 bytes
+Space losses: 0 bytes internal + 4 bytes external = 4 bytes total<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <h4 id="锁优化"><a href="#锁优化" class="headerlink" title="锁优化"></a>锁优化</h4><blockquote>
 <p>synchronized 的四种锁状态</p>
 <ul>
+<li>对象新建(unlock)</li>
 <li>偏向锁</li>
-<li>轻量级锁</li>
-<li>自旋锁</li>
+<li>轻量级锁（自旋锁）</li>
 <li>重量级锁</li>
 </ul>
 </blockquote>
@@ -719,9 +777,12 @@
 <p>如果失败，表示当前存在竞争，锁会膨胀到重量级锁</p>
 <img src="https://cdn.jsdelivr.net/gh/matemaster9/ali-note@1.0/md/20210810214543.png" style="zoom:80%;">
 
-<p><strong>自旋锁：</strong></p>
+<p><strong>自旋：</strong></p>
 <p>互斥同步进入阻塞状态的开销都很大，应该尽量避免。在许多应用中，共享数据的锁定状态只会持续很短的一段时间。自旋锁的思想是让一个线程在请求一个共享数据的锁时执行忙循环（自旋）一段时间，如果在这段时间内能获得锁，就可以避免进入阻塞状态。</p>
 <p>自旋锁虽然能避免进入阻塞状态从而减少开销，但是它需要进行忙循环操作占用 CPU 时间，它只适用于共享数据的锁定状态很短的场景。</p>
+<p><strong>重量级锁：</strong></p>
+<p>升级重量级锁，可以避免自旋过分消耗CPU资源。每个重量级锁，会存在一个等待队列，所有等待重量级锁的线程将会存放在队列中。等待队列的线程是冻结的，不消耗CPU资源。</p>
+<p><strong>轻量级锁采取CAS自旋、重量级锁采取OS互斥量（metux）</strong></p>
 <p>​                                <strong>表.锁的优缺对比</strong></p>
 <table>
 <thead>
@@ -751,65 +812,12 @@
 <td>追求吞吐量</td>
 </tr>
 </tbody></table>
-<h3 id="原子操作"><a href="#原子操作" class="headerlink" title="原子操作"></a>原子操作</h3><p>循环 CAS 实现原子操作</p>
-<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">package</span> <span class="token namespace">cn<span class="token punctuation">.</span>matemaster<span class="token punctuation">.</span>concurrency<span class="token punctuation">.</span>second</span><span class="token punctuation">;</span>
-
-<span class="token keyword">import</span> <span class="token namespace">java<span class="token punctuation">.</span>util<span class="token punctuation">.</span></span><span class="token class-name">ArrayList</span><span class="token punctuation">;</span>
-<span class="token keyword">import</span> <span class="token namespace">java<span class="token punctuation">.</span>util<span class="token punctuation">.</span></span><span class="token class-name">List</span><span class="token punctuation">;</span>
-<span class="token keyword">import</span> <span class="token namespace">java<span class="token punctuation">.</span>util<span class="token punctuation">.</span>concurrent<span class="token punctuation">.</span></span><span class="token class-name">TimeUnit</span><span class="token punctuation">;</span>
-<span class="token keyword">import</span> <span class="token namespace">java<span class="token punctuation">.</span>util<span class="token punctuation">.</span>concurrent<span class="token punctuation">.</span>atomic<span class="token punctuation">.</span></span><span class="token class-name">AtomicInteger</span><span class="token punctuation">;</span>
-
-<span class="token comment">/**
- * 基于循环 CAS 实现原子操作 线程安全的计数器
- * @author HUAWEI
- */</span>
-<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Counter</span> <span class="token punctuation">{</span>
-
-    <span class="token keyword">private</span> <span class="token keyword">final</span> <span class="token class-name">AtomicInteger</span> atomicInteger <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">AtomicInteger</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token keyword">private</span> <span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
-
-    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">InterruptedException</span> <span class="token punctuation">{</span>
-        <span class="token keyword">final</span> <span class="token class-name">Counter</span> cas <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Counter</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Thread</span><span class="token punctuation">&gt;</span></span> list <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token punctuation">&gt;</span></span><span class="token punctuation">(</span><span class="token number">600</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token keyword">long</span> start <span class="token operator">=</span> <span class="token class-name">System</span><span class="token punctuation">.</span><span class="token function">currentTimeMillis</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token keyword">int</span> gameOver <span class="token operator">=</span> <span class="token number">100</span><span class="token punctuation">;</span>
-        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> gameOver<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            <span class="token class-name">Thread</span> t <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Thread</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-&gt;</span> <span class="token punctuation">{</span>
-                <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> j <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> j <span class="token operator">&lt;</span> <span class="token number">10000</span><span class="token punctuation">;</span> j<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-                    cas<span class="token punctuation">.</span><span class="token function">count</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-                    cas<span class="token punctuation">.</span><span class="token function">safeCount</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-                <span class="token punctuation">}</span>
-            <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            list<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>t<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token class-name">Thread</span> thread <span class="token operator">:</span> list<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            thread<span class="token punctuation">.</span><span class="token function">start</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-        <span class="token class-name">TimeUnit</span><span class="token punctuation">.</span>SECONDS<span class="token punctuation">.</span><span class="token function">sleep</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token class-name">Thread</span> thread <span class="token operator">:</span> list<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            thread<span class="token punctuation">.</span><span class="token function">join</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-        <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>cas<span class="token punctuation">.</span>i<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>cas<span class="token punctuation">.</span>atomicInteger<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token class-name">System</span><span class="token punctuation">.</span><span class="token function">currentTimeMillis</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-</span> start<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-
-
-    <span class="token keyword">private</span> <span class="token keyword">void</span> <span class="token function">safeCount</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            <span class="token keyword">int</span> i <span class="token operator">=</span> atomicInteger<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token keyword">boolean</span> suc <span class="token operator">=</span> atomicInteger<span class="token punctuation">.</span><span class="token function">compareAndSet</span><span class="token punctuation">(</span>i<span class="token punctuation">,</span> <span class="token operator">++</span>i<span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token keyword">if</span> <span class="token punctuation">(</span>suc<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-                <span class="token keyword">break</span><span class="token punctuation">;</span>
-            <span class="token punctuation">}</span>
-        <span class="token punctuation">}</span>
-    <span class="token punctuation">}</span>
-
-    <span class="token keyword">private</span> <span class="token keyword">void</span> <span class="token function">count</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        i<span class="token operator">++</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
+<h2 id="CAS"><a href="#CAS" class="headerlink" title="CAS"></a>CAS</h2><p><img src="https://cdn.jsdelivr.net/gh/matemaster9/ali-note/img/20211003164007.png"></p>
+<ol>
+<li>ABA问题：</li>
+</ol>
+<p>假设线程A读取的内存值是 m，线程B在A的操作过程中，将m 修改为 n然后又修改为 m，再A再次比较内存值和期望值时，发现“没有改变”。实则在A的操作过程当中已经有过多次改变！</p>
+<p>解决方式：为内存值添加版本号、或者使用<code>AotmicStampedReference</code>原子类</p>
 
                 
             </div>
@@ -1546,7 +1554,7 @@
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">131.8k</span>&nbsp;字
+                class="white-color">133.2k</span>&nbsp;字
             
             
             

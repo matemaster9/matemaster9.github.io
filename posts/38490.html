@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="基于MySQL的数据库操作, MateMaster">
+    <meta name="keywords" content="Ubuntu节点, MateMaster">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -27,7 +27,7 @@
 </script>
 
 
-    <title>基于MySQL的数据库操作 | MateMaster</title>
+    <title>Ubuntu节点 | MateMaster</title>
     <link rel="icon" type="image/jpeg" href="/mashimaro.jpg">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -324,12 +324,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('https://cdn.jsdelivr.net/gh/matemaster9/ali-note/img/20210914161222.png')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('https://cdn.jsdelivr.net/gh/matemaster9/ali-note/img/20210922204616.svg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">基于MySQL的数据库操作</h1>
+                    <h1 class="description center-align post-title">Ubuntu节点</h1>
                 </div>
             </div>
         </div>
@@ -445,8 +445,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/MySQL/">
-                                <span class="chip bg-color">MySQL</span>
+                            <a href="/tags/Ubuntu/">
+                                <span class="chip bg-color">Ubuntu</span>
                             </a>
                         
                     </div>
@@ -457,8 +457,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" class="post-category">
-                                数据库
+                            <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" class="post-category">
+                                操作系统
                             </a>
                         
                     </div>
@@ -472,28 +472,28 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-03-19
+                    2021-09-22
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2021-09-14
+                    2021-09-27
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.8k
+                    908
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    7 分
+                    4 分
                 </div>
                 
 
@@ -522,329 +522,235 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="示例表"><a href="#示例表" class="headerlink" title="示例表"></a>示例表</h1><img src="https://cdn.jsdelivr.net/gh/matemaster9/imgs-masterstudio/imgs/20210330170535.jpg" style="width:80%;border:solid">
-
-<h1 id="MySQL操作"><a href="#MySQL操作" class="headerlink" title="MySQL操作"></a>MySQL操作</h1><h2 id="IN子查询"><a href="#IN子查询" class="headerlink" title="IN子查询"></a>IN子查询</h2><p>为什么需要子查询？</p>
-<p>1）集合成员资格：判断某一个元素是否是该集合的成员（IN 子查询）</p>
-<p>2）集合之间的比较：判断一个集合是否是另外一个集合的子集（θ子查询）</p>
-<p>3）集合基数测试：集合是否为空？集合是否存在重复元组（EXISTS 子查询）</p>
-<p>子查询：就是在<strong>where</strong>子句中出现的<strong>select</strong>子句</p>
-<p><code>IN子查询</code>：判断某一个表达式的值是否在子查询的结果当中</p>
+                <h1 id="服务器环境"><a href="#服务器环境" class="headerlink" title="服务器环境"></a>服务器环境</h1><table>
+<thead>
+<tr>
+<th>软件名称</th>
+<th>软件版本</th>
+<th>资源</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Ubuntu-desktop-amd64</td>
+<td>18.04.6</td>
+<td><a target="_blank" rel="noopener" href="https://mirrors.tuna.tsinghua.edu.cn/">Ubuntu镜像</a></td>
+</tr>
+<tr>
+<td>VMware</td>
+<td>15.5.7</td>
+<td><a target="_blank" rel="noopener" href="https://customerconnect.vmware.com/cn/downloads/info/slug/desktop_end_user_computing/vmware_workstation_pro/15_0">虚拟机</a></td>
+</tr>
+<tr>
+<td>jdk-linux-aarch64</td>
+<td>1.8_301</td>
+<td><a target="_blank" rel="noopener" href="https://www.oracle.com/java/technologies/downloads/#java8">JDK-1.8</a></td>
+</tr>
+<tr>
+<td>maven</td>
+<td>3.8.2</td>
+<td><a target="_blank" rel="noopener" href="https://maven.apache.org/download.cgi">Apache-Maven</a></td>
+</tr>
+<tr>
+<td>mysql-linux-glibc</td>
+<td>8.0.26</td>
+<td><a target="_blank" rel="noopener" href="https://dev.mysql.com/downloads/mysql/">MySQL数据库</a></td>
+</tr>
+<tr>
+<td>nodejs</td>
+<td>14.10.0</td>
+<td><a target="_blank" rel="noopener" href="https://nodejs.org/zh-cn/download/">Node.js</a></td>
+</tr>
+<tr>
+<td>MobaXterm</td>
+<td>21.3</td>
+<td><a target="_blank" rel="noopener" href="https://mobaxterm.mobatek.net/download.html">MobaXterm:SSH终端</a></td>
+</tr>
+<tr>
+<td>WinSCP</td>
+<td>5.19</td>
+<td><a target="_blank" rel="noopener" href="https://winscp.net/eng/download.php">WinSCP:FTP文件传输</a></td>
+</tr>
+</tbody></table>
+<h1 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h1><p>准备工作主要完成任务：</p>
+<ol>
+<li>使用 MobaXterm SSH终端远程替代虚拟机终端</li>
+<li>使用 WinSCP 负责虚拟机文件管理</li>
+</ol>
 <ul>
-<li>列出选修了001号课程的学生学号和姓名</li>
+<li>将虚拟机连接 SSH 终端（MobaXterm）</li>
 </ul>
-<p>1）查出选修选修001号课程的学生学号</p>
-<p>2）根据学号来筛选出学生的学号与姓名</p>
-<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">SELECT</span> Sid<span class="token punctuation">,</span>Sname
-<span class="token keyword">FROM</span> student
-<span class="token keyword">WHERE</span> Sid <span class="token operator">IN</span><span class="token punctuation">(</span>
-    <span class="token keyword">SELECT</span> Sid
-    <span class="token keyword">FROM</span> sc
-    <span class="token keyword">WHERE</span> Cid <span class="token operator">=</span> <span class="token string">'001'</span>
-<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-none"><code class="language-none"># 更新 apt-get 源
+apt-get update
 
-<p>除了上面这种带有<code>IN子查询</code>，我们还可以使用自然连接的方式，进行查询</p>
-<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">SELECT</span> student<span class="token punctuation">.</span>Sid <span class="token punctuation">,</span>Sname
-<span class="token keyword">FROM</span> sc<span class="token punctuation">,</span>student
-<span class="token keyword">WHERE</span> sc<span class="token punctuation">.</span>Sid <span class="token operator">=</span> student<span class="token punctuation">.</span>Sid <span class="token operator">AND</span> Cid <span class="token operator">=</span><span class="token string">'001'</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+# 下载 ssh 服务
+apt-get install openssh-server
 
-
-
-<ul>
-<li>列出既选修了001号课程，又选修了002号课程学生的学号</li>
-</ul>
-<p>1）找出选修了002号课程的学生学号</p>
-<p>2）在选课表中找出选修了001号课程并且学号在上面查询结果之中</p>
-<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token comment"># 找出选修了002号课程的学生学号</span>
-<span class="token keyword">SELECT</span> Sid
-<span class="token keyword">FROM</span> sc
-<span class="token keyword">WHERE</span> Cid <span class="token operator">=</span> <span class="token string">'002'</span><span class="token punctuation">;</span>
-
-<span class="token comment"># 找出选修了001号课程并且学号在上面查询结果之中</span>
-<span class="token keyword">SELECT</span> Sid
-<span class="token keyword">FROM</span> sc
-<span class="token keyword">WHERE</span> Cid <span class="token operator">=</span> <span class="token string">'001'</span> <span class="token operator">AND</span> Sid <span class="token operator">IN</span><span class="token punctuation">(</span>
-    <span class="token keyword">SELECT</span> Sid
-    <span class="token keyword">FROM</span> sc
-    <span class="token keyword">WHERE</span> Cid <span class="token operator">=</span> <span class="token string">'002'</span>
-<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<p>自连接实现查询</p>
-<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">SELECT</span> s1<span class="token punctuation">.</span>Sid
-<span class="token keyword">FROM</span> sc s1<span class="token punctuation">,</span>sc s2
-<span class="token keyword">WHERE</span> s1<span class="token punctuation">.</span>Sid <span class="token operator">=</span>s2<span class="token punctuation">.</span>Sid <span class="token operator">AND</span> s1<span class="token punctuation">.</span>Cid <span class="token operator">=</span><span class="token string">'001'</span> <span class="token operator">AND</span> s2<span class="token punctuation">.</span>Cid <span class="token operator">=</span> <span class="token string">'002'</span> <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-
-
-
-<ul>
-<li>列出没有选修HUAWEI课程的所有同学姓名</li>
-</ul>
-<p>1）找出选修HUAWEI课程的学生学号</p>
-<p>2）在学生标准找出不在上面查询结果之中的学生学号</p>
-<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token comment"># 找出选修HUAWEI课程的学生学号</span>
-<span class="token keyword">SELECT</span> Sid
-<span class="token keyword">FROM</span> sc<span class="token punctuation">,</span>teacher<span class="token punctuation">,</span>course
-<span class="token keyword">WHERE</span> sc<span class="token punctuation">.</span>Cid <span class="token operator">=</span> course<span class="token punctuation">.</span>Cid <span class="token operator">AND</span> teacher<span class="token punctuation">.</span>Tid <span class="token operator">=</span> course<span class="token punctuation">.</span>Tid <span class="token operator">AND</span> teacher<span class="token punctuation">.</span>Tname <span class="token operator">=</span> <span class="token string">'HUAWEI'</span><span class="token punctuation">;</span>
-
-<span class="token comment"># 不在上面的查询寻结果之中</span>
-<span class="token keyword">SELECT</span> Sid
-<span class="token keyword">FROM</span> student
-<span class="token keyword">WHERE</span> Sid <span class="token operator">NOT</span> <span class="token operator">IN</span><span class="token punctuation">(</span>
-    <span class="token keyword">SELECT</span> Sid
-    <span class="token keyword">FROM</span> sc<span class="token punctuation">,</span>teacher<span class="token punctuation">,</span>course
-    <span class="token keyword">WHERE</span> sc<span class="token punctuation">.</span>Cid <span class="token operator">=</span> course<span class="token punctuation">.</span>Cid <span class="token operator">AND</span> teacher<span class="token punctuation">.</span>Tid <span class="token operator">=</span> course<span class="token punctuation">.</span>Tid <span class="token operator">AND</span> teacher<span class="token punctuation">.</span>Tname <span class="token operator">=</span> <span class="token string">'HUAWEI'</span>
-<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-
+# 使用 MobaXterm 连接虚拟机<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <ul>
-<li>查询出选修001号课程学生的姓名</li>
+<li>WinSCP 连接虚拟机</li>
 </ul>
-<p>1）查询出选修了001号课程学生的学号</p>
-<p>2）根据查询出来的学号，查询学生的姓名</p>
-<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token comment"># 查询出选修了001号课程学生的学号</span>
-<span class="token keyword">SELECT</span> Sid
-<span class="token keyword">FROM</span> sc<span class="token punctuation">,</span>student
-<span class="token keyword">WHERE</span> sc<span class="token punctuation">.</span>Sid <span class="token operator">=</span> student<span class="token punctuation">.</span>Sid <span class="token operator">AND</span> sc<span class="token punctuation">.</span>Cid <span class="token operator">=</span> <span class="token string">'001'</span><span class="token punctuation">;</span>
+<pre class="line-numbers language-none"><code class="language-none"># 开启 ssh 服务
+service ssh start
 
-<span class="token comment"># 根据查询出来的学号，查询学生的姓名</span>
-<span class="token keyword">SELECT</span> Sname
-<span class="token keyword">FROM</span> student
-<span class="token keyword">WHERE</span> Sid <span class="token operator">IN</span> <span class="token punctuation">(</span>
-    <span class="token keyword">SELECT</span> Sid
-	<span class="token keyword">FROM</span> sc<span class="token punctuation">,</span>student
-	<span class="token keyword">WHERE</span> sc<span class="token punctuation">.</span>Sid <span class="token operator">=</span> student<span class="token punctuation">.</span>Sid <span class="token operator">AND</span> sc<span class="token punctuation">.</span>Cid <span class="token operator">=</span> <span class="token string">'001'</span>
-<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+# 查看 ssh 服务状态
+service ssh status
 
-<p>我们从SQL语句中看到，内层子查询调用了外层的参数student。这种关系叫做相关子查询，并且参数只能由外到内层传递！</p>
-<h2 id="θ子查询"><a href="#θ子查询" class="headerlink" title="θ子查询"></a>θ子查询</h2><p><code>theta some</code>和<code>theta all</code>：θ是比较运算符</p>
-<p>1.如果表达式的值与子查询的结果的某一个值满足θ关系，那么<code>theta some = true</code></p>
-<p>2.如果表达式的值与子查询的结果的所有值满足θ关系，那么<code>theta all = true</code></p>
+# 为了保证 root 登录 修改ssh 配置
+vim /etc/ssh/sshd_config
+
+# 添加 PermitRootLogin yes
+# 重启 ssh 服务
+service ssh restart<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>WinSCP 连接虚拟机常见问题：</p>
+<ol>
+<li>root连接拒绝访问，但是常规用户可以访问</li>
+</ol>
 <ul>
-<li>找出工资最低的教师姓名</li>
+<li>首先查看 <code>/etc/ssh/sshd_cconfig</code>配置是否正确（是否添加PermitRootLogin yes?）</li>
 </ul>
-<p>1）查询出所有教师的工资</p>
-<p>2）比较查询出工资最小的（工资比上面的所有教师工资都小）姓名</p>
-<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token comment"># 查询出所有教师的工资</span>
-<span class="token keyword">SELECT</span> Salary
-<span class="token keyword">FROM</span> teacher<span class="token punctuation">;</span>
+<pre class="line-numbers language-none"><code class="language-none"># Authentication:
 
-<span class="token comment"># 比较查询出工资最小的</span>
-<span class="token keyword">SELECT</span> Tname
-<span class="token keyword">FROM</span> teacher
-<span class="token keyword">WHERE</span> Salary <span class="token operator">&lt;=</span> <span class="token keyword">ALL</span><span class="token punctuation">(</span>
-    <span class="token keyword">SELECT</span> Salary
-	<span class="token keyword">FROM</span> teacher
-<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+#LoginGraceTime 2m
+#PermitRootLogin prohibit-password
+PermitRootLogin yes
+#PasswordAuthentication yes
+#StrictModes yes
+#MaxAuthTries 6
+#MaxSessions 10<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <ul>
-<li>找出001号课程成绩不是最高的学生姓名</li>
+<li>配置正确，但是仍然出现 root拒绝访问（很重要！）</li>
 </ul>
-<p>1）查询出所有选修001号课程学生的成绩</p>
-<p>2）比较查询出成绩不是最高（在上面的查询结果中，至少存在一个学生成绩比查询结果高的）的学号</p>
-<p>3）根据学号查询出学生姓名</p>
-<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token comment"># 查询出所有选修001号课程学生的成绩</span>
-<span class="token keyword">SELECT</span> Score
-<span class="token keyword">FROM</span> sc
-<span class="token keyword">WHERE</span> Cid <span class="token operator">=</span> <span class="token string">'001'</span><span class="token punctuation">;</span>
+<p>此时因为 Ubuntu <strong>默认没有激活root用户</strong>，所以我们需要<strong>重新设定root密码激活root</strong></p>
+<pre class="line-numbers language-none"><code class="language-none">sudo passwd root
+Enter new UNIX password: # root密码
+Retype new UNIX password: # root密码
+passwd: password updated successfully<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 
-<span class="token comment"># 查询出学号</span>
-<span class="token keyword">SELECT</span> Sid
-<span class="token keyword">FROM</span> sc
-<span class="token keyword">WHERE</span> Cid <span class="token operator">=</span> <span class="token string">'001'</span> <span class="token operator">AND</span> Score <span class="token operator">&lt;</span> <span class="token keyword">SOME</span> <span class="token punctuation">(</span>
-    <span class="token keyword">SELECT</span> Score
-	<span class="token keyword">FROM</span> sc
-    <span class="token keyword">WHERE</span> Cid <span class="token operator">=</span> <span class="token string">'001'</span>
-<span class="token punctuation">)</span>
+<p>至此基本可以解决root拒绝访问问题</p>
+<h1 id="JDK安装"><a href="#JDK安装" class="headerlink" title="JDK安装"></a>JDK安装</h1><ol>
+<li><p>获取 JDK 安装包 jdk-8u301-linux-x64.tar.gz</p>
+<p> *注意jdk的文件格式，否则会出现不可执行错误</p>
+</li>
+<li><p>将压缩包存放至root目录下，准备留用</p>
+</li>
+</ol>
+<pre class="line-numbers language-none"><code class="language-none"># 新建并进入 java 目录
+cd /usr/local
+mkdir java
+cd java
 
-<span class="token comment"># 根据学号查询出姓名</span>
-<span class="token keyword">SELECT</span> Sname
-<span class="token keyword">FROM</span> student
-<span class="token keyword">WHERE</span> Sid <span class="token operator">IN</span><span class="token punctuation">(</span>
-    <span class="token keyword">SELECT</span> Sid
-    <span class="token keyword">FROM</span> sc
-    <span class="token keyword">WHERE</span> Cid <span class="token operator">=</span> <span class="token string">'001'</span> <span class="token operator">AND</span> Score <span class="token operator">&lt;</span> <span class="token keyword">SOME</span> <span class="token punctuation">(</span>
-        <span class="token keyword">SELECT</span> Score
-        <span class="token keyword">FROM</span> sc
-        <span class="token keyword">WHERE</span> Cid <span class="token operator">=</span> <span class="token string">'001'</span>
-    <span class="token punctuation">)</span>
-<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+# 解压至java目录
+tar zxvf /root/jdk-8u301-linux-x64.tar.gz -C ./
 
+# ls 会出现一个文件夹
+jdk1.8.0_301<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
+<ol start="3">
+<li>编辑 /etc/profile 文件，配置环境变量</li>
+</ol>
+<pre class="line-numbers language-none"><code class="language-none">JAVA_HOME=/usr/local/java/jdk1.8.0_301
+CLASSPATH=$JAVA_HOME/lib/
+PATH=$PATH:$JAVA_HOME/bin
+export PATH JAVA_HOME CLASSPATH<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<ol start="4">
+<li>source 是配置生效</li>
+</ol>
+<pre class="line-numbers language-none"><code class="language-none">source /etc/profile<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<ol start="5">
+<li>Java命令校验是否安装成功</li>
+</ol>
+<pre class="line-numbers language-none"><code class="language-none">root@ubuntu:/# java -version
+java version "1.8.0_301"
+Java(TM) SE Runtime Environment (build 1.8.0_301-b09)
+Java HotSpot(TM) 64-Bit Server VM (build 25.301-b09, mixed mode)
+
+root@ubuntu:/# javac -version
+javac 1.8.0_301<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>JDK安装过程问题：</p>
+<ol>
+<li><p>jdk包格式不对。比如我是amd的 却下载了x86的，所以在执行的时候就好出现数据格式问题</p>
+</li>
+<li><p>jdk的配置不正确（问题出现在：<code>/etc/profile</code>）</p>
+<p> 主要是 JAVA_HOME 是否正确配置在我们jdk的安装路径</p>
+</li>
+</ol>
+<h1 id="MySQL安装"><a href="#MySQL安装" class="headerlink" title="MySQL安装"></a>MySQL安装</h1><h3 id="安装步骤"><a href="#安装步骤" class="headerlink" title="安装步骤"></a>安装步骤</h3><ol>
+<li>添加 MySQL apt包（这里我先下载好apt包到虚拟机 <code>/root</code>目录下）</li>
+</ol>
+<pre class="line-numbers language-none"><code class="language-none">root@ubuntu:~# ls
+mysql-apt-config_0.8.19-1_all.deb  snap
+
+# 安装本地的 MySQL apt包
+dpkg -i /root/mysql-apt-config_0.8.19-1_all.deb<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>根据页面的提示选择合适的MySQL版本</p>
+<ol start="2">
+<li>更新 apt 库</li>
+</ol>
+<pre class="line-numbers language-none"><code class="language-none">apt-get update<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<ol start="3">
+<li>安装 mysql-server </li>
+</ol>
+<pre class="line-numbers language-none"><code class="language-none">apt-get install mysql-server<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>根据页面的提示设置 MySQL root用户的密码</p>
+<ol start="4">
+<li>启动 MySQL</li>
+</ol>
+<pre class="line-numbers language-none"><code class="language-none">service mysql start
+# 或
+systemctl start mysql<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 
 <ul>
-<li>查询出所有课程不及格的学生姓名（相关子查询）</li>
+<li>进入 mysql 服务</li>
 </ul>
-<p>1）查询出所有学生的分数</p>
-<p>2）根据所有课程成绩小于60的条件筛选出姓名</p>
-<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">SELECT</span> Sname
-<span class="token keyword">FROM</span> student
-<span class="token keyword">WHERE</span> <span class="token number">60</span> <span class="token operator">&gt;</span> <span class="token keyword">ALL</span><span class="token punctuation">(</span>
-    <span class="token keyword">SELECT</span> Score
-    <span class="token keyword">FROM</span> sc
-    <span class="token keyword">WHERE</span> sc<span class="token punctuation">.</span>Sid <span class="token operator">=</span> student<span class="token punctuation">.</span>Sid
-<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-none"><code class="language-none">mysql -u root -p
 
+# 输入之前设置的 root密码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 
+<h3 id="远程连接"><a href="#远程连接" class="headerlink" title="远程连接"></a>远程连接</h3><p>直接修改表，实现主机连接虚拟机的MySQL</p>
+<pre class="line-numbers language-none"><code class="language-none">mysql&gt; select user,host from mysql.user;
++------------------+-----------+
+| user             | host      |
++------------------+-----------+
+| mysql.infoschema | localhost |
+| mysql.session    | localhost |
+| mysql.sys        | localhost |
+| root             | localhost |
++------------------+-----------+
+4 rows in set (0.00 sec)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<ul>
-<li>查询出选修了001号课程，且成绩最高的同学的学号</li>
-</ul>
-<p>1）查询出选修了001号课程的成绩</p>
-<p>2）在选修了001号课程的学生当中找出成绩最高的学号</p>
-<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">SELECT</span> Score
-<span class="token keyword">FROM</span> sc
-<span class="token keyword">WHERE</span> Cid <span class="token operator">=</span> <span class="token string">'001'</span><span class="token punctuation">;</span>
+<p>我们从上表看出，root的host是本地虚拟机，现在我们可以修改root对应的host，使得我们可以远程连接</p>
+<pre class="line-numbers language-none"><code class="language-none"># 所以主机均可连接
+update mysql.user set host = '%' where user = 'root';
+flush privileges;
 
-<span class="token keyword">SELECT</span> Sid
-<span class="token keyword">FROM</span> sc
-<span class="token keyword">WHERE</span> Cid <span class="token operator">=</span> <span class="token string">'001'</span> <span class="token operator">AND</span> Score <span class="token operator">&gt;=</span> <span class="token keyword">ALL</span><span class="token punctuation">(</span>
-    <span class="token keyword">SELECT</span> Score
-	<span class="token keyword">FROM</span> sc
-	<span class="token keyword">WHERE</span> Cid <span class="token operator">=</span> <span class="token string">'001'</span>
-<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+# 指定连接的ip
+update mysql.user set host = 'ip地址' where user = 'root';
+flush privileges;
 
+mysql&gt; select user,host from mysql.user;
++------------------+--------------+
+| user             | host         |
++------------------+--------------+
+| root             | 192.168.13.1 |
+| mysql.infoschema | localhost    |
+| mysql.session    | localhost    |
+| mysql.sys        | localhost    |
++------------------+--------------+
+4 rows in set (0.00 sec)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
+<p>使用 navicat 测试远程连接</p>
+<img src="https://cdn.jsdelivr.net/gh/matemaster9/ali-note/img/20210927222009.png" style="zoom: 50%;">
 
-<ul>
-<li>找出98030101学生所修课程分数最低的课程号</li>
-</ul>
-<p>1）找出98030101学生所修课程的所有分数</p>
-<p>2）选出最低分数</p>
-<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token comment"># 找出98030101学生所修课程的所有分数</span>
-<span class="token keyword">SELECT</span> Score
-<span class="token keyword">FROM</span> sc
-<span class="token keyword">WHERE</span> Sid <span class="token operator">=</span> <span class="token string">'98030101'</span><span class="token punctuation">;</span>
-
-<span class="token comment"># 选出最低分数</span>
-<span class="token keyword">SELECT</span> Cid
-<span class="token keyword">FROM</span> sc
-<span class="token keyword">WHERE</span> Sid <span class="token operator">=</span> <span class="token string">'98030101'</span> <span class="token operator">AND</span> Score <span class="token operator">&lt;=</span> <span class="token keyword">ALL</span><span class="token punctuation">(</span>
-	<span class="token keyword">SELECT</span> Score
-	<span class="token keyword">FROM</span> sc
-	<span class="token keyword">WHERE</span> Sid <span class="token operator">=</span> <span class="token string">'98030101'</span>
-<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-
-
-<ul>
-<li>找出MS选修课程的最低成绩的课程号</li>
-</ul>
-<p>1）找出MS同学对于的Sid(MS-Sid)选修课程的所有分数</p>
-<p>2）选出最低</p>
-<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">SELECT</span> Score
-<span class="token keyword">FROM</span> sc<span class="token punctuation">,</span>student
-<span class="token keyword">WHERE</span> sc<span class="token punctuation">.</span>Sid <span class="token operator">=</span> student<span class="token punctuation">.</span>Sid <span class="token operator">AND</span> student<span class="token punctuation">.</span>Sname <span class="token operator">=</span> <span class="token string">'MS'</span><span class="token punctuation">;</span>
-
-<span class="token keyword">SELECT</span> Cid
-<span class="token keyword">FROM</span> sc
-<span class="token keyword">WHERE</span> Score <span class="token operator">&lt;=</span> <span class="token keyword">ALL</span><span class="token punctuation">(</span>
-    <span class="token keyword">SELECT</span> Score
-    <span class="token keyword">FROM</span> sc<span class="token punctuation">,</span>student
-    <span class="token keyword">WHERE</span> sc<span class="token punctuation">.</span>Sid <span class="token operator">=</span> student<span class="token punctuation">.</span>Sid <span class="token operator">AND</span> student<span class="token punctuation">.</span>Sname <span class="token operator">=</span> <span class="token string">'MS'</span>
-<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<p>下面代码也可以实现（相关子查询）</p>
-<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">SELECT</span> Cid
-<span class="token keyword">FROM</span> sc<span class="token punctuation">,</span>student
-<span class="token keyword">WHERE</span> sc<span class="token punctuation">.</span>Sid<span class="token operator">=</span>student<span class="token punctuation">.</span>Sid <span class="token operator">AND</span> student<span class="token punctuation">.</span>Sname<span class="token operator">=</span><span class="token string">'MS'</span> <span class="token operator">and</span>
-Score <span class="token operator">&lt;=</span> <span class="token keyword">ALL</span> <span class="token punctuation">(</span><span class="token keyword">SELECT</span> Score <span class="token keyword">FROM</span> sc <span class="token keyword">WHERE</span> sc<span class="token punctuation">.</span>Sid<span class="token operator">=</span>student<span class="token punctuation">.</span>Sid<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-
-<p><b style="color: chocolate;">等价变化：</b></p>
-<p><code>= SOME(子查询) 等价于 IN(子查询)</code></p>
-<p><code>!= ALL(子查询) 等价于NOT IN(子查询) </code></p>
-<h2 id="EXISTS子查询"><a href="#EXISTS子查询" class="headerlink" title="EXISTS子查询"></a>EXISTS子查询</h2><ul>
-<li>选修了<code>JetBrains</code>课程的所有学生姓名</li>
-</ul>
-<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">SELECT</span> Sname
-<span class="token keyword">FROM</span> teacher T<span class="token punctuation">,</span>course C<span class="token punctuation">,</span>sc<span class="token punctuation">,</span>student S
-<span class="token keyword">WHERE</span> T<span class="token punctuation">.</span>Tid <span class="token operator">=</span> C<span class="token punctuation">.</span>Tid <span class="token operator">AND</span> C<span class="token punctuation">.</span>Cid <span class="token operator">=</span> sc<span class="token punctuation">.</span>Cid <span class="token operator">AND</span> sc<span class="token punctuation">.</span>Sid <span class="token operator">=</span> S<span class="token punctuation">.</span>Sid <span class="token operator">AND</span> T<span class="token punctuation">.</span>Tname <span class="token operator">=</span> <span class="token string">'JetBrains'</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-
-
-
-<p><code>NOT EXISTS</code>查询所有</p>
-<ul>
-<li>列出没有选修<code>JetBrains</code>教授课程的学生的姓名</li>
-</ul>
-<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token comment"># 选出JetBrains教授课程的选修情况</span>
-<span class="token keyword">SELECT</span> <span class="token operator">*</span>
-<span class="token keyword">FROM</span> teacher<span class="token punctuation">,</span>course<span class="token punctuation">,</span>sc
-<span class="token keyword">WHERE</span> teacher<span class="token punctuation">.</span>Tid <span class="token operator">=</span> course<span class="token punctuation">.</span>Tid <span class="token operator">AND</span> course<span class="token punctuation">.</span>Cid <span class="token operator">=</span> sc<span class="token punctuation">.</span>Cid <span class="token operator">AND</span> teacher<span class="token punctuation">.</span>Tname <span class="token operator">=</span><span class="token string">'JetBrains'</span><span class="token punctuation">;</span>
-
-<span class="token comment">#  找出不存在选修了JetBrains课程的学生</span>
-<span class="token keyword">SELECT</span> Sname
-<span class="token keyword">FROM</span> student stu
-<span class="token keyword">WHERE</span> <span class="token operator">NOT</span> <span class="token keyword">EXISTS</span><span class="token punctuation">(</span>
-    <span class="token keyword">SELECT</span> <span class="token operator">*</span>
-	<span class="token keyword">FROM</span> teacher t<span class="token punctuation">,</span>course c<span class="token punctuation">,</span>sc
-	<span class="token keyword">WHERE</span> t<span class="token punctuation">.</span>Tid <span class="token operator">=</span> c<span class="token punctuation">.</span>Tid <span class="token operator">AND</span> c<span class="token punctuation">.</span>Cid <span class="token operator">=</span> sc<span class="token punctuation">.</span>Cid <span class="token operator">AND</span> stu<span class="token punctuation">.</span>Sid <span class="token operator">=</span> sc<span class="token punctuation">.</span>Sid <span class="token operator">AND</span> t<span class="token punctuation">.</span>Tname <span class="token operator">=</span><span class="token string">'JetBrains'</span>
-<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-
-
-<ul>
-<li>查询出选修001号教师主讲的所有课程的所有学生姓名</li>
-</ul>
-<p>转义语句：不存在有一门001号教师主讲课程该同学没有学过</p>
-<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">SELECT</span> <span class="token operator">*</span>
-<span class="token keyword">FROM</span> course
-<span class="token keyword">WHERE</span> Cid <span class="token operator">=</span> <span class="token string">'001'</span> <span class="token operator">AND</span> <span class="token keyword">EXISTS</span> <span class="token punctuation">(</span>
-    <span class="token keyword">SELECT</span> <span class="token operator">*</span>
-    <span class="token keyword">FROM</span> sc<span class="token punctuation">,</span>student
-    <span class="token keyword">WHERE</span> sc<span class="token punctuation">.</span>Sid <span class="token operator">=</span> student<span class="token punctuation">.</span>Sid <span class="token operator">AND</span> course<span class="token punctuation">.</span>Cid <span class="token operator">=</span> sc<span class="token punctuation">.</span>Cid
-<span class="token punctuation">)</span>
-
-
-<span class="token keyword">SELECT</span> <span class="token operator">*</span>		
-<span class="token keyword">FROM</span> student
-<span class="token keyword">WHERE</span> <span class="token operator">NOT</span> <span class="token keyword">EXISTS</span><span class="token punctuation">(</span>
-    <span class="token keyword">SELECT</span> <span class="token operator">*</span>
-	<span class="token keyword">FROM</span> course
-	<span class="token keyword">WHERE</span> Tid <span class="token operator">=</span> <span class="token string">'001'</span> <span class="token operator">AND</span> <span class="token operator">NOT</span> <span class="token keyword">EXISTS</span> <span class="token punctuation">(</span>
-    	<span class="token keyword">SELECT</span> <span class="token operator">*</span>
-    	<span class="token keyword">FROM</span> sc
-    	<span class="token keyword">WHERE</span> sc<span class="token punctuation">.</span>Sid <span class="token operator">=</span> student<span class="token punctuation">.</span>Sid <span class="token operator">AND</span> course<span class="token punctuation">.</span>Cid <span class="token operator">=</span> sc<span class="token punctuation">.</span>Cid
-	<span class="token punctuation">)</span>
-<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-
-
-<ul>
-<li>列出至少学过98030101号同学选修过的所有课程的同学学号</li>
-</ul>
-<p>转移语句：不存在一门98030101号同学选修的课程该同学没有学过</p>
-<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">SELECT</span> Sid
-<span class="token keyword">FROM</span> sc sc1
-<span class="token keyword">WHERE</span> <span class="token operator">NOT</span> <span class="token keyword">EXISTS</span><span class="token punctuation">(</span>
-    <span class="token keyword">SELECT</span> <span class="token operator">*</span>
-    <span class="token keyword">FROM</span> sc sc2
-    <span class="token keyword">WHERE</span> sc2<span class="token punctuation">.</span>Sid <span class="token operator">=</span> <span class="token string">'98030101'</span> <span class="token operator">AND</span> <span class="token operator">NOT</span> <span class="token keyword">EXISTS</span><span class="token punctuation">(</span>
-        <span class="token keyword">SELECT</span> <span class="token operator">*</span>
-        <span class="token keyword">FROM</span> sc
-        <span class="token keyword">WHERE</span> Cid <span class="token operator">=</span> sc2<span class="token punctuation">.</span>Cid <span class="token operator">AND</span> Sid <span class="token operator">=</span> sc1<span class="token punctuation">.</span>Sid
-    <span class="token punctuation">)</span>
-<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-
-
-<ul>
-<li>存在关系表SPJ(Sno,Pno,Jno,Qty) 供应商、零件号、工程号、数量</li>
-<li>列出至少使用供应商S1供应的全部零件的工程号</li>
-</ul>
-<p>转移语句：不存在一个有S1供应的零件该工程没有用过</p>
-<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">SELECT</span> Jno
-<span class="token keyword">FROM</span> SPJ SPJ1
-<span class="token keyword">WHERE</span> <span class="token operator">NOT</span> <span class="token keyword">EXISTS</span><span class="token punctuation">(</span>
-    <span class="token keyword">SELECT</span> <span class="token operator">*</span>
-    <span class="token keyword">FROM</span> SPJ SPJ2
-    <span class="token keyword">WHERE</span> Sno <span class="token operator">=</span> <span class="token string">'S1'</span> <span class="token operator">AND</span> <span class="token operator">NOT</span> <span class="token keyword">EXISTS</span><span class="token punctuation">(</span>
-        <span class="token keyword">SELECT</span> <span class="token operator">*</span>
-        <span class="token keyword">FROM</span> SPJ SPJ3
-        <span class="token keyword">WHERE</span> SPJ1<span class="token punctuation">.</span>Jno <span class="token operator">=</span> Jno <span class="token operator">AND</span> SPJ2<span class="token punctuation">.</span>Pno <span class="token operator">=</span> Pno
-    <span class="token punctuation">)</span>
-<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-
+<h1 id="Git安装"><a href="#Git安装" class="headerlink" title="Git安装"></a>Git安装</h1>
                 
             </div>
             <hr/>
@@ -870,7 +776,7 @@ Score <span class="token operator">&lt;=</span> <span class="token keyword">ALL<
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://www.matemaster.cn/posts/53808.html">https://www.matemaster.cn/posts/53808.html</a>
+                    <a href="https://www.matemaster.cn/posts/38490.html">https://www.matemaster.cn/posts/38490.html</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -908,8 +814,8 @@ Score <span class="token operator">&lt;=</span> <span class="token keyword">ALL<
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/MySQL/">
-                                    <span class="chip bg-color">MySQL</span>
+                                <a href="/tags/Ubuntu/">
+                                    <span class="chip bg-color">Ubuntu</span>
                                 </a>
                             
                         </div>
@@ -1351,76 +1257,24 @@ Score <span class="token operator">&lt;=</span> <span class="token keyword">ALL<
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/posts/53096.html">
+                <a href="/posts/48230.html">
                     <div class="card-image">
                         
-                        <img src="https://cdn.jsdelivr.net/gh/matemaster9/image-one/images/20210319151231.jpg" class="responsive-img" alt="LinkedList&lt;E&gt;底层原理">
+                        <img src="https://cdn.jsdelivr.net/gh/matemaster9/ali-note/img/20210922204616.svg" class="responsive-img" alt="Linux常用命令">
                         
-                        <span class="card-title">LinkedList&lt;E&gt;底层原理</span>
+                        <span class="card-title">Linux常用命令</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            理解LinkedList的逻辑结构
+                            Linux系统的常用命令
                         
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-03-19
+                            <i class="far fa-clock fa-fw icon-date"></i>2021-09-27
                         </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/CoreJava/" class="post-category">
-                                    CoreJava
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/Java/">
-                        <span class="chip bg-color">Java</span>
-                    </a>
-                    
-                    <a href="/tags/%E5%8E%9F%E5%88%9B/">
-                        <span class="chip bg-color">原创</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/posts/10779.html">
-                    <div class="card-image">
-                        
-                        <img src="https://cdn.jsdelivr.net/gh/matemaster9/image-one/images/20210319123402.png" class="responsive-img" alt="现代操作系统">
-                        
-                        <span class="card-title">现代操作系统</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            熟悉OS中的进程（暂时不对外开发……）
-                        
-                    </div>
-                    <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-03-19
-                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -1436,12 +1290,56 @@ Score <span class="token operator">&lt;=</span> <span class="token keyword">ALL<
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E5%8E%9F%E5%88%9B/">
-                        <span class="chip bg-color">原创</span>
+                    <a href="/tags/Linux/">
+                        <span class="chip bg-color">Linux</span>
                     </a>
                     
-                    <a href="/tags/OS/">
-                        <span class="chip bg-color">OS</span>
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/posts/7421.html">
+                    <div class="card-image">
+                        
+                        <img src="https://cdn.jsdelivr.net/gh/matemaster9/ali-note/img/20210921212948.svg" class="responsive-img" alt="后台管理系统授权实现">
+                        
+                        <span class="card-title">后台管理系统授权实现</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            Spring Security + JWT实现系统授权
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-09-21
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/SpringFramework/" class="post-category">
+                                    SpringFramework
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Spring/">
+                        <span class="chip bg-color">Spring</span>
                     </a>
                     
                 </div>
