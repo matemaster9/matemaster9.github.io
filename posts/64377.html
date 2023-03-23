@@ -486,7 +486,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    2.5k
+                    2.6k
                 </div>
                 
 
@@ -812,12 +812,32 @@ Space losses: 0 bytes internal + 4 bytes external = 4 bytes total<span aria-hidd
 <td>追求吞吐量</td>
 </tr>
 </tbody></table>
-<h2 id="CAS"><a href="#CAS" class="headerlink" title="CAS"></a>CAS</h2><p><img src="https://cdn.jsdelivr.net/gh/matemaster9/ali-note/img/20211003164007.png"></p>
+<h3 id="CAS"><a href="#CAS" class="headerlink" title="CAS"></a>CAS</h3><p><img src="https://cdn.jsdelivr.net/gh/matemaster9/ali-note/img/20211003164007.png"></p>
 <ol>
 <li>ABA问题：</li>
 </ol>
 <p>假设线程A读取的内存值是 m，线程B在A的操作过程中，将m 修改为 n然后又修改为 m，再A再次比较内存值和期望值时，发现“没有改变”。实则在A的操作过程当中已经有过多次改变！</p>
 <p>解决方式：为内存值添加版本号、或者使用<code>AotmicStampedReference</code>原子类</p>
+<h3 id="ThreadLocal"><a href="#ThreadLocal" class="headerlink" title="ThreadLocal"></a>ThreadLocal</h3><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">package</span> <span class="token namespace">cn<span class="token punctuation">.</span>matemaster<span class="token punctuation">.</span>offer<span class="token punctuation">.</span>sync</span><span class="token punctuation">;</span>
+
+<span class="token comment">/**
+ * 了解 ThreadLocal结构
+ * @author HUAWEI
+ */</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">ThreadLocalAnlys</span> <span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token class-name">ThreadLocal</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Sync</span><span class="token punctuation">&gt;</span></span> syncThreadLocal <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ThreadLocal</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token punctuation">&gt;</span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        syncThreadLocal<span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">Sync</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>syncThreadLocal<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><strong><code>Thread</code> 类中维护着一个 <code>ThreadLocal.ThreadLocalMap</code> 类型的成员</strong> <code>threadLocals</code>。这个成员就是用来存储当前线程独占的变量副本。</p>
+<p><code>ThreadLocalMap</code> 是 <code>ThreadLocal</code> 的内部类，它维护着一个 <code>Entry</code> 数组，**<code>Entry</code> 继承了 <code>WeakReference</code>** ，所以是弱引用。 <code>Entry</code> 用于保存键值对，其中：</p>
+<ul>
+<li><code>key</code> 是 <code>ThreadLocal</code> 对象；</li>
+<li><code>value</code> 是传递进来的对象（变量副本）。</li>
+</ul>
 
                 
             </div>
@@ -1545,7 +1565,7 @@ Space losses: 0 bytes internal + 4 bytes external = 4 bytes total<span aria-hidd
         <div class="col s12 m8 l8 copy-right">
             Copyright&nbsp;&copy;
             
-                <span id="year">2021</span>
+                <span id="year">2021-2023</span>
             
             <span id="year">2021</span>
             <a href="/about" target="_blank">MateMaster</a>
@@ -1554,7 +1574,7 @@ Space losses: 0 bytes internal + 4 bytes external = 4 bytes total<span aria-hidd
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">133.2k</span>&nbsp;字
+                class="white-color">135.4k</span>&nbsp;字
             
             
             

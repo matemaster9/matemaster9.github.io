@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="装饰器模式, MateMaster">
+    <meta name="keywords" content="DNS网络协议, MateMaster">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -27,7 +27,7 @@
 </script>
 
 
-    <title>装饰器模式 | MateMaster</title>
+    <title>DNS网络协议 | MateMaster</title>
     <link rel="icon" type="image/jpeg" href="/mashimaro.jpg">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -324,12 +324,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('https://cdn.jsdelivr.net/gh/matemaster9/ali-note/img/20210913213953.png')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('https://cdn.jsdelivr.net/gh/matemaster9/ali-note/img/20211005160938.png')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">装饰器模式</h1>
+                    <h1 class="description center-align post-title">DNS网络协议</h1>
                 </div>
             </div>
         </div>
@@ -445,8 +445,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">
-                                <span class="chip bg-color">设计模式</span>
+                            <a href="/tags/%E8%AE%A1%E7%BD%91/">
+                                <span class="chip bg-color">计网</span>
                             </a>
                         
                     </div>
@@ -457,8 +457,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" class="post-category">
-                                设计模式
+                            <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" class="post-category">
+                                计算机网络
                             </a>
                         
                     </div>
@@ -472,28 +472,28 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-06-15
+                    2021-08-05
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2021-09-13
+                    2021-10-05
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    277
+                    2.3k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    1 分
+                    8 分
                 </div>
                 
 
@@ -522,58 +522,229 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h3 id="装饰器模式"><a href="#装饰器模式" class="headerlink" title="装饰器模式"></a>装饰器模式</h3><img src="https://cdn.jsdelivr.net/gh/matemaster9/ali-note@1.0/md/20210704131050.svg" style="zoom: 80%;">
+                <h2 id="DNS协议"><a href="#DNS协议" class="headerlink" title="DNS协议"></a>DNS协议</h2><img src="https://cdn.jsdelivr.net/gh/matemaster9/ali-note@1.0/md/20210805173917.png" style="zoom: 50%;">
 
-<p>component：组件的功能接口</p>
-<p>componentImpl：组件接口的具体实现</p>
-<p>Decorator：组件的装饰器（可以抽象化，在进行继承创建子装饰器）</p>
-<p>我们可以利用创建组件的装饰器，对组件进行功能上的拓展</p>
-<p>假设我们现在有一个可以打印ASCII文件的组件，为了让组件具备打印文本的十六进制形式，我们添加一个具体的装饰器以实现这个拓展功能！</p>
-<p><img src="https://cdn.jsdelivr.net/gh/matemaster9/ali-note@1.0/md/20210704132252.svg"></p>
-<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">package</span> <span class="token namespace">cn<span class="token punctuation">.</span>matemaster<span class="token punctuation">.</span>example<span class="token punctuation">.</span>decorator</span><span class="token punctuation">;</span>
+<h3 id="提供的服务"><a href="#提供的服务" class="headerlink" title="提供的服务"></a>提供的服务</h3><p>DNS（主要任务）：主机名到ip地址转换的目录服务</p>
+<p>DNS（额外服务）：</p>
+<p>​    1.主机别名</p>
+<p>​    2.邮件服务器别名</p>
+<p>​    3.负载均衡：对于冗余web服务器，一组ip集合映射一个域名。当客户机对这组ip集合发生一个DNS请求时，DNS服务器会用所有ip进行回答，但是在每个回答中，DNS会自动旋转IP的排放顺序（注：客户端总是向排在前面的ip发生请求）</p>
+<p>DNS：</p>
+<ul>
+<li>DNS服务器实现的分布式数据库</li>
+<li>允许主机查询分布式数据库的应用层协议（==DNS基于UDP传输，故53端口==）</li>
+</ul>
+<blockquote>
+<p>为什么需要使用分布式层次数据库，而不采取集中管理？</p>
+<p>答：1.单点故障问题</p>
+<p>2.远距离集中式数据库</p>
+<p>3.维护问题</p>
+<p>单点故障：一个服务器瘫痪，全局完蛋<br>远距离集中式数据库：将会带来远距离传输导致的低速、拥塞<br>维护：庞大的服务器数据，造成维护成本不可估</p>
+</blockquote>
+<h3 id="分布式数据库"><a href="#分布式数据库" class="headerlink" title="分布式数据库"></a>分布式数据库</h3><blockquote>
+<p>根、顶级、权限服务器组成的分布式数据库</p>
+</blockquote>
+<p>==DNS服务器的层次结构==</p>
+<img src="https://cdn.jsdelivr.net/gh/matemaster9/ali-note@1.0/md/20210805161023.png" style="zoom:50%;">
 
-<span class="token keyword">import</span> <span class="token namespace">java<span class="token punctuation">.</span>util<span class="token punctuation">.</span>stream<span class="token punctuation">.</span></span><span class="token class-name">Collectors</span><span class="token punctuation">;</span>
+<p>==四种域名服务器==：</p>
+<ul>
+<li>根服务器：冗余的服务器集群，包含了所有顶级域的信息</li>
+<li>顶级域名服务器：负责所有顶级域名（com、org、edu）</li>
+<li>权限域名服务器：保存所有可以公共访问的DNS记录，每个记录都是对于主机到IP的映射</li>
+<li>本地域名服务器：类似于ISP或大学组织拥有的默认域名服务器</li>
+</ul>
+<p>==域名服务器与区==：</p>
+<p> 一个服务器所负责管辖的（或有权限的）范围叫做区 (zone)。各单位根据具体情况来划分自己管辖范围的区。但在一个区中的所有节 点必须是能够连通的。 </p>
+<p> 每一个区设置相应的权限域名服务器，用来保存该区中的所有主机 的域名到 IP 地址的映射。 </p>
+<p> DNS 服务器的管辖范围不是以“域”为单位，而是以“区”为单位。 “区”可能等于或小于“域” ，但一定不能大于“域”。</p>
+<img src="https://cdn.jsdelivr.net/gh/matemaster9/ali-note@1.0/md/20210805162305.png" style="zoom:50%;">
 
-<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Tester</span> <span class="token punctuation">{</span>
-    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token class-name">PrintAsciiText</span> pat <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">PrintAsciiText</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token class-name">PrintTextDecorator</span> ptd <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">PrintTextDecorator</span><span class="token punctuation">(</span>pat<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        pat<span class="token punctuation">.</span><span class="token function">print</span><span class="token punctuation">(</span><span class="token string">"Master"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        ptd<span class="token punctuation">.</span><span class="token function">print</span><span class="token punctuation">(</span><span class="token string">"Master"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
+<p>从区的角度理解域名服务器：</p>
+<p>（根）根域名服务器是最高层次的域名服务器，也是最重要的域名服务器。所有的根域名服务器都知道所有的顶级域名服务器的域名和 IP 地址。在使用迭代查询时，根域名服务器把下一步应当找的顶级域名服务器的 IP 地址 告诉本地域名服务器。</p>
+<p>（顶级域）顶级域名服务器（即 TLD 服务器）负责管理在该顶级域名服务器注册 的所有二级域名。当收到DNS查询请求  时，就给出相应的回答（可能是最后的结果， 也可能是下一步应当找的域名服务器的 IP 地址）。</p>
+<p>（权限域）负责一个区的域名服务器。当一个权限域名服务器还不能给出最后的查询回答时，就会告诉发出 查询请求的 DNS 客户，下一步应当找哪一个权限域名服务器</p>
+<p>（本地）本地域名服务器对域名系统非常重要。当一个主机发出 DNS 查询请求时，这个查询请求报文就发送给本地域名服务器。每一个互联网服务提供者 ISP，或一个大学，甚至一个大学里的系，都可以拥有一个本地域名服务器，这种域名服务器有时也称为默认域名服务器。</p>
+<p>==域名空间==</p>
+<img src="https://cdn.jsdelivr.net/gh/matemaster9/ali-note@1.0/md/20210805162737.png" style="zoom:50%;">
 
-<span class="token keyword">interface</span> <span class="token class-name">PrintText</span> <span class="token punctuation">{</span>
-    <span class="token keyword">void</span> <span class="token function">print</span><span class="token punctuation">(</span><span class="token class-name">String</span> text<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
+<p><strong>四种DNS服务器的交互方式</strong></p>
+<img src="https://cdn.jsdelivr.net/gh/matemaster9/ali-note@1.0/md/20210805163339.png" style="zoom:50%;">
 
-<span class="token keyword">class</span> <span class="token class-name">PrintAsciiText</span> <span class="token keyword">implements</span> <span class="token class-name">PrintText</span> <span class="token punctuation">{</span>
-    <span class="token annotation punctuation">@Override</span>
-    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">print</span><span class="token punctuation">(</span><span class="token class-name">String</span> text<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"Print ASCII : "</span> <span class="token operator">+</span> text<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
+<p><strong>递归查询</strong>：主机向本地域名服务器的查询一般都是采用递归查询。如果主机所询问的本地域名服务器不知道被查询域名的 IP 地址，那么本地域名服务器就以 DNS 客户的身份，向其他根域名服务器继续发出查询请求报文</p>
+<p><strong>迭代查询</strong>：本地域名服务器向根域名服务器的查询通常是采用迭代查询。当根域名服务器收到本地域名服务器的迭代查询请求报文时，要么给出所要查询的 IP 地址，要么告诉本地域名服务器：“你下一步应当向哪一个域名服务器进行查询”。然后让本地域名服务器进行后续的查询。</p>
+<h3 id="协议报文"><a href="#协议报文" class="headerlink" title="协议报文"></a>协议报文</h3><blockquote>
+<p>DNS记录（报文）</p>
+</blockquote>
+<p>DNS报文格式图</p>
+<ul>
+<li>查询报文</li>
+</ul>
+<img src="https://cdn.jsdelivr.net/gh/matemaster9/ali-note@1.0/md/20210805165945.png" style="zoom:50%;">
 
-<span class="token keyword">class</span> <span class="token class-name">PrintTextDecorator</span> <span class="token keyword">implements</span> <span class="token class-name">PrintText</span> <span class="token punctuation">{</span>
+<ul>
+<li>回答报文</li>
+</ul>
+<img src="https://cdn.jsdelivr.net/gh/matemaster9/ali-note@1.0/md/20210805165944.png" style="zoom:50%;">
 
-    <span class="token keyword">private</span> <span class="token class-name">PrintText</span> inner<span class="token punctuation">;</span>
+<p>DNS完整报文格式：</p>
+<table>
+    <tbody><tr>
+        <td>DNS-ID</td>
+        <td style="background-color:red">标志</td>
+    </tr>
+    <tr>
+        <td>问题计数</td>
+        <td>回答计数</td>
+    </tr>
+    <tr>
+        <td>权限RR数</td>
+        <td>附加RR数</td>
+    </tr>
+    <tr style="background-color:blue">
+        <td colspan="2" align="center">问题</td>
+    </tr>
+    <tr style="background-color:red">
+        <td colspan="2" align="center">回答RR</td>
+    </tr>
+    <tr style="background-color:red">
+        <td colspan="2" align="center">权限RR</td>
+    </tr>
+    <tr style="background-color:red">
+        <td colspan="2" align="center">附加RR</td>
+    </tr>
+</tbody></table>
 
-    <span class="token keyword">public</span> <span class="token class-name">PrintTextDecorator</span><span class="token punctuation">(</span><span class="token class-name">PrintText</span> inner<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">this</span><span class="token punctuation">.</span>inner <span class="token operator">=</span> inner<span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
+<p>DNS首部报文格式：</p>
+<table>
+    <tbody><tr>
+        <td>DNS-ID</td>
+        <td>标志</td>
+    </tr>
+    <tr>
+        <td>问题计数</td>
+        <td>回答计数</td>
+    </tr>
+    <tr>
+        <td>权限RR数</td>
+        <td>附加RR数</td>
+    </tr>
+</tbody></table>
 
-    <span class="token annotation punctuation">@Override</span>
-    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">print</span><span class="token punctuation">(</span><span class="token class-name">String</span> text<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token class-name">String</span> hex <span class="token operator">=</span> text<span class="token punctuation">.</span><span class="token function">chars</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-                            <span class="token punctuation">.</span><span class="token function">boxed</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-                <span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span>x <span class="token operator">-&gt;</span> <span class="token string">"0x"</span> <span class="token operator">+</span> <span class="token class-name">Integer</span><span class="token punctuation">.</span><span class="token function">toHexString</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">)</span>
-                <span class="token punctuation">.</span><span class="token function">collect</span><span class="token punctuation">(</span><span class="token class-name">Collectors</span><span class="token punctuation">.</span><span class="token function">joining</span><span class="token punctuation">(</span><span class="token string">" "</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-        inner<span class="token punctuation">.</span><span class="token function">print</span><span class="token punctuation">(</span>text <span class="token operator">+</span> <span class="token string">" -&gt; Hex : "</span> <span class="token operator">+</span> hex<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<blockquote>
+<p>报文语义：</p>
+<ul>
+<li>DNS-ID：DNS 报文的 ID 标识。对于请求报文和其对应的应答报文，该字段的值是相同的。通过它可以区分 DNS 应答报文是对哪个请求进行响应的。</li>
+<li>标志：DNS 报文中的标志字段。</li>
+<li>问题计数：DNS 查询请求的数目。</li>
+<li>回答资源记录数：DNS 响应的数目。</li>
+<li>权威名称服务器计数：权威名称服务器的数目。</li>
+<li>附加资源记录数：额外的记录数目（权威名称服务器对应 IP 地址的数目）。</li>
+</ul>
+</blockquote>
+<blockquote>
+<p>标志字段具体内容：|QR|Opcode|AA|TC|RD|RA|Z|rcode|</p>
+<ul>
+<li><p>（QR）0 表示查询报文； 1 表示回答报文</p>
+</li>
+<li><p>（Opcode）0 表示标准查询；1 表示反向查询；2 表示服务器状态请求</p>
+</li>
+<li><p>（AA）授权应答，该字段在响应报文中有效。值为 1 时，表示名称服务器是权威服务器；值为 0 时，表示不是权威服务器。</p>
+</li>
+<li><p>TC（Truncated）：表示是否被截断。值为 1 时，表示响应已超过 512 字节已被截断，只返回前 512 个字节</p>
+</li>
+<li><p>RD（Recursion Desired）：期望递归。该字段能在一个查询中设置，并在响应中返回。该标志告诉名称服务器必须处理这个查询，这种方式被称为一个递归查询。如果该位为 0，且被请求的名称服务器没有一个授权回答，它将返回一个能解答该查询的其他名称服务器列表。这种方式被称为迭代查询。</p>
+</li>
+<li><p>RA（Recursion Available）：可用递归。该字段只出现在响应报文中。当值为 1 时，表示服务器支持递归查询。</p>
+</li>
+<li><p>Z：保留字段，在所有的请求和应答报文中，它的值必须为 0。</p>
+</li>
+<li><p>rcode（Reply code）：返回码字段，表示响应的差错状态。当值为 0 时，表示没有错误；当值为 1 时，表示报文格式错误（Format error），服务器不能理解请求的报文；当值为 2 时，表示域名服务器失败（Server failure），因为服务器的原因导致没办法处理这个请求；当值为 3 时，表示名字错误（Name Error），只有对授权域名解析服务器有意义，指出解析的域名不存在；当值为 4 时，表示查询类型不支持（Not Implemented），即域名服务器不支持查询类型；当值为 5 时，表示拒绝（Refused），一般是服务器由于设置的策略拒绝给出应答，如服务器不希望对某些请求者给出应答。</p>
+</li>
+</ul>
+</blockquote>
+<p>DNS问题部分（Queries）:</p>
+<table>
+    <tbody><tr>
+        <td colspan="2" align="center">查询名</td>
+    </tr>
+    <tr>
+        <td>查询类型</td>
+        <td>查询类&nbsp;&nbsp;</td>
+    </tr>
+</tbody></table>
 
-<p>通过上述的装饰器，所有实现PrintText的组件类，都可以通过<code>PrintTextDecorator</code>这个装饰器去拓展组件，使得组件具有打印十六进制字符串的功能！</p>
+
+<ul>
+<li>查询名：一般为要查询的域名，有时也会是 IP 地址，用于反向查询。</li>
+<li>查询类型：DNS 查询请求的资源类型。通常查询类型为 A 类型，表示由域名获取对应的 IP 地址。</li>
+<li>查询类：地址类型，通常为互联网地址，值为 1</li>
+</ul>
+<p>DNS资源记录部分（Answers）:</p>
+<table>
+    <tbody><tr style="background-color:red">
+        <td colspan="2" align="center">域名</td>
+    </tr>
+    <tr style="background-color:red">
+        <td>类型</td>
+        <td>类&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+    </tr>
+    <tr style="background-color:yellow">
+        <td colspan="2" align="center">生存时间</td>
+    </tr>
+    <tr style="background-color:green">
+        <td>资源数据长度</td>
+        <td style="background-color:greenyellow"></td>
+    </tr>
+    <tr style="background-color:greenyellow">
+        <td colspan="2" align="center">资源数据</td>
+    </tr>
+</tbody></table>
+
+
+<ul>
+<li>域名：DNS 请求的域名。</li>
+<li>类型：资源记录的类型，与问题部分中的查询类型值是一样的。</li>
+<li>类：地址类型，与问题部分中的查询类值是一样的。</li>
+<li>生存时间：以秒为单位，表示资源记录的生命周期，一般用于当地址解析程序取出资源记录后决定保存及使用缓存数据的时间。它同时也可以表明该资源记录的稳定程度，稳定的信息会被分配一个很大的值。</li>
+<li>资源数据长度：资源数据的长度。</li>
+<li>资源数据：表示按查询段要求返回的相关资源记录的数据。</li>
+</ul>
+<blockquote>
+<p>DNS元组记录</p>
+<p>（Name、Value、Type、TLL）</p>
+<p>注：TTL 表示该记录的生存时间，Type决定了name和value的关系</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Name</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>A</td>
+<td>主机名</td>
+<td>主机名映射的ip</td>
+</tr>
+<tr>
+<td>NS</td>
+<td>域</td>
+<td>获取该域ip的权限服务器的主机名</td>
+</tr>
+<tr>
+<td>CNAME</td>
+<td></td>
+<td>Name主机对应的规范主机名</td>
+</tr>
+<tr>
+<td>MX</td>
+<td></td>
+<td>别名为Name的主机对应的规范主机名</td>
+</tr>
+</tbody></table>
 
                 
             </div>
@@ -600,7 +771,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://www.matemaster.cn/posts/64336.html">https://www.matemaster.cn/posts/64336.html</a>
+                    <a href="https://www.matemaster.cn/posts/8470.html">https://www.matemaster.cn/posts/8470.html</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -638,8 +809,8 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">
-                                    <span class="chip bg-color">设计模式</span>
+                                <a href="/tags/%E8%AE%A1%E7%BD%91/">
+                                    <span class="chip bg-color">计网</span>
                                 </a>
                             
                         </div>
@@ -1081,30 +1252,31 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/posts/8470.html">
+                <a href="/posts/18032.html">
                     <div class="card-image">
                         
-                        <img src="https://cdn.jsdelivr.net/gh/matemaster9/ali-note/img/20211005160938.png" class="responsive-img" alt="DNS网络协议">
                         
-                        <span class="card-title">DNS网络协议</span>
+                        <img src="https://cdn.jsdelivr.net/gh/matemaster9/image-one/images/20210317194803.jpg" class="responsive-img" alt="aliJ">
+                        
+                        <span class="card-title">aliJ</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            DNS协议详解
+                            技术学习记录
                         
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-08-05
+                            <i class="far fa-clock fa-fw icon-date"></i>2021-08-08
                         </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" class="post-category">
-                                    计算机网络
+                            <a href="/categories/MasterStudio/" class="post-category">
+                                    MasterStudio
                                 </a>
                             
                             
@@ -1114,8 +1286,8 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E8%AE%A1%E7%BD%91/">
-                        <span class="chip bg-color">计网</span>
+                    <a href="/tags/%E6%8A%80%E6%9C%AF/">
+                        <span class="chip bg-color">技术</span>
                     </a>
                     
                 </div>
@@ -1129,18 +1301,18 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/posts/39554.html">
+                <a href="/posts/64336.html">
                     <div class="card-image">
                         
-                        <img src="https://cdn.jsdelivr.net/gh/matemaster9/ali-note/img/20210913213908.png" class="responsive-img" alt="适配器模式">
+                        <img src="https://cdn.jsdelivr.net/gh/matemaster9/ali-note/img/20210913213953.png" class="responsive-img" alt="装饰器模式">
                         
-                        <span class="card-title">适配器模式</span>
+                        <span class="card-title">装饰器模式</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            适配器
+                            装饰器
                         
                     </div>
                     <div class="publish-info">

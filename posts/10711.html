@@ -479,7 +479,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2021-09-21
+                    2021-10-08
                 </div>
                 
 
@@ -2531,8 +2531,6 @@ entityManager<span class="token punctuation">.</span><span class="token function
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-
-
 <h2 id="Swagger2"><a href="#Swagger2" class="headerlink" title="Swagger2"></a>Swagger2</h2><ul>
 <li>swagger2依赖</li>
 <li>swagger2配置</li>
@@ -2635,10 +2633,8 @@ selectorBuilder <span class="token operator">=</span> selectorBuilder<span class
     <span class="token key atrule">request-context-attribute</span><span class="token punctuation">:</span> mate
     <span class="token key atrule">settings</span><span class="token punctuation">:</span> mate<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-
-
 <ul>
-<li>==模板引擎 + 数据模型 = 输出html文件==</li>
+<li>模板引擎 + 数据模型 = 输出html文件</li>
 </ul>
 <img src="https://cdn.jsdelivr.net/gh/matemaster9/ali-note/md/20210629201216.png" style="zoom:80%;">
 
@@ -2719,8 +2715,6 @@ selectorBuilder <span class="token operator">=</span> selectorBuilder<span class
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>#if</span><span class="token punctuation">&gt;</span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>b</span><span class="token punctuation">&gt;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-
-
 <p>序列类型，&lt;#list &gt;指令遍历序列</p>
 <pre class="line-numbers language-html" data-language="html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>#list</span> <span class="token attr-name">companies</span> <span class="token attr-name">as</span> <span class="token attr-name">company</span> <span class="token punctuation">&gt;</span></span>
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">&gt;</span></span>下标：${company?index} 公司：${company}<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">&gt;</span></span>
@@ -2729,8 +2723,6 @@ selectorBuilder <span class="token operator">=</span> selectorBuilder<span class
 ${companies?first} ：获取序列的第一个子变量
 ${companies?last}：获取序列的最后一个子变量
 ${companies?size}：获取序列的长度<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-
 
 <p>哈希类型的两种遍历方式：key遍历、value遍历</p>
 <pre class="line-numbers language-html" data-language="html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>#list</span> <span class="token attr-name">hash?keys</span> <span class="token attr-name">as</span> <span class="token attr-name">key</span><span class="token punctuation">&gt;</span></span>
@@ -2927,7 +2919,6 @@ ${companies?size}：获取序列的长度<span aria-hidden="true" class="line-nu
 </ol>
 <p><code>freemarker内建函数</code>：</p>
 <p>（1）标量内建函数</p>
-<p>–</p>
 <p>调用函数的数据类型是：字符串</p>
 <ul>
 <li>boolean、number、date、time、datetime：与其他标量类型的转换</li>
@@ -2940,7 +2931,6 @@ ${companies?size}：获取序列的长度<span aria-hidden="true" class="line-nu
 <li>left_pad/right_pad：左右填充</li>
 <li>upper_case/lower_case：大小写</li>
 </ul>
-<p>–</p>
 <p>调用函数的数据类型是：数值</p>
 <ul>
 <li>abs</li>
@@ -2949,14 +2939,12 @@ ${companies?size}：获取序列的长度<span aria-hidden="true" class="line-nu
 <li>upper_abc/lower_abc：123对应abc或ABC 超过26就是aa或AA</li>
 <li>round/floor/ceiling</li>
 </ul>
-<p>–</p>
 <p>调用函数的数据类型是：布尔值</p>
 <ul>
 <li>c</li>
 <li>then</li>
 <li>string</li>
 </ul>
-<p>–</p>
 <p>调用函数的数据类型是：日期时间</p>
 <ul>
 <li>date</li>
@@ -2964,7 +2952,6 @@ ${companies?size}：获取序列的长度<span aria-hidden="true" class="line-nu
 <li>datetime：确定日期变量使用的是那一部分</li>
 </ul>
 <p>（2）容器内建函数</p>
-<p>–</p>
 <p>序列调用的函数</p>
 <ul>
 <li>chunk：分割为子序列</li>
@@ -2978,14 +2965,12 @@ ${companies?size}：获取序列的长度<span aria-hidden="true" class="line-nu
 <li>seq_index_of</li>
 <li>seq_last_index_of：子序列出现的位置</li>
 </ul>
-<p>–</p>
 <p>哈希表调用的函数</p>
 <ul>
 <li>keys：键遍历</li>
 <li>values：值遍历</li>
 </ul>
 <p>（3）独立内建函数</p>
-<p>–</p>
 <p>作用于循环变量的函数</p>
 <ul>
 <li>counter：计数</li>
@@ -3726,7 +3711,7 @@ ${companies?size}：获取序列的长度<span aria-hidden="true" class="line-nu
         <div class="col s12 m8 l8 copy-right">
             Copyright&nbsp;&copy;
             
-                <span id="year">2021</span>
+                <span id="year">2021-2023</span>
             
             <span id="year">2021</span>
             <a href="/about" target="_blank">MateMaster</a>
@@ -3735,7 +3720,7 @@ ${companies?size}：获取序列的长度<span aria-hidden="true" class="line-nu
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">133.2k</span>&nbsp;字
+                class="white-color">135.4k</span>&nbsp;字
             
             
             
